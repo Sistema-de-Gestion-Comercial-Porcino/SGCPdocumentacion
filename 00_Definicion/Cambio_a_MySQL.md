@@ -37,6 +37,31 @@ Antes había una cadena de SQL Server escrita en el código como respaldo. Se qu
 
 Ahora, si falta `ConnectionStrings:Sgcp`, la API **se detiene al arrancar** y dice el formato esperado, igual que ya hacía con `Jwt:Clave`. Es más claro que intentar conectarse a un servidor inventado y fallar con un error de red.
 
+#### Y eso rompió GitHub Actions, por una distinción que al principio se pasó por alto
+
+La primera versión aplicaba esa exigencia también a `FabricaContexto`, que es la fábrica **de diseño**: la que usa `dotnet ef`. El flujo de CI falló en el paso «Revisar migraciones» con:
+
+```
+Unable to create a 'DbContext' of type 'SgcpContext'. The exception
+'Configura ConnectionStrings:Sgcp mediante user-secrets o variable de entorno...'
+was thrown while attempting to create an instance.
+```
+
+**La causa.** Las órdenes de `dotnet ef` no son todas iguales. `migrations add`, `migrations script` y `has-pending-model-changes` solo **construyen el modelo**: no abren ninguna conexión. La única que se conecta de verdad es `database update`. Exigirles credenciales a las tres primeras es pedir algo que no necesitan, y en CI no hay ni `user-secrets` ni ninguna base todavía.
+
+No se vio antes porque durante el desarrollo se exportaba `ConnectionStrings__Sgcp` a mano en cada orden. El entorno de prueba tenía la variable; el de CI, no. **Es el mismo error de fondo que los dos defectos de cultura**: probar en un entorno que no es el de ejecución.
+
+**La corrección.** Dos métodos en `Comun/CadenaConexion.cs`, uno por cada uso:
+
+| Método | Quién lo usa | Qué hace si falta la cadena |
+|---|---|---|
+| `Exigir` | `Arranque.cs`, la aplicación | lanza y la API no arranca |
+| `ParaDisenio` | `FabricaContexto`, `dotnet ef` | avisa por la salida de error y devuelve un marcador que nunca se conecta |
+
+Así, generar y revisar migraciones funciona en cualquier máquina sin configurar nada, y la aplicación sigue negándose a arrancar sin una cadena real.
+
+**Regla para adelante.** Un `IDesignTimeDbContextFactory` no debe exigir credenciales: corre en máquinas de desarrollo y en CI, donde no hay secretos. Y cuando un paso de CI falla, hay que reproducirlo con el mismo entorno que CI —en este caso, `env -u ConnectionStrings__Sgcp` y `--configuration Release --no-build`— antes de cambiar nada. Los cuatro pasos del flujo se volvieron a ejecutar así, uno por uno, y pasan.
+
 ## 3. Trampa 1 · MySQL no tiene índices filtrados
 
 Es el único cambio de modelado que hizo falta, y el que hay que entender para no romperlo después.
@@ -116,6 +141,7 @@ Todo con `LANG=es_BO.UTF-8`, contra MySQL 8.4 en un contenedor desechable, en el
 | Qué | Resultado |
 |---|---|
 | Compilación de SGCPapi y SGCPuiweb | 0 errores, 0 advertencias |
+| Los cuatro pasos de `.github/workflows/sprint1-mysql.yml`, en Release y sin `ConnectionStrings__Sgcp` | pasan |
 | `dotnet ef database update` contra MySQL real | aplicada |
 | La misma orden por segunda vez | «already up to date», sin cambios |
 | `dotnet ef migrations has-pending-model-changes` | modelo y migración sincronizados |

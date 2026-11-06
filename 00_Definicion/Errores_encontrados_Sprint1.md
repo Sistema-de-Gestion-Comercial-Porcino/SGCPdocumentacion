@@ -111,8 +111,9 @@ Hecho, bajo `LANG=es_BO.UTF-8`, contra MySQL 8.4 en una base desechable:
 | El mismo recorrido por la vía SQLite, sin motor instalado | 27 de 27 |
 | Páginas de la web y envío del formulario de precios | 9 de 9 |
 | APK y pruebas unitarias de Android | correctos |
+| Los cuatro pasos del flujo de GitHub Actions, replicados en local | pasan |
 
-El motor pasó de SQL Server a MySQL el 6 de noviembre de 2026. Lo que cambió, y las tres trampas que aparecieron al hacerlo, está en `Cambio_a_MySQL.md`. El cambio cerró el pendiente que antes encabezaba esta lista: **la migración ya se ejecutó contra el motor de entrega**, porque un MySQL de prueba se levanta en veinte segundos y SQL Server no.
+Al cambiar de motor se introdujo un cuarto defecto, que apareció en GitHub Actions y no en local: exigir la cadena de conexión también en la fábrica de diseño, que `dotnet ef` usa para construir el modelo sin conectarse. Está corregido y explicado en `Cambio_a_MySQL.md`, sección 2. El motor pasó de SQL Server a MySQL el 6 de noviembre de 2026. Lo que cambió, y las tres trampas que aparecieron al hacerlo, está en `Cambio_a_MySQL.md`. El cambio cerró el pendiente que antes encabezaba esta lista: **la migración ya se ejecutó contra el motor de entrega**, porque un MySQL de prueba se levanta en veinte segundos y SQL Server no.
 
 Pendiente, y no se puede cerrar desde esta máquina:
 
