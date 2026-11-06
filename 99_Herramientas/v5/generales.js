@@ -1,0 +1,25 @@
+const b=require('./base'),{M,D,V,E,text,project,assoc,contain,save}=b;
+const {defs,domain}=require('./dominio'),{router}=require('./rutas'),{casos,actors}=require('./specs');
+async function clases(){
+ const {p,m}=project('SGCC — Modelo de clases'),d=D(m,'UMLClassDiagram','Clases generales del SGCC'),{cs,rels}=domain(m),vs={};
+ text(d,'SGCC · Clases del sistema',100,20,3400,60,27);
+ for(const [n,[col,row,attrs,ops=[]]]of Object.entries(defs)){const v=V(d,'UMLClassView',cs[n],100+col*700,150+row*600,470,70+attrs.length*23+ops.length*23);v.font.size=16;v.suppressOperations=!ops.length;v.showVisibility=true;vs[n]=v;if(['ClasificacionProducto','Producto','ResultadoProduccion','Lote','OrdenProduccion'].includes(n))v.fillColor='#e0f2e9';}
+ const route=router(Object.values(vs));for(const r of rels){const gen=r.constructor.name==='UMLGeneralization',a=vs[gen?r.source.name:r.end1.reference.name],z=vs[gen?r.target.name:r.end2.reference.name];E(d,gen?'UMLGeneralizationView':'UMLAssociationView',r,a,z,route(a,z));}
+ text(d,'Producto obtenido: OrdenProduccion > ResultadoProduccion > Lote > Producto > ClasificacionProducto (corte, derivado o insumo).\nResultadoProduccion contiene la cantidad real. PrevisionProducto contiene lo esperado. Existencia contiene el físico por ubicación.\nFaeneoDesposte y FabricacionDerivado heredan identificación, responsable, estado y fechas de OrdenProduccion.\nAlmacén captura y confirma pesajes manuales; bruto - tara = neto. La balanza no se integra automáticamente.\nComposición: propiedad exclusiva de detalles/resultados; no exige borrar historia comercial. Agregación: Ruta agrupa Entrega, que puede reasignarse.\nCatálogo no crea stock. Reserva no duplica salida física. Costos de referencia y precios históricos se conservan.\nSaldo y entrega son independientes. Android conserva solo recepción autorizada pendiente de sincronizar.\nLos permisos permanecen en el dominio; Administrar usuarios es un único caso general.',100,4440,3950,300,18);
+ m.documentation='Modelo único vigente: 12 casos de uso generales. Herencia, composición y agregación responden a responsabilidades y ciclos de vida. El producto de un resultado se obtiene a través de su lote, evitando copiar el tipo de corte en cada orden. Varias cantidades reales por orden y producto. Datos de ejemplos no son catálogo comercial confirmado. Las clases de interfaz y control de los otros diagramas no son tablas de este dominio.';
+ await save(p,d,'01_Generales/Clases_SGCC.mdj');
+}
+async function casosUso(){
+ const {p,m}=project('SGCC — 12 casos de uso'),d=D(m,'UMLUseCaseDiagram','Casos de uso generales del SGCC'),models={};for(const a of actors)models[a]=M('UMLActor',a,m);
+ text(d,'SGCC · Casos de uso generales',80,20,2300,65,29);
+ text(d,'Los actores repetidos representan el mismo rol. Todos se autentican y consultan reportes conforme a sus permisos.\nLas acciones CRUD y las alternativas se desarrollan en secuencias y actividades. Portal: datos propios.',80,100,2300,100,18);
+ let y=250;const rows=casos.map(c=>{const h=Math.max(230,c.actors.length*120+60),r={c,y,h};y+=h+45;return r});
+ const sub=M('UMLSubsystem','Sistema de Gestión Comercial y Clientes',m),box=V(d,'UMLUseCaseSubjectView',sub,1050,220,1250,y-180);box.font.size=22;
+ for(const {c,y,h}of rows){const u=M('UMLUseCase',c.id+' · '+c.nombre,m);u.documentation='Actores: '+c.actors.join(', ')+'. Precondición: '+c.pre+'. Acciones: '+c.branches.map(x=>x.nombre).join('; ')+'. '+c.regla;const uv=V(d,'UMLUseCaseView',u,1290,y+h/2-65,780,130);uv.font.size=23;contain(box,uv);uv.fillColor=['CU02','CU03','CU04','CU07'].includes(c.id)?'#e7f2ec':c.id==='CU12'?'#fff0d4':'#eef3fb';
+  c.actors.forEach((a,i)=>{const av=V(d,'UMLActorView',models[a],100,y+30+i*120,330,95);av.font.size=19;const edge=assoc(m,d,av,uv,'','','',[[430,av.top+47],[1290,uv.top+65]]);edge.lineStyle=b.T.EdgeView.LS_OBLIQUE;});
+ }
+ text(d,'Parametrización: usuarios, clientes, productos y clasificaciones, costos y precios, animales y transporte.\nOperación: cotizaciones, pedidos, producción, inventario, pagos y entregas. Reportes: consultas y exportación por perfil.\nPropietario / administración, Ventas / cobranza, Producción, Almacén, Responsable de entrega y Comprador coinciden con el BPM propuesto.\nProveedor fiscal: integración condicionada documentada en arquitectura. La balanza es una herramienta física de Almacén.',80,y+80,2230,200,19);
+ m.documentation='Un caso de uso representa un objetivo general con acciones internas. Las asociaciones no conceden CRUD completo a todos los actores: comprador consulta su catálogo y sus operaciones; el personal actúa por permisos. Las cuentas internas se crean por administración. Acceso de comprador se registra sin privilegios internos. Los roles repetidos son vistas de los mismos seis modelos de actor. No hay un CU por RF ni se incluyen objetivos futuros.';
+ await save(p,d,'01_Generales/Casos_de_Uso_SGCC.mdj');
+}
+const {componentes,despliegue}=require('./arquitectura');module.exports={clases,casosUso,componentes,despliegue};

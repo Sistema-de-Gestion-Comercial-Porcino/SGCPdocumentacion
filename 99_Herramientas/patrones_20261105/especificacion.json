@@ -1,0 +1,1610 @@
+[
+  {
+    "name": "Adapter",
+    "slug": "adapter",
+    "category": "estructurales",
+    "apply": true,
+    "scope": "SGCPapi · CU12 / RF15",
+    "intent": "Convierte una interfaz existente al contrato que necesita su consumidor.",
+    "reason": "El exportador debe mantener el contrato del CRM aunque la biblioteca PDF reciba HTML y devuelva bytes. Se reutiliza ExportadorPDF del Factory Method ya diseñado: una clase puede cumplir ambos papeles.",
+    "scenario": "El usuario solicita un reporte autorizado. ExportacionReporte consume ExportadorReporte; ExportadorPDF adapta ese contrato a MotorPDFExterno. El motor es un contrato ilustrativo: la biblioteca concreta aún no está elegida.",
+    "flow": "El servicio autoriza y filtra; el adaptador convierte DatosReporte en una plantilla segura, invoca renderizar(html) y envuelve los bytes en Archivo. El creador del patrón Factory Method sigue eligiendo el exportador.",
+    "caution": "No modifica filtros, permisos ni cifras. Escape de contenido, manejo de errores y pruebas de equivalencia son necesarios. El proveedor fiscal sigue siendo condicional y no se integra por este ejemplo.",
+    "efficiency": "Agrega conversión de datos; el costo dominante sigue siendo generar el PDF. Aísla cambios de biblioteca en un punto.",
+    "nodes": [
+      {
+        "name": "ExportacionReporte",
+        "ops": [
+          "exportar(d: DatosReporte): Archivo"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "ExportadorReporte",
+        "ops": [
+          "generar(d: DatosReporte): Archivo"
+        ],
+        "attrs": [],
+        "kind": "interface",
+        "role": ""
+      },
+      {
+        "name": "ExportadorPDF",
+        "ops": [
+          "generar(d: DatosReporte): Archivo"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "MotorPDFExterno",
+        "ops": [
+          "renderizar(html: String): Bytes"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      }
+    ],
+    "links": [
+      {
+        "a": "ExportacionReporte",
+        "b": "ExportadorReporte",
+        "kind": "dep",
+        "label": "consume",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "ExportadorPDF",
+        "b": "ExportadorReporte",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "ExportadorPDF",
+        "b": "MotorPDFExterno",
+        "kind": "assoc",
+        "label": "adapta",
+        "m1": "1",
+        "m2": "1"
+      }
+    ],
+    "source": "https://refactoring.guru/design-patterns/adapter"
+  },
+  {
+    "name": "Facade",
+    "slug": "facade",
+    "category": "estructurales",
+    "apply": true,
+    "scope": "SGCPapi · CU11 / RF07, RF08, RF17",
+    "intent": "Ofrece una entrada sencilla a un conjunto de servicios que colaboran.",
+    "reason": "Registrar una recepción necesita autorización, validación de versión, control del reintento y actualización coherente. Una fachada evita que cada frontend coordine esas piezas de forma diferente.",
+    "scenario": "Web conectada y Android llaman la misma API. ControladorRecepcion delega en FachadaRecepcion, que coordina PoliticaRecepcion, RegistroIdempotente y UnidadRecepcion.",
+    "flow": "Se comprueban identidad y alcance; una clave ya confirmada devuelve el mismo resultado si coincide su contenido. Una nueva recepción válida se guarda con su resultado en una transacción. La conforme deja ENTREGADA; la observada queda OBSERVADA.",
+    "caution": "La clave debe ser única también en la base de datos; una comprobación previa no evita carreras. Misma clave con contenido diferente se rechaza. Constancia solo con recepción conforme; recibir no liquida la deuda.",
+    "efficiency": "Agrega una delegación pequeña. Reduce coordinación repetida; no debe convertirse en una clase que contenga todo el sistema.",
+    "nodes": [
+      {
+        "name": "ControladorRecepcion",
+        "ops": [
+          "registrar(d: RecepcionDTO): Resultado"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "FachadaRecepcion",
+        "ops": [
+          "registrar(d: RecepcionDTO): Resultado"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "PoliticaRecepcion",
+        "ops": [
+          "validar(d: RecepcionDTO): void"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "RegistroIdempotente",
+        "ops": [
+          "buscar(clave: UUID): Resultado"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "UnidadRecepcion",
+        "ops": [
+          "confirmar(d: RecepcionDTO): Resultado"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      }
+    ],
+    "links": [
+      {
+        "a": "ControladorRecepcion",
+        "b": "FachadaRecepcion",
+        "kind": "dep",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "FachadaRecepcion",
+        "b": "PoliticaRecepcion",
+        "kind": "dep",
+        "label": "verifica",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "FachadaRecepcion",
+        "b": "RegistroIdempotente",
+        "kind": "dep",
+        "label": "consulta",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "FachadaRecepcion",
+        "b": "UnidadRecepcion",
+        "kind": "dep",
+        "label": "transacción",
+        "m1": "",
+        "m2": ""
+      }
+    ],
+    "source": "https://refactoring.guru/design-patterns/facade"
+  },
+  {
+    "name": "Bridge",
+    "slug": "bridge",
+    "category": "estructurales",
+    "apply": false,
+    "scope": "Ejemplo externo · editor vectorial",
+    "intent": "Separa dos dimensiones de variación en jerarquías independientes unidas por composición.",
+    "reason": "Web y Android son aplicaciones separadas, no subclases intercambiables de una misma jerarquía. Los exportadores actuales varían principalmente por formato; no justifican otro puente.",
+    "scenario": "Un editor dibuja círculos y rectángulos con un renderizador SVG o de lienzo. La figura conserva un Renderizador y las dos familias evolucionan sin crear una clase por combinación.",
+    "flow": "Circulo.dibujar() delega una primitiva al renderizador recibido. Rectangulo hace lo mismo con su geometría; cambiar SVG por lienzo conserva la clase de figura.",
+    "caution": "Es útil cuando ambas dimensiones varían de verdad. Si solo cambia una, una interfaz simple suele bastar.",
+    "efficiency": "Evita multiplicar combinaciones de clases a costa de una indirección adicional.",
+    "nodes": [
+      {
+        "name": "Figura",
+        "ops": [
+          "dibujar(): void"
+        ],
+        "attrs": [],
+        "kind": "abstract",
+        "role": ""
+      },
+      {
+        "name": "Circulo",
+        "ops": [
+          "dibujar(): void"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "Rectangulo",
+        "ops": [
+          "dibujar(): void"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "Renderizador",
+        "ops": [
+          "trazar(p: Primitiva): void"
+        ],
+        "attrs": [],
+        "kind": "interface",
+        "role": ""
+      },
+      {
+        "name": "RenderSVG",
+        "ops": [
+          "trazar(p: Primitiva): void"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "RenderLienzo",
+        "ops": [
+          "trazar(p: Primitiva): void"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      }
+    ],
+    "links": [
+      {
+        "a": "Circulo",
+        "b": "Figura",
+        "kind": "gen",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "Rectangulo",
+        "b": "Figura",
+        "kind": "gen",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "Figura",
+        "b": "Renderizador",
+        "kind": "assoc",
+        "label": "delega",
+        "m1": "1",
+        "m2": "1"
+      },
+      {
+        "a": "RenderSVG",
+        "b": "Renderizador",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "RenderLienzo",
+        "b": "Renderizador",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      }
+    ],
+    "source": "https://refactoring.guru/design-patterns/bridge"
+  },
+  {
+    "name": "Composite",
+    "slug": "composite",
+    "category": "estructurales",
+    "apply": false,
+    "scope": "Ejemplo externo · explorador de archivos",
+    "intent": "Trata hojas y grupos recursivos mediante una interfaz común.",
+    "reason": "Pedido con detalles y producción con resultados no constituyen por sí solos un árbol recursivo de objetos equivalentes. La composición UML existente no implica aplicar el patrón Composite.",
+    "scenario": "Archivo y Carpeta implementan NodoArchivo. Una carpeta contiene nodos que pueden ser archivos u otras carpetas.",
+    "flow": "tamano() devuelve los bytes del archivo; en la carpeta suma recursivamente los hijos. El cliente usa el mismo contrato en ambos casos.",
+    "caution": "Evitar ciclos y asignar cada nodo a un único padre. La propiedad exclusiva se expresa con composición.",
+    "efficiency": "El recorrido cuesta según el número de nodos visitados; simplifica el cliente que maneja estructuras anidadas.",
+    "nodes": [
+      {
+        "name": "Explorador",
+        "ops": [
+          "calcular(n: NodoArchivo): Integer"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "NodoArchivo",
+        "ops": [
+          "tamano(): Integer"
+        ],
+        "attrs": [],
+        "kind": "interface",
+        "role": ""
+      },
+      {
+        "name": "Archivo",
+        "ops": [
+          "tamano(): Integer"
+        ],
+        "attrs": [
+          "bytes: Integer"
+        ],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "Carpeta",
+        "ops": [
+          "tamano(): Integer",
+          "agregar(n: NodoArchivo): void"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      }
+    ],
+    "links": [
+      {
+        "a": "Explorador",
+        "b": "NodoArchivo",
+        "kind": "dep",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "Archivo",
+        "b": "NodoArchivo",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "Carpeta",
+        "b": "NodoArchivo",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "Carpeta",
+        "b": "NodoArchivo",
+        "kind": "comp",
+        "label": "hijos",
+        "m1": "0..1",
+        "m2": "0..*"
+      }
+    ],
+    "source": "https://refactoring.guru/design-patterns/composite"
+  },
+  {
+    "name": "Decorator",
+    "slug": "decorator",
+    "category": "estructurales",
+    "apply": false,
+    "scope": "Ejemplo externo · cafetería",
+    "intent": "Añade responsabilidades envolviendo un objeto y conservando su interfaz.",
+    "reason": "El CRM no requiere combinaciones dinámicas de extensiones sobre el mismo servicio. No se inventan recargos ni descuentos para justificar decoradores.",
+    "scenario": "Cafe implementa Bebida; Adicional conserva otra Bebida. Leche y Canela agregan su precio al resultado del objeto envuelto.",
+    "flow": "Una bebida puede envolverse primero con Leche y después con Canela. Cada costo() delega al interior y suma únicamente su adicional.",
+    "caution": "No confundir este patrón de objetos con anotaciones o decoradores sintácticos de un lenguaje.",
+    "efficiency": "El costo de invocación aumenta con las capas. Las combinaciones resultan flexibles, pero rastrear su orden exige cuidado.",
+    "nodes": [
+      {
+        "name": "Bebida",
+        "ops": [
+          "costo(): Decimal"
+        ],
+        "attrs": [],
+        "kind": "interface",
+        "role": ""
+      },
+      {
+        "name": "Cafe",
+        "ops": [
+          "costo(): Decimal"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "Adicional",
+        "ops": [
+          "costo(): Decimal"
+        ],
+        "attrs": [],
+        "kind": "abstract",
+        "role": ""
+      },
+      {
+        "name": "Leche",
+        "ops": [
+          "costo(): Decimal"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "Canela",
+        "ops": [
+          "costo(): Decimal"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      }
+    ],
+    "links": [
+      {
+        "a": "Cafe",
+        "b": "Bebida",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "Adicional",
+        "b": "Bebida",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "Adicional",
+        "b": "Bebida",
+        "kind": "assoc",
+        "label": "envuelta",
+        "m1": "1",
+        "m2": "1"
+      },
+      {
+        "a": "Leche",
+        "b": "Adicional",
+        "kind": "gen",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "Canela",
+        "b": "Adicional",
+        "kind": "gen",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      }
+    ],
+    "source": "https://refactoring.guru/design-patterns/decorator"
+  },
+  {
+    "name": "Flyweight",
+    "slug": "flyweight",
+    "category": "estructurales",
+    "apply": false,
+    "scope": "Ejemplo externo · simulación de un bosque",
+    "intent": "Comparte el estado intrínseco repetido y mantiene aparte el contexto de cada objeto.",
+    "reason": "No se ha medido un problema de memoria por millones de objetos similares. Un catálogo normalizado en la base de datos no demuestra Flyweight en memoria.",
+    "scenario": "Cada Arbol conserva posición y un TipoArbol compartido. FabricaTipos reutiliza tipos por especie y textura; el tipo es inmutable.",
+    "flow": "Al crear muchos árboles iguales, la fábrica devuelve el mismo TipoArbol. dibujar(x, y) recibe las coordenadas de cada árbol como estado extrínseco.",
+    "caution": "No guardar posición dentro del objeto compartido. Medir memoria antes de introducir una caché y definir el criterio de igualdad de sus claves.",
+    "efficiency": "Puede reducir memoria repetida; añade búsqueda en caché y gestión de ciclo de vida.",
+    "nodes": [
+      {
+        "name": "Arbol",
+        "ops": [
+          "dibujar(): void"
+        ],
+        "attrs": [
+          "x: Integer",
+          "y: Integer"
+        ],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "TipoArbol",
+        "ops": [
+          "dibujar(x: Integer, y: Integer): void"
+        ],
+        "attrs": [
+          "especie: String",
+          "textura: Bytes"
+        ],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "FabricaTipos",
+        "ops": [
+          "obtener(clave: String): TipoArbol"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      }
+    ],
+    "links": [
+      {
+        "a": "Arbol",
+        "b": "TipoArbol",
+        "kind": "assoc",
+        "label": "tipo compartido",
+        "m1": "0..*",
+        "m2": "1"
+      },
+      {
+        "a": "FabricaTipos",
+        "b": "TipoArbol",
+        "kind": "assoc",
+        "label": "cachea",
+        "m1": "1",
+        "m2": "0..*"
+      }
+    ],
+    "source": "https://refactoring.guru/design-patterns/flyweight"
+  },
+  {
+    "name": "Proxy",
+    "slug": "proxy",
+    "category": "estructurales",
+    "apply": false,
+    "scope": "Ejemplo externo · galería de imágenes",
+    "intent": "Sustituye un objeto mediante el mismo contrato para controlar su acceso o creación.",
+    "reason": "Autenticación y autorización son obligatorias en la API, pero no requieren diseñar un proxy GoF adicional. Un proxy inverso de infraestructura tampoco equivale automáticamente a este patrón.",
+    "scenario": "Galeria consume Imagen. ImagenDiferida conserva una referencia inicialmente ausente a ImagenReal y la crea cuando se solicita mostrar().",
+    "flow": "La primera visualización carga la imagen real; las siguientes reutilizan la referencia. El consumidor trabaja siempre con Imagen.",
+    "caution": "La carga diferida cambia el momento del costo, no elimina ese costo ni sustituye controles de acceso.",
+    "efficiency": "Ahorra cargas que nunca se usan; la primera llamada puede ser más lenta y requiere manejo explícito de fallos.",
+    "nodes": [
+      {
+        "name": "Galeria",
+        "ops": [
+          "mostrar(i: Imagen): void"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "Imagen",
+        "ops": [
+          "mostrar(): void"
+        ],
+        "attrs": [],
+        "kind": "interface",
+        "role": ""
+      },
+      {
+        "name": "ImagenDiferida",
+        "ops": [
+          "mostrar(): void"
+        ],
+        "attrs": [
+          "ruta: String"
+        ],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "ImagenReal",
+        "ops": [
+          "mostrar(): void"
+        ],
+        "attrs": [
+          "datos: Bytes"
+        ],
+        "kind": "class",
+        "role": ""
+      }
+    ],
+    "links": [
+      {
+        "a": "Galeria",
+        "b": "Imagen",
+        "kind": "dep",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "ImagenDiferida",
+        "b": "Imagen",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "ImagenReal",
+        "b": "Imagen",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "ImagenDiferida",
+        "b": "ImagenReal",
+        "kind": "assoc",
+        "label": "carga diferida",
+        "m1": "1",
+        "m2": "0..1"
+      }
+    ],
+    "source": "https://refactoring.guru/design-patterns/proxy"
+  },
+  {
+    "name": "Command",
+    "slug": "command",
+    "category": "comportamiento",
+    "apply": true,
+    "scope": "SGCPuimovil · CU11 / RF17 y RNF01",
+    "intent": "Encapsula una operación y sus datos para invocarla o ejecutarla después.",
+    "reason": "La recepción offline necesita guardar una operación pendiente y reintentar exactamente la misma solicitud cuando vuelve la conexión. Command separa la captura de su envío.",
+    "scenario": "ColaRecepciones actúa como invocador; ComandoRecepcion implementa ComandoEnvio y delega en ClienteRecepcionAPI. AlmacenPendientes conserva el registro serializado y las referencias a evidencias.",
+    "flow": "Se persiste clave, entrega, versión base, datos y evidencia. Al sincronizar con sesión válida se reconstruye el comando y se llama ejecutar(). Un timeout mantiene la misma clave y el mismo contenido para el siguiente intento.",
+    "caution": "El servidor autoriza y garantiza idempotencia; el comando no lo hace por sí solo. No serializar referencias de objetos ni credenciales. No incluye deshacer una entrega ni prometer ejecución con la app cerrada.",
+    "efficiency": "Añade objetos y almacenamiento local. Permite reintentos trazables, pero necesita una política clara de retención y fallos.",
+    "nodes": [
+      {
+        "name": "ColaRecepciones",
+        "ops": [
+          "sincronizar(): void"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "ComandoEnvio",
+        "ops": [
+          "ejecutar(): Resultado"
+        ],
+        "attrs": [],
+        "kind": "interface",
+        "role": ""
+      },
+      {
+        "name": "ComandoRecepcion",
+        "ops": [
+          "ejecutar(): Resultado"
+        ],
+        "attrs": [
+          "clave: UUID",
+          "versionBase: Integer",
+          "datos: RecepcionDTO"
+        ],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "ClienteRecepcionAPI",
+        "ops": [
+          "registrar(d: RecepcionDTO): Resultado"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "AlmacenPendientes",
+        "ops": [
+          "guardar(r: RegistroEnvio): void",
+          "listar(): ListaRegistro"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      }
+    ],
+    "links": [
+      {
+        "a": "ColaRecepciones",
+        "b": "ComandoEnvio",
+        "kind": "assoc",
+        "label": "invoca",
+        "m1": "1",
+        "m2": "0..*"
+      },
+      {
+        "a": "ComandoRecepcion",
+        "b": "ComandoEnvio",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "ComandoRecepcion",
+        "b": "ClienteRecepcionAPI",
+        "kind": "assoc",
+        "label": "receptor",
+        "m1": "1",
+        "m2": "1"
+      },
+      {
+        "a": "ColaRecepciones",
+        "b": "AlmacenPendientes",
+        "kind": "dep",
+        "label": "persiste datos",
+        "m1": "",
+        "m2": ""
+      }
+    ],
+    "source": "https://refactoring.guru/design-patterns/command"
+  },
+  {
+    "name": "State",
+    "slug": "state",
+    "category": "comportamiento",
+    "apply": true,
+    "scope": "SGCPuimovil · CU11 / RF17",
+    "intent": "Delega el comportamiento a un objeto que representa el estado actual.",
+    "reason": "La captura local tiene cinco estados con acciones distintas: pendiente, enviando, confirmada, conflicto y descartada. Sus reglas no deben repetirse entre botones, cola y respuestas de red.",
+    "scenario": "SincronizacionRecepcion conserva un EstadoEnvio y le delega manejar(evento). Cada clase corresponde a un valor de EstadoSincronizacion ya existente.",
+    "flow": "Pendiente puede iniciar envío; Enviando vuelve a Pendiente por fallo de transporte, pasa a Confirmada con respuesta válida o a Conflicto si el servidor rechaza la versión/asignación. Conflicto permite revisión y descarte autorizado con auditoría; no reenvío automático.",
+    "caution": "Confirmada y Descartada son terminales para esa captura. Una corrección semántica genera una captura nueva autorizada; conserva el original. Sincronización CONFIRMADA puede corresponder a entrega OBSERVADA y no equivale a pago.",
+    "efficiency": "Cada evento delega una vez. Añade cinco clases pequeñas a cambio de concentrar las reglas; una tabla de transiciones sería alternativa si el comportamiento fuese trivial.",
+    "nodes": [
+      {
+        "name": "SincronizacionRecepcion",
+        "ops": [
+          "manejar(e: Evento): void",
+          "cambiar(s: EstadoEnvio): void"
+        ],
+        "attrs": [
+          "clave: UUID"
+        ],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "EstadoEnvio",
+        "ops": [
+          "manejar(e: Evento): void"
+        ],
+        "attrs": [],
+        "kind": "interface",
+        "role": ""
+      },
+      {
+        "name": "Pendiente",
+        "ops": [
+          "manejar(e: Evento): void"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "Enviando",
+        "ops": [
+          "manejar(e: Evento): void"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "Confirmada",
+        "ops": [
+          "manejar(e: Evento): void"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "Conflicto",
+        "ops": [
+          "manejar(e: Evento): void"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "Descartada",
+        "ops": [
+          "manejar(e: Evento): void"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      }
+    ],
+    "links": [
+      {
+        "a": "SincronizacionRecepcion",
+        "b": "EstadoEnvio",
+        "kind": "assoc",
+        "label": "estado actual",
+        "m1": "1",
+        "m2": "1"
+      },
+      {
+        "a": "Pendiente",
+        "b": "EstadoEnvio",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "Enviando",
+        "b": "EstadoEnvio",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "Confirmada",
+        "b": "EstadoEnvio",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "Conflicto",
+        "b": "EstadoEnvio",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "Descartada",
+        "b": "EstadoEnvio",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      }
+    ],
+    "source": "https://refactoring.guru/design-patterns/state"
+  },
+  {
+    "name": "Strategy",
+    "slug": "strategy",
+    "category": "comportamiento",
+    "apply": true,
+    "scope": "SGCPapi · CU10–CU11 / RF05, RF07, RF19",
+    "intent": "Encapsula alternativas de una regla o algoritmo bajo un contrato intercambiable.",
+    "reason": "El despacho admite dos condiciones comerciales existentes: contado resuelto o crédito acordado. La elección debe derivarse del acuerdo persistido, no de una opción manipulable del frontend.",
+    "scenario": "ServicioDespacho usa PoliticaPagoDespacho. Contado y CreditoAcordado evalúan DatosCobro con criterios diferentes y devuelven una decisión.",
+    "flow": "Contado exige saldo por cobrar igual a cero con pagos registrados. Crédito exige autorización y vencimiento acordado. El servicio aplica además preparación, stock apto y permisos; ninguna estrategia omite esas condiciones.",
+    "caution": "No define plazos nuevos, crédito automático, pasarelas ni costos por animal. El crédito permite despachar conservando deuda; una seña no equivale por sí sola a saldo cero.",
+    "efficiency": "La elección tiene costo constante para dos variantes. Facilita probar y cambiar reglas de forma aislada; no se necesita una estrategia por cada medio de pago.",
+    "nodes": [
+      {
+        "name": "ServicioDespacho",
+        "ops": [
+          "autorizar(p: Pedido): Decision"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "PoliticaPagoDespacho",
+        "ops": [
+          "evaluar(d: DatosCobro): Decision"
+        ],
+        "attrs": [],
+        "kind": "interface",
+        "role": ""
+      },
+      {
+        "name": "Contado",
+        "ops": [
+          "evaluar(d: DatosCobro): Decision"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "CreditoAcordado",
+        "ops": [
+          "evaluar(d: DatosCobro): Decision"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      }
+    ],
+    "links": [
+      {
+        "a": "ServicioDespacho",
+        "b": "PoliticaPagoDespacho",
+        "kind": "assoc",
+        "label": "política acordada",
+        "m1": "1",
+        "m2": "1"
+      },
+      {
+        "a": "Contado",
+        "b": "PoliticaPagoDespacho",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "CreditoAcordado",
+        "b": "PoliticaPagoDespacho",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      }
+    ],
+    "source": "https://refactoring.guru/design-patterns/strategy"
+  },
+  {
+    "name": "Chain of Responsibility",
+    "slug": "chain-of-responsibility",
+    "category": "comportamiento",
+    "apply": false,
+    "scope": "Ejemplo externo · mesa de soporte",
+    "intent": "Pasa una solicitud entre manejadores hasta que alguno la atiende o se agota la cadena.",
+    "reason": "La API tendrá validaciones y middleware, pero el alcance no exige otra cadena de negocio configurable. Comprobar varias condiciones seguidas no demuestra por sí solo este patrón.",
+    "scenario": "ManejadorSoporte conserva un siguiente opcional. MesaAyuda atiende casos simples y SoporteEspecializado resuelve los demás que le corresponden.",
+    "flow": "atender(ticket) resuelve si tiene capacidad; en caso contrario delega. Si no hay siguiente, devuelve una respuesta explícita de no atendido.",
+    "caution": "Evitar ciclos y solicitudes perdidas. El ejemplo no representa la cobranza ni agrega niveles de autorización al CRM.",
+    "efficiency": "En el peor caso recorre todos los manejadores; el orden afecta el resultado y requiere pruebas.",
+    "nodes": [
+      {
+        "name": "ManejadorSoporte",
+        "ops": [
+          "atender(t: Ticket): Respuesta"
+        ],
+        "attrs": [],
+        "kind": "abstract",
+        "role": ""
+      },
+      {
+        "name": "MesaAyuda",
+        "ops": [
+          "atender(t: Ticket): Respuesta"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "SoporteEspecializado",
+        "ops": [
+          "atender(t: Ticket): Respuesta"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      }
+    ],
+    "links": [
+      {
+        "a": "ManejadorSoporte",
+        "b": "ManejadorSoporte",
+        "kind": "assoc",
+        "label": "siguiente",
+        "m1": "0..*",
+        "m2": "0..1"
+      },
+      {
+        "a": "MesaAyuda",
+        "b": "ManejadorSoporte",
+        "kind": "gen",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "SoporteEspecializado",
+        "b": "ManejadorSoporte",
+        "kind": "gen",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      }
+    ],
+    "source": "https://refactoring.guru/design-patterns/chain-of-responsibility"
+  },
+  {
+    "name": "Iterator",
+    "slug": "iterator",
+    "category": "comportamiento",
+    "apply": false,
+    "scope": "Ejemplo externo · biblioteca de canciones",
+    "intent": "Recorre una colección sin exponer cómo está almacenada.",
+    "reason": "Se utilizarán los iteradores normales del lenguaje o bibliotecas. No se necesita implementar uno propio para los listados del CRM; la paginación de la API es un contrato distinto.",
+    "scenario": "ColeccionCanciones crea un IteradorCanciones que implementa Iterador. Reproductor consulta haySiguiente() y obtiene la próxima canción con siguiente().",
+    "flow": "El iterador conserva su posición; la colección conserva los datos. Dos recorridos simultáneos usan posiciones independientes.",
+    "caution": "Definir qué ocurre si cambia la colección durante el recorrido. El ejemplo fija una instantánea estable.",
+    "efficiency": "Un recorrido completo cuesta según la cantidad de elementos; evita exponer índices al consumidor.",
+    "nodes": [
+      {
+        "name": "Reproductor",
+        "ops": [
+          "recorrer(i: Iterador): void"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "Iterador",
+        "ops": [
+          "haySiguiente(): Boolean",
+          "siguiente(): Cancion"
+        ],
+        "attrs": [],
+        "kind": "interface",
+        "role": ""
+      },
+      {
+        "name": "IteradorCanciones",
+        "ops": [
+          "haySiguiente(): Boolean",
+          "siguiente(): Cancion"
+        ],
+        "attrs": [
+          "posicion: Integer"
+        ],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "ColeccionCanciones",
+        "ops": [
+          "crearIterador(): Iterador"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      }
+    ],
+    "links": [
+      {
+        "a": "Reproductor",
+        "b": "Iterador",
+        "kind": "dep",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "IteradorCanciones",
+        "b": "Iterador",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "ColeccionCanciones",
+        "b": "IteradorCanciones",
+        "kind": "dep",
+        "label": "crea",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "IteradorCanciones",
+        "b": "ColeccionCanciones",
+        "kind": "assoc",
+        "label": "instantánea",
+        "m1": "1",
+        "m2": "1"
+      }
+    ],
+    "source": "https://refactoring.guru/design-patterns/iterator"
+  },
+  {
+    "name": "Mediator",
+    "slug": "mediator",
+    "category": "comportamiento",
+    "apply": false,
+    "scope": "Ejemplo externo · sala de chat",
+    "intent": "Concentra la comunicación entre colaboradores en un mediador.",
+    "reason": "Una API compartida no es automáticamente Mediator. El caso actual se resuelve con servicios de aplicación y Facade; no se observó una red de objetos que requiera otro coordinador.",
+    "scenario": "Participante conserva MediadorChat. SalaChat implementa ese contrato y conoce los participantes registrados.",
+    "flow": "Un participante envía al mediador, que distribuye el mensaje a otros participantes. Los participantes no se invocan directamente entre sí.",
+    "caution": "El mediador debe concentrar coordinación, no toda la lógica de cada participante.",
+    "efficiency": "Distribuir a n participantes cuesta proporcionalmente a n. Reduce enlaces directos, pero puede centralizar demasiado código.",
+    "nodes": [
+      {
+        "name": "MediadorChat",
+        "ops": [
+          "enviar(m: Mensaje): void"
+        ],
+        "attrs": [],
+        "kind": "interface",
+        "role": ""
+      },
+      {
+        "name": "SalaChat",
+        "ops": [
+          "enviar(m: Mensaje): void"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "Participante",
+        "ops": [
+          "enviar(m: Mensaje): void",
+          "recibir(m: Mensaje): void"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      }
+    ],
+    "links": [
+      {
+        "a": "SalaChat",
+        "b": "MediadorChat",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "Participante",
+        "b": "MediadorChat",
+        "kind": "assoc",
+        "label": "mediador",
+        "m1": "0..*",
+        "m2": "1"
+      },
+      {
+        "a": "SalaChat",
+        "b": "Participante",
+        "kind": "assoc",
+        "label": "participantes",
+        "m1": "1",
+        "m2": "0..*"
+      }
+    ],
+    "source": "https://refactoring.guru/design-patterns/mediator"
+  },
+  {
+    "name": "Memento",
+    "slug": "memento",
+    "category": "comportamiento",
+    "apply": false,
+    "scope": "Ejemplo externo · editor de texto",
+    "intent": "Conserva una instantánea encapsulada para restaurar un objeto después.",
+    "reason": "Una entrega, un pago o un movimiento de inventario no se revierte restaurando memoria antigua. Las correcciones comerciales requieren operaciones explícitas y trazabilidad.",
+    "scenario": "EditorTexto crea RecuerdoTexto; Historial guarda recuerdos opacos y solicita restaurar uno. El recuerdo es inmutable y solo el editor interpreta su estado.",
+    "flow": "Antes de editar se guarda una instantánea. Al deshacer, el historial devuelve ese recuerdo al editor, que restaura texto y posición.",
+    "caution": "El historial no lee ni modifica campos internos. Establecer un límite de recuerdos para no retener memoria indefinidamente.",
+    "efficiency": "Copiar instantáneas cuesta espacio y tiempo según el tamaño del estado. Aísla el historial de detalles internos.",
+    "nodes": [
+      {
+        "name": "EditorTexto",
+        "ops": [
+          "guardar(): RecuerdoTexto",
+          "restaurar(r: RecuerdoTexto): void"
+        ],
+        "attrs": [
+          "texto: String",
+          "cursor: Integer"
+        ],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "RecuerdoTexto",
+        "ops": [],
+        "attrs": [
+          "texto: String",
+          "cursor: Integer"
+        ],
+        "kind": "class",
+        "role": "Instantánea inmutable; acceso reservado al originador."
+      },
+      {
+        "name": "Historial",
+        "ops": [
+          "guardar(): void",
+          "deshacer(): void"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      }
+    ],
+    "links": [
+      {
+        "a": "EditorTexto",
+        "b": "RecuerdoTexto",
+        "kind": "dep",
+        "label": "crea y restaura",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "Historial",
+        "b": "RecuerdoTexto",
+        "kind": "assoc",
+        "label": "recuerdos opacos",
+        "m1": "1",
+        "m2": "0..*"
+      },
+      {
+        "a": "Historial",
+        "b": "EditorTexto",
+        "kind": "assoc",
+        "label": "originador",
+        "m1": "1",
+        "m2": "1"
+      }
+    ],
+    "source": "https://refactoring.guru/design-patterns/memento"
+  },
+  {
+    "name": "Observer",
+    "slug": "observer",
+    "category": "comportamiento",
+    "apply": false,
+    "scope": "Ejemplo externo · estación meteorológica",
+    "intent": "Notifica a suscriptores cuando cambia un objeto observado.",
+    "reason": "RF09 y RF16 siguen fuera del alcance activo. No se agregan notificaciones comerciales para justificar Observer. La reactividad de una biblioteca de interfaz no obliga a diseñar otro publicador de negocio.",
+    "scenario": "EstacionClima registra ObservadorClima. PanelClima y RegistroClima reaccionan a la misma lectura sin conocerse entre sí.",
+    "flow": "Al cambiar la lectura, la estación avisa a cada observador registrado. Una suscripción puede retirarse sin modificar los otros receptores.",
+    "caution": "Retirar suscripciones al cerrar consumidores y decidir cómo aislar un observador que falla. No implica mensajería distribuida garantizada.",
+    "efficiency": "Notificar tiene costo proporcional a suscriptores; reduce acoplamiento, aunque el orden de reacción puede complicar la depuración.",
+    "nodes": [
+      {
+        "name": "EstacionClima",
+        "ops": [
+          "suscribir(o: ObservadorClima): void",
+          "publicar(d: Lectura): void"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "ObservadorClima",
+        "ops": [
+          "actualizar(d: Lectura): void"
+        ],
+        "attrs": [],
+        "kind": "interface",
+        "role": ""
+      },
+      {
+        "name": "PanelClima",
+        "ops": [
+          "actualizar(d: Lectura): void"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "RegistroClima",
+        "ops": [
+          "actualizar(d: Lectura): void"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      }
+    ],
+    "links": [
+      {
+        "a": "EstacionClima",
+        "b": "ObservadorClima",
+        "kind": "assoc",
+        "label": "suscriptores",
+        "m1": "1",
+        "m2": "0..*"
+      },
+      {
+        "a": "PanelClima",
+        "b": "ObservadorClima",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "RegistroClima",
+        "b": "ObservadorClima",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      }
+    ],
+    "source": "https://refactoring.guru/design-patterns/observer"
+  },
+  {
+    "name": "Template Method",
+    "slug": "template-method",
+    "category": "comportamiento",
+    "apply": false,
+    "scope": "Ejemplo externo · importador de archivos",
+    "intent": "Fija una secuencia de pasos y permite redefinir algunos por herencia.",
+    "reason": "No se requiere otra jerarquía de procesos para el CRM. El flujo común del creador de reportes ya contiene un punto de extensión Factory Method; no se duplica para sumar patrones.",
+    "scenario": "Importador fija importar(): leer, convertir, validar y guardar. ImportadorCSV e ImportadorJSON solo redefinen convertir().",
+    "flow": "El consumidor invoca importar() en cualquier subclase; la secuencia permanece igual y cambia la conversión del contenido.",
+    "caution": "Los pasos obligatorios deben conservarse. Preferir composición si el algoritmo necesita cambiar durante la ejecución.",
+    "efficiency": "Reduce pasos duplicados, pero acopla las subclases al algoritmo de la clase base.",
+    "nodes": [
+      {
+        "name": "Importador",
+        "ops": [
+          "importar(): void",
+          "leer(): Bytes",
+          "convertir(b: Bytes): Filas",
+          "validar(f: Filas): void",
+          "guardar(f: Filas): void"
+        ],
+        "attrs": [],
+        "kind": "abstract",
+        "role": ""
+      },
+      {
+        "name": "ImportadorCSV",
+        "ops": [
+          "convertir(b: Bytes): Filas"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "ImportadorJSON",
+        "ops": [
+          "convertir(b: Bytes): Filas"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      }
+    ],
+    "links": [
+      {
+        "a": "ImportadorCSV",
+        "b": "Importador",
+        "kind": "gen",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "ImportadorJSON",
+        "b": "Importador",
+        "kind": "gen",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      }
+    ],
+    "source": "https://refactoring.guru/design-patterns/template-method"
+  },
+  {
+    "name": "Visitor",
+    "slug": "visitor",
+    "category": "comportamiento",
+    "apply": false,
+    "scope": "Ejemplo externo · análisis de documentos",
+    "intent": "Añade operaciones a una familia estable de elementos mediante doble despacho.",
+    "reason": "Los reportes del CRM consultan datos autorizados; no necesitan recorrer una jerarquía estable con accept/visit. SQL y servicios de consulta son suficientes.",
+    "scenario": "Texto e ImagenDocumento implementan ElementoDocumento. ContadorRecursos implementa VisitanteDocumento y dispone de una operación para cada tipo de elemento.",
+    "flow": "Texto.aceptar(v) llama v.visitarTexto(this); ImagenDocumento llama visitarImagen(this). El visitante acumula resultados propios sin guardar contadores globales.",
+    "caution": "Agregar otra operación es sencillo; agregar otro tipo de elemento obliga a actualizar visitantes. Conviene solo cuando esa familia es estable.",
+    "efficiency": "Un recorrido visita cada elemento; separa operaciones, pero aumenta la coordinación entre interfaces.",
+    "nodes": [
+      {
+        "name": "ElementoDocumento",
+        "ops": [
+          "aceptar(v: VisitanteDocumento): void"
+        ],
+        "attrs": [],
+        "kind": "interface",
+        "role": ""
+      },
+      {
+        "name": "Texto",
+        "ops": [
+          "aceptar(v: VisitanteDocumento): void"
+        ],
+        "attrs": [
+          "contenido: String"
+        ],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "ImagenDocumento",
+        "ops": [
+          "aceptar(v: VisitanteDocumento): void"
+        ],
+        "attrs": [
+          "ruta: String"
+        ],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "VisitanteDocumento",
+        "ops": [
+          "visitarTexto(t: Texto): void",
+          "visitarImagen(i: ImagenDocumento): void"
+        ],
+        "attrs": [],
+        "kind": "interface",
+        "role": ""
+      },
+      {
+        "name": "ContadorRecursos",
+        "ops": [
+          "visitarTexto(t: Texto): void",
+          "visitarImagen(i: ImagenDocumento): void"
+        ],
+        "attrs": [
+          "palabras: Integer",
+          "imagenes: Integer"
+        ],
+        "kind": "class",
+        "role": ""
+      }
+    ],
+    "links": [
+      {
+        "a": "Texto",
+        "b": "ElementoDocumento",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "ImagenDocumento",
+        "b": "ElementoDocumento",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "ContadorRecursos",
+        "b": "VisitanteDocumento",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "ElementoDocumento",
+        "b": "VisitanteDocumento",
+        "kind": "dep",
+        "label": "aceptar",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "Texto",
+        "b": "VisitanteDocumento",
+        "kind": "dep",
+        "label": "visitarTexto",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "ImagenDocumento",
+        "b": "VisitanteDocumento",
+        "kind": "dep",
+        "label": "visitarImagen",
+        "m1": "",
+        "m2": ""
+      }
+    ],
+    "source": "https://refactoring.guru/design-patterns/visitor"
+  },
+  {
+    "name": "Interpreter",
+    "slug": "interpreter",
+    "category": "comportamiento",
+    "apply": false,
+    "scope": "Ejemplo externo · lenguaje lógico pequeño",
+    "intent": "Representa una gramática mediante objetos que interpretan expresiones en un contexto.",
+    "reason": "El sistema no ofrece un lenguaje de reglas programable por usuarios. Sus filtros y condiciones son operaciones definidas; introducir un intérprete aumentaría el alcance sin necesidad.",
+    "scenario": "ExpresionLogica define evaluar(contexto). Variable es terminal; YLogico y NoLogico son expresiones compuestas. Se interpreta ABIERTO Y NO LLUVIA.",
+    "flow": "El contexto asigna verdadero a ABIERTO y falso a LLUVIA. YLogico evalúa Variable(ABIERTO) y NoLogico(Variable(LLUVIA)); el resultado es verdadero.",
+    "caution": "El ejemplo representa el árbol ya construido; no implementa un parser completo. Una gramática grande conviene resolverla con herramientas especializadas.",
+    "efficiency": "La evaluación recorre el árbol; crecer en reglas aumenta clases y complejidad. No se ejecuta texto mediante eval.",
+    "nodes": [
+      {
+        "name": "ExpresionLogica",
+        "ops": [
+          "evaluar(c: Contexto): Boolean"
+        ],
+        "attrs": [],
+        "kind": "interface",
+        "role": ""
+      },
+      {
+        "name": "Variable",
+        "ops": [
+          "evaluar(c: Contexto): Boolean"
+        ],
+        "attrs": [
+          "nombre: String"
+        ],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "YLogico",
+        "ops": [
+          "evaluar(c: Contexto): Boolean"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      },
+      {
+        "name": "NoLogico",
+        "ops": [
+          "evaluar(c: Contexto): Boolean"
+        ],
+        "attrs": [],
+        "kind": "class",
+        "role": ""
+      }
+    ],
+    "links": [
+      {
+        "a": "Variable",
+        "b": "ExpresionLogica",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "YLogico",
+        "b": "ExpresionLogica",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "NoLogico",
+        "b": "ExpresionLogica",
+        "kind": "real",
+        "label": "",
+        "m1": "",
+        "m2": ""
+      },
+      {
+        "a": "YLogico",
+        "b": "ExpresionLogica",
+        "kind": "assoc",
+        "label": "operandos",
+        "m1": "0..*",
+        "m2": "2"
+      },
+      {
+        "a": "NoLogico",
+        "b": "ExpresionLogica",
+        "kind": "assoc",
+        "label": "operando",
+        "m1": "0..*",
+        "m2": "1"
+      }
+    ],
+    "source": "https://www.informit.com/store/design-patterns-elements-of-reusable-object-oriented-9780321770462"
+  }
+]

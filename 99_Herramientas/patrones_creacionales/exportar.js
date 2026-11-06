@@ -1,0 +1,3 @@
+const fs=require('fs'),path=require('path'),rt=require('../staruml_runtime');
+const src=path.resolve(__dirname,'../../02_Ingenieria_de_Software/Patrones de diseño/Patrones creacionales/Patrones_Creacionales_SGCC.mdj');
+(async()=>{const p=rt.app.repository.readObject(fs.readFileSync(src,'utf8'));let i=0;for(const group of p.ownedElements)for(const d of group.ownedElements||[])if(d instanceof rt.T.UMLClassDiagram){await rt.render(d,`/tmp/sgcc_patrones_20261103/pdf/${String(++i).padStart(2,'0')}.pdf`);}if(i!==5)throw Error(`Se esperaban cinco diagramas; encontrados: ${i}`);console.log('Carga y exportación nativa de los cinco diagramas correctas');})().catch(e=>{console.error(e);process.exitCode=1});

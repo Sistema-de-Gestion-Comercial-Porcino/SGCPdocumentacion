@@ -1,0 +1,3 @@
+Pantallas GET: 12 correctas
+CLIENTE: http://localhost:5080/Clientes []
+Recorrido web: acceso → cliente → vigencia → cotización → aceptación → pedido, margen Bs 28; móvil sin desbordamiento. Sin errores JS.

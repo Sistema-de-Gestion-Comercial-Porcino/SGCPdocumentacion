@@ -1,0 +1,17 @@
+Ejecuta en tu terminal:
+
+sudo apt update
+sudo apt install gh
+gh auth login --hostname github.com --git-protocol https --web
+
+Completa el acceso en el navegador con "Usuario". Después:
+
+gh auth setup-git
+
+cd /home/supergenio/Escritorio/TareaSoftware/Modelado_Chancheria
+
+git clone https://github.com/Sistema-de-Gestion-Comercial-Porcino/SGCPapi.git SGCPapi
+git clone https://github.com/Sistema-de-Gestion-Comercial-Porcino/SGCPuiweb.git SGCPuiweb
+git clone https://github.com/Sistema-de-Gestion-Comercial-Porcino/SGCPuimovil.git SGCPuimovil
+git clone https://github.com/Sistema-de-Gestion-Comercial-Porcino/SGCPdocumentacion.git SGCPdocumentacion
+

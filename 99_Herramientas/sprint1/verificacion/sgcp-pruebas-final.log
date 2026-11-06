@@ -1,0 +1,33 @@
+Motor de pruebas: SQLite aislado. No valida la ejecución de migraciones SQL Server.
+OK 1 · API exige autenticación
+warn: Microsoft.EntityFrameworkCore.Query[20504]
+      Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+warn: Microsoft.EntityFrameworkCore.Query[20504]
+      Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+OK 2 · Último administrador protegido
+OK 3 · No se puede retirar el último rol administrador
+OK 4 · Alta de producto no crea existencias
+OK 5 · Unidad no cambia si tiene precios
+OK 6 · Clasificación conserva productos activos
+OK 7 · Presentada no crea pedido
+OK 8 · Rechazada no crea pedido
+OK 9 · Nueva versión conserva vínculo e historial
+OK 10 · Pedido toma precio aceptado, aunque el catálogo cambió
+OK 11 · Margen de 4 kg × (35 − 28) = Bs 28
+OK 12 · Nueva vigencia conserva el margen histórico
+OK 13 · Una cotización no duplica pedidos
+OK 14 · Cliente con pedido pendiente no se desactiva
+OK 15 · Comprador sin permisos internos
+OK 16 · Comprador no consulta cotizaciones ajenas
+OK 17 · Catálogo no filtra costos al comprador
+OK 18 · Pedido oculta margen y costo al comprador
+OK 19 · Cancelación conserva motivo e histórico
+OK 20 · Aceptada fuera de vigencia tampoco crea pedido
+OK 21 · Recuperación no entrega token al solicitante anónimo
+OK 22 · Token de recuperación de un solo uso
+OK 23 · Restablecer revoca sesiones anteriores
+OK 24 · Desactivar revoca JWT activo
+OK 25 · Cinco fallos bloquean la cuenta
+OK 26 · Operaciones auditadas
+OK 27 · Cerrar sesión invalida el token
+RESULTADO: 27 comprobaciones correctas.

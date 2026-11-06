@@ -1,0 +1,397 @@
+[
+  {
+    "archivo": "Software/01_Generales/Casos_de_Uso_SGCC.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/01_Generales/Clases_SGCC.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/01_Generales/Componentes_SGCC.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/01_Generales/Despliegue_SGCC.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/02_Colaboracion/CU01_Colaboracion.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/02_Colaboracion/CU02_Colaboracion.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/02_Colaboracion/CU03_Colaboracion.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/02_Colaboracion/CU04_Colaboracion.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/02_Colaboracion/CU05_Colaboracion.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/02_Colaboracion/CU06_Colaboracion.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/02_Colaboracion/CU07_Colaboracion.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/02_Colaboracion/CU08_Colaboracion.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/02_Colaboracion/CU09_Colaboracion.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/02_Colaboracion/CU10_Colaboracion.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/02_Colaboracion/CU11_Colaboracion.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/02_Colaboracion/CU12_Colaboracion.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/02_Colaboracion/Colaboracion_SGCC_Completo.mdj",
+    "diagramas": 12,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/03_Objetos/CU01_Objetos.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/03_Objetos/CU02_Objetos.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/03_Objetos/CU03_Objetos.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/03_Objetos/CU04_Objetos.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/03_Objetos/CU05_Objetos.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/03_Objetos/CU06_Objetos.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/03_Objetos/CU07_Objetos.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/03_Objetos/CU08_Objetos.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/03_Objetos/CU09_Objetos.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/03_Objetos/CU10_Objetos.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/03_Objetos/CU11_Objetos.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/03_Objetos/CU12_Objetos.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/03_Objetos/Objetos_SGCC_Completo.mdj",
+    "diagramas": 12,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/04_Estados/01_Cotizacion_Estados.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/04_Estados/02_Pedido_Comercial_Estados.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/04_Estados/03_Pedido_Preparacion_Estados.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/04_Estados/04_DetallePedido_Estados.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/04_Estados/05_Reserva_Estados.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/04_Estados/06_OrdenProduccion_Estados.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/04_Estados/07_Animal_Estados.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/04_Estados/08_Lote_Estados.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/04_Estados/09_Incidencia_Estados.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/04_Estados/10_Pago_Estados.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/04_Estados/11_AcuerdoCredito_Estados.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/04_Estados/12_SeguimientoCobro_Estados.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/04_Estados/13_Entrega_Estados.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/04_Estados/14_Ruta_Estados.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/04_Estados/15_ComprobanteFiscal_Estados.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/04_Estados/16_OperacionPendiente_Estados.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/04_Estados/17_Usuario_Estados.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/04_Estados/18_ResultadoProduccion_Estados.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/04_Estados/Estados_SGCC_Completo.mdj",
+    "diagramas": 18,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/05_Actividades/Actividades_SGCC_Completo.mdj",
+    "diagramas": 12,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/05_Actividades/CU01_Actividad.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/05_Actividades/CU02_Actividad.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/05_Actividades/CU03_Actividad.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/05_Actividades/CU04_Actividad.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/05_Actividades/CU05_Actividad.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/05_Actividades/CU06_Actividad.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/05_Actividades/CU07_Actividad.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/05_Actividades/CU08_Actividad.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/05_Actividades/CU09_Actividad.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/05_Actividades/CU10_Actividad.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/05_Actividades/CU11_Actividad.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/05_Actividades/CU12_Actividad.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/06_Secuencias/CU01_Secuencia.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/06_Secuencias/CU02_Secuencia.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/06_Secuencias/CU03_Secuencia.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/06_Secuencias/CU04_Secuencia.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/06_Secuencias/CU05_Secuencia.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/06_Secuencias/CU06_Secuencia.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/06_Secuencias/CU07_Secuencia.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/06_Secuencias/CU08_Secuencia.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/06_Secuencias/CU09_Secuencia.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/06_Secuencias/CU10_Secuencia.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/06_Secuencias/CU11_Secuencia.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/06_Secuencias/CU12_Secuencia.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/06_Secuencias/Secuencias_SGCC_Completo.mdj",
+    "diagramas": 12,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/BPMN_Horizontal/BPMN_Actual.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "Software/BPMN_Horizontal/BPMN_Propuesto.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "BPM/Modelo_Actual.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  },
+  {
+    "archivo": "BPM/Modelo_Propuesto.mdj",
+    "diagramas": 1,
+    "cargaNativa": true
+  }
+]

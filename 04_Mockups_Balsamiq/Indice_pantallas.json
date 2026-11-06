@@ -1,0 +1,689 @@
+{
+  "pantallas": 67,
+  "enlaces": 811,
+  "controles": 2092,
+  "archivos": [
+    {
+      "clave": "w01",
+      "nombre": "Iniciar sesión",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU01"
+      ]
+    },
+    {
+      "clave": "w02",
+      "nombre": "Resumen del negocio",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU08",
+        "CU10"
+      ]
+    },
+    {
+      "clave": "w03",
+      "nombre": "Clientes y ficha comercial",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU03",
+        "CU10"
+      ]
+    },
+    {
+      "clave": "w04",
+      "nombre": "Usuarios y permisos",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU02"
+      ]
+    },
+    {
+      "clave": "w05",
+      "nombre": "Gestión de costos y precios",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU04",
+        "CU07"
+      ]
+    },
+    {
+      "clave": "w06",
+      "nombre": "Cotización COT-028 · presentada",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU05",
+        "CU06"
+      ]
+    },
+    {
+      "clave": "w07",
+      "nombre": "Cotización COT-028 · aceptada",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU05",
+        "CU06"
+      ]
+    },
+    {
+      "clave": "w08",
+      "nombre": "Respuesta del cliente · sin pedido",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU05"
+      ]
+    },
+    {
+      "clave": "w09",
+      "nombre": "Pedido PED-042",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU06",
+        "CU08",
+        "CU09"
+      ]
+    },
+    {
+      "clave": "w10",
+      "nombre": "Inventario y reserva",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU09"
+      ]
+    },
+    {
+      "clave": "w10f",
+      "nombre": "Faltante antes de la preparación",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU08",
+        "CU09"
+      ]
+    },
+    {
+      "clave": "w11",
+      "nombre": "Entrada o movimiento físico",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU09"
+      ]
+    },
+    {
+      "clave": "w12",
+      "nombre": "Órdenes y previsiones de producción",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU08"
+      ]
+    },
+    {
+      "clave": "w12n",
+      "nombre": "Nueva orden manual de producción",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU08"
+      ]
+    },
+    {
+      "clave": "w13",
+      "nombre": "Control sanitario previo",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU08"
+      ]
+    },
+    {
+      "clave": "w14",
+      "nombre": "Faeneo · cortes obtenidos por lote",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU08"
+      ]
+    },
+    {
+      "clave": "w15",
+      "nombre": "Fabricación de derivados · OP-009",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU08"
+      ]
+    },
+    {
+      "clave": "w16",
+      "nombre": "Incidencia y resolución del anticipo",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU06"
+      ]
+    },
+    {
+      "clave": "w17",
+      "nombre": "Cuenta y pagos · Restaurante El Patio",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU10"
+      ]
+    },
+    {
+      "clave": "w18",
+      "nombre": "Crédito y seguimiento de cobranza",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU10"
+      ]
+    },
+    {
+      "clave": "w19",
+      "nombre": "Comprobante fiscal",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU10"
+      ]
+    },
+    {
+      "clave": "w20",
+      "nombre": "Despacho y ruta Norte",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU11"
+      ]
+    },
+    {
+      "clave": "w21",
+      "nombre": "Recepción de retiro en local",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU11"
+      ]
+    },
+    {
+      "clave": "w22",
+      "nombre": "Control de frío",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU11"
+      ]
+    },
+    {
+      "clave": "p01",
+      "nombre": "Catálogo disponible",
+      "canal": "portal",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU07"
+      ]
+    },
+    {
+      "clave": "p02",
+      "nombre": "Solicitar una cotización",
+      "canal": "portal",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU05"
+      ]
+    },
+    {
+      "clave": "p04",
+      "nombre": "Solicitud recibida",
+      "canal": "portal",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU05"
+      ]
+    },
+    {
+      "clave": "p03",
+      "nombre": "Mi pedido PED-042",
+      "canal": "portal",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU12"
+      ]
+    },
+    {
+      "clave": "p05",
+      "nombre": "Constancia de recepción",
+      "canal": "portal",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU11",
+        "CU12"
+      ]
+    },
+    {
+      "clave": "r01",
+      "nombre": "Resumen de gestión",
+      "canal": "responsive",
+      "ancho": 414,
+      "alto": 896,
+      "casos": [
+        "CU10"
+      ]
+    },
+    {
+      "clave": "r02",
+      "nombre": "Mi pedido",
+      "canal": "responsive",
+      "ancho": 414,
+      "alto": 896,
+      "casos": [
+        "CU12"
+      ]
+    },
+    {
+      "clave": "a01",
+      "nombre": "Acceder al reparto",
+      "canal": "android",
+      "ancho": 414,
+      "alto": 896,
+      "casos": [
+        "CU01"
+      ]
+    },
+    {
+      "clave": "a02",
+      "nombre": "Descargar mi reparto",
+      "canal": "android",
+      "ancho": 414,
+      "alto": 896,
+      "casos": [
+        "CU01",
+        "CU11"
+      ]
+    },
+    {
+      "clave": "a03",
+      "nombre": "Mis entregas",
+      "canal": "android",
+      "ancho": 414,
+      "alto": 896,
+      "casos": [
+        "CU11"
+      ]
+    },
+    {
+      "clave": "a04",
+      "nombre": "Registrar recepción",
+      "canal": "android",
+      "ancho": 414,
+      "alto": 896,
+      "casos": [
+        "CU11"
+      ]
+    },
+    {
+      "clave": "a04o",
+      "nombre": "Registrar recepción",
+      "canal": "android",
+      "ancho": 414,
+      "alto": 896,
+      "casos": [
+        "CU11"
+      ]
+    },
+    {
+      "clave": "a05",
+      "nombre": "Recepción guardada",
+      "canal": "android",
+      "ancho": 414,
+      "alto": 896,
+      "casos": [
+        "CU11"
+      ]
+    },
+    {
+      "clave": "a05o",
+      "nombre": "Recepción guardada",
+      "canal": "android",
+      "ancho": 414,
+      "alto": 896,
+      "casos": [
+        "CU11"
+      ]
+    },
+    {
+      "clave": "a06",
+      "nombre": "Sincronización",
+      "canal": "android",
+      "ancho": 414,
+      "alto": 896,
+      "casos": [
+        "CU11"
+      ]
+    },
+    {
+      "clave": "a06o",
+      "nombre": "Sincronización",
+      "canal": "android",
+      "ancho": 414,
+      "alto": 896,
+      "casos": [
+        "CU11"
+      ]
+    },
+    {
+      "clave": "a07",
+      "nombre": "Recepción por revisar",
+      "canal": "android",
+      "ancho": 414,
+      "alto": 896,
+      "casos": [
+        "CU11"
+      ]
+    },
+    {
+      "clave": "a08",
+      "nombre": "Recepción sincronizada",
+      "canal": "android",
+      "ancho": 414,
+      "alto": 896,
+      "casos": [
+        "CU11"
+      ]
+    },
+    {
+      "clave": "a09",
+      "nombre": "Observación sincronizada",
+      "canal": "android",
+      "ancho": 414,
+      "alto": 896,
+      "casos": [
+        "CU11"
+      ]
+    },
+    {
+      "clave": "a10",
+      "nombre": "Renovar acceso",
+      "canal": "android",
+      "ancho": 414,
+      "alto": 896,
+      "casos": [
+        "CU01",
+        "CU11"
+      ]
+    },
+    {
+      "clave": "w14p",
+      "nombre": "Almacén · confirmar resultados y pesajes",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU08"
+      ]
+    },
+    {
+      "clave": "wresult",
+      "nombre": "Seleccionar corte o derivado obtenido",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU08",
+        "CU07"
+      ]
+    },
+    {
+      "clave": "w15p",
+      "nombre": "Almacén · pesaje del derivado",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU08"
+      ]
+    },
+    {
+      "clave": "wcat",
+      "nombre": "Productos: cortes, derivados e insumos",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU07"
+      ]
+    },
+    {
+      "clave": "wprod",
+      "nombre": "Ficha de producto",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU07"
+      ]
+    },
+    {
+      "clave": "wprodoff",
+      "nombre": "Producto desactivado",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU07"
+      ]
+    },
+    {
+      "clave": "wclass",
+      "nombre": "Clasificaciones de productos",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU07"
+      ]
+    },
+    {
+      "clave": "wtrans",
+      "nombre": "Transportes y entregas",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU11"
+      ]
+    },
+    {
+      "clave": "wtransedit",
+      "nombre": "Ficha de transporte",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU11"
+      ]
+    },
+    {
+      "clave": "wtransoff",
+      "nombre": "Desactivación de transporte",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU11"
+      ]
+    },
+    {
+      "clave": "wreport",
+      "nombre": "Reportes del negocio",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU12"
+      ]
+    },
+    {
+      "clave": "wexport",
+      "nombre": "Exportación del reporte",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU12"
+      ]
+    },
+    {
+      "clave": "preport",
+      "nombre": "Mis reportes",
+      "canal": "portal",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU12"
+      ]
+    },
+    {
+      "clave": "pexport",
+      "nombre": "Exportar mis operaciones",
+      "canal": "portal",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU12"
+      ]
+    },
+    {
+      "clave": "preg",
+      "nombre": "Crear cuenta de comprador",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU01"
+      ]
+    },
+    {
+      "clave": "pregdone",
+      "nombre": "Cuenta de comprador registrada",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU01"
+      ]
+    },
+    {
+      "clave": "pforgot",
+      "nombre": "Recuperar acceso",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU01"
+      ]
+    },
+    {
+      "clave": "preset",
+      "nombre": "Establecer nueva contraseña",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU01"
+      ]
+    },
+    {
+      "clave": "wclient",
+      "nombre": "Nuevo cliente",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU03"
+      ]
+    },
+    {
+      "clave": "wclientblock",
+      "nombre": "Revisar desactivación del cliente",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU03"
+      ]
+    },
+    {
+      "clave": "wuser",
+      "nombre": "Crear usuario del personal",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU02"
+      ]
+    },
+    {
+      "clave": "wuseroff",
+      "nombre": "Desactivar usuario",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU02"
+      ]
+    },
+    {
+      "clave": "w11d",
+      "nombre": "Almacén · recibir derivado físicamente",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU09"
+      ]
+    }
+  ]
+}

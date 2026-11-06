@@ -1,0 +1,507 @@
+{
+  "total": 70,
+  "tipos": {
+    "UMLUseCaseDiagram": 1,
+    "UMLClassDiagram": 1,
+    "UMLComponentDiagram": 1,
+    "UMLDeploymentDiagram": 1,
+    "UMLCommunicationDiagram": 12,
+    "UMLObjectDiagram": 12,
+    "UMLStatechartDiagram": 18,
+    "UMLActivityDiagram": 12,
+    "UMLSequenceDiagram": 12
+  },
+  "errores": [],
+  "archivos": [
+    {
+      "archivo": "Software/01_Generales/Casos_de_Uso_SGCC.mdj",
+      "tipo": "UMLUseCaseDiagram",
+      "elementos": 913,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/01_Generales/Clases_SGCC.mdj",
+      "tipo": "UMLClassDiagram",
+      "elementos": 2064,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/01_Generales/Componentes_SGCC.mdj",
+      "tipo": "UMLComponentDiagram",
+      "elementos": 369,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/01_Generales/Despliegue_SGCC.mdj",
+      "tipo": "UMLDeploymentDiagram",
+      "elementos": 411,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/02_Colaboracion/CU01_Colaboracion.mdj",
+      "tipo": "UMLCommunicationDiagram",
+      "elementos": 168,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/02_Colaboracion/CU02_Colaboracion.mdj",
+      "tipo": "UMLCommunicationDiagram",
+      "elementos": 168,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/02_Colaboracion/CU03_Colaboracion.mdj",
+      "tipo": "UMLCommunicationDiagram",
+      "elementos": 158,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/02_Colaboracion/CU04_Colaboracion.mdj",
+      "tipo": "UMLCommunicationDiagram",
+      "elementos": 152,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/02_Colaboracion/CU05_Colaboracion.mdj",
+      "tipo": "UMLCommunicationDiagram",
+      "elementos": 174,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/02_Colaboracion/CU06_Colaboracion.mdj",
+      "tipo": "UMLCommunicationDiagram",
+      "elementos": 168,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/02_Colaboracion/CU07_Colaboracion.mdj",
+      "tipo": "UMLCommunicationDiagram",
+      "elementos": 163,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/02_Colaboracion/CU08_Colaboracion.mdj",
+      "tipo": "UMLCommunicationDiagram",
+      "elementos": 220,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/02_Colaboracion/CU09_Colaboracion.mdj",
+      "tipo": "UMLCommunicationDiagram",
+      "elementos": 184,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/02_Colaboracion/CU10_Colaboracion.mdj",
+      "tipo": "UMLCommunicationDiagram",
+      "elementos": 194,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/02_Colaboracion/CU11_Colaboracion.mdj",
+      "tipo": "UMLCommunicationDiagram",
+      "elementos": 205,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/02_Colaboracion/CU12_Colaboracion.mdj",
+      "tipo": "UMLCommunicationDiagram",
+      "elementos": 157,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/03_Objetos/CU01_Objetos.mdj",
+      "tipo": "UMLObjectDiagram",
+      "elementos": 757,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/03_Objetos/CU02_Objetos.mdj",
+      "tipo": "UMLObjectDiagram",
+      "elementos": 757,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/03_Objetos/CU03_Objetos.mdj",
+      "tipo": "UMLObjectDiagram",
+      "elementos": 745,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/03_Objetos/CU04_Objetos.mdj",
+      "tipo": "UMLObjectDiagram",
+      "elementos": 759,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/03_Objetos/CU05_Objetos.mdj",
+      "tipo": "UMLObjectDiagram",
+      "elementos": 879,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/03_Objetos/CU06_Objetos.mdj",
+      "tipo": "UMLObjectDiagram",
+      "elementos": 823,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/03_Objetos/CU07_Objetos.mdj",
+      "tipo": "UMLObjectDiagram",
+      "elementos": 779,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/03_Objetos/CU08_Objetos.mdj",
+      "tipo": "UMLObjectDiagram",
+      "elementos": 1193,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/03_Objetos/CU09_Objetos.mdj",
+      "tipo": "UMLObjectDiagram",
+      "elementos": 865,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/03_Objetos/CU10_Objetos.mdj",
+      "tipo": "UMLObjectDiagram",
+      "elementos": 816,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/03_Objetos/CU11_Objetos.mdj",
+      "tipo": "UMLObjectDiagram",
+      "elementos": 820,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/03_Objetos/CU12_Objetos.mdj",
+      "tipo": "UMLObjectDiagram",
+      "elementos": 819,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/04_Estados/01_Cotizacion_Estados.mdj",
+      "tipo": "UMLStatechartDiagram",
+      "elementos": 777,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/04_Estados/02_Pedido_Comercial_Estados.mdj",
+      "tipo": "UMLStatechartDiagram",
+      "elementos": 746,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/04_Estados/03_Pedido_Preparacion_Estados.mdj",
+      "tipo": "UMLStatechartDiagram",
+      "elementos": 774,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/04_Estados/04_DetallePedido_Estados.mdj",
+      "tipo": "UMLStatechartDiagram",
+      "elementos": 780,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/04_Estados/05_Reserva_Estados.mdj",
+      "tipo": "UMLStatechartDiagram",
+      "elementos": 743,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/04_Estados/06_OrdenProduccion_Estados.mdj",
+      "tipo": "UMLStatechartDiagram",
+      "elementos": 807,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/04_Estados/07_Animal_Estados.mdj",
+      "tipo": "UMLStatechartDiagram",
+      "elementos": 745,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/04_Estados/08_Lote_Estados.mdj",
+      "tipo": "UMLStatechartDiagram",
+      "elementos": 722,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/04_Estados/09_Incidencia_Estados.mdj",
+      "tipo": "UMLStatechartDiagram",
+      "elementos": 726,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/04_Estados/10_Pago_Estados.mdj",
+      "tipo": "UMLStatechartDiagram",
+      "elementos": 700,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/04_Estados/11_AcuerdoCredito_Estados.mdj",
+      "tipo": "UMLStatechartDiagram",
+      "elementos": 760,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/04_Estados/12_SeguimientoCobro_Estados.mdj",
+      "tipo": "UMLStatechartDiagram",
+      "elementos": 731,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/04_Estados/13_Entrega_Estados.mdj",
+      "tipo": "UMLStatechartDiagram",
+      "elementos": 802,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/04_Estados/14_Ruta_Estados.mdj",
+      "tipo": "UMLStatechartDiagram",
+      "elementos": 715,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/04_Estados/15_ComprobanteFiscal_Estados.mdj",
+      "tipo": "UMLStatechartDiagram",
+      "elementos": 748,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/04_Estados/16_OperacionPendiente_Estados.mdj",
+      "tipo": "UMLStatechartDiagram",
+      "elementos": 770,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/04_Estados/17_Usuario_Estados.mdj",
+      "tipo": "UMLStatechartDiagram",
+      "elementos": 730,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/04_Estados/18_ResultadoProduccion_Estados.mdj",
+      "tipo": "UMLStatechartDiagram",
+      "elementos": 723,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/05_Actividades/CU01_Actividad.mdj",
+      "tipo": "UMLActivityDiagram",
+      "elementos": 459,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/05_Actividades/CU02_Actividad.mdj",
+      "tipo": "UMLActivityDiagram",
+      "elementos": 459,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/05_Actividades/CU03_Actividad.mdj",
+      "tipo": "UMLActivityDiagram",
+      "elementos": 435,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/05_Actividades/CU04_Actividad.mdj",
+      "tipo": "UMLActivityDiagram",
+      "elementos": 348,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/05_Actividades/CU05_Actividad.mdj",
+      "tipo": "UMLActivityDiagram",
+      "elementos": 546,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/05_Actividades/CU06_Actividad.mdj",
+      "tipo": "UMLActivityDiagram",
+      "elementos": 459,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/05_Actividades/CU07_Actividad.mdj",
+      "tipo": "UMLActivityDiagram",
+      "elementos": 447,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/05_Actividades/CU08_Actividad.mdj",
+      "tipo": "UMLActivityDiagram",
+      "elementos": 774,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/05_Actividades/CU09_Actividad.mdj",
+      "tipo": "UMLActivityDiagram",
+      "elementos": 570,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/05_Actividades/CU10_Actividad.mdj",
+      "tipo": "UMLActivityDiagram",
+      "elementos": 609,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/05_Actividades/CU11_Actividad.mdj",
+      "tipo": "UMLActivityDiagram",
+      "elementos": 708,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/05_Actividades/CU12_Actividad.mdj",
+      "tipo": "UMLActivityDiagram",
+      "elementos": 360,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/06_Secuencias/CU01_Secuencia.mdj",
+      "tipo": "UMLSequenceDiagram",
+      "elementos": 207,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/06_Secuencias/CU02_Secuencia.mdj",
+      "tipo": "UMLSequenceDiagram",
+      "elementos": 207,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/06_Secuencias/CU03_Secuencia.mdj",
+      "tipo": "UMLSequenceDiagram",
+      "elementos": 195,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/06_Secuencias/CU04_Secuencia.mdj",
+      "tipo": "UMLSequenceDiagram",
+      "elementos": 174,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/06_Secuencias/CU05_Secuencia.mdj",
+      "tipo": "UMLSequenceDiagram",
+      "elementos": 228,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/06_Secuencias/CU06_Secuencia.mdj",
+      "tipo": "UMLSequenceDiagram",
+      "elementos": 207,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/06_Secuencias/CU07_Secuencia.mdj",
+      "tipo": "UMLSequenceDiagram",
+      "elementos": 201,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/06_Secuencias/CU08_Secuencia.mdj",
+      "tipo": "UMLSequenceDiagram",
+      "elementos": 346,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/06_Secuencias/CU09_Secuencia.mdj",
+      "tipo": "UMLSequenceDiagram",
+      "elementos": 240,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/06_Secuencias/CU10_Secuencia.mdj",
+      "tipo": "UMLSequenceDiagram",
+      "elementos": 263,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/06_Secuencias/CU11_Secuencia.mdj",
+      "tipo": "UMLSequenceDiagram",
+      "elementos": 290,
+      "errores": [],
+      "avisos": []
+    },
+    {
+      "archivo": "Software/06_Secuencias/CU12_Secuencia.mdj",
+      "tipo": "UMLSequenceDiagram",
+      "elementos": 180,
+      "errores": [],
+      "avisos": []
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "archivo": "Modelo_Actual.mdj",
+    "diagramas": 1,
+    "pasos": 108,
+    "nodosModelo": 95,
+    "decisiones": 24,
+    "flujos": 116,
+    "inalcanzables": [],
+    "sinSalidaFinal": [],
+    "nodosSuperpuestos": [],
+    "lineasSobreNodos": [],
+    "cruces": [],
+    "segmentosSuperpuestos": []
+  },
+  {
+    "archivo": "Modelo_Propuesto.mdj",
+    "diagramas": 1,
+    "pasos": 136,
+    "nodosModelo": 116,
+    "decisiones": 30,
+    "flujos": 147,
+    "inalcanzables": [],
+    "sinSalidaFinal": [],
+    "nodosSuperpuestos": [],
+    "lineasSobreNodos": [],
+    "cruces": [],
+    "segmentosSuperpuestos": []
+  }
+]

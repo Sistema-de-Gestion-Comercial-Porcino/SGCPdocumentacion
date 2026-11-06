@@ -1,0 +1,20 @@
+[
+  {
+    "archivo": "BPMN_Actual.mdj",
+    "pasos": 106,
+    "flujos": 114,
+    "inalcanzables": [],
+    "lineasSobreNodos": [],
+    "cruces": [],
+    "superpuestas": []
+  },
+  {
+    "archivo": "BPMN_Propuesto.mdj",
+    "pasos": 134,
+    "flujos": 145,
+    "inalcanzables": [],
+    "lineasSobreNodos": [],
+    "cruces": [],
+    "superpuestas": []
+  }
+]
