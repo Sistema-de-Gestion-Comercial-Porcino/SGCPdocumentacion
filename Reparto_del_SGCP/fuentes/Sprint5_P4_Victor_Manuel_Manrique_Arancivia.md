@@ -91,14 +91,14 @@ Y lo mismo que en el Sprint 4: descomprimilo en otra carpeta y revisá que no ha
 
 ### 6. Las versiones finales
 
-Si el sprint tuvo trabajo, `v5.0.0` en los repositorios tocados, después del commit:
+Si el sprint tuvo trabajo, la etiqueta es la versión de tu commit, `v5.4.0`, en los repositorios tocados, y va después del commit:
 
 ```bash
-git tag -a v5.0.0 -m "Sprint 5 - Cierre del proyecto"
+git tag -a v5.4.0 -m "Sprint 5 - Cierre del proyecto"
 git push origin main --follow-tags
 ```
 
-Si no tuvo trabajo, **no se crea `v5.0.0`.** `v4.0.0` queda como la versión final y se registra en el documento de cierre. Una etiqueta sin cambios no agrega nada y confunde el historial.
+Si no tuvo trabajo, **no se crea ninguna etiqueta de Sprint 5.** `v4.4.0` queda como la versión final y se registra en el documento de cierre. Una etiqueta sin cambios no agrega nada y confunde el historial.
 
 **Entregás:** las etiquetas o la constancia de que no se crearon. **Se comprueba:** `git tag -l` coincide con lo entregado.
 
@@ -132,7 +132,7 @@ Escribir código. La consulta al docente y la aceptación del producto: S5-P3.
 
 ```bash
 git checkout -b sprint5/p4-cierre-proyecto
-git commit -m "v5.1.0 - Sprint 5 - Pendientes, rendimiento y cierre del proyecto"
+git commit -m "v5.4.0 - Sprint 5 - Pendientes, rendimiento y cierre del proyecto"
 git push -u origin sprint5/p4-cierre-proyecto
 ```
 

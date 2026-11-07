@@ -57,7 +57,7 @@ Según el perfil de proyecto, tres requerimientos están fuera de la entrega act
 
 ## Los patrones de diseño, repartidos
 
-La entrega eligió seis patrones. Repartirlos por sprint evita que se acumulen al final y que alguno quede sin usar de verdad.
+La entrega eligió siete patrones. Repartirlos por sprint evita que se acumulen al final y que alguno quede sin usar de verdad.
 
 | Patrón | Dónde | Sprint | Para qué |
 |---|---|---|---|
@@ -93,7 +93,7 @@ commit:  v2.1.0 - Sprint 2 - Produccion e inventario
 PR:      titulo igual al commit, con el codigo S2-P1 en el cuerpo
 ```
 
-La versión y la etiqueta las pone P4 al cerrar el sprint, no cada uno por su cuenta. El esquema de versiones y las reglas de etiquetado están en el README de cada repositorio, en la sección "Control de versiones".
+El MENOR corresponde al número de parte: P1 entrega `vN.1.0`, P2 `vN.2.0`, P3 `vN.3.0` y P4 `vN.4.0`. Como P4 es siempre el que cierra, **la etiqueta del sprint es su versión, `vN.4.0`**, y la pone él una sola vez, después del último PR aprobado. No se crea una etiqueta `vN.0.0`: iría detrás de versiones que ya existen. El esquema completo está en el README de cada repositorio, en la sección "Control de versiones".
 
 ### Qué significa que una parte está terminada
 

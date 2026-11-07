@@ -106,21 +106,21 @@ No se puede inventar, y es lo que vuelve a RNF-02 algo demostrable.
 
 La versión del sprint la pones vos, una vez, al final. Nadie más etiqueta.
 
-Según el esquema del README, MAYOR es el número de sprint, así que el Sprint 2 cierra en **`v2.0.0`** en los cuatro repositorios. Los números intermedios que usaron las partes durante el sprint quedan en el historial.
+Según el esquema del README, MAYOR es el número de sprint y MENOR es el número de parte. Tu commit es el último del sprint, `v2.4.0`, así que **esa misma versión es la etiqueta de cierre** en los cuatro repositorios. No se etiqueta `v2.0.0`: quedaría por detrás de las versiones que tus compañeros ya entregaron.
 
 En cada repositorio, después del último PR aprobado:
 
 ```bash
 git checkout main && git pull
-git tag -a v2.0.0 -m "Sprint 2 entregado"
-git push origin v2.0.0
+git tag -a v2.4.0 -m "Sprint 2 entregado"
+git push origin v2.4.0
 ```
 
 **La etiqueta va después del commit, nunca antes**, o apunta al estado anterior.
 
 Y la fila nueva en la tabla de historial del README de cada repositorio: versión, fecha, sprint, cambio y autor.
 
-**Entregás:** las cuatro etiquetas y los cuatro README actualizados. **Se comprueba:** `git show v2.0.0` muestra el estado entregado en cada repositorio.
+**Entregás:** las cuatro etiquetas y los cuatro README actualizados. **Se comprueba:** `git show v2.4.0` muestra el estado entregado en cada repositorio.
 
 ### 7. El estado real, sin adornos
 

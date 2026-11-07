@@ -89,7 +89,7 @@ Para RF-20, los cargos de producto y de servicio se separan. La forma más simpl
 
 Es el caso para el que sirve Factory Method: la decisión de qué crear y cómo depende del tipo de orden, y el servicio que la confirma no debería tener un condicional creciendo cada vez que aparece un tipo nuevo.
 
-Esta asignación es una propuesta: el documento `00_Definicion/Organizacion_repositorios_y_patrones.md` lista los seis patrones pero no los reparte por sprint. Lo confirma Sofía, o se consulta al docente.
+Esta asignación es una propuesta: el documento `00_Definicion/Organizacion_repositorios_y_patrones.md` lista los siete patrones pero no los reparte por sprint. Lo confirma Sofía, o se consulta al docente.
 
 ## Riesgos de este sprint
 
@@ -108,4 +108,4 @@ Esta asignación es una propuesta: el documento `00_Definicion/Organizacion_repo
 3. La verificación automática cubre los casos nuevos y pasa contra MySQL real.
 4. Los diagramas y el diccionario de clases incluyen las entidades nuevas.
 5. El backlog del Excel tiene el Sprint 2 marcado y los parámetros de aceptación confirmados.
-6. Los cuatro Pull Requests están aprobados y en `main`, con la etiqueta `v2.0.0` puesta por P4.
+6. Los cuatro Pull Requests están aprobados y en `main`, con la etiqueta `v2.4.0` puesta por P4.

@@ -99,7 +99,7 @@ Escribir código. La lista técnica de pendientes y el paquete de entrega: S5-P4
 
 ```bash
 git checkout -b sprint5/p3-cierre-producto
-git commit -m "v5.1.0 - Sprint 5 - Criterios finales y aceptacion del producto"
+git commit -m "v5.3.0 - Sprint 5 - Criterios finales y aceptacion del producto"
 git push -u origin sprint5/p3-cierre-producto
 ```
 

@@ -95,7 +95,7 @@ Si el sprint tiene trabajo:
 2. Los criterios de los sprints 1 a 4 **siguen pasando**. Es la condición más importante de este sprint: no romper nada.
 3. La verificación automática pasa completa.
 4. Los diagramas y el diccionario incluyen lo agregado.
-5. Etiqueta `v5.0.0` en los repositorios tocados.
+5. Etiqueta `v5.4.0` en los repositorios tocados, la versión del último commit del sprint.
 
 Si el sprint no tiene trabajo:
 

@@ -116,4 +116,4 @@ Command y State encajan tan bien acá que conviene decirlo en la defensa: no se 
 4. Los tres repositorios compilan sin errores ni advertencias.
 5. La verificación automática cubre duplicados y conflictos, y pasa contra MySQL real.
 6. RNF-05 tiene evidencia: la aplicación corrió en dispositivos reales, con modelo y versión anotados.
-7. Los cuatro Pull Requests aprobados y en `main`, con la etiqueta `v3.0.0` puesta por S3-P4.
+7. Los cuatro Pull Requests aprobados y en `main`, con la etiqueta `v3.4.0` puesta por S3-P4.

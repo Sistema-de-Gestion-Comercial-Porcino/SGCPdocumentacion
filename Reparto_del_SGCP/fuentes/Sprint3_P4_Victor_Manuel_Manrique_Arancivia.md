@@ -86,17 +86,17 @@ Las pruebas de Android se pueden agregar al flujo con `./gradlew testDebugUnitTe
 
 ### 6. Versión, etiqueta y entrega
 
-El Sprint 3 cierra en **`v3.0.0`** en los cuatro repositorios, según el esquema donde MAYOR es el número de sprint.
+Tu commit es el último del sprint, `v3.4.0`, y **esa misma versión es la etiqueta de cierre** en los cuatro repositorios. No se etiqueta `v3.0.0`: quedaría por detrás de lo que ya entregaron tus compañeros.
 
 ```bash
 git checkout main && git pull
-git tag -a v3.0.0 -m "Sprint 3 entregado"
-git push origin v3.0.0
+git tag -a v3.4.0 -m "Sprint 3 entregado"
+git push origin v3.4.0
 ```
 
 **Después del commit, nunca antes.** Y la fila nueva en la tabla de historial del README de cada repositorio.
 
-**Entregás:** las cuatro etiquetas y los README. **Se comprueba:** `git show v3.0.0` muestra el estado entregado.
+**Entregás:** las cuatro etiquetas y los README. **Se comprueba:** `git show v3.4.0` muestra el estado entregado.
 
 ### 7. El estado real
 

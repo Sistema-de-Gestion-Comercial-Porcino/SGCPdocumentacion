@@ -103,7 +103,7 @@ Escribir código. Los diagramas: S4-P4.
 
 ```bash
 git checkout -b sprint4/p3-criterios
-git commit -m "v4.1.0 - Sprint 4 - Reportes por perfil, decision fiscal y validacion final"
+git commit -m "v4.3.0 - Sprint 4 - Reportes por perfil, decision fiscal y validacion final"
 git push -u origin sprint4/p3-criterios
 ```
 

@@ -97,11 +97,11 @@ Este sprint cierra el proyecto, así que la definición es más amplia:
 2. Los criterios de validación de los sprints 1, 2 y 3 **siguen pasando**. Una regresión en el Sprint 1 a esta altura es peor que una función que falta.
 3. Los tres repositorios compilan sin errores ni advertencias.
 4. La verificación automática cubre los cuatro sprints y pasa contra MySQL real, con las dos configuraciones regionales.
-5. Los seis patrones están implementados, usados de verdad y se pueden explicar.
+5. Los siete patrones están implementados, usados de verdad y se pueden explicar.
 6. Todos los requerimientos no funcionales están medidos o declarados sin medir, con el motivo.
 7. Los diagramas y el diccionario coinciden con el código entregado.
 8. El Excel tiene los cuatro sprints cerrados.
-9. Etiqueta `v4.0.0` en los cuatro repositorios.
+9. Etiqueta `v4.4.0` en los cuatro repositorios, la versión del último commit del sprint.
 10. El proyecto se puede levantar desde cero siguiendo `00_Definicion/Como_ejecutar_el_sistema.md`, en una máquina que nunca lo tuvo.
 
 El punto 10 es el que conviene probar de verdad, en la laptop de alguien que no lo haya instalado nunca. Es la prueba que más defectos encuentra al final de un proyecto.

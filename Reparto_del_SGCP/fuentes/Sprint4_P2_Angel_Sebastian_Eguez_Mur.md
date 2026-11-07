@@ -97,7 +97,7 @@ Mientras esperás los endpoints: las tareas 6 y 7 no dependen de nadie. Arrancá
 
 ```bash
 git checkout -b sprint4/p2-web-reportes
-git commit -m "v4.1.0 - Sprint 4 - Reportes, portal del comprador y constancia"
+git commit -m "v4.2.0 - Sprint 4 - Reportes, portal del comprador y constancia"
 git push -u origin sprint4/p2-web-reportes
 ```
 

@@ -82,7 +82,7 @@ Las tareas 1 y 2 no dependen de nadie y hay que hacerlas igual. Arrancá por la 
 
 ```bash
 git checkout -b sprint5/p2-ui-cierre
-git commit -m "v5.1.0 - Sprint 5 - APK en dispositivo y cierre de interfaces"
+git commit -m "v5.2.0 - Sprint 5 - APK en dispositivo y cierre de interfaces"
 git push -u origin sprint5/p2-ui-cierre
 ```
 

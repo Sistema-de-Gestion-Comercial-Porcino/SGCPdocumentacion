@@ -4,7 +4,7 @@ Código de seguimiento: **S4-P4**. Rol: Scrum Master. Repositorio: **SGCPdocumen
 
 ## Qué te toca
 
-Cerrar el proyecto. Los diagramas finales, la prueba del sistema completo, los requerimientos no funcionales que quedaron sin medir, el paquete de entrega y la etiqueta `v4.0.0`.
+Cerrar el proyecto. Los diagramas finales, la prueba del sistema completo, los requerimientos no funcionales que quedaron sin medir, el paquete de entrega y la etiqueta `v4.4.0`.
 
 Tu parte es la que decide si el proyecto se ve terminado o se ve a medias. Dos equipos pueden tener el mismo código y uno aprueba mejor que el otro por cómo está armada la entrega.
 
@@ -15,7 +15,7 @@ Tu parte es la que decide si el proyecto se ve terminado o se ve a medias. Dos e
 En `02_Analisis/` y `03_Diseño/`, actualizados con todo lo construido en los cuatro sprints:
 
 - **Casos de uso**, con todos los requerimientos entregados y marcando los que no se hicieron.
-- **Clases**, con las entidades de los cuatro sprints y los seis patrones visibles.
+- **Clases**, con las entidades de los cuatro sprints y los siete patrones visibles.
 - **Secuencia** de los flujos principales: cotización a pedido, producción a inventario, entrega a recepción a constancia, y reporte exportado.
 - **Componentes**, mostrando los tres repositorios, la base de datos y el proveedor fiscal externo como sistema aparte.
 - **Modelo de datos** completo.
@@ -102,14 +102,14 @@ Vale la laptop de un compañero, o una máquina virtual.
 
 ### 8. El cierre de versiones
 
-Última versión del proyecto. Según la convención de los README, `v4.0.0` en los cuatro repositorios, y las etiquetas van **después** del commit de cada uno:
+Última versión del proyecto. Tu commit es el último del sprint, `v4.4.0`, y **esa misma versión es la etiqueta** en los cuatro repositorios. Va **después** del commit de cada uno, nunca antes:
 
 ```bash
-git tag -a v4.0.0 -m "Sprint 4 - Entrega final"
+git tag -a v4.4.0 -m "Sprint 4 - Entrega final"
 git push origin main --follow-tags
 ```
 
-Y la tabla de historial de cada README con el renglón de `v4.0.0`.
+Y la tabla de historial de cada README con el renglón de `v4.4.0`.
 
 **Entregás:** las cuatro etiquetas. **Se comprueba:** `git tag -l` las muestra y apuntan al commit de entrega.
 
@@ -119,7 +119,7 @@ No es un entregable del Excel, pero es lo que se califica. Armá una página con
 
 - Cómo levantar el sistema en dos minutos, con los comandos escritos y copiables.
 - El recorrido que vas a mostrar, en orden, y qué dice el criterio de cada paso.
-- Los seis patrones, uno por renglón, con el archivo donde está cada uno y por qué ese patrón ahí.
+- Los siete patrones, uno por renglón, con el archivo donde está cada uno y por qué ese patrón ahí.
 - Lo que no se entregó, con su motivo.
 
 Lo último es lo que más conviene tener preparado. Un equipo que dice «RF-11 quedó como punto de integración diseñado porque no hubo proveedor confirmado, y acá está el Adapter que permite habilitarlo sin tocar el resto» responde mucho mejor que uno que se sorprende con la pregunta.
@@ -144,10 +144,10 @@ Las tareas 1, 2 y 5 no dependen de nadie: arrancá por ahí mientras los demás 
 
 ```bash
 git checkout -b sprint4/p4-entrega-final
-git commit -m "v4.1.0 - Sprint 4 - Diagramas finales, pruebas de sistema y entrega"
+git commit -m "v4.4.0 - Sprint 4 - Diagramas finales, pruebas de sistema y entrega"
 git push -u origin sprint4/p4-entrega-final
 ```
 
 Pull Request con el código `S4-P4` en el cuerpo.
 
-Y después del merge, las etiquetas `v4.0.0` en los cuatro repositorios.
+Y después del merge, las etiquetas `v4.4.0` en los cuatro repositorios.
