@@ -33,6 +33,7 @@ El índice completo de la entrega está en [LEEME.md](LEEME.md).
 Documentos de referencia para quien retome la implementación:
 
 - [Cómo ejecutar el sistema](00_Definicion/Como_ejecutar_el_sistema.md) · levantar API, web y Android en orden
+- [Levantar con Docker](00_Definicion/Levantar_con_Docker.md) · la base en contenedor, con operación diaria, reinicio limpio y solución de fallas
 - [Cambio a MySQL](00_Definicion/Cambio_a_MySQL.md) · qué se cambió al dejar SQL Server y las tres trampas de MySQL
 - [Errores encontrados en el Sprint 1](00_Definicion/Errores_encontrados_Sprint1.md) · defectos corregidos, con su causa
 - [Método de verificación](00_Definicion/Metodo_de_verificacion.md) · cómo se comprueba que funciona

@@ -37,6 +37,8 @@ Cualquiera de estas tres opciones sirve:
     -e MYSQL_USER=sgcp -e MYSQL_PASSWORD=TU_CLAVE mysql:8.4
   ```
 
+  El camino completo con contenedor está en [Levantar_con_Docker.md](Levantar_con_Docker.md): qué puerto usar si 3306 ya está ocupado, cómo bajar el consumo de memoria, la operación de todos los días y cómo dejar la base limpia antes de una presentación.
+
 - **La instancia de un compañero**, si está en la misma red. Hay que abrir el puerto 3306 solo para la red local, nunca hacia internet, y crear el usuario con `'sgcp'@'%'` en lugar de `'sgcp'@'localhost'`.
 
 Si instalaste MySQL a mano, creá la base y el usuario una vez:
