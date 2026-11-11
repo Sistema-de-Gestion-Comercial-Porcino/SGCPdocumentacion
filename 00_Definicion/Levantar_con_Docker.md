@@ -166,6 +166,19 @@ Usa `root` porque necesita crear bases. Se crea una propia con nombre `sgcp_prue
 
 Conviene correrla también con `LANG=C` delante. Hubo un defecto de configuración regional que multiplicaba los importes por cien, y esa es la prueba que lo detecta.
 
+### La comprobación corta, antes de una demostración
+
+El recorrido de aceptación del sprint también está automatizado, contra la API ya levantada y sobre la base que vas a mostrar:
+
+```bash
+cd SGCPapi
+SGCP_CLAVE_ADMIN='la-clave-del-paso-3' python3 scripts/Verificar-Sprint1.py
+```
+
+Tarda segundos y termina en `14 correctas, 0 fallas`. Comprueba lo mismo que mirarías a mano: que el pedido se niega con `409 COTIZACION_NO_ACEPTADA` si la cotización solo está presentada, que al aceptarla el pedido queda con costo Bs 112,00 y margen Bs 28,00, que una vigencia posterior de Bs 40 no recalcula ese margen, y que sin token la API responde 401.
+
+Devuelve `0` si todo pasa y `1` si algo falla, así que sirve igual desde otro script. Necesita Python 3.8 o posterior, sin paquetes externos. Como crea registros de prueba, si querés mostrar la base vacía corré después el paso 8.
+
 ## 7. Operación de todos los días
 
 | Qué querés | Orden |
