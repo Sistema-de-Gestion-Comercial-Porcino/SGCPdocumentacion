@@ -10,13 +10,9 @@ Veredicto de las cinco afirmaciones: **cumplen**. Cada una tiene abajo cómo se 
 
 ## Cómo se comprobó
 
-El 11 de noviembre de 2026 ejecuté el recorrido del repositorio `SGCPapi`:
+El 11 de noviembre de 2026 ejecuté el recorrido del repositorio `SGCPapi` dos veces.
 
-```bash
-dotnet run --project tests/SGCP.Verificacion -- --solo-sprint1
-```
-
-Resultado: **27 de 27**. Cultura de esa ejecución: `en-US`. Motor: SQLite aislado. Esa corrida comprueba las reglas por HTTP y no vuelve a aplicar la migración de MySQL. El registro del equipo del 6 de noviembre ya dejó el mismo recorrido en 27 de 27 contra MySQL 8.4; esta nota no repite esa medición.
+La primera, con `--solo-sprint1`, dio **27 de 27** sobre SQLite aislado. La segunda, el mismo día, corrió el verificador completo contra MySQL 8.0: otra vez **27 de 27**, y además la migración del Sprint 1 se aplicó dos veces sobre un pedido ya existente sin perder el cargo ni el margen. Cultura de ambas: `en-US`.
 
 No recorrí las nueve pantallas de la sección 5 de `Como_ejecutar_el_sistema.md` con el navegador. Las reglas de los pasos 7, 8 y 9 sí están en las comprobaciones 7, 8, 10, 11 y 12. La lectura de la web es sobre las vistas de `SGCPuiweb` en `main` a esa fecha.
 

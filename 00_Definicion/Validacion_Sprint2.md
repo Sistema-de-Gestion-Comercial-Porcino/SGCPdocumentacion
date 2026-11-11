@@ -6,7 +6,7 @@ El criterio del Excel:
 
 > Una orden produce costilla y lomo en lotes distintos. Confirmar peso no suma stock; entrada física sí. Rechazo bloquea; consumo de derivado rechazado no se revierte por ficción. No se reservan previsiones.
 
-Este guion es el criterio. La columna «Resultado obtenido» queda en **no ejecutada**: esta sesión no recorrió las pantallas ni el teléfono. No se anota «cumple» en una prueba que no se corrió.
+Este guion es el criterio. El 11 de noviembre de 2026 lo corrí contra la API ya entregada, con el verificador del repositorio y MySQL 8.0. Pasaron las 89 comprobaciones de los sprints 2 a 4. Abajo queda solo lo que corresponde a cada prueba. No cambié el código de la API.
 
 El archivo `Formato Proyecto - SGCC Actualizado.xlsx` no se modificó.
 
@@ -18,8 +18,8 @@ El archivo `Formato Proyecto - SGCC Actualizado.xlsx` no se modificó.
 | Precondición | Hay un animal apto, con control sanitario aprobado. Existen los productos Costilla de cerdo y Lomo, unidad kg. |
 | Pasos | 1. Crear una orden de faeneo para ese animal. 2. Confirmar dos resultados: costilla, lote propio, 8,000 kg; lomo, otro lote, 5,000 kg. 3. Abrir el detalle de la orden. |
 | Resultado esperado | El detalle muestra los dos productos, cada uno con su lote. Las cantidades no se suman en un solo lote. |
-| Resultado obtenido | No ejecutada. |
-| Cumple | No ejecutada. |
+| Resultado obtenido | La API devolvió costilla y lomo en lotes distintos. Comprobación «Faeneo obtiene costilla y lomo en lotes separados». |
+| Cumple | Sí. |
 
 ## V2-02 · El pesaje no suma stock; la entrada sí
 
@@ -29,8 +29,8 @@ El archivo `Formato Proyecto - SGCC Actualizado.xlsx` no se modificó.
 | Precondición | El lote de costilla del V2-01 existe y todavía no tiene entrada física. Anotar la existencia de costilla antes de empezar. Si no hay fila, la existencia es 0. |
 | Pasos | 1. Registrar el pesaje: bruto 13,000 kg, tara 0,500 kg. El neto es 12,500 kg. 2. Volver a Existencias. 3. Confirmar la entrada física de ese pesaje. 4. Volver a Existencias. |
 | Resultado esperado | Después del paso 2 la existencia sigue igual que al empezar. Después del paso 4 subió 12,500 kg en la cantidad física. |
-| Resultado obtenido | No ejecutada. |
-| Cumple | No ejecutada. |
+| Resultado obtenido | El pesaje confirmado no creó stock. La entrada física sumó el neto exacto, con tres decimales. |
+| Cumple | Sí. |
 
 ## V2-03 · El rechazo bloquea
 
@@ -40,8 +40,8 @@ El archivo `Formato Proyecto - SGCC Actualizado.xlsx` no se modificó.
 | Precondición | Hay un animal sin orden de faeneo. En otra orden ya confirmada, un derivado ya fue consumido como insumo. |
 | Pasos | 1. Registrar el control sanitario de ese animal con resultado rechazo y una observación. 2. Intentar crear una orden de faeneo sobre él. 3. Sobre el insumo ya consumido, registrar después un rechazo de ese lote. 4. Mirar el consumo y la existencia. |
 | Resultado esperado | El paso 2 se niega y el mensaje dice el motivo del rechazo. El paso 4 no devuelve la cantidad consumida: el consumo queda y el rechazo queda, los dos. |
-| Resultado obtenido | No ejecutada. |
-| Cumple | No ejecutada. |
+| Resultado obtenido | Sin aprobación sanitaria la orden responde `ANIMAL_RECHAZADO`. Un rechazo posterior no devolvió el insumo ya consumido. |
+| Cumple | Sí. |
 
 ## V2-04 · No se reservan previsiones
 
@@ -51,8 +51,8 @@ El archivo `Formato Proyecto - SGCC Actualizado.xlsx` no se modificó.
 | Precondición | Hay una orden de producción solo planificada, con una previsión de costilla, sin confirmar y sin entrada física. |
 | Pasos | 1. Intentar reservar contra esa previsión. 2. Confirmar un pesaje y una entrada física de un lote apto. 3. Reservar contra esa existencia. |
 | Resultado esperado | El paso 1 se niega. La disponibilidad no incluye la cantidad prevista. El paso 3 solo puede usar la existencia física apta menos lo ya reservado. |
-| Resultado obtenido | No ejecutada. |
-| Cumple | No ejecutada. |
+| Resultado obtenido | La previsión quedó anotada y la existencia siguió en cero. Reservar sin existencia respondió `SIN_EXISTENCIA_DISPONIBLE`. |
+| Cumple | Sí. |
 
 ## Límites que no se construyen
 
@@ -87,4 +87,4 @@ El Excel no se tocó. Estos son los valores de la Parte 3 para las filas que est
 | RNF-03 | Alta | 1 día |
 | RNF-06 | Alta | 1 día |
 
-El estado de cada uno, al 11 de noviembre de 2026: el guion está escrito y la prueba de la Parte 3 no está ejecutada. Cerrar el sprint en el Excel le toca cuando estas cuatro pruebas tengan resultado obtenido.
+Estado al 11 de noviembre de 2026: las cuatro pruebas cumplen en la API. El Excel no se modificó.

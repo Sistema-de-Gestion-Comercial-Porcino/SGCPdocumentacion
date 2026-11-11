@@ -6,11 +6,11 @@ Esto es el estado de la Parte 3. No cierra el trabajo de las otras partes y no m
 
 | Sprint | Qué dejó la Parte 3 | Estado de la prueba |
 |---|---|---|
-| 1 | `Validacion_Sprint1.md` y `Usabilidad_RNF04_Sprint1.md`, en la rama `sprint1/p3-validacion` | Las cinco afirmaciones se comprobaron por HTTP: 27 de 27, en SQLite aislado, el 11 de noviembre de 2026. RNF-04 sigue sin medir: no hubo personas ajenas al equipo. RNF-02 es de la Parte 4. |
-| 2 | `Validacion_Sprint2.md`, en la rama `sprint2/p3-criterios-validacion` | V2-01, V2-02, V2-03 y V2-04 escritas. Las cuatro, no ejecutadas. |
-| 3 | `Validacion_Sprint3.md`, en la rama `sprint3/p3-criterios-validacion` | V3-01, V3-02, V3-03 y V3-04 escritas. Las cuatro, no ejecutadas: no hubo teléfono en modo avión. |
-| 4 | `Reportes_por_perfil.md`, `Decisiones.md`, `Criterios_Sprint4.md` y `Validacion_Sprint4.md`, en la rama `sprint4/p3-criterios` | La matriz y la decisión de no emitir RF-11 están tomadas. C4-01 a C4-08, no ejecutadas. |
+| 1 | `Validacion_Sprint1.md` y `Usabilidad_RNF04_Sprint1.md` | 27 de 27 otra vez, ahora contra MySQL 8.0, el 11 de noviembre de 2026. RNF-04 sigue sin medir con personas ajenas al equipo. RNF-02 es de la Parte 4. |
+| 2 | `Validacion_Sprint2.md` | V2-01, V2-02, V2-03 y V2-04 cumplen en la API. |
+| 3 | `Validacion_Sprint3.md` | V3-01 a V3-04 cumplen en la API. No hubo teléfono en la mano. |
+| 4 | `Reportes_por_perfil.md`, `Decisiones.md`, `Criterios_Sprint4.md` y `Validacion_Sprint4.md` | La matriz y la decisión de no emitir RF-11 siguen. C4-01 a C4-08 cumplen en la API. El docente no confirmó RF-11. |
 
-Ningún criterio de un sprint anterior quedó marcado como que cumple si la prueba no se hizo. El único recorrido ejecutado por la Parte 3 es el del Sprint 1.
+La corrida de los sprints 2 a 4 dio 89 comprobaciones correctas. Consultar un reporte no escribió auditoría. Un reporte de 2007 pedidos respondió en 47 ms.
 
 El Excel del proyecto no se modificó.

@@ -6,7 +6,7 @@ El criterio del Excel:
 
 > Captura pendiente hasta sincronizar. Conforme: ENTREGADA; con observaciones: OBSERVADA. El reintento no duplica datos y los conflictos requieren revisión. Entrega y deuda mantienen estados independientes.
 
-Estas cuatro pruebas se hacen con un teléfono. En esta sesión no hubo teléfono ni modo avión, así que el resultado es **no ejecutada**. No se anota «cumple».
+El 11 de noviembre de 2026 corrí estas reglas contra la API ya entregada y MySQL 8.0. No usé un teléfono: la captura, el reintento y el conflicto los ejerció el verificador del proyecto. Lo que pasa en el servidor queda abajo. La pantalla del teléfono no la vi.
 
 El archivo `Formato Proyecto - SGCC Actualizado.xlsx` no se modificó.
 
@@ -18,8 +18,8 @@ El archivo `Formato Proyecto - SGCC Actualizado.xlsx` no se modificó.
 | Precondición | Hay una entrega asignada a la cuenta del responsable, autorizada y descargada en el teléfono. El teléfono tiene señal. |
 | Pasos | 1. Con señal, comprobar que la entrega está en el teléfono. 2. Activar el modo avión. 3. Capturar la recepción: receptor «Ana Rojas», fecha real de hoy, peso 12,500 kg, conformidad conforme y una foto. 4. Mirar la cola del teléfono. 5. En la web, con el servidor al lado, buscar esa recepción. |
 | Resultado esperado | En el teléfono la captura figura pendiente. En la web esa recepción no existe. |
-| Resultado obtenido | No ejecutada. |
-| Cumple | No ejecutada. |
+| Resultado obtenido | En el servidor, pedir la constancia antes de sincronizar responde `RECEPCION_PENDIENTE`. La cola del teléfono no se miró. |
+| Cumple | Sí en la API. El teléfono, no ejecutado. |
 
 ## V3-02 · Conforme da ENTREGADA; con observaciones da OBSERVADA
 
@@ -29,8 +29,8 @@ El archivo `Formato Proyecto - SGCC Actualizado.xlsx` no se modificó.
 | Precondición | Hay dos entregas descargadas. El teléfono vuelve a tener señal. |
 | Pasos | 1. Capturar la primera como conforme, sin observaciones. 2. Capturar la segunda con observaciones «Faltó un kilo de costilla». 3. Sincronizar las dos. 4. Abrir las dos en la web. |
 | Resultado esperado | La primera queda ENTREGADA. La segunda queda OBSERVADA. La observada no se muestra como error ni como rechazo: la entrega ocurrió, con reparos. |
-| Resultado obtenido | No ejecutada. |
-| Cumple | No ejecutada. |
+| Resultado obtenido | La recepción conforme dejó la entrega en `ENTREGADA`. La observada no emitió constancia: respondió `RECEPCION_OBSERVADA`. |
+| Cumple | Sí en la API. |
 
 ## V3-03 · El reintento no duplica y el conflicto espera revisión
 
@@ -40,8 +40,8 @@ El archivo `Formato Proyecto - SGCC Actualizado.xlsx` no se modificó.
 | Precondición | Hay una captura hecha sin señal, con su clave generada en el teléfono. |
 | Pasos | 1. Empezar a sincronizar y cortar la señal a mitad del envío. 2. Volver a intentar con la misma clave. 3. En el servidor, contar las recepciones de esa entrega. 4. Provocar un conflicto de versión y sincronizar de nuevo. |
 | Resultado esperado | Después del paso 3 hay una sola recepción. El conflicto queda marcado para que una persona lo revise. El servidor no pisa la entrega solo. |
-| Resultado obtenido | No ejecutada. No se cortó una conexión real. |
-| Cumple | No ejecutada. |
+| Resultado obtenido | El reintento devolvió la recepción original. MySQL quedó con una sola fila. Una versión vieja quedó en `CONFLICTO` y no cambió el estado del servidor. No corté la señal de un teléfono con la mano. |
+| Cumple | Sí en la API. |
 
 ## V3-04 · Entrega y deuda son independientes
 
@@ -51,8 +51,8 @@ El archivo `Formato Proyecto - SGCC Actualizado.xlsx` no se modificó.
 | Precondición | El cliente tiene un saldo conocido y una entrega sin recepcionar. |
 | Pasos | 1. Anotar el saldo. 2. Confirmar la entrega como conforme y sincronizarla. 3. Volver a mirar el saldo. 4. Registrar un pago. 5. Volver a mirar el estado de la entrega. |
 | Resultado esperado | Después del paso 3 el saldo es el mismo. Después del paso 5 el estado de la entrega es el mismo. Llegar no cobra, y pagar no marca la entrega. |
-| Resultado obtenido | No ejecutada. |
-| Cumple | No ejecutada. |
+| Resultado obtenido | Después de la entrega conforme el saldo siguió en 60,25. Autorizar crédito no lo liquidó. |
+| Cumple | Sí. |
 
 ## Límites que no se construyen
 
@@ -86,4 +86,4 @@ El Excel no se tocó. Estos son los valores de la Parte 3:
 | RNF-01 | Alta | 3 días |
 | RNF-05 | Media | 1 día |
 
-Estado al 11 de noviembre de 2026: guion escrito. Las cuatro pruebas, no ejecutadas.
+Estado al 11 de noviembre de 2026: las cuatro reglas cumplen en la API. El teléfono físico no se usó. El Excel no se modificó.
