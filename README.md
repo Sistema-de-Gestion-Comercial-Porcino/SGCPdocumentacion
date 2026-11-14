@@ -70,6 +70,7 @@ Más reciente arriba.
 
 | Versión | Fecha | Sprint | Cambio | Autor |
 |---|---|---|---|---|
+| v1.2.0 | 2026-11-14 | 1 | Prueba del APK en un teléfono real (RNF-05): TECNO CK7n con Android 14, acceso correcto por cable y por wifi, con capturas | Angel Sebastian Eguez Mur |
 | v4.1.0 | 2026-11-07 | 2, 3 y 4 | Documentación: entrega técnica de la parte de API de P1, decisiones de integración y matriz de reportes propuesta | Dario Haziel Tambo Parra |
 | v1.0.1 | 2026-11-07 | 1 | Corrección: el reparto decía seis patrones y la lista oficial tiene siete; el esquema de versiones aclara que MENOR es el número de parte y que la etiqueta de cierre es `vN.4.0` | Dario Haziel Tambo Parra |
 | v1.0.0 | 2026-11-06 | 1 | Documentación: reparto del trabajo por sprint e integrante, y convención de versionamiento de los cuatro repositorios | Dario Haziel Tambo Parra |
