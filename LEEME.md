@@ -4,6 +4,8 @@
 
 Doce casos de uso generales; 72 diagramas de Ingeniería de Software. Los cinco archivos consolidados reúnen colaboración, objetos, estados, actividades y secuencias. Hay 12 por categoría dependiente de CU y 18 máquinas de estados. Los cuatro diagramas generales son casos de uso, clases, componentes y despliegue. Se añaden dos BPMN horizontales.
 
+[Diagrama entidad-relación](02_Ingenieria_de_Software/DER/) en notación de Chen, derivado del modelo de clases: una vista general con los 259 atributos y siete hojas por módulo, en `.drawio` y PNG.
+
 Los dos [BPM verticales](01_Proyecto_de_Sistemas/BPM_Vertical/) pertenecen a Proyecto de Sistemas y están separados del PDF conjunto. Total único del proyecto: 74 diagramas; los consolidados y copias no se cuentan otra vez.
 
 [ASA1](<ASA1 - Especificacion de Requerimientos - CRM Chancheria.docx>) conserva su estructura. [Excel actualizado de trabajo](<Formato Proyecto - SGCC Actualizado.xlsx>) mantiene el versionamiento sin cambios; [Excel ya presentado](<Formato Proyecto - SGCC 1 1.xlsx>) se conserva intacto.
