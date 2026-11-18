@@ -96,13 +96,13 @@ Desde la raíz de `SGCPapi`:
 
 ```bash
 dotnet tool restore
-dotnet ef database update --project src/SGCP.Api
+dotnet ef database update --project src/SGCP.Api --context SgcpContext
 ```
 
 Tienen que aplicarse las cinco migraciones en orden. Para comprobar que quedó completo:
 
 ```bash
-dotnet ef migrations has-pending-model-changes --project src/SGCP.Api
+dotnet ef migrations has-pending-model-changes --project src/SGCP.Api --context SgcpContext
 docker exec sgcp_mysql mysql -usgcp -pTU_CLAVE -N \
   -e "SELECT COUNT(*) FROM information_schema.tables WHERE table_schema='sgcp';" sgcp
 ```
@@ -202,7 +202,7 @@ docker exec sgcp_mysql mysql -uroot -pTU_CLAVE_ROOT -e \
    GRANT ALL PRIVILEGES ON \`sgcp\`.* TO 'sgcp'@'%'; FLUSH PRIVILEGES;"
 
 cd SGCPapi
-dotnet ef database update --project src/SGCP.Api
+dotnet ef database update --project src/SGCP.Api --context SgcpContext
 ```
 
 Al volver a levantar la API se siembra de nuevo el administrador y los permisos. Queda con la cuenta `admin`, los permisos, las clasificaciones y productos de ejemplo si activaste `DatosIniciales:Ejemplos`, y **sin** clientes, cotizaciones ni pedidos: esos se crean en la demostración.

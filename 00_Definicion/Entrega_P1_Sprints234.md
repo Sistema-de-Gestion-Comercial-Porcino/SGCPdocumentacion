@@ -46,7 +46,7 @@ La medida de volumen es local y técnica, no acredita RNF de usabilidad, desempe
 ## Cómo integrar
 
 1. Revisar los cambios locales de SGCPapi y los contratos del [README](../../SGCPapi/README.md).
-2. Aplicar **todas** las migraciones con `dotnet ef database update --project src/SGCP.Api` usando la configuración del equipo. Los scripts incrementales y el esquema completo están en `SGCPapi/database/`.
+2. Aplicar **todas** las migraciones con `dotnet ef database update --project src/SGCP.Api --context SgcpContext` usando la configuración del equipo. Los scripts incrementales y el esquema completo están en `SGCPapi/database/`.
 3. Arrancar la API con `DatosIniciales:Habilitar=true` una vez para actualizar las seis responsabilidades sin reemplazar cuentas. Volver a iniciar sesión en los clientes para renovar su información de permisos.
 4. P2 implementa web y Android contra Swagger, incluyendo `pesoRecibido`, `unidad`, `referenciaUnica` de consumo, evidencia y la cola Android. La descarga offline solo incluye entregas a domicilio; retiro local se registra online.
 5. P3 revisa [reportes por perfil](Reportes_por_perfil_propuesta_P1.md) y [decisiones autorizadas por Dario](Decisiones_P1_Sprints234.md), sin dar por aprobada una revisión que todavía no hizo.
