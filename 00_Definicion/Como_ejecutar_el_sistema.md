@@ -84,6 +84,8 @@ dotnet ef database update --project src/SGCP.Api --context SgcpContext
 dotnet run --project src/SGCP.Api
 ```
 
+> Desde la v4.1.2 de SGCPapi hay dos contextos de EF Core, así que **todo comando `dotnet ef` lleva `--context`**: `SgcpContext` para MySQL (el motor del equipo) y `SgcpContextSqlServer` para SQL Server. Sin él, EF responde «More than one DbContext was found». Para usar SQL Server, ver la sección «Usar SQL Server en lugar de MySQL» del README de SGCPapi.
+
 Queda escuchando en `http://localhost:5081`. Swagger está en `http://localhost:5081/swagger` y sirve para probar la API sin la web.
 
 La primera ejecución siembra permisos, responsabilidades y la cuenta `admin` con la contraseña que configuraste. Es idempotente: podés arrancar las veces que quieras sin duplicar nada. **No** siembra precios, cotizaciones ni pedidos; esos se crean en la demostración.
