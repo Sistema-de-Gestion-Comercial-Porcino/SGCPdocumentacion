@@ -70,6 +70,7 @@ Más reciente arriba.
 
 | Versión | Fecha | Sprint | Cambio | Autor |
 |---|---|---|---|---|
+| v4.1.2 | 2026-11-18 | 4 | Documentación: reparto de la tarea «API Integrador» de Web III por integrante, con criterios de la rúbrica, ramas, versiones y plazo interno, en `Reparto_del_SGCP/WebIII_API_Integrador/` | Dario Haziel Tambo Parra |
 | v4.1.1 | 2026-11-17 | 4 | Documentación: diagrama entidad-relación en notación de Chen derivado del modelo de clases (41 entidades, 59 relaciones, 259 atributos): vista general y siete hojas por módulo en `.drawio` y PNG, con su generador en `99_Herramientas/der_20261117/` | Dario Haziel Tambo Parra |
 | v1.2.0 | 2026-11-14 | 1 | Prueba del APK en un teléfono real (RNF-05): TECNO CK7n con Android 14, acceso correcto por cable y por wifi, con capturas | Angel Sebastian Eguez Mur |
 | v4.1.0 | 2026-11-07 | 2, 3 y 4 | Documentación: entrega técnica de la parte de API de P1, decisiones de integración y matriz de reportes propuesta | Dario Haziel Tambo Parra |
