@@ -28,7 +28,7 @@ Sin agregar nada, una pasada por lo construido en cuatro sprints:
 - No hay `TODO`, ni código comentado, ni endpoints de prueba olvidados.
 - Ningún endpoint quedó sin autorización. Revisá uno por uno que cada controlador tenga su `[Authorize]` con el rol que corresponde; es el defecto más fácil de dejar y el que peor se ve.
 - `appsettings.json` tiene la cadena de conexión vacía, como corresponde: las credenciales van por `user-secrets` o variable de entorno, nunca en el repositorio.
-- No hay migraciones pendientes: `dotnet ef migrations has-pending-model-changes` no devuelve nada.
+- No hay migraciones pendientes: `dotnet ef migrations has-pending-model-changes --context SgcpContext` (y `--context SgcpContextSqlServer`) no devuelve nada.
 - La verificación pasa contra MySQL real.
 
 **Entregás:** una lista corta de lo corregido. **Se comprueba:** los seis puntos revisados.

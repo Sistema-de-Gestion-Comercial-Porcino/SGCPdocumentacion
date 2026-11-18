@@ -80,7 +80,7 @@ cd ../..
 Crear el esquema y arrancar:
 
 ```bash
-dotnet ef database update --project src/SGCP.Api
+dotnet ef database update --project src/SGCP.Api --context SgcpContext
 dotnet run --project src/SGCP.Api
 ```
 

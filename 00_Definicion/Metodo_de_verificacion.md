@@ -71,7 +71,7 @@ Hay una diferencia más, propia del cambio de motor: las tres reglas de unicidad
 Aunque ahora se pueda ejecutar de verdad, leer el SQL generado sigue encontrando cosas antes de perder tiempo:
 
 ```bash
-dotnet ef migrations script --project src/SGCP.Api -o mysql.sql
+dotnet ef migrations script --project src/SGCP.Api --context SgcpContext -o mysql.sql
 ```
 
 **Sin `--idempotent`.** Esa opción está rota para MySQL: EF envuelve cada instrucción en `IF NOT EXISTS(...) BEGIN ... END`, que es sintaxis de T-SQL y MySQL rechaza con error de sintaxis. El script del repositorio, `database/InicialSprint1.sql`, es el plano. Para reaplicar sin riesgo está `dotnet ef database update`, que consulta `__EFMigrationsHistory` desde el cliente y no necesita esa envoltura.
@@ -197,8 +197,8 @@ Conviene correr además la misma batería con `LANG=C`, para confirmar que el ar
 ## 5. Orden recomendado
 
 1. `dotnet build` en los tres repositorios: cero errores y **cero advertencias**.
-2. `dotnet ef migrations has-pending-model-changes`: el modelo y la migración tienen que estar sincronizados.
-3. `dotnet ef migrations script` y revisión de la sección 2.
+2. `dotnet ef migrations has-pending-model-changes --context SgcpContext`: el modelo y la migración tienen que estar sincronizados.
+3. `dotnet ef migrations script --context SgcpContext` y revisión de la sección 2.
 4. MySQL desechable en contenedor y las 27 comprobaciones de la sección 1, con `LANG=es_BO.UTF-8`.
 5. La vía SQLite del mismo verificador, que no necesita motor, como red de seguridad.
 6. Repetir el recorrido con `LANG=C` para confirmar que nada depende de la cultura.

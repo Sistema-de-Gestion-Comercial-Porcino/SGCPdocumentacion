@@ -84,7 +84,7 @@ Dos cosas que ya mordieron una vez y conviene no repetir:
 - **Un paso de CI falla con el entorno de CI, no con el tuyo.** El flujo falló una vez porque la fábrica de diseño exigía la cadena de conexión y en CI no hay secretos. Para reproducirlo hay que quitar la variable y usar Release, igual que hace CI:
 
 ```bash
-env -u ConnectionStrings__Sgcp dotnet ef migrations has-pending-model-changes \
+env -u ConnectionStrings__Sgcp dotnet ef migrations has-pending-model-changes --context SgcpContext \
   --project src/SGCP.Api --configuration Release --no-build
 ```
 
