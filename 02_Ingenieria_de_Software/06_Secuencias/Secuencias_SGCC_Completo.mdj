@@ -3880,13 +3880,13 @@
               "top": 3150,
               "width": 2470,
               "height": 600,
-              "text": "Precondición: Conexión para crear cuenta, autenticar o renovar sesión.\nEl personal recibe una cuenta de administración. El comprador puede registrarse sin obtener permisos internos. Alta de cuenta no equivale a crear una sesión.\nAlternativas: Crear cuenta de comprador: Informar duplicado o datos faltantes; no crear cuenta interna\nIniciar sesión: Registrar intento y denegar acceso; conservar capturas locales\nRecuperar acceso: No cambiar credenciales con token inválido o vencido\nCerrar sesión: Conservar recepción pendiente para posterior acceso autorizado"
+              "text": "Precondición: Conexión para crear cuenta, autenticar o renovar sesión.\nEl personal recibe una cuenta con el rol de su puesto. El comprador puede registrarse sin obtener permisos internos. Alta de cuenta no equivale a crear una sesión.\nAlternativas: Crear cuenta de comprador: Informar duplicado o datos faltantes; no crear cuenta interna\nIniciar sesión: Registrar intento y denegar acceso; conservar capturas locales\nRecuperar acceso: No cambiar credenciales con token inválido o vencido\nCerrar sesión: Conservar recepción pendiente para posterior acceso autorizado"
             }
           ],
           "showSequenceNumber": false
         }
       ],
-      "documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Propietario / administración, Ventas / cobranza, Producción, Almacén, Responsable de entrega, Comprador. El personal recibe una cuenta de administración. El comprador puede registrarse sin obtener permisos internos. Alta de cuenta no equivale a crear una sesión.",
+      "documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Superadministrador, Propietario, Administrador, Finanzas, Comprador, Ventas, Producción, Almacén, Responsable de entrega. El personal recibe una cuenta con el rol de su puesto. El comprador puede registrarse sin obtener permisos internos. Alta de cuenta no equivale a crear una sesión.",
       "messages": [
         {
           "_type": "UMLMessage",
@@ -5472,7 +5472,7 @@
                           "top": 710,
                           "width": 547.245,
                           "height": 15,
-                          "text": "[Consultar usuarios; actor: Propietario / administración; permiso de administración]"
+                          "text": "[Consultar usuarios; actor: Administrador; permiso usuarios.consultar]"
                         }
                       ],
                       "lineColor": "#303744",
@@ -5511,7 +5511,7 @@
                           "top": 1180,
                           "width": 560.2199999999999,
                           "height": 15,
-                          "text": "[Crear usuario; actor: Propietario / administración; login único; permisos autorizados]"
+                          "text": "[Crear usuario; actor: Administrador; login único; permisos autorizados]"
                         }
                       ],
                       "lineColor": "#303744",
@@ -5550,7 +5550,7 @@
                           "top": 1750,
                           "width": 582.99,
                           "height": 15,
-                          "text": "[Editar usuario; actor: Propietario / administración; usuario existente; cambio autorizado]"
+                          "text": "[Editar usuario; actor: Administrador; usuario existente; cambio autorizado]"
                         }
                       ],
                       "lineColor": "#303744",
@@ -5589,7 +5589,7 @@
                           "top": 2320,
                           "width": 611.445,
                           "height": 15,
-                          "text": "[Desactivar o habilitar; actor: Propietario / administración; se conserva administración activa]"
+                          "text": "[Desactivar o habilitar; actor: Administrador; queda un Superadministrador activo]"
                         }
                       ],
                       "lineColor": "#303744",
@@ -8225,7 +8225,7 @@
           "showSequenceNumber": false
         }
       ],
-      "documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Propietario / administración. Crear cuentas, asignar permisos y desactivar sin borrar historial. Una persona puede ejercer varias responsabilidades.",
+      "documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Superadministrador, Propietario, Administrador. Crear cuentas, asignar permisos y desactivar sin borrar historial. Una persona puede ejercer varias responsabilidades.",
       "messages": [
         {
           "_type": "UMLMessage",
@@ -8643,7 +8643,7 @@
               "_parent": {
                 "$ref": "nVpf+5FebM30o36JzdHm"
               },
-              "guard": "Consultar usuarios; actor: Propietario / administración; permiso de administración"
+              "guard": "Consultar usuarios; actor: Administrador; permiso usuarios.consultar"
             },
             {
               "_type": "UMLInteractionOperand",
@@ -8651,7 +8651,7 @@
               "_parent": {
                 "$ref": "nVpf+5FebM30o36JzdHm"
               },
-              "guard": "Crear usuario; actor: Propietario / administración; login único; permisos autorizados"
+              "guard": "Crear usuario; actor: Administrador; login único; permisos autorizados"
             },
             {
               "_type": "UMLInteractionOperand",
@@ -8659,7 +8659,7 @@
               "_parent": {
                 "$ref": "nVpf+5FebM30o36JzdHm"
               },
-              "guard": "Editar usuario; actor: Propietario / administración; usuario existente; cambio autorizado"
+              "guard": "Editar usuario; actor: Administrador; usuario existente; cambio autorizado"
             },
             {
               "_type": "UMLInteractionOperand",
@@ -8667,7 +8667,7 @@
               "_parent": {
                 "$ref": "nVpf+5FebM30o36JzdHm"
               },
-              "guard": "Desactivar o habilitar; actor: Propietario / administración; se conserva administración activa"
+              "guard": "Desactivar o habilitar; actor: Administrador; queda un Superadministrador activo"
             },
             {
               "_type": "UMLInteractionOperand",
@@ -9811,7 +9811,7 @@
                           "top": 710,
                           "width": 439.185,
                           "height": 15,
-                          "text": "[Consultar y buscar; actor: Ventas / cobranza; consulta autorizada]"
+                          "text": "[Consultar y buscar; actor: Ventas; consulta autorizada]"
                         }
                       ],
                       "lineColor": "#303744",
@@ -9850,7 +9850,7 @@
                           "top": 1180,
                           "width": 573.9449999999999,
                           "height": 15,
-                          "text": "[Crear cliente; actor: Ventas / cobranza; identificación y contacto válidos; sin duplicado]"
+                          "text": "[Crear cliente; actor: Ventas; identificación y contacto válidos; sin duplicado]"
                         }
                       ],
                       "lineColor": "#303744",
@@ -9889,7 +9889,7 @@
                           "top": 1650,
                           "width": 493.8449999999999,
                           "height": 15,
-                          "text": "[Editar cliente; actor: Ventas / cobranza; cliente existente y versión vigente]"
+                          "text": "[Editar cliente; actor: Ventas; cliente existente y versión vigente]"
                         }
                       ],
                       "lineColor": "#303744",
@@ -9928,7 +9928,7 @@
                           "top": 2220,
                           "width": 670.005,
                           "height": 15,
-                          "text": "[Desactivar cliente; actor: Propietario / administración; sin operaciones que requieran atención activa]"
+                          "text": "[Desactivar cliente; actor: Administrador; sin operaciones que requieran atención activa]"
                         }
                       ],
                       "lineColor": "#303744",
@@ -12323,7 +12323,7 @@
           "showSequenceNumber": false
         }
       ],
-      "documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Ventas / cobranza, Propietario / administración. Cliente y usuario son conceptos distintos: atención presencial no requiere que el cliente tenga cuenta.",
+      "documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Superadministrador, Propietario, Administrador, Ventas. Cliente y usuario son conceptos distintos: atención presencial no requiere que el cliente tenga cuenta.",
       "messages": [
         {
           "_type": "UMLMessage",
@@ -12712,7 +12712,7 @@
               "_parent": {
                 "$ref": "cycHFXkbWDvNBLIL7h+d"
               },
-              "guard": "Consultar y buscar; actor: Ventas / cobranza; consulta autorizada"
+              "guard": "Consultar y buscar; actor: Ventas; consulta autorizada"
             },
             {
               "_type": "UMLInteractionOperand",
@@ -12720,7 +12720,7 @@
               "_parent": {
                 "$ref": "cycHFXkbWDvNBLIL7h+d"
               },
-              "guard": "Crear cliente; actor: Ventas / cobranza; identificación y contacto válidos; sin duplicado"
+              "guard": "Crear cliente; actor: Ventas; identificación y contacto válidos; sin duplicado"
             },
             {
               "_type": "UMLInteractionOperand",
@@ -12728,7 +12728,7 @@
               "_parent": {
                 "$ref": "cycHFXkbWDvNBLIL7h+d"
               },
-              "guard": "Editar cliente; actor: Ventas / cobranza; cliente existente y versión vigente"
+              "guard": "Editar cliente; actor: Ventas; cliente existente y versión vigente"
             },
             {
               "_type": "UMLInteractionOperand",
@@ -12736,7 +12736,7 @@
               "_parent": {
                 "$ref": "cycHFXkbWDvNBLIL7h+d"
               },
-              "guard": "Desactivar cliente; actor: Propietario / administración; sin operaciones que requieran atención activa"
+              "guard": "Desactivar cliente; actor: Administrador; sin operaciones que requieran atención activa"
             },
             {
               "_type": "UMLInteractionOperand",
@@ -13880,7 +13880,7 @@
                           "top": 710,
                           "width": 547.3499999999999,
                           "height": 15,
-                          "text": "[Consultar costos y precios; actor: Propietario / administración; producto accesible]"
+                          "text": "[Consultar costos y precios; actor: Propietario; producto accesible]"
                         }
                       ],
                       "lineColor": "#303744",
@@ -13919,7 +13919,7 @@
                           "top": 1180,
                           "width": 660.9899999999999,
                           "height": 15,
-                          "text": "[Definir nueva vigencia; actor: Propietario / administración; costo y precio válidos; margen aceptado]"
+                          "text": "[Definir nueva vigencia; actor: Propietario; costo y precio válidos; margen aceptado]"
                         }
                       ],
                       "lineColor": "#303744",
@@ -13958,7 +13958,7 @@
                           "top": 1750,
                           "width": 758.0849999999999,
                           "height": 15,
-                          "text": "[Corregir o finalizar vigencia; actor: Propietario / administración; cambio autorizado; sin alterar acuerdos históricos]"
+                          "text": "[Corregir o finalizar vigencia; actor: Propietario; cambio autorizado; sin alterar acuerdos históricos]"
                         }
                       ],
                       "lineColor": "#303744",
@@ -15991,7 +15991,7 @@
           "showSequenceNumber": false
         }
       ],
-      "documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Propietario / administración. Costo de referencia por producto y unidad; precio con vigencia. Margen estimado, sin costeo automático por animal. El histórico del pedido no se recalcula.",
+      "documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Superadministrador, Propietario, Finanzas, Ventas. Costo de referencia por producto y unidad; precio con vigencia. Margen estimado, sin costeo automático por animal. El histórico del pedido no se recalcula.",
       "messages": [
         {
           "_type": "UMLMessage",
@@ -16336,7 +16336,7 @@
               "_parent": {
                 "$ref": "BBZUbZxtGIkV0lGeGvaA"
               },
-              "guard": "Consultar costos y precios; actor: Propietario / administración; producto accesible"
+              "guard": "Consultar costos y precios; actor: Propietario; producto accesible"
             },
             {
               "_type": "UMLInteractionOperand",
@@ -16344,7 +16344,7 @@
               "_parent": {
                 "$ref": "BBZUbZxtGIkV0lGeGvaA"
               },
-              "guard": "Definir nueva vigencia; actor: Propietario / administración; costo y precio válidos; margen aceptado"
+              "guard": "Definir nueva vigencia; actor: Propietario; costo y precio válidos; margen aceptado"
             },
             {
               "_type": "UMLInteractionOperand",
@@ -16352,7 +16352,7 @@
               "_parent": {
                 "$ref": "BBZUbZxtGIkV0lGeGvaA"
               },
-              "guard": "Corregir o finalizar vigencia; actor: Propietario / administración; cambio autorizado; sin alterar acuerdos históricos"
+              "guard": "Corregir o finalizar vigencia; actor: Propietario; cambio autorizado; sin alterar acuerdos históricos"
             },
             {
               "_type": "UMLInteractionOperand",
@@ -17535,7 +17535,7 @@
                           "top": 1280,
                           "width": 540.06,
                           "height": 15,
-                          "text": "[Preparar y presentar; actor: Ventas / cobranza; precios vigentes; detalles válidos]"
+                          "text": "[Preparar y presentar; actor: Ventas; precios vigentes; detalles válidos]"
                         }
                       ],
                       "lineColor": "#303744",
@@ -17652,7 +17652,7 @@
                           "top": 2790,
                           "width": 624.87,
                           "height": 15,
-                          "text": "[Consultar cotizaciones; actor: Ventas / cobranza; alcance autorizado; comprador solo propias]"
+                          "text": "[Consultar cotizaciones; actor: Ventas; alcance autorizado; comprador solo propias]"
                         }
                       ],
                       "lineColor": "#303744",
@@ -20651,7 +20651,7 @@
           "showSequenceNumber": false
         }
       ],
-      "documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Ventas / cobranza, Comprador. Cotización y pedido separados. Rechazar no inicia preparación; cambiar lo cotizado requiere nueva aceptación.",
+      "documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Superadministrador, Propietario, Comprador, Ventas. Cotización y pedido separados. Rechazar no inicia preparación; cambiar lo cotizado requiere nueva aceptación.",
       "messages": [
         {
           "_type": "UMLMessage",
@@ -21122,7 +21122,7 @@
               "_parent": {
                 "$ref": "2GHXyxn1k5THZo5Hd6us"
               },
-              "guard": "Preparar y presentar; actor: Ventas / cobranza; precios vigentes; detalles válidos"
+              "guard": "Preparar y presentar; actor: Ventas; precios vigentes; detalles válidos"
             },
             {
               "_type": "UMLInteractionOperand",
@@ -21146,7 +21146,7 @@
               "_parent": {
                 "$ref": "2GHXyxn1k5THZo5Hd6us"
               },
-              "guard": "Consultar cotizaciones; actor: Ventas / cobranza; alcance autorizado; comprador solo propias"
+              "guard": "Consultar cotizaciones; actor: Ventas; alcance autorizado; comprador solo propias"
             },
             {
               "_type": "UMLInteractionOperand",
@@ -22290,7 +22290,7 @@
                           "top": 710,
                           "width": 637.26,
                           "height": 15,
-                          "text": "[Confirmar pedido; actor: Ventas / cobranza; aceptación vigente; fecha y condiciones acordadas]"
+                          "text": "[Confirmar pedido; actor: Ventas; aceptación vigente; fecha y condiciones acordadas]"
                         }
                       ],
                       "lineColor": "#303744",
@@ -22368,7 +22368,7 @@
                           "top": 1750,
                           "width": 594.72,
                           "height": 15,
-                          "text": "[Gestionar cambio o incidencia; actor: Ventas / cobranza; acuerdo con cliente identificado]"
+                          "text": "[Gestionar cambio o incidencia; actor: Ventas; acuerdo con cliente identificado]"
                         }
                       ],
                       "lineColor": "#303744",
@@ -22407,7 +22407,7 @@
                           "top": 2320,
                           "width": 608.7900000000001,
                           "height": 15,
-                          "text": "[Cancelar pedido; actor: Ventas / cobranza; cancelación autorizada; efecto de seña definido]"
+                          "text": "[Cancelar pedido; actor: Ventas; cancelación autorizada; efecto de seña definido]"
                         }
                       ],
                       "lineColor": "#303744",
@@ -25042,7 +25042,7 @@
           "showSequenceNumber": false
         }
       ],
-      "documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Ventas / cobranza, Comprador. Reservas y pagos se gestionan en sus módulos con referencia al pedido. Cancelar resuelve seña y reservas por acuerdo; no borra dinero.",
+      "documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Superadministrador, Propietario, Comprador, Ventas. Reservas y pagos se gestionan en sus módulos con referencia al pedido. Cancelar resuelve seña y reservas por acuerdo; no borra dinero.",
       "messages": [
         {
           "_type": "UMLMessage",
@@ -25459,7 +25459,7 @@
               "_parent": {
                 "$ref": "iA66nDNN1CyXs0NHu9XI"
               },
-              "guard": "Confirmar pedido; actor: Ventas / cobranza; aceptación vigente; fecha y condiciones acordadas"
+              "guard": "Confirmar pedido; actor: Ventas; aceptación vigente; fecha y condiciones acordadas"
             },
             {
               "_type": "UMLInteractionOperand",
@@ -25475,7 +25475,7 @@
               "_parent": {
                 "$ref": "iA66nDNN1CyXs0NHu9XI"
               },
-              "guard": "Gestionar cambio o incidencia; actor: Ventas / cobranza; acuerdo con cliente identificado"
+              "guard": "Gestionar cambio o incidencia; actor: Ventas; acuerdo con cliente identificado"
             },
             {
               "_type": "UMLInteractionOperand",
@@ -25483,7 +25483,7 @@
               "_parent": {
                 "$ref": "iA66nDNN1CyXs0NHu9XI"
               },
-              "guard": "Cancelar pedido; actor: Ventas / cobranza; cancelación autorizada; efecto de seña definido"
+              "guard": "Cancelar pedido; actor: Ventas; cancelación autorizada; efecto de seña definido"
             },
             {
               "_type": "UMLInteractionOperand",
@@ -26627,7 +26627,7 @@
                           "top": 710,
                           "width": 601.29,
                           "height": 15,
-                          "text": "[Administrar clasificaciones; actor: Propietario / administración; código único; familia válida]"
+                          "text": "[Administrar clasificaciones; actor: Administrador; código único; familia válida]"
                         }
                       ],
                       "lineColor": "#303744",
@@ -26666,7 +26666,7 @@
                           "top": 1180,
                           "width": 634.065,
                           "height": 15,
-                          "text": "[Crear producto; actor: Propietario / administración; clasificación activa; código y unidad válidos]"
+                          "text": "[Crear producto; actor: Administrador; clasificación activa; código y unidad válidos]"
                         }
                       ],
                       "lineColor": "#303744",
@@ -26705,7 +26705,7 @@
                           "top": 1750,
                           "width": 693.795,
                           "height": 15,
-                          "text": "[Editar o desactivar producto; actor: Propietario / administración; cambio autorizado; historia conservada]"
+                          "text": "[Editar o desactivar producto; actor: Administrador; cambio autorizado; historia conservada]"
                         }
                       ],
                       "lineColor": "#303744",
@@ -29260,7 +29260,7 @@
           "showSequenceNumber": false
         }
       ],
-      "documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Propietario / administración, Almacén, Comprador. El catálogo define qué es cada corte o derivado. Crear un producto no crea stock. Catálogo ilustrativo pendiente de validación comercial.",
+      "documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Superadministrador, Propietario, Administrador, Comprador, Ventas, Producción, Almacén, Responsable de entrega. El catálogo define qué es cada corte o derivado. Crear un producto no crea stock. Catálogo ilustrativo pendiente de validación comercial.",
       "messages": [
         {
           "_type": "UMLMessage",
@@ -29664,7 +29664,7 @@
               "_parent": {
                 "$ref": "9ULAg4vpQGpqpxzTtgGe"
               },
-              "guard": "Administrar clasificaciones; actor: Propietario / administración; código único; familia válida"
+              "guard": "Administrar clasificaciones; actor: Administrador; código único; familia válida"
             },
             {
               "_type": "UMLInteractionOperand",
@@ -29672,7 +29672,7 @@
               "_parent": {
                 "$ref": "9ULAg4vpQGpqpxzTtgGe"
               },
-              "guard": "Crear producto; actor: Propietario / administración; clasificación activa; código y unidad válidos"
+              "guard": "Crear producto; actor: Administrador; clasificación activa; código y unidad válidos"
             },
             {
               "_type": "UMLInteractionOperand",
@@ -29680,7 +29680,7 @@
               "_parent": {
                 "$ref": "9ULAg4vpQGpqpxzTtgGe"
               },
-              "guard": "Editar o desactivar producto; actor: Propietario / administración; cambio autorizado; historia conservada"
+              "guard": "Editar o desactivar producto; actor: Administrador; cambio autorizado; historia conservada"
             },
             {
               "_type": "UMLInteractionOperand",
@@ -36063,7 +36063,7 @@
           "showSequenceNumber": false
         }
       ],
-      "documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Producción, Almacén. La orden produce varios resultados identificados. Cada resultado se vincula a producto/clasificación y lote. Cantidades previstas no son stock. Almacén captura pesajes manualmente; no hay interfaz automática de balanza.",
+      "documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Superadministrador, Propietario, Administrador, Producción, Almacén. La orden produce varios resultados identificados. Cada resultado se vincula a producto/clasificación y lote. Cantidades previstas no son stock. Almacén captura pesajes manualmente; no hay interfaz automática de balanza.",
       "messages": [
         {
           "_type": "UMLMessage",
@@ -41381,7 +41381,7 @@
           "showSequenceNumber": false
         }
       ],
-      "documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Almacén. Disponible = físico apto menos reservas activas. Cada movimiento y reserva tiene referencia única. La confirmación de producción no es una entrada.",
+      "documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Superadministrador, Propietario, Administrador, Producción, Almacén. Disponible = físico apto menos reservas activas. Cada movimiento y reserva tiene referencia única. La confirmación de producción no es una entrada.",
       "messages": [
         {
           "_type": "UMLMessage",
@@ -43046,7 +43046,7 @@
                           "top": 710,
                           "width": 722.67,
                           "height": 15,
-                          "text": "[Registrar seña, cobro o abono; actor: Ventas / cobranza; importe positivo; referencia nueva y dinero recibido]"
+                          "text": "[Registrar seña, cobro o abono; actor: Ventas; importe positivo; referencia nueva y dinero recibido]"
                         }
                       ],
                       "lineColor": "#303744",
@@ -43085,7 +43085,7 @@
                           "top": 1280,
                           "width": 591.81,
                           "height": 15,
-                          "text": "[Acordar crédito; actor: Ventas / cobranza; autorización e importe/vencimiento acordados]"
+                          "text": "[Acordar crédito; actor: Ventas; autorización e importe/vencimiento acordados]"
                         }
                       ],
                       "lineColor": "#303744",
@@ -43124,7 +43124,7 @@
                           "top": 1850,
                           "width": 607.59,
                           "height": 15,
-                          "text": "[Consultar y seguir deuda; actor: Ventas / cobranza; cliente identificado y alcance permitido]"
+                          "text": "[Consultar y seguir deuda; actor: Ventas; cliente identificado y alcance permitido]"
                         }
                       ],
                       "lineColor": "#303744",
@@ -43163,7 +43163,7 @@
                           "top": 2420,
                           "width": 683.835,
                           "height": 15,
-                          "text": "[Corregir registro de pago; actor: Propietario / administración; error comprobado; corrección autorizada]"
+                          "text": "[Corregir registro de pago; actor: Propietario; error comprobado; corrección autorizada]"
                         }
                       ],
                       "lineColor": "#303744",
@@ -43202,7 +43202,7 @@
                           "top": 2990,
                           "width": 676.68,
                           "height": 15,
-                          "text": "[Gestionar comprobante fiscal; actor: Ventas / cobranza; integración habilitada; datos de venta válidos]"
+                          "text": "[Gestionar comprobante fiscal; actor: Ventas; integración habilitada; datos de venta válidos]"
                         }
                       ],
                       "lineColor": "#303744",
@@ -46838,7 +46838,7 @@
           "showSequenceNumber": false
         }
       ],
-      "documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Ventas / cobranza, Propietario / administración. Productos y servicios acordados/prestados separados. Deuda independiente de entrega. Facturación externa solo con integración habilitada y respuesta confirmada.",
+      "documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Superadministrador, Propietario, Finanzas, Ventas. Productos y servicios acordados/prestados separados. Deuda independiente de entrega. Facturación externa solo con integración habilitada y respuesta confirmada.",
       "messages": [
         {
           "_type": "UMLMessage",
@@ -47355,7 +47355,7 @@
               "_parent": {
                 "$ref": "ug8dWcChoxOGvAf7WLTV"
               },
-              "guard": "Registrar seña, cobro o abono; actor: Ventas / cobranza; importe positivo; referencia nueva y dinero recibido"
+              "guard": "Registrar seña, cobro o abono; actor: Ventas; importe positivo; referencia nueva y dinero recibido"
             },
             {
               "_type": "UMLInteractionOperand",
@@ -47363,7 +47363,7 @@
               "_parent": {
                 "$ref": "ug8dWcChoxOGvAf7WLTV"
               },
-              "guard": "Acordar crédito; actor: Ventas / cobranza; autorización e importe/vencimiento acordados"
+              "guard": "Acordar crédito; actor: Ventas; autorización e importe/vencimiento acordados"
             },
             {
               "_type": "UMLInteractionOperand",
@@ -47371,7 +47371,7 @@
               "_parent": {
                 "$ref": "ug8dWcChoxOGvAf7WLTV"
               },
-              "guard": "Consultar y seguir deuda; actor: Ventas / cobranza; cliente identificado y alcance permitido"
+              "guard": "Consultar y seguir deuda; actor: Ventas; cliente identificado y alcance permitido"
             },
             {
               "_type": "UMLInteractionOperand",
@@ -47379,7 +47379,7 @@
               "_parent": {
                 "$ref": "ug8dWcChoxOGvAf7WLTV"
               },
-              "guard": "Corregir registro de pago; actor: Propietario / administración; error comprobado; corrección autorizada"
+              "guard": "Corregir registro de pago; actor: Propietario; error comprobado; corrección autorizada"
             },
             {
               "_type": "UMLInteractionOperand",
@@ -47415,7 +47415,7 @@
                   ]
                 }
               ],
-              "guard": "Gestionar comprobante fiscal; actor: Ventas / cobranza; integración habilitada; datos de venta válidos"
+              "guard": "Gestionar comprobante fiscal; actor: Ventas; integración habilitada; datos de venta válidos"
             },
             {
               "_type": "UMLInteractionOperand",
@@ -52872,7 +52872,7 @@
           "showSequenceNumber": false
         }
       ],
-      "documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Responsable de entrega, Comprador. Solo recepción de entregas asignadas/autorizadas/descargadas admite captura offline. Confirmación central distingue conforme/observada; no modifica deuda.",
+      "documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Superadministrador, Propietario, Administrador, Comprador, Ventas, Responsable de entrega. Solo recepción de entregas asignadas/autorizadas/descargadas admite captura offline. Confirmación central distingue conforme/observada; no modifica deuda.",
       "messages": [
         {
           "_type": "UMLMessage",
@@ -56892,7 +56892,7 @@
           "showSequenceNumber": false
         }
       ],
-      "documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Propietario / administración, Ventas / cobranza, Producción, Almacén, Responsable de entrega, Comprador. Todos acceden según permiso. Comprador solo sus operaciones; costos y resultados generales quedan restringidos. Son consultas: no crean pedidos, stock ni pagos.",
+      "documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Superadministrador, Propietario, Administrador, Comprador, Ventas, Producción, Almacén, Responsable de entrega. Todos acceden según permiso. Comprador solo sus operaciones; costos y resultados generales quedan restringidos. Son consultas: no crean pedidos, stock ni pagos.",
       "messages": [
         {
           "_type": "UMLMessage",

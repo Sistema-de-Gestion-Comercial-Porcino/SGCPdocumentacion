@@ -1133,7 +1133,7 @@
 													"top": 710,
 													"width": 637.26,
 													"height": 15,
-													"text": "[Confirmar pedido; actor: Ventas / cobranza; aceptación vigente; fecha y condiciones acordadas]"
+													"text": "[Confirmar pedido; actor: Ventas; aceptación vigente; fecha y condiciones acordadas]"
 												}
 											],
 											"lineColor": "#303744",
@@ -1211,7 +1211,7 @@
 													"top": 1750,
 													"width": 594.72,
 													"height": 15,
-													"text": "[Gestionar cambio o incidencia; actor: Ventas / cobranza; acuerdo con cliente identificado]"
+													"text": "[Gestionar cambio o incidencia; actor: Ventas; acuerdo con cliente identificado]"
 												}
 											],
 											"lineColor": "#303744",
@@ -1250,7 +1250,7 @@
 													"top": 2320,
 													"width": 608.7900000000001,
 													"height": 15,
-													"text": "[Cancelar pedido; actor: Ventas / cobranza; cancelación autorizada; efecto de seña definido]"
+													"text": "[Cancelar pedido; actor: Ventas; cancelación autorizada; efecto de seña definido]"
 												}
 											],
 											"lineColor": "#303744",
@@ -3885,7 +3885,7 @@
 					"showSequenceNumber": false
 				}
 			],
-			"documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Ventas / cobranza, Comprador. Reservas y pagos se gestionan en sus módulos con referencia al pedido. Cancelar resuelve seña y reservas por acuerdo; no borra dinero.",
+			"documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Superadministrador, Propietario, Comprador, Ventas. Reservas y pagos se gestionan en sus módulos con referencia al pedido. Cancelar resuelve seña y reservas por acuerdo; no borra dinero.",
 			"messages": [
 				{
 					"_type": "UMLMessage",
@@ -4302,7 +4302,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhjO/yUNLSfNU="
 							},
-							"guard": "Confirmar pedido; actor: Ventas / cobranza; aceptación vigente; fecha y condiciones acordadas"
+							"guard": "Confirmar pedido; actor: Ventas; aceptación vigente; fecha y condiciones acordadas"
 						},
 						{
 							"_type": "UMLInteractionOperand",
@@ -4318,7 +4318,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhjO/yUNLSfNU="
 							},
-							"guard": "Gestionar cambio o incidencia; actor: Ventas / cobranza; acuerdo con cliente identificado"
+							"guard": "Gestionar cambio o incidencia; actor: Ventas; acuerdo con cliente identificado"
 						},
 						{
 							"_type": "UMLInteractionOperand",
@@ -4326,7 +4326,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhjO/yUNLSfNU="
 							},
-							"guard": "Cancelar pedido; actor: Ventas / cobranza; cancelación autorizada; efecto de seña definido"
+							"guard": "Cancelar pedido; actor: Ventas; cancelación autorizada; efecto de seña definido"
 						},
 						{
 							"_type": "UMLInteractionOperand",

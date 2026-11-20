@@ -1133,7 +1133,7 @@
 													"top": 710,
 													"width": 439.185,
 													"height": 15,
-													"text": "[Consultar y buscar; actor: Ventas / cobranza; consulta autorizada]"
+													"text": "[Consultar y buscar; actor: Ventas; consulta autorizada]"
 												}
 											],
 											"lineColor": "#303744",
@@ -1172,7 +1172,7 @@
 													"top": 1180,
 													"width": 573.9449999999999,
 													"height": 15,
-													"text": "[Crear cliente; actor: Ventas / cobranza; identificación y contacto válidos; sin duplicado]"
+													"text": "[Crear cliente; actor: Ventas; identificación y contacto válidos; sin duplicado]"
 												}
 											],
 											"lineColor": "#303744",
@@ -1211,7 +1211,7 @@
 													"top": 1650,
 													"width": 493.8449999999999,
 													"height": 15,
-													"text": "[Editar cliente; actor: Ventas / cobranza; cliente existente y versión vigente]"
+													"text": "[Editar cliente; actor: Ventas; cliente existente y versión vigente]"
 												}
 											],
 											"lineColor": "#303744",
@@ -1250,7 +1250,7 @@
 													"top": 2220,
 													"width": 670.005,
 													"height": 15,
-													"text": "[Desactivar cliente; actor: Propietario / administración; sin operaciones que requieran atención activa]"
+													"text": "[Desactivar cliente; actor: Administrador; sin operaciones que requieran atención activa]"
 												}
 											],
 											"lineColor": "#303744",
@@ -3645,7 +3645,7 @@
 					"showSequenceNumber": false
 				}
 			],
-			"documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Ventas / cobranza, Propietario / administración. Cliente y usuario son conceptos distintos: atención presencial no requiere que el cliente tenga cuenta.",
+			"documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Superadministrador, Propietario, Administrador, Ventas. Cliente y usuario son conceptos distintos: atención presencial no requiere que el cliente tenga cuenta.",
 			"messages": [
 				{
 					"_type": "UMLMessage",
@@ -4034,7 +4034,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhjO/rCMdE50E="
 							},
-							"guard": "Consultar y buscar; actor: Ventas / cobranza; consulta autorizada"
+							"guard": "Consultar y buscar; actor: Ventas; consulta autorizada"
 						},
 						{
 							"_type": "UMLInteractionOperand",
@@ -4042,7 +4042,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhjO/rCMdE50E="
 							},
-							"guard": "Crear cliente; actor: Ventas / cobranza; identificación y contacto válidos; sin duplicado"
+							"guard": "Crear cliente; actor: Ventas; identificación y contacto válidos; sin duplicado"
 						},
 						{
 							"_type": "UMLInteractionOperand",
@@ -4050,7 +4050,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhjO/rCMdE50E="
 							},
-							"guard": "Editar cliente; actor: Ventas / cobranza; cliente existente y versión vigente"
+							"guard": "Editar cliente; actor: Ventas; cliente existente y versión vigente"
 						},
 						{
 							"_type": "UMLInteractionOperand",
@@ -4058,7 +4058,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhjO/rCMdE50E="
 							},
-							"guard": "Desactivar cliente; actor: Propietario / administración; sin operaciones que requieran atención activa"
+							"guard": "Desactivar cliente; actor: Administrador; sin operaciones que requieran atención activa"
 						},
 						{
 							"_type": "UMLInteractionOperand",

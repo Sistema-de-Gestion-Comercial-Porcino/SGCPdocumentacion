@@ -1133,7 +1133,7 @@
 													"top": 710,
 													"width": 601.29,
 													"height": 15,
-													"text": "[Administrar clasificaciones; actor: Propietario / administración; código único; familia válida]"
+													"text": "[Administrar clasificaciones; actor: Administrador; código único; familia válida]"
 												}
 											],
 											"lineColor": "#303744",
@@ -1172,7 +1172,7 @@
 													"top": 1180,
 													"width": 634.065,
 													"height": 15,
-													"text": "[Crear producto; actor: Propietario / administración; clasificación activa; código y unidad válidos]"
+													"text": "[Crear producto; actor: Administrador; clasificación activa; código y unidad válidos]"
 												}
 											],
 											"lineColor": "#303744",
@@ -1211,7 +1211,7 @@
 													"top": 1750,
 													"width": 693.795,
 													"height": 15,
-													"text": "[Editar o desactivar producto; actor: Propietario / administración; cambio autorizado; historia conservada]"
+													"text": "[Editar o desactivar producto; actor: Administrador; cambio autorizado; historia conservada]"
 												}
 											],
 											"lineColor": "#303744",
@@ -3766,7 +3766,7 @@
 					"showSequenceNumber": false
 				}
 			],
-			"documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Propietario / administración, Almacén, Comprador. El catálogo define qué es cada corte o derivado. Crear un producto no crea stock. Catálogo ilustrativo pendiente de validación comercial.",
+			"documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Superadministrador, Propietario, Administrador, Comprador, Ventas, Producción, Almacén, Responsable de entrega. El catálogo define qué es cada corte o derivado. Crear un producto no crea stock. Catálogo ilustrativo pendiente de validación comercial.",
 			"messages": [
 				{
 					"_type": "UMLMessage",
@@ -4170,7 +4170,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhjO/1m9bUFcI="
 							},
-							"guard": "Administrar clasificaciones; actor: Propietario / administración; código único; familia válida"
+							"guard": "Administrar clasificaciones; actor: Administrador; código único; familia válida"
 						},
 						{
 							"_type": "UMLInteractionOperand",
@@ -4178,7 +4178,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhjO/1m9bUFcI="
 							},
-							"guard": "Crear producto; actor: Propietario / administración; clasificación activa; código y unidad válidos"
+							"guard": "Crear producto; actor: Administrador; clasificación activa; código y unidad válidos"
 						},
 						{
 							"_type": "UMLInteractionOperand",
@@ -4186,7 +4186,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhjO/1m9bUFcI="
 							},
-							"guard": "Editar o desactivar producto; actor: Propietario / administración; cambio autorizado; historia conservada"
+							"guard": "Editar o desactivar producto; actor: Administrador; cambio autorizado; historia conservada"
 						},
 						{
 							"_type": "UMLInteractionOperand",

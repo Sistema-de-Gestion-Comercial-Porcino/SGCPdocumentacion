@@ -2664,7 +2664,7 @@
               "top": 1200,
               "width": 2400,
               "height": 230,
-              "text": "Datos ilustrativos; instantánea parcial. El reporte filtra por fechas, cliente, producto/corte y estado. Comprador solo CLI-17; administración puede consultar alcance autorizado. Un reporte se deriva de datos existentes; no necesita una tabla por listado."
+              "text": "Datos ilustrativos; instantánea parcial. El reporte filtra por fechas, cliente, producto/corte y estado. Comprador solo CLI-17; Administrador y Propietario consultan según la matriz de reportes de su rol. Un reporte se deriva de datos existentes; no necesita una tabla por listado."
             }
           ]
         },
@@ -9551,7 +9551,7 @@
           }
         }
       ],
-      "documentation": "El reporte filtra por fechas, cliente, producto/corte y estado. Comprador solo CLI-17; administración puede consultar alcance autorizado. Un reporte se deriva de datos existentes; no necesita una tabla por listado."
+      "documentation": "El reporte filtra por fechas, cliente, producto/corte y estado. Comprador solo CLI-17; Administrador y Propietario consultan según la matriz de reportes de su rol. Un reporte se deriva de datos existentes; no necesita una tabla por listado."
     }
   ],
   "documentVersion": 1

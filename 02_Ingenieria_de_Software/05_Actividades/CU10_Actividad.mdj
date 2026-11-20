@@ -1142,7 +1142,7 @@
 									"top": 904,
 									"width": 610,
 									"height": 18,
-									"text": "Ventas / cobranza",
+									"text": "Ventas",
 									"verticalAlignment": 3
 								}
 							],
@@ -1307,7 +1307,7 @@
 											"parentStyle": true,
 											"width": 162.96,
 											"height": 15,
-											"text": "(from Ventas / cobranza)"
+											"text": "(from Ventas)"
 										},
 										{
 											"_type": "LabelView",
@@ -1950,7 +1950,7 @@
 											"parentStyle": true,
 											"width": 173.824,
 											"height": 16,
-											"text": "(from Ventas / cobranza)"
+											"text": "(from Ventas)"
 										},
 										{
 											"_type": "LabelView",
@@ -3007,7 +3007,7 @@
 									"top": 904,
 									"width": 610,
 									"height": 18,
-									"text": "Ventas / cobranza",
+									"text": "Ventas",
 									"verticalAlignment": 3
 								}
 							],
@@ -3172,7 +3172,7 @@
 											"parentStyle": true,
 											"width": 162.96,
 											"height": 15,
-											"text": "(from Ventas / cobranza)"
+											"text": "(from Ventas)"
 										},
 										{
 											"_type": "LabelView",
@@ -3815,7 +3815,7 @@
 											"parentStyle": true,
 											"width": 173.824,
 											"height": 16,
-											"text": "(from Ventas / cobranza)"
+											"text": "(from Ventas)"
 										},
 										{
 											"_type": "LabelView",
@@ -4872,7 +4872,7 @@
 									"top": 904,
 									"width": 610,
 									"height": 18,
-									"text": "Ventas / cobranza",
+									"text": "Ventas",
 									"verticalAlignment": 3
 								}
 							],
@@ -5037,7 +5037,7 @@
 											"parentStyle": true,
 											"width": 162.96,
 											"height": 15,
-											"text": "(from Ventas / cobranza)"
+											"text": "(from Ventas)"
 										},
 										{
 											"_type": "LabelView",
@@ -5680,7 +5680,7 @@
 											"parentStyle": true,
 											"width": 173.824,
 											"height": 16,
-											"text": "(from Ventas / cobranza)"
+											"text": "(from Ventas)"
 										},
 										{
 											"_type": "LabelView",
@@ -6737,7 +6737,7 @@
 									"top": 3254,
 									"width": 610,
 									"height": 18,
-									"text": "Propietario / administración",
+									"text": "Propietario",
 									"verticalAlignment": 3
 								}
 							],
@@ -6902,7 +6902,7 @@
 											"parentStyle": true,
 											"width": 225.96,
 											"height": 15,
-											"text": "(from Propietario / administración)"
+											"text": "(from Propietario)"
 										},
 										{
 											"_type": "LabelView",
@@ -7545,7 +7545,7 @@
 											"parentStyle": true,
 											"width": 241.024,
 											"height": 16,
-											"text": "(from Propietario / administración)"
+											"text": "(from Propietario)"
 										},
 										{
 											"_type": "LabelView",
@@ -8602,7 +8602,7 @@
 									"top": 3254,
 									"width": 610,
 									"height": 18,
-									"text": "Ventas / cobranza",
+									"text": "Ventas",
 									"verticalAlignment": 3
 								}
 							],
@@ -8773,7 +8773,7 @@
 											"parentStyle": true,
 											"width": 162.96,
 											"height": 15,
-											"text": "(from Ventas / cobranza)"
+											"text": "(from Ventas)"
 										},
 										{
 											"_type": "LabelView",
@@ -9295,7 +9295,7 @@
 											"parentStyle": true,
 											"width": 173.824,
 											"height": 16,
-											"text": "(from Ventas / cobranza)"
+											"text": "(from Ventas)"
 										},
 										{
 											"_type": "LabelView",
@@ -9615,7 +9615,7 @@
 											"parentStyle": true,
 											"width": 162.96,
 											"height": 15,
-											"text": "(from Ventas / cobranza)"
+											"text": "(from Ventas)"
 										},
 										{
 											"_type": "LabelView",
@@ -11740,7 +11740,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGhh4TVFVP7H68="
 					},
-					"name": "Ventas / cobranza",
+					"name": "Ventas",
 					"nodes": [
 						{
 							"_type": "UMLAction",
@@ -11829,7 +11829,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGhh4TVFVP7H68="
 					},
-					"name": "Ventas / cobranza",
+					"name": "Ventas",
 					"nodes": [
 						{
 							"_type": "UMLAction",
@@ -11918,7 +11918,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGhh4TVFVP7H68="
 					},
-					"name": "Ventas / cobranza",
+					"name": "Ventas",
 					"nodes": [
 						{
 							"_type": "UMLAction",
@@ -12007,7 +12007,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGhh4TVFVP7H68="
 					},
-					"name": "Propietario / administración",
+					"name": "Propietario",
 					"nodes": [
 						{
 							"_type": "UMLAction",
@@ -12096,7 +12096,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGhh4TVFVP7H68="
 					},
-					"name": "Ventas / cobranza",
+					"name": "Ventas",
 					"nodes": [
 						{
 							"_type": "UMLAction",

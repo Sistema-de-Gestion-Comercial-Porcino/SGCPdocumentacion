@@ -866,7 +866,7 @@
 									"top": 904,
 									"width": 610,
 									"height": 18,
-									"text": "Propietario / administración",
+									"text": "Propietario",
 									"verticalAlignment": 3
 								}
 							],
@@ -1028,7 +1028,7 @@
 											"parentStyle": true,
 											"width": 225.96,
 											"height": 15,
-											"text": "(from Propietario / administración)"
+											"text": "(from Propietario)"
 										},
 										{
 											"_type": "LabelView",
@@ -1550,7 +1550,7 @@
 											"parentStyle": true,
 											"width": 241.024,
 											"height": 16,
-											"text": "(from Propietario / administración)"
+											"text": "(from Propietario)"
 										},
 										{
 											"_type": "LabelView",
@@ -2507,7 +2507,7 @@
 									"top": 904,
 									"width": 610,
 									"height": 18,
-									"text": "Propietario / administración",
+									"text": "Propietario",
 									"verticalAlignment": 3
 								}
 							],
@@ -2672,7 +2672,7 @@
 											"parentStyle": true,
 											"width": 225.96,
 											"height": 15,
-											"text": "(from Propietario / administración)"
+											"text": "(from Propietario)"
 										},
 										{
 											"_type": "LabelView",
@@ -3315,7 +3315,7 @@
 											"parentStyle": true,
 											"width": 241.024,
 											"height": 16,
-											"text": "(from Propietario / administración)"
+											"text": "(from Propietario)"
 										},
 										{
 											"_type": "LabelView",
@@ -4372,7 +4372,7 @@
 									"top": 904,
 									"width": 610,
 									"height": 18,
-									"text": "Propietario / administración",
+									"text": "Propietario",
 									"verticalAlignment": 3
 								}
 							],
@@ -4537,7 +4537,7 @@
 											"parentStyle": true,
 											"width": 225.96,
 											"height": 15,
-											"text": "(from Propietario / administración)"
+											"text": "(from Propietario)"
 										},
 										{
 											"_type": "LabelView",
@@ -5180,7 +5180,7 @@
 											"parentStyle": true,
 											"width": 241.024,
 											"height": 16,
-											"text": "(from Propietario / administración)"
+											"text": "(from Propietario)"
 										},
 										{
 											"_type": "LabelView",
@@ -6687,7 +6687,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGhh4QUwZWZaAU="
 					},
-					"name": "Propietario / administración",
+					"name": "Propietario",
 					"nodes": [
 						{
 							"_type": "UMLAction",
@@ -6768,7 +6768,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGhh4QUwZWZaAU="
 					},
-					"name": "Propietario / administración",
+					"name": "Propietario",
 					"nodes": [
 						{
 							"_type": "UMLAction",
@@ -6857,7 +6857,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGhh4QUwZWZaAU="
 					},
-					"name": "Propietario / administración",
+					"name": "Propietario",
 					"nodes": [
 						{
 							"_type": "UMLAction",

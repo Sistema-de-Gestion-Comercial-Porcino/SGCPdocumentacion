@@ -113,7 +113,7 @@
 											"top": 100,
 											"width": 2400,
 											"height": 90,
-											"text": "Actores autorizados: Almacén. Se ejecuta la rama de la operación seleccionada."
+											"text": "Actores autorizados: Superadministrador · Propietario · Administrador · Producción · Almacén. Se ejecuta la rama de la operación seleccionada."
 										},
 										{
 											"_type": "UMLCommLifelineView",

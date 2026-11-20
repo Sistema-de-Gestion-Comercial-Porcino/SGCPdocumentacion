@@ -70,6 +70,7 @@ Más reciente arriba.
 
 | Versión | Fecha | Sprint | Cambio | Autor |
 |---|---|---|---|---|
+| v4.1.6 | 2026-11-19 | 4 | Documentación: casos de uso rehechos con un solo actor por rol (Superadministrador, Propietario, Administrador, Finanzas, Ventas, Comprador, Producción, Almacén, Responsable de entrega) y con las secciones del menú en cada caso; roles nuevos llevados a colaboración, secuencias, actividades, objetos, estados y BPMN propuesto; `tipoDocumento` en Cliente | Dario Haziel Tambo Parra |
 | v4.1.5 | 2026-11-19 | 4 | Corrección: el PDF de evidencias de `WebIII` (y el que va dentro del ZIP) lleva cada captura de Swagger a página completa en A4; se agrega su fuente `.docx` | Dario Haziel Tambo Parra |
 | v4.1.4 | 2026-11-19 | 4 | Documentación: carpeta `WebIII` con el ZIP de entrega de SGCPapi (sin `bin`, `obj` ni `.vs`), el PDF de evidencias y la guía de cumplimiento de la rúbrica | Dario Haziel Tambo Parra |
 | v4.1.3 | 2026-11-18 | 4 | Corrección: las guías vigentes (ejecución, Docker, método de verificación, entrega P1 y repartos) usan `dotnet ef ... --context SgcpContext`, necesario desde que SGCPapi tiene también el contexto de SQL Server | Dario Haziel Tambo Parra |

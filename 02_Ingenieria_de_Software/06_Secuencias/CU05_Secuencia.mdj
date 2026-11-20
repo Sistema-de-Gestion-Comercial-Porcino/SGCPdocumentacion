@@ -1172,7 +1172,7 @@
 													"top": 1280,
 													"width": 540.06,
 													"height": 15,
-													"text": "[Preparar y presentar; actor: Ventas / cobranza; precios vigentes; detalles válidos]"
+													"text": "[Preparar y presentar; actor: Ventas; precios vigentes; detalles válidos]"
 												}
 											],
 											"lineColor": "#303744",
@@ -1289,7 +1289,7 @@
 													"top": 2790,
 													"width": 624.87,
 													"height": 15,
-													"text": "[Consultar cotizaciones; actor: Ventas / cobranza; alcance autorizado; comprador solo propias]"
+													"text": "[Consultar cotizaciones; actor: Ventas; alcance autorizado; comprador solo propias]"
 												}
 											],
 											"lineColor": "#303744",
@@ -4288,7 +4288,7 @@
 					"showSequenceNumber": false
 				}
 			],
-			"documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Ventas / cobranza, Comprador. Cotización y pedido separados. Rechazar no inicia preparación; cambiar lo cotizado requiere nueva aceptación.",
+			"documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Superadministrador, Propietario, Comprador, Ventas. Cotización y pedido separados. Rechazar no inicia preparación; cambiar lo cotizado requiere nueva aceptación.",
 			"messages": [
 				{
 					"_type": "UMLMessage",
@@ -4759,7 +4759,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhjO/vVM5r/QI="
 							},
-							"guard": "Preparar y presentar; actor: Ventas / cobranza; precios vigentes; detalles válidos"
+							"guard": "Preparar y presentar; actor: Ventas; precios vigentes; detalles válidos"
 						},
 						{
 							"_type": "UMLInteractionOperand",
@@ -4783,7 +4783,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhjO/vVM5r/QI="
 							},
-							"guard": "Consultar cotizaciones; actor: Ventas / cobranza; alcance autorizado; comprador solo propias"
+							"guard": "Consultar cotizaciones; actor: Ventas; alcance autorizado; comprador solo propias"
 						},
 						{
 							"_type": "UMLInteractionOperand",

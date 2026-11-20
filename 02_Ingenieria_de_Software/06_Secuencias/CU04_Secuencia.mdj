@@ -1133,7 +1133,7 @@
 													"top": 710,
 													"width": 547.3499999999999,
 													"height": 15,
-													"text": "[Consultar costos y precios; actor: Propietario / administración; producto accesible]"
+													"text": "[Consultar costos y precios; actor: Propietario; producto accesible]"
 												}
 											],
 											"lineColor": "#303744",
@@ -1172,7 +1172,7 @@
 													"top": 1180,
 													"width": 660.9899999999999,
 													"height": 15,
-													"text": "[Definir nueva vigencia; actor: Propietario / administración; costo y precio válidos; margen aceptado]"
+													"text": "[Definir nueva vigencia; actor: Propietario; costo y precio válidos; margen aceptado]"
 												}
 											],
 											"lineColor": "#303744",
@@ -1211,7 +1211,7 @@
 													"top": 1750,
 													"width": 758.0849999999999,
 													"height": 15,
-													"text": "[Corregir o finalizar vigencia; actor: Propietario / administración; cambio autorizado; sin alterar acuerdos históricos]"
+													"text": "[Corregir o finalizar vigencia; actor: Propietario; cambio autorizado; sin alterar acuerdos históricos]"
 												}
 											],
 											"lineColor": "#303744",
@@ -3244,7 +3244,7 @@
 					"showSequenceNumber": false
 				}
 			],
-			"documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Propietario / administración. Costo de referencia por producto y unidad; precio con vigencia. Margen estimado, sin costeo automático por animal. El histórico del pedido no se recalcula.",
+			"documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Superadministrador, Propietario, Finanzas, Ventas. Costo de referencia por producto y unidad; precio con vigencia. Margen estimado, sin costeo automático por animal. El histórico del pedido no se recalcula.",
 			"messages": [
 				{
 					"_type": "UMLMessage",
@@ -3589,7 +3589,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhjO/tTcsK8Eg="
 							},
-							"guard": "Consultar costos y precios; actor: Propietario / administración; producto accesible"
+							"guard": "Consultar costos y precios; actor: Propietario; producto accesible"
 						},
 						{
 							"_type": "UMLInteractionOperand",
@@ -3597,7 +3597,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhjO/tTcsK8Eg="
 							},
-							"guard": "Definir nueva vigencia; actor: Propietario / administración; costo y precio válidos; margen aceptado"
+							"guard": "Definir nueva vigencia; actor: Propietario; costo y precio válidos; margen aceptado"
 						},
 						{
 							"_type": "UMLInteractionOperand",
@@ -3605,7 +3605,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhjO/tTcsK8Eg="
 							},
-							"guard": "Corregir o finalizar vigencia; actor: Propietario / administración; cambio autorizado; sin alterar acuerdos históricos"
+							"guard": "Corregir o finalizar vigencia; actor: Propietario; cambio autorizado; sin alterar acuerdos históricos"
 						},
 						{
 							"_type": "UMLInteractionOperand",

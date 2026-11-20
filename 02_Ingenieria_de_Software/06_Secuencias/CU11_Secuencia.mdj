@@ -5446,7 +5446,7 @@
 					"showSequenceNumber": false
 				}
 			],
-			"documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Responsable de entrega, Comprador. Solo recepción de entregas asignadas/autorizadas/descargadas admite captura offline. Confirmación central distingue conforme/observada; no modifica deuda.",
+			"documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Superadministrador, Propietario, Administrador, Comprador, Ventas, Responsable de entrega. Solo recepción de entregas asignadas/autorizadas/descargadas admite captura offline. Confirmación central distingue conforme/observada; no modifica deuda.",
 			"messages": [
 				{
 					"_type": "UMLMessage",

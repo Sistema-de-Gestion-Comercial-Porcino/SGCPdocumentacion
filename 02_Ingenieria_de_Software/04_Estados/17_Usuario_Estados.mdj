@@ -2406,7 +2406,7 @@
                             "$ref": "AAAAAAGhh4ZpA1co1eM="
                           },
                           "edgePosition": 1,
-                          "text": "deshabilitar [administración autorizada] / revocar sesiones",
+                          "text": "deshabilitar [actor de nivel superior autorizado] / revocar sesiones",
                           "wordWrap": true
                         },
                         {
@@ -2508,7 +2508,7 @@
                             "$ref": "AAAAAAGhh4ZpBVcvjiM="
                           },
                           "edgePosition": 1,
-                          "text": "deshabilitar [administración autorizada] / revocar sesiones",
+                          "text": "deshabilitar [actor de nivel superior autorizado] / revocar sesiones",
                           "wordWrap": true
                         },
                         {
@@ -2610,7 +2610,7 @@
                             "$ref": "AAAAAAGhh4ZpClc11yA="
                           },
                           "edgePosition": 1,
-                          "text": "habilitar [administración autorizada]",
+                          "text": "habilitar [actor de nivel superior autorizado]",
                           "wordWrap": true
                         },
                         {
@@ -2840,7 +2840,7 @@
                       "target": {
                         "$ref": "AAAAAAGhh4Zo8VcD/wc="
                       },
-                      "guard": "administración autorizada",
+                      "guard": "actor de nivel superior autorizado",
                       "triggers": [
                         {
                           "_type": "UMLEvent",
@@ -2875,7 +2875,7 @@
                       "target": {
                         "$ref": "AAAAAAGhh4Zo8VcD/wc="
                       },
-                      "guard": "administración autorizada",
+                      "guard": "actor de nivel superior autorizado",
                       "triggers": [
                         {
                           "_type": "UMLEvent",
@@ -2910,7 +2910,7 @@
                       "target": {
                         "$ref": "AAAAAAGhh4Zo8FbvVuw="
                       },
-                      "guard": "administración autorizada",
+                      "guard": "actor de nivel superior autorizado",
                       "triggers": [
                         {
                           "_type": "UMLEvent",

@@ -1133,7 +1133,7 @@
 													"top": 710,
 													"width": 722.67,
 													"height": 15,
-													"text": "[Registrar seña, cobro o abono; actor: Ventas / cobranza; importe positivo; referencia nueva y dinero recibido]"
+													"text": "[Registrar seña, cobro o abono; actor: Ventas; importe positivo; referencia nueva y dinero recibido]"
 												}
 											],
 											"lineColor": "#303744",
@@ -1172,7 +1172,7 @@
 													"top": 1280,
 													"width": 591.81,
 													"height": 15,
-													"text": "[Acordar crédito; actor: Ventas / cobranza; autorización e importe/vencimiento acordados]"
+													"text": "[Acordar crédito; actor: Ventas; autorización e importe/vencimiento acordados]"
 												}
 											],
 											"lineColor": "#303744",
@@ -1211,7 +1211,7 @@
 													"top": 1850,
 													"width": 607.59,
 													"height": 15,
-													"text": "[Consultar y seguir deuda; actor: Ventas / cobranza; cliente identificado y alcance permitido]"
+													"text": "[Consultar y seguir deuda; actor: Ventas; cliente identificado y alcance permitido]"
 												}
 											],
 											"lineColor": "#303744",
@@ -1250,7 +1250,7 @@
 													"top": 2420,
 													"width": 683.835,
 													"height": 15,
-													"text": "[Corregir registro de pago; actor: Propietario / administración; error comprobado; corrección autorizada]"
+													"text": "[Corregir registro de pago; actor: Propietario; error comprobado; corrección autorizada]"
 												}
 											],
 											"lineColor": "#303744",
@@ -1289,7 +1289,7 @@
 													"top": 2990,
 													"width": 676.68,
 													"height": 15,
-													"text": "[Gestionar comprobante fiscal; actor: Ventas / cobranza; integración habilitada; datos de venta válidos]"
+													"text": "[Gestionar comprobante fiscal; actor: Ventas; integración habilitada; datos de venta válidos]"
 												}
 											],
 											"lineColor": "#303744",
@@ -4925,7 +4925,7 @@
 					"showSequenceNumber": false
 				}
 			],
-			"documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Ventas / cobranza, Propietario / administración. Productos y servicios acordados/prestados separados. Deuda independiente de entrega. Facturación externa solo con integración habilitada y respuesta confirmada.",
+			"documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Superadministrador, Propietario, Finanzas, Ventas. Productos y servicios acordados/prestados separados. Deuda independiente de entrega. Facturación externa solo con integración habilitada y respuesta confirmada.",
 			"messages": [
 				{
 					"_type": "UMLMessage",
@@ -5442,7 +5442,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhjO//quXdCIU="
 							},
-							"guard": "Registrar seña, cobro o abono; actor: Ventas / cobranza; importe positivo; referencia nueva y dinero recibido"
+							"guard": "Registrar seña, cobro o abono; actor: Ventas; importe positivo; referencia nueva y dinero recibido"
 						},
 						{
 							"_type": "UMLInteractionOperand",
@@ -5450,7 +5450,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhjO//quXdCIU="
 							},
-							"guard": "Acordar crédito; actor: Ventas / cobranza; autorización e importe/vencimiento acordados"
+							"guard": "Acordar crédito; actor: Ventas; autorización e importe/vencimiento acordados"
 						},
 						{
 							"_type": "UMLInteractionOperand",
@@ -5458,7 +5458,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhjO//quXdCIU="
 							},
-							"guard": "Consultar y seguir deuda; actor: Ventas / cobranza; cliente identificado y alcance permitido"
+							"guard": "Consultar y seguir deuda; actor: Ventas; cliente identificado y alcance permitido"
 						},
 						{
 							"_type": "UMLInteractionOperand",
@@ -5466,7 +5466,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhjO//quXdCIU="
 							},
-							"guard": "Corregir registro de pago; actor: Propietario / administración; error comprobado; corrección autorizada"
+							"guard": "Corregir registro de pago; actor: Propietario; error comprobado; corrección autorizada"
 						},
 						{
 							"_type": "UMLInteractionOperand",
@@ -5502,7 +5502,7 @@
 									]
 								}
 							],
-							"guard": "Gestionar comprobante fiscal; actor: Ventas / cobranza; integración habilitada; datos de venta válidos"
+							"guard": "Gestionar comprobante fiscal; actor: Ventas; integración habilitada; datos de venta válidos"
 						},
 						{
 							"_type": "UMLInteractionOperand",

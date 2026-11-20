@@ -3366,7 +3366,7 @@
 					"showSequenceNumber": false
 				}
 			],
-			"documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Propietario / administración, Ventas / cobranza, Producción, Almacén, Responsable de entrega, Comprador. Todos acceden según permiso. Comprador solo sus operaciones; costos y resultados generales quedan restringidos. Son consultas: no crean pedidos, stock ni pagos.",
+			"documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Superadministrador, Propietario, Administrador, Comprador, Ventas, Producción, Almacén, Responsable de entrega. Todos acceden según permiso. Comprador solo sus operaciones; costos y resultados generales quedan restringidos. Son consultas: no crean pedidos, stock ni pagos.",
 			"messages": [
 				{
 					"_type": "UMLMessage",

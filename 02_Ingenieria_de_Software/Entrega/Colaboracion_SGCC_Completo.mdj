@@ -52,7 +52,7 @@
               "top": 100,
               "width": 2400,
               "height": 90,
-              "text": "Actores autorizados: Propietario / administración · Ventas / cobranza · Producción · Almacén · Responsable de entrega · Comprador. Se ejecuta la rama de la operación seleccionada."
+              "text": "Actores autorizados: Superadministrador · Propietario · Administrador · Finanzas · Comprador · Ventas · Producción · Almacén · Responsable de entrega. Se ejecuta la rama de la operación seleccionada."
             },
             {
               "_type": "UMLCommLifelineView",
@@ -2801,7 +2801,7 @@
               "top": 3240,
               "width": 2450,
               "height": 500,
-              "text": "Ramas mutuamente excluyentes: las guardas identifican la operación. Los mensajes al repositorio representan servicios de consulta/persistencia coordinados por el control. Selección de productos y acuerdos procede de la interfaz y del actor autorizado.\nEl personal recibe una cuenta de administración. El comprador puede registrarse sin obtener permisos internos. Alta de cuenta no equivale a crear una sesión.\nAlternativas: Informar duplicado o datos faltantes; no crear cuenta interna; Registrar intento y denegar acceso; conservar capturas locales; No cambiar credenciales con token inválido o vencido; Conservar recepción pendiente para posterior acceso autorizado"
+              "text": "Ramas mutuamente excluyentes: las guardas identifican la operación. Los mensajes al repositorio representan servicios de consulta/persistencia coordinados por el control. Selección de productos y acuerdos procede de la interfaz y del actor autorizado.\nEl personal recibe una cuenta con el rol de su puesto. El comprador puede registrarse sin obtener permisos internos. Alta de cuenta no equivale a crear una sesión.\nAlternativas: Informar duplicado o datos faltantes; no crear cuenta interna; Registrar intento y denegar acceso; conservar capturas locales; No cambiar credenciales con token inválido o vencido; Conservar recepción pendiente para posterior acceso autorizado"
             }
           ],
           "sequenceNumbering": "custom"
@@ -2867,7 +2867,7 @@
               },
               "name": "CU01 — Colaboración",
               "ownedElements": [],
-              "documentation": "Colaboración del caso general con mensajes agrupados por operación. No ejecutar todas las ramas. Participantes de análisis; control no es tabla. El personal recibe una cuenta de administración. El comprador puede registrarse sin obtener permisos internos. Alta de cuenta no equivale a crear una sesión.",
+              "documentation": "Colaboración del caso general con mensajes agrupados por operación. No ejecutar todas las ramas. Participantes de análisis; control no es tabla. El personal recibe una cuenta con el rol de su puesto. El comprador puede registrarse sin obtener permisos internos. Alta de cuenta no equivale a crear una sesión.",
               "messages": [
                 {
                   "_type": "UMLMessage",
@@ -3402,7 +3402,7 @@
               "top": 100,
               "width": 2400,
               "height": 90,
-              "text": "Actores autorizados: Propietario / administración. Se ejecuta la rama de la operación seleccionada."
+              "text": "Actores autorizados: Superadministrador · Propietario · Administrador. Se ejecuta la rama de la operación seleccionada."
             },
             {
               "_type": "UMLCommLifelineView",
@@ -4627,7 +4627,7 @@
               "top": 1395,
               "width": 1550,
               "height": 70,
-              "text": "1. Consultar usuarios · permiso de administración"
+              "text": "1. Consultar usuarios · permiso usuarios.consultar"
             },
             {
               "_type": "UMLTextView",
@@ -4678,7 +4678,7 @@
               "top": 2645,
               "width": 1550,
               "height": 70,
-              "text": "4. Desactivar o habilitar · se conserva administración activa"
+              "text": "4. Desactivar o habilitar · queda un Superadministrador activo"
             },
             {
               "_type": "UMLCommMessageView",
@@ -6752,7 +6752,7 @@
               "top": 100,
               "width": 2400,
               "height": 90,
-              "text": "Actores autorizados: Ventas / cobranza · Propietario / administración. Se ejecuta la rama de la operación seleccionada."
+              "text": "Actores autorizados: Superadministrador · Propietario · Administrador · Ventas. Se ejecuta la rama de la operación seleccionada."
             },
             {
               "_type": "UMLCommLifelineView",
@@ -9882,7 +9882,7 @@
               "top": 100,
               "width": 2400,
               "height": 90,
-              "text": "Actores autorizados: Propietario / administración. Se ejecuta la rama de la operación seleccionada."
+              "text": "Actores autorizados: Superadministrador · Propietario · Finanzas · Ventas. Se ejecuta la rama de la operación seleccionada."
             },
             {
               "_type": "UMLCommLifelineView",
@@ -12885,7 +12885,7 @@
               "top": 100,
               "width": 2400,
               "height": 90,
-              "text": "Actores autorizados: Ventas / cobranza · Comprador. Se ejecuta la rama de la operación seleccionada."
+              "text": "Actores autorizados: Superadministrador · Propietario · Comprador · Ventas. Se ejecuta la rama de la operación seleccionada."
             },
             {
               "_type": "UMLCommLifelineView",
@@ -16362,7 +16362,7 @@
               "top": 100,
               "width": 2400,
               "height": 90,
-              "text": "Actores autorizados: Ventas / cobranza · Comprador. Se ejecuta la rama de la operación seleccionada."
+              "text": "Actores autorizados: Superadministrador · Propietario · Comprador · Ventas. Se ejecuta la rama de la operación seleccionada."
             },
             {
               "_type": "UMLCommLifelineView",
@@ -19712,7 +19712,7 @@
               "top": 100,
               "width": 2400,
               "height": 90,
-              "text": "Actores autorizados: Propietario / administración · Almacén · Comprador. Se ejecuta la rama de la operación seleccionada."
+              "text": "Actores autorizados: Superadministrador · Propietario · Administrador · Comprador · Ventas · Producción · Almacén · Responsable de entrega. Se ejecuta la rama de la operación seleccionada."
             },
             {
               "_type": "UMLCommLifelineView",
@@ -22952,7 +22952,7 @@
               "top": 100,
               "width": 2400,
               "height": 90,
-              "text": "Actores autorizados: Producción · Almacén. Se ejecuta la rama de la operación seleccionada."
+              "text": "Actores autorizados: Superadministrador · Propietario · Administrador · Producción · Almacén. Se ejecuta la rama de la operación seleccionada."
             },
             {
               "_type": "UMLCommLifelineView",
@@ -27436,7 +27436,7 @@
               "top": 100,
               "width": 2400,
               "height": 90,
-              "text": "Actores autorizados: Almacén. Se ejecuta la rama de la operación seleccionada."
+              "text": "Actores autorizados: Superadministrador · Propietario · Administrador · Producción · Almacén. Se ejecuta la rama de la operación seleccionada."
             },
             {
               "_type": "UMLCommLifelineView",
@@ -31133,7 +31133,7 @@
               "top": 100,
               "width": 2400,
               "height": 90,
-              "text": "Actores autorizados: Ventas / cobranza · Propietario / administración. Se ejecuta la rama de la operación seleccionada."
+              "text": "Actores autorizados: Superadministrador · Propietario · Finanzas · Ventas. Se ejecuta la rama de la operación seleccionada."
             },
             {
               "_type": "UMLCommLifelineView",
@@ -35050,7 +35050,7 @@
               "top": 100,
               "width": 2400,
               "height": 90,
-              "text": "Actores autorizados: Responsable de entrega · Comprador. Se ejecuta la rama de la operación seleccionada."
+              "text": "Actores autorizados: Superadministrador · Propietario · Administrador · Comprador · Ventas · Responsable de entrega. Se ejecuta la rama de la operación seleccionada."
             },
             {
               "_type": "UMLCommLifelineView",
@@ -39204,7 +39204,7 @@
               "top": 100,
               "width": 2400,
               "height": 90,
-              "text": "Actores autorizados: Propietario / administración · Ventas / cobranza · Producción · Almacén · Responsable de entrega · Comprador. Se ejecuta la rama de la operación seleccionada."
+              "text": "Actores autorizados: Superadministrador · Propietario · Administrador · Comprador · Ventas · Producción · Almacén · Responsable de entrega. Se ejecuta la rama de la operación seleccionada."
             },
             {
               "_type": "UMLCommLifelineView",

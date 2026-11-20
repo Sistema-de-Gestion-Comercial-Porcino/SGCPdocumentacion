@@ -113,7 +113,7 @@
 											"top": 100,
 											"width": 2400,
 											"height": 90,
-											"text": "Actores autorizados: Propietario / administración. Se ejecuta la rama de la operación seleccionada."
+											"text": "Actores autorizados: Superadministrador · Propietario · Administrador. Se ejecuta la rama de la operación seleccionada."
 										},
 										{
 											"_type": "UMLCommLifelineView",
@@ -1338,7 +1338,7 @@
 											"top": 1395,
 											"width": 1550,
 											"height": 70,
-											"text": "1. Consultar usuarios · permiso de administración"
+											"text": "1. Consultar usuarios · permiso usuarios.consultar"
 										},
 										{
 											"_type": "UMLTextView",
@@ -1389,7 +1389,7 @@
 											"top": 2645,
 											"width": 1550,
 											"height": 70,
-											"text": "4. Desactivar o habilitar · se conserva administración activa"
+											"text": "4. Desactivar o habilitar · queda un Superadministrador activo"
 										},
 										{
 											"_type": "UMLCommMessageView",

@@ -113,7 +113,7 @@
 											"top": 100,
 											"width": 2400,
 											"height": 90,
-											"text": "Actores autorizados: Propietario / administración · Ventas / cobranza · Producción · Almacén · Responsable de entrega · Comprador. Se ejecuta la rama de la operación seleccionada."
+											"text": "Actores autorizados: Superadministrador · Propietario · Administrador · Finanzas · Comprador · Ventas · Producción · Almacén · Responsable de entrega. Se ejecuta la rama de la operación seleccionada."
 										},
 										{
 											"_type": "UMLCommLifelineView",
@@ -2862,13 +2862,13 @@
 											"top": 3240,
 											"width": 2450,
 											"height": 500,
-											"text": "Ramas mutuamente excluyentes: las guardas identifican la operación. Los mensajes al repositorio representan servicios de consulta/persistencia coordinados por el control. Selección de productos y acuerdos procede de la interfaz y del actor autorizado.\nEl personal recibe una cuenta de administración. El comprador puede registrarse sin obtener permisos internos. Alta de cuenta no equivale a crear una sesión.\nAlternativas: Informar duplicado o datos faltantes; no crear cuenta interna; Registrar intento y denegar acceso; conservar capturas locales; No cambiar credenciales con token inválido o vencido; Conservar recepción pendiente para posterior acceso autorizado"
+											"text": "Ramas mutuamente excluyentes: las guardas identifican la operación. Los mensajes al repositorio representan servicios de consulta/persistencia coordinados por el control. Selección de productos y acuerdos procede de la interfaz y del actor autorizado.\nEl personal recibe una cuenta con el rol de su puesto. El comprador puede registrarse sin obtener permisos internos. Alta de cuenta no equivale a crear una sesión.\nAlternativas: Informar duplicado o datos faltantes; no crear cuenta interna; Registrar intento y denegar acceso; conservar capturas locales; No cambiar credenciales con token inválido o vencido; Conservar recepción pendiente para posterior acceso autorizado"
 										}
 									],
 									"sequenceNumbering": "custom"
 								}
 							],
-							"documentation": "Colaboración del caso general con mensajes agrupados por operación. No ejecutar todas las ramas. Participantes de análisis; control no es tabla. El personal recibe una cuenta de administración. El comprador puede registrarse sin obtener permisos internos. Alta de cuenta no equivale a crear una sesión.",
+							"documentation": "Colaboración del caso general con mensajes agrupados por operación. No ejecutar todas las ramas. Participantes de análisis; control no es tabla. El personal recibe una cuenta con el rol de su puesto. El comprador puede registrarse sin obtener permisos internos. Alta de cuenta no equivale a crear una sesión.",
 							"messages": [
 								{
 									"_type": "UMLMessage",

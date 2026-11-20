@@ -3007,7 +3007,7 @@
 									"top": 904,
 									"width": 610,
 									"height": 18,
-									"text": "Ventas / cobranza",
+									"text": "Ventas",
 									"verticalAlignment": 3
 								}
 							],
@@ -3172,7 +3172,7 @@
 											"parentStyle": true,
 											"width": 162.96,
 											"height": 15,
-											"text": "(from Ventas / cobranza)"
+											"text": "(from Ventas)"
 										},
 										{
 											"_type": "LabelView",
@@ -3815,7 +3815,7 @@
 											"parentStyle": true,
 											"width": 173.824,
 											"height": 16,
-											"text": "(from Ventas / cobranza)"
+											"text": "(from Ventas)"
 										},
 										{
 											"_type": "LabelView",
@@ -8154,7 +8154,7 @@
 									"top": 2874,
 									"width": 610,
 									"height": 18,
-									"text": "Ventas / cobranza",
+									"text": "Ventas",
 									"verticalAlignment": 3
 								}
 							],
@@ -8316,7 +8316,7 @@
 											"parentStyle": true,
 											"width": 162.96,
 											"height": 15,
-											"text": "(from Ventas / cobranza)"
+											"text": "(from Ventas)"
 										},
 										{
 											"_type": "LabelView",
@@ -8838,7 +8838,7 @@
 											"parentStyle": true,
 											"width": 173.824,
 											"height": 16,
-											"text": "(from Ventas / cobranza)"
+											"text": "(from Ventas)"
 										},
 										{
 											"_type": "LabelView",
@@ -10590,7 +10590,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGhh4QnNa6E1xw="
 					},
-					"name": "Ventas / cobranza",
+					"name": "Ventas",
 					"nodes": [
 						{
 							"_type": "UMLAction",
@@ -10841,7 +10841,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGhh4QnNa6E1xw="
 					},
-					"name": "Ventas / cobranza",
+					"name": "Ventas",
 					"nodes": [
 						{
 							"_type": "UMLAction",
