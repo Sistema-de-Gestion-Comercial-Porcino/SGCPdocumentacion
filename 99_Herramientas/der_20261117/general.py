@@ -1,4 +1,4 @@
-# Vista general: 41 entidades + 59 relaciones, sin atributos. Ubicación en grilla por recocido simulado.
+# Vista general: 40 entidades + 62 relaciones (+ version_anterior), sin atributos. Ubicación en grilla por recocido simulado.
 import sys, os, random, math, json
 here = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, here)
 from gen_der import EW, EH, RH, tw
@@ -8,54 +8,55 @@ ENTS = {  # clave: (etiqueta, módulo, débil)
  "RECUP": ("RECUPERACION_ACCESO", "A", 1), "AUDIT": ("REGISTRO_AUDITORIA", "A", 0),
  "CLIENTE": ("CLIENTE", "C", 0), "COT": ("COTIZACION", "C", 0), "DETCOT": ("DETALLE_COTIZACION", "C", 1),
  "PEDIDO": ("PEDIDO", "C", 0), "DETPED": ("DETALLE_PEDIDO", "C", 1), "PRODUCTO": ("PRODUCTO", "C", 0),
- "PRECIO": ("PRECIO_PRODUCTO", "C", 1), "CLASIF": ("CLASIFICACION_PRODUCTO", "C", 0), "CARGO": ("CARGO_PEDIDO", "C", 1),
- "INCID": ("INCIDENCIA", "C", 0),
- "PAGO": ("PAGO", "F", 0), "APLIC": ("APLICACION_PAGO", "F", 1), "ACUERDO": ("ACUERDO_CREDITO", "F", 0),
+ "PRECIO": ("PRECIO_PRODUCTO", "C", 1), "CLASIF": ("CLASIFICACION_PRODUCTO", "C", 0), "CARGO": ("CARGO", "C", 1),
+ "PAGO": ("PAGO", "F", 0), "APLIC": ("APLICACION_PAGO", "F", 1), "SENA": ("SENA", "F", 0), "CONDPAGO": ("CONDICION_PAGO", "F", 0),
  "SEGUI": ("SEGUIMIENTO_COBRO", "F", 1), "COMPROB": ("COMPROBANTE_FISCAL", "F", 0),
- "OP": ("ORDEN_PRODUCCION", "P", 0), "FAEN": ("FAENEO_DESPOSTE", "P", 0), "FABR": ("FABRICACION_DERIVADO", "P", 0),
- "ANIMAL": ("ANIMAL", "P", 0), "CSAN": ("CONTROL_SANITARIO", "P", 1), "CONS": ("CONSUMO_INSUMO", "P", 1),
- "PREV": ("PREVISION_PRODUCTO", "P", 1), "RES": ("RESULTADO_PRODUCCION", "P", 1), "PESAJE": ("PESAJE", "P", 0),
- "LOTE": ("LOTE", "I", 0), "EXIST": ("EXISTENCIA", "I", 0), "UBIC": ("UBICACION", "I", 0), "MOV": ("MOVIMIENTO_STOCK", "I", 0),
+ "OP": ("ORDEN_PRODUCCION", "P", 0), "ANIMAL": ("ANIMAL", "P", 0), "CSAN": ("CONTROL_SANITARIO", "P", 1),
+ "INSUMO": ("INSUMO_PRODUCCION", "P", 1), "PREV": ("PREVISION_PRODUCTO", "P", 1), "RES": ("RESULTADO_PRODUCCION", "P", 1),
+ "INCID": ("INCIDENCIA", "P", 0), "PESAJE": ("PESAJE", "P", 0),
+ "LOTE": ("LOTE", "I", 0), "EXIST": ("EXISTENCIA", "I", 0), "ENTRADA": ("ENTRADA_INVENTARIO", "I", 0), "MOV": ("MOVIMIENTO_STOCK", "I", 0),
  "RESERVA": ("RESERVA", "I", 0), "CFRIO": ("CONTROL_FRIO", "I", 0),
  "ENTREGA": ("ENTREGA", "E", 0), "RUTA": ("RUTA", "E", 0), "TRANSP": ("TRANSPORTE", "E", 0),
- "EVID": ("EVIDENCIA_ENTREGA", "E", 1), "OPPEND": ("OPERACION_PENDIENTE", "E", 0),
+ "RECEP": ("RECEPCION", "E", 0), "EVID": ("EVIDENCIA_RECEPCION", "E", 1),
 }
-# (nombre, a, mult_a, b, mult_b, identificadora)
+# (nombre, a, mult_a, b, mult_b, identificadora) — las mismas relaciones de las hojas 1 a 7
 RELS = [
  ("autoriza", "ROL", "0..*", "PERMISO", "1..*", 0), ("asignado", "USUARIO", "0..*", "ROL", "1..*", 0),
  ("inicia", "USUARIO", "1", "SESION", "0..*", 1), ("registra", "USUARIO", "1", "AUDIT", "0..*", 0),
- ("solicita_acceso", "USUARIO", "1", "RECUP", "0..*", 1), ("origina_op", "USUARIO", "1", "OPPEND", "0..*", 0),
- ("cuenta_portal", "CLIENTE", "0..1", "USUARIO", "0..*", 0), ("responsable_entrega", "USUARIO", "0..1", "ENTREGA", "0..*", 0),
- ("registra_resultado", "USUARIO", "1", "RES", "0..*", 0), ("responsable_orden", "USUARIO", "1", "OP", "0..*", 0),
- ("captura", "USUARIO", "1", "PESAJE", "0..*", 0), ("responsable_ruta", "USUARIO", "1", "RUTA", "0..*", 0),
+ ("solicita_acceso", "USUARIO", "1", "RECUP", "0..*", 1), ("cuenta_portal", "CLIENTE", "0..1", "USUARIO", "0..*", 0),
+ ("registra_recepcion", "USUARIO", "1", "RECEP", "0..*", 0), ("responsable_entrega", "USUARIO", "1", "ENTREGA", "0..*", 0),
+ ("responsable_orden", "USUARIO", "1", "OP", "0..*", 0), ("captura", "USUARIO", "1", "PESAJE", "0..*", 0),
+ ("responsable_ruta", "USUARIO", "1", "RUTA", "0..*", 0),
  ("solicita", "CLIENTE", "1", "COT", "0..*", 0), ("contiene_cot", "COT", "1", "DETCOT", "0..*", 1),
  ("origina", "COT", "1", "PEDIDO", "0..1", 0), ("realiza", "CLIENTE", "1", "PEDIDO", "0..*", 0),
  ("contiene_ped", "PEDIDO", "1", "DETPED", "1..*", 1), ("cotizado_en", "PRODUCTO", "1", "DETCOT", "0..*", 0),
  ("pedido_en", "PRODUCTO", "1", "DETPED", "0..*", 0), ("tiene_precio", "PRODUCTO", "1", "PRECIO", "0..*", 1),
- ("genera_cargo", "PEDIDO", "1", "CARGO", "0..*", 1), ("presenta", "PEDIDO", "1", "INCID", "0..*", 0),
+ ("genera_cargo", "PEDIDO", "1", "CARGO", "0..*", 1), ("detalla", "CARGO", "0..*", "DETPED", "0..1", 0),
  ("clasifica", "CLASIF", "1", "PRODUCTO", "0..*", 0),
- ("recibe", "PEDIDO", "1", "PAGO", "0..*", 0), ("se_aplica", "PAGO", "1", "APLIC", "0..*", 1),
- ("cubre", "CARGO", "1", "APLIC", "0..*", 0), ("financia", "PEDIDO", "1", "ACUERDO", "0..*", 0),
- ("da_seguimiento", "ACUERDO", "1", "SEGUI", "0..*", 1), ("factura", "PEDIDO", "1", "COMPROB", "0..*", 0),
- ("demanda_prevista", "DETPED", "0..*", "OP", "0..*", 0), ("procesa", "FAEN", "0..1", "ANIMAL", "1..*", 0),
- ("controla", "ANIMAL", "1", "CSAN", "0..*", 1), ("pesa_orden", "OP", "0..1", "PESAJE", "0..*", 0),
- ("consume", "FABR", "1", "CONS", "0..*", 1), ("provee_insumo", "LOTE", "1", "CONS", "0..*", 0),
- ("preve", "OP", "1", "PREV", "1..*", 1), ("previsto_en", "PRODUCTO", "1", "PREV", "0..*", 0),
- ("obtiene", "OP", "1", "RES", "0..*", 1), ("identifica", "RES", "0..1", "LOTE", "1", 0),
- ("confirma", "RES", "0..1", "PESAJE", "0..*", 0), ("pesa_animal", "ANIMAL", "0..1", "PESAJE", "0..*", 0),
- ("pesa_lote", "LOTE", "0..1", "PESAJE", "0..*", 0),
+ ("paga", "CLIENTE", "1", "PAGO", "0..*", 0), ("se_aplica", "PAGO", "1", "APLIC", "0..*", 1),
+ ("cubre", "CARGO", "1", "APLIC", "0..*", 0), ("retiene", "SENA", "0..*", "PAGO", "1", 0),
+ ("aplica_sena", "APLIC", "0..*", "SENA", "0..1", 0), ("asegura", "SENA", "0..*", "PEDIDO", "1", 0),
+ ("define_condicion", "PEDIDO", "1", "CONDPAGO", "0..*", 0), ("da_seguimiento", "CONDPAGO", "1", "SEGUI", "0..*", 1),
+ ("factura", "PEDIDO", "1", "COMPROB", "0..*", 0),
+ ("procesa", "OP", "0..*", "ANIMAL", "0..1", 0), ("controla", "ANIMAL", "1", "CSAN", "0..*", 1),
+ ("incide_animal", "INCID", "0..*", "ANIMAL", "0..1", 0), ("incide_lote", "INCID", "0..*", "LOTE", "0..1", 0),
+ ("origen_orden", "LOTE", "0..*", "OP", "0..1", 0), ("consume", "OP", "1", "INSUMO", "0..*", 1),
+ ("provee_insumo", "EXIST", "1", "INSUMO", "0..*", 0), ("preve", "OP", "1", "PREV", "1..*", 1),
+ ("previsto_en", "PRODUCTO", "1", "PREV", "0..*", 0), ("obtiene", "OP", "1", "RES", "0..*", 1),
+ ("identifica", "RES", "0..1", "LOTE", "1", 0), ("obtiene_producto", "RES", "0..*", "PRODUCTO", "1", 0),
  ("produce", "PRODUCTO", "1", "LOTE", "0..*", 0), ("almacena", "LOTE", "1", "EXIST", "0..*", 0),
- ("ubica", "UBIC", "1", "EXIST", "0..*", 0), ("registra_mov", "EXIST", "1", "MOV", "0..*", 0),
+ ("existencia_de", "EXIST", "0..*", "PRODUCTO", "1", 0), ("ingresa_producto", "ENTRADA", "0..*", "PRODUCTO", "1", 0),
+ ("ingresa_lote", "ENTRADA", "0..*", "LOTE", "1", 0), ("ingresa_en", "ENTRADA", "0..*", "EXIST", "1", 0),
+ ("origina_entrada", "ENTRADA", "0..*", "PESAJE", "1", 0), ("controla_lote", "LOTE", "0..1", "CFRIO", "0..*", 0),
+ ("controla_entrega", "ENTREGA", "0..1", "CFRIO", "0..*", 0), ("registra_mov", "EXIST", "1", "MOV", "0..*", 0),
  ("reservada_en", "EXIST", "1", "RESERVA", "0..*", 0), ("reserva", "DETPED", "1", "RESERVA", "0..*", 0),
- ("descuenta", "CONS", "0..1", "MOV", "1", 0), ("controla_lote", "LOTE", "0..1", "CFRIO", "0..*", 0),
- ("controla_ubic", "UBIC", "0..1", "CFRIO", "0..*", 0),
+ ("pesa_lote", "LOTE", "1", "PESAJE", "0..*", 0), ("pesa_producto", "PESAJE", "0..*", "PRODUCTO", "1", 0),
  ("se_entrega", "PEDIDO", "1", "ENTREGA", "0..*", 0), ("agrupa", "RUTA", "0..1", "ENTREGA", "0..*", 0),
- ("respalda", "ENTREGA", "1", "EVID", "0..*", 1), ("pesa_entrega", "ENTREGA", "0..1", "PESAJE", "0..*", 0),
- ("controla_entrega", "ENTREGA", "0..1", "CFRIO", "0..*", 0), ("recepcion_pendiente", "ENTREGA", "1", "OPPEND", "0..*", 0),
- ("asignado_a", "TRANSP", "1", "RUTA", "0..*", 0),
+ ("asignado_a", "TRANSP", "1", "RUTA", "0..*", 0), ("confirma", "ENTREGA", "1", "RECEP", "0..*", 0),
+ ("respalda", "RECEP", "1", "EVID", "0..*", 1),
 ]
-# especialización: se trata como dos aristas cortas para el acomodo
-ISA = ("OP", ["FAEN", "FABR"])
+# sin especialización: el modelo actual ya no tiene subclases de OrdenProduccion (tipo es un atributo)
+ISA = None
 REFLEX = ("COT", "version_anterior")
 
 CW, CH = 470, 300
@@ -93,9 +94,10 @@ def hubs_for(pos):
     for r in RELS:
         a, b = r[1], r[3]; pa, pb = pos[a], pos[b]
         out.append(((pa[0] + pb[0]) / 2, (pa[1] + pb[1]) / 2, rw(r[0]) + (16 if r[5] else 0), RH + (16 if r[5] else 0), [a, b]))
-    sup, subs = ISA
-    mx = sum(pos[s][0] for s in subs) / 2; my = sum(pos[s][1] for s in subs) / 2
-    out.append(((pos[sup][0] + mx) / 2, (pos[sup][1] + my) / 2, 70, 56, [sup] + subs))
+    if ISA:
+        sup, subs = ISA
+        mx = sum(pos[s][0] for s in subs) / 2; my = sum(pos[s][1] for s in subs) / 2
+        out.append(((pos[sup][0] + mx) / 2, (pos[sup][1] + my) / 2, 70, 56, [sup] + subs))
     return out
 
 def cost(cells, detail=False):

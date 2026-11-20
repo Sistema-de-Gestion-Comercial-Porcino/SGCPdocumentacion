@@ -226,7 +226,7 @@ def check(p):
                 probs.append("texto '%s' sobre %s" % (tboxes[i][1]["text"], nm(sid, s)))
         for j in range(i + 1, len(tboxes)):
             if rect_ov(tboxes[i][0], tboxes[j][0], 2):
-                probs.append("textos se tocan: '%s' / '%s'" % (tboxes[i][1]["text"], tboxes[j][1]["text"]))
+                probs.append("textos se tocan: '%s' / '%s' en (%d,%d)" % (tboxes[i][1]["text"], tboxes[j][1]["text"], tboxes[i][0][0], tboxes[i][0][1]))
     return probs
 
 # ---------------------------------------------------------------- extensión total y leyenda

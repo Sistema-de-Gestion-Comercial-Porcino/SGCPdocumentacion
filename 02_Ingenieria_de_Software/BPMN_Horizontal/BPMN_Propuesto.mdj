@@ -162,7 +162,7 @@
 									"top": 420,
 									"width": 15,
 									"height": 370,
-									"text": "Propietario / administración",
+									"text": "Propietario",
 									"verticalAlignment": 3
 								}
 							],
@@ -1720,7 +1720,7 @@
 									"top": 420,
 									"width": 15,
 									"height": 370,
-									"text": "Propietario / administración",
+									"text": "Propietario",
 									"verticalAlignment": 3
 								}
 							],
@@ -1776,7 +1776,7 @@
 									"top": 790,
 									"width": 15,
 									"height": 370,
-									"text": "Ventas / cobranza",
+									"text": "Ventas",
 									"verticalAlignment": 3
 								}
 							],
@@ -3500,7 +3500,7 @@
 									"top": 420,
 									"width": 15,
 									"height": 370,
-									"text": "Ventas / cobranza",
+									"text": "Ventas",
 									"verticalAlignment": 3
 								}
 							],
@@ -8170,7 +8170,7 @@
 									"top": 2690,
 									"width": 15,
 									"height": 370,
-									"text": "Ventas / cobranza",
+									"text": "Ventas",
 									"verticalAlignment": 3
 								}
 							],
@@ -10391,7 +10391,7 @@
 									"top": 2320,
 									"width": 15,
 									"height": 370,
-									"text": "Ventas / cobranza",
+									"text": "Ventas",
 									"verticalAlignment": 3
 								}
 							],
@@ -11830,7 +11830,7 @@
 									"top": 2320,
 									"width": 15,
 									"height": 370,
-									"text": "Ventas / cobranza",
+									"text": "Ventas",
 									"verticalAlignment": 3
 								}
 							],
@@ -14547,7 +14547,7 @@
 									"top": 4220,
 									"width": 15,
 									"height": 370,
-									"text": "Ventas / cobranza",
+									"text": "Ventas",
 									"verticalAlignment": 3
 								}
 							],
@@ -15929,7 +15929,7 @@
 									"top": 4220,
 									"width": 15,
 									"height": 370,
-									"text": "Propietario / administración",
+									"text": "Propietario",
 									"verticalAlignment": 3
 								}
 							],
@@ -17002,7 +17002,7 @@
 							"top": 5030,
 							"width": 2700,
 							"height": 105,
-							"text": "Reportes disponibles durante la operación para los seis perfiles. Este tramo muestra la consulta de administración; cada actor se limita a su alcance. Comprador: solo sus operaciones. Consultar/exportar no modifica inventario, pagos ni pedidos."
+							"text": "Reportes disponibles durante la operación para los nueve perfiles. Este tramo muestra la consulta del Propietario; cada actor se limita a su alcance. Comprador: solo sus operaciones. Consultar/exportar no modifica inventario, pagos ni pedidos."
 						}
 					]
 				},
@@ -17020,7 +17020,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhh3tkPP1kWDA="
 							},
-							"name": "Propietario / administración",
+							"name": "Propietario",
 							"ownedElements": [
 								{
 									"_type": "BPMNStartEvent",
@@ -17528,7 +17528,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhh3tkPP1kWDA="
 							},
-							"name": "Ventas / cobranza",
+							"name": "Ventas",
 							"ownedElements": [
 								{
 									"_type": "BPMNIntermediateCatchEvent",

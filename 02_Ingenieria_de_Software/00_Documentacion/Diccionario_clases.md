@@ -1,10 +1,14 @@
 # Diccionario del modelo de clases
 
-Modelo general con 41 clases. Las clases de interfaz/control en secuencias y colaboración representan participantes de análisis; no son tablas del dominio.
+Modelo general con 40 clases, 63 asociaciones y 24 enumeraciones, alineado con el dominio de SGCPapi (`src/SGCP.Api/Dominio`). Los nombres de clase y de atributo son los de la API en camelCase; `[0..1]` marca un valor opcional (fecha, número o enumeración que admite nulo). Cada operación corresponde a un método real de un servicio de la API, indicado junto a cada operación. Las clases de interfaz/control de las secuencias y colaboraciones son participantes de análisis; no son tablas.
 
-Cadena del producto obtenido: OrdenProduccion → ResultadoProduccion → Lote → Producto → ClasificacionProducto. Una orden puede tener varios resultados. La previsión, el resultado real y la existencia física son conceptos diferentes.
+Cadena del producto obtenido: OrdenProduccion → ResultadoProduccion → Lote → Producto → ClasificacionProducto. La previsión, el resultado real y la existencia física son conceptos diferentes.
+
+**SeguimientoCobro** (con la enumeración EstadoSeguimiento) es el seguimiento de cobros de Finanzas; se agregó a SGCPapi en v4.3.0 (endpoints `api/v1/seguimientos-cobro`).
 
 ## Permiso
+
+Entidad Permiso de SGCPapi (Dominio/Entidades/Permiso.cs).
 
 | Atributo | Tipo |
 |---|---|
@@ -14,7 +18,13 @@ Cadena del producto obtenido: OrdenProduccion → ResultadoProduccion → Lote �
 | modulo | String |
 | accion | String |
 
+Asociaciones:
+
+- Permiso 1..* — 0..* Rol («autoriza»)
+
 ## Rol
+
+Entidad Rol de SGCPapi (Dominio/Entidades/Rol.cs).
 
 | Atributo | Tipo |
 |---|---|
@@ -23,7 +33,14 @@ Cadena del producto obtenido: OrdenProduccion → ResultadoProduccion → Lote �
 | descripcion | String |
 | activo | Boolean |
 
+Asociaciones:
+
+- Rol 0..* — 1..* Permiso («autoriza»)
+- Rol 1..* — 0..* Usuario («asignado»)
+
 ## Usuario
+
+Entidad Usuario de SGCPapi (Dominio/Entidades/Usuario.cs).
 
 | Atributo | Tipo |
 |---|---|
@@ -34,13 +51,33 @@ Cadena del producto obtenido: OrdenProduccion → ResultadoProduccion → Lote �
 | estado | EstadoUsuario |
 | intentosFallidos | Integer |
 | correo | String |
-| telefono | String? |
+| telefono | String |
 | creadoEn | DateTime |
-| ultimoAcceso | DateTime? |
+| ultimoAcceso | DateTime [0..1] |
 
-Operaciones: autenticar, bloquear.
+Operaciones:
+
+- `guardar()` — ServicioUsuarios.Guardar
+- `estado()` — ServicioUsuarios.Estado
+- `consulta()` — ServicioUsuarios.Consulta
+- `registrar()` — ServicioAutenticacion.Registrar
+
+Asociaciones:
+
+- Usuario 0..* — 1..* Rol («asignado»)
+- Usuario 1 — 0..* Sesion
+- Usuario 1 — 0..* RegistroAuditoria («registra»)
+- Usuario 1 — 0..* Recepcion («registra»)
+- Usuario 0..* — 0..1 Cliente («cuentaPortal»)
+- Usuario 1 — 0..* Entrega («responsable»)
+- Usuario 1 — 0..* OrdenProduccion («responsable»)
+- Usuario 1 — 0..* Pesaje («captura»)
+- Usuario 1 — 0..* Ruta («responsable»)
+- Usuario 1 — 0..* RecuperacionAcceso
 
 ## Cliente
+
+Entidad Cliente de SGCPapi (Dominio/Entidades/Cliente.cs).
 
 | Atributo | Tipo |
 |---|---|
@@ -50,29 +87,59 @@ Operaciones: autenticar, bloquear.
 | telefono | String |
 | direccion | String |
 | identificacionFiscal | String |
+| tipoDocumento | String |
 | condicionHabitual | FormaPago |
 | activo | Boolean |
 | fechaAlta | DateTime |
 | observaciones | String |
 
-Operaciones: crear, editar, desactivar, consultarFicha.
+Operaciones:
+
+- `guardar()` — ServicioClientes.Guardar
+- `estado()` — ServicioClientes.Estado
+- `eliminar()` — ServicioClientes.Eliminar
+- `saldos()` — ServicioFinanzas.Saldos
+
+Asociaciones:
+
+- Cliente 0..1 — 0..* Usuario («cuentaPortal»)
+- Cliente 1 — 0..* Cotizacion
+- Cliente 1 — 0..* Pedido
+- Cliente 1 — 0..* Pago
 
 ## Cotizacion
 
+Entidad Cotizacion de SGCPapi (Dominio/Entidades/Cotizacion.cs).
+
 | Atributo | Tipo |
 |---|---|
-| motivoRespuesta | String |
-| codigo | String |
 | id | UUID |
+| codigo | String |
 | version | Integer |
 | fecha | DateTime |
 | vigenteHasta | DateTime |
 | canal | CanalSolicitud |
 | estado | EstadoCotizacion |
+| motivoRespuesta | String |
 
-Operaciones: presentar, aceptar, rechazar.
+Operaciones:
+
+- `guardar()` — ServicioCotizaciones.Guardar
+- `cambiar()` — ServicioCotizaciones.Cambiar
+- `nuevaVersion()` — ServicioCotizaciones.NuevaVersion
+- `vencer()` — ServicioCotizaciones.Vencer
+- `obtener()` — ServicioCotizaciones.Obtener
+
+Asociaciones:
+
+- Cotizacion 0..* — 1 Cliente
+- Cotizacion 1 — 0..* DetalleCotizacion
+- Cotizacion 1 — 0..1 Pedido («origina»)
+- Cotizacion 0..1 — 0..1 Cotizacion («versionAnterior»)
 
 ## DetalleCotizacion
+
+Entidad DetalleCotizacion de SGCPapi (Dominio/Entidades/DetalleCotizacion.cs).
 
 | Atributo | Tipo |
 |---|---|
@@ -82,17 +149,33 @@ Operaciones: presentar, aceptar, rechazar.
 | precioUnitario | Decimal |
 | subtotal | Decimal |
 
+Asociaciones:
+
+- DetalleCotizacion 0..* — 1 Cotizacion
+- DetalleCotizacion 0..* — 1 Producto
+
 ## RegistroAuditoria
+
+Entidad RegistroAuditoria de SGCPapi (Dominio/Entidades/RegistroAuditoria.cs).
 
 | Atributo | Tipo |
 |---|---|
 | id | UUID |
 | operacion | String |
 | entidad | String |
-| entidadId | UUID |
 | fecha | DateTime |
 
+Operaciones:
+
+- `registrar()` — ServicioAuditoria.Registrar
+
+Asociaciones:
+
+- RegistroAuditoria 0..* — 1 Usuario («registra»)
+
 ## Sesion
+
+Entidad Sesion de SGCPapi (Dominio/Entidades/Sesion.cs).
 
 | Atributo | Tipo |
 |---|---|
@@ -101,30 +184,56 @@ Operaciones: presentar, aceptar, rechazar.
 | expira | DateTime |
 | revocada | Boolean |
 
-## OperacionPendiente
+Operaciones:
+
+- `acceder()` — ServicioAutenticacion.Acceder
+
+Asociaciones:
+
+- Sesion 0..* — 1 Usuario
+
+## Recepcion
+
+Entidad Recepcion de SGCPapi (Dominio/Entidades/Recepcion.cs).
 
 | Atributo | Tipo |
 |---|---|
 | id | UUID |
-| claveUnica | String |
-| tipo | String |
-| fechaLocal | DateTime |
+| claveUnica | UUID |
 | versionBase | Integer |
-| estado | EstadoSincronizacion |
-| contenido | JSON |
-| idRemoto | UUID? |
-| detalleConflicto | String |
-| entregaId | UUID |
-| dispositivoId | String |
-| evidenciaLocal | String? |
+| fechaReal | DateTime |
+| fechaSincronizacion | DateTime |
+| pesoRecibido | Decimal |
+| unidad | String |
+| saldoPendienteAlConfirmar | Decimal [0..1] |
+| conforme | Boolean |
+| receptor | String |
+| observacion | String |
+| estado | EstadoRecepcion |
+| huellaContenido | String |
+| motivoConflicto | String |
+| revisadaEn | DateTime [0..1] |
+| resolucion | String |
+
+Operaciones:
+
+- `sincronizar()` — ServicioEntregas.Sincronizar
+- `revisar()` — ServicioEntregas.Revisar
+
+Asociaciones:
+
+- Recepcion 0..* — 1 Usuario («registra»)
+- Recepcion 1 — 0..* EvidenciaRecepcion
+- Recepcion 0..* — 1 Entrega («confirma»)
 
 ## Pedido
 
+Entidad Pedido de SGCPapi (Dominio/Entidades/Pedido.cs).
+
 | Atributo | Tipo |
 |---|---|
-| motivoCancelacion | String |
-| codigo | String |
 | id | UUID |
+| codigo | String |
 | fecha | DateTime |
 | fechaComprometida | DateTime |
 | estadoComercial | EstadoComercial |
@@ -132,10 +241,28 @@ Operaciones: presentar, aceptar, rechazar.
 | condicionPago | FormaPago |
 | costoEstimadoConfirmado | Decimal |
 | margenEstimadoConfirmado | Decimal |
+| motivoCancelacion | String |
 
-Operaciones: calcularSaldo, autorizarDespacho.
+Operaciones:
+
+- `confirmarAsync()` — ServicioConfirmarPedido.ConfirmarAsync
+- `cancelar()` — ServicioConfirmarPedido.Cancelar
+- `autorizarDespacho()` — ServicioFinanzas.AutorizarDespacho
+
+Asociaciones:
+
+- Pedido 0..1 — 1 Cotizacion («origina»)
+- Pedido 0..* — 1 Cliente
+- Pedido 1 — 1..* DetallePedido
+- Pedido 1 — 0..* Cargo
+- Pedido 1 — 0..* CondicionPago
+- Pedido 1 — 0..* ComprobanteFiscal
+- Pedido 1 — 0..* Entrega
+- Pedido 1 — 0..* Sena
 
 ## DetallePedido
+
+Entidad DetallePedido de SGCPapi (Dominio/Entidades/DetallePedido.cs).
 
 | Atributo | Tipo |
 |---|---|
@@ -147,17 +274,35 @@ Operaciones: calcularSaldo, autorizarDespacho.
 | costoReferenciaAcordado | Decimal |
 | estado | EstadoDetalle |
 
+Asociaciones:
+
+- DetallePedido 1..* — 1 Pedido
+- DetallePedido 0..* — 1 Producto
+- DetallePedido 1 — 0..* Reserva
+- DetallePedido 0..1 — 0..* Cargo
+
 ## ControlSanitario
+
+Entidad ControlSanitario de SGCPapi (Dominio/Entidades/ControlSanitario.cs).
 
 | Atributo | Tipo |
 |---|---|
 | id | UUID |
-| fecha | DateTime |
 | resultado | ResultadoSanitario |
 | observacion | String |
-| responsable | String |
+| fecha | DateTime |
+
+Operaciones:
+
+- `sanidad()` — ServicioProduccion.Sanidad
+
+Asociaciones:
+
+- ControlSanitario 0..* — 1 Animal
 
 ## Animal
+
+Entidad Animal de SGCPapi (Dominio/Entidades/Animal.cs).
 
 | Atributo | Tipo |
 |---|---|
@@ -167,47 +312,105 @@ Operaciones: calcularSaldo, autorizarDespacho.
 | proveedor | String |
 | pesoIngreso | Decimal |
 | estado | EstadoAnimal |
+| fechaIngreso | DateTime |
+| activo | Boolean |
+
+Operaciones:
+
+- `animal()` — ServicioProduccion.Animal
+- `cambiarEstadoAnimal()` — ServicioProduccion.CambiarEstadoAnimal
+
+Asociaciones:
+
+- Animal 0..1 — 0..* OrdenProduccion («procesa»)
+- Animal 1 — 0..* ControlSanitario
+- Animal 0..1 — 0..* Incidencia
 
 ## OrdenProduccion
 
+Entidad OrdenProduccion de SGCPapi (Dominio/Entidades/OrdenProduccion.cs).
+
 | Atributo | Tipo |
 |---|---|
 | id | UUID |
-| estado | EstadoProduccion |
+| codigo | String |
+| tipo | TipoOrdenProduccion |
+| estado | EstadoOrdenProduccion |
+| fechaCreacion | DateTime |
 | inicioPrevisto | DateTime |
 | finPrevisto | DateTime |
-| inicioReal | DateTime? |
-| finReal | DateTime? |
-| codigo | String |
-| fechaCreacion | DateTime |
-| prioridad | String |
+| inicioReal | DateTime [0..1] |
+| finReal | DateTime [0..1] |
 | observacion | String |
 
-Operaciones: programar, iniciar, finalizar.
+Operaciones:
+
+- `crear()` — ServicioProduccion.Crear
+- `iniciar()` — ServicioProduccion.Iniciar
+- `confirmar()` — ServicioProduccion.Confirmar
+- `anular()` — ServicioProduccion.Anular
+
+Asociaciones:
+
+- OrdenProduccion 0..* — 0..1 Animal («procesa»)
+- OrdenProduccion 1 — 0..* InsumoProduccion
+- OrdenProduccion 1 — 1..* PrevisionProducto
+- OrdenProduccion 1 — 0..* ResultadoProduccion («obtiene»)
+- OrdenProduccion 0..* — 1 Usuario («responsable»)
+- OrdenProduccion 0..1 — 0..* Lote
 
 ## Incidencia
 
+Entidad Incidencia de SGCPapi (Dominio/Entidades/Incidencia.cs).
+
 | Atributo | Tipo |
 |---|---|
 | id | UUID |
-| tipo | String |
 | motivo | String |
-| estado | EstadoIncidencia |
-| acuerdo | String |
-| resolucionAnticipo | String |
-| fechaResolucion | DateTime? |
+| fecha | DateTime |
+| resuelta | Boolean |
+| resolucion | String |
+| resueltaEn | DateTime [0..1] |
 
-## CargoPedido
+Operaciones:
+
+- `resolverIncidencia(motivo)` — ServicioInventario.ResolverIncidencia
+
+Asociaciones:
+
+- Incidencia 0..* — 0..1 Animal
+- Incidencia 0..* — 0..1 Lote
+
+## Cargo
+
+Entidad Cargo de SGCPapi (Dominio/Entidades/Cargo.cs).
 
 | Atributo | Tipo |
 |---|---|
 | id | UUID |
-| concepto | ConceptoCargo |
-| descripcion | String |
+| tipo | TipoCargo |
+| concepto | String |
 | importe | Decimal |
+| acuerdoServicio | String |
+| prestadoEn | DateTime [0..1] |
 | fecha | DateTime |
+| anulado | Boolean |
+| motivoAnulacion | String |
+
+Operaciones:
+
+- `cargoServicio()` — ServicioFinanzas.CargoServicio
+- `anularCargo()` — ServicioFinanzas.AnularCargo
+
+Asociaciones:
+
+- Cargo 0..* — 1 Pedido
+- Cargo 1 — 0..* AplicacionPago
+- Cargo 0..* — 0..1 DetallePedido
 
 ## Producto
+
+Entidad Producto de SGCPapi (Dominio/Entidades/Producto.cs).
 
 | Atributo | Tipo |
 |---|---|
@@ -220,59 +423,78 @@ Operaciones: programar, iniciar, finalizar.
 | activo | Boolean |
 | fechaAlta | DateTime |
 
-Operaciones: crear, editar, desactivar, consultarDisponible.
+Operaciones:
+
+- `producto()` — ServicioCatalogo.Producto
+- `estadoProducto()` — ServicioCatalogo.EstadoProducto
+
+Asociaciones:
+
+- Producto 1 — 0..* DetalleCotizacion
+- Producto 1 — 0..* DetallePedido
+- Producto 1 — 0..* PrecioProducto
+- Producto 1 — 0..* Lote
+- Producto 1 — 0..* PrevisionProducto
+- Producto 0..* — 1 ClasificacionProducto («clasifica»)
+- Producto 1 — 0..* EntradaInventario
+- Producto 1 — 0..* Existencia
+- Producto 1 — 0..* Pesaje
+- Producto 1 — 0..* ResultadoProduccion
 
 ## Pesaje
+
+Entidad Pesaje de SGCPapi (Dominio/Entidades/Pesaje.cs).
 
 | Atributo | Tipo |
 |---|---|
 | id | UUID |
-| tipo | TipoPesaje |
 | pesoBruto | Decimal |
 | tara | Decimal |
-| peso | Decimal |
+| neto | Decimal |
 | unidad | String |
 | fecha | DateTime |
-| origen | OrigenPesaje |
 | observacion | String |
 
-## FaeneoDesposte
+Operaciones:
 
-| Atributo | Tipo |
-|---|---|
-| referenciaFaena | String |
-| lugarFaena | String |
-| inicioDesposte | DateTime? |
-| finDesposte | DateTime? |
-| observacionCortes | String |
+- `pesar()` — ServicioInventario.Pesar
 
-Operaciones: validarControlSanitario, seleccionarCortes, registrarResultados.
+Asociaciones:
 
-## FabricacionDerivado
-
-| Atributo | Tipo |
-|---|---|
-| formulaReferencia | String |
-| versionFormula | String |
-| descripcionProceso | String |
-| resultadoCalidad | ResultadoCalidad |
-| observacionCalidad | String |
-
-Operaciones: seleccionarDerivado, validarInsumos, registrarConsumos, registrarResultado.
+- Pesaje 0..* — 1 Lote
+- Pesaje 0..* — 1 Usuario («captura»)
+- Pesaje 1 — 0..* EntradaInventario
+- Pesaje 0..* — 1 Producto
 
 ## Pago
+
+Entidad Pago de SGCPapi (Dominio/Entidades/Pago.cs).
 
 | Atributo | Tipo |
 |---|---|
 | id | UUID |
 | referenciaUnica | String |
-| tipo | TipoPago |
 | importe | Decimal |
 | fecha | DateTime |
 | medio | String |
-| estado | EstadoPago |
+| tipo | TipoPago |
+| anulado | Boolean |
+| motivoAnulacion | String |
+
+Operaciones:
+
+- `pago()` — ServicioFinanzas.Pago
+- `anularPago()` — ServicioFinanzas.AnularPago
+
+Asociaciones:
+
+- Pago 0..* — 1 Cliente
+- Pago 1 — 0..* AplicacionPago
+- Pago 1 — 0..* Sena
 
 ## AplicacionPago
+
+Entidad AplicacionPago de SGCPapi (Dominio/Entidades/AplicacionPago.cs).
 
 | Atributo | Tipo |
 |---|---|
@@ -280,7 +502,15 @@ Operaciones: seleccionarDerivado, validarInsumos, registrarConsumos, registrarRe
 | importe | Decimal |
 | fecha | DateTime |
 
+Asociaciones:
+
+- AplicacionPago 0..* — 1 Pago
+- AplicacionPago 0..* — 1 Cargo
+- AplicacionPago 0..* — 0..1 Sena
+
 ## PrecioProducto
+
+Entidad PrecioProducto de SGCPapi (Dominio/Entidades/PrecioProducto.cs).
 
 | Atributo | Tipo |
 |---|---|
@@ -288,20 +518,45 @@ Operaciones: seleccionarDerivado, validarInsumos, registrarConsumos, registrarRe
 | costoReferencia | Decimal |
 | precioVenta | Decimal |
 | vigenteDesde | DateTime |
-| vigenteHasta | DateTime? |
+| vigenteHasta | DateTime [0..1] |
+
+Operaciones:
+
+- `vigente()` — ServicioPrecios.Vigente
+- `abrir()` — ServicioPrecios.Abrir
+- `editar()` — ServicioPrecios.Editar
+- `finalizar()` — ServicioPrecios.Finalizar
+
+Asociaciones:
+
+- PrecioProducto 0..* — 1 Producto
 
 ## ControlFrio
+
+Entidad ControlFrio de SGCPapi (Dominio/Entidades/ControlFrio.cs).
 
 | Atributo | Tipo |
 |---|---|
 | id | UUID |
-| temperatura | Decimal |
 | unidad | String |
+| temperatura | Decimal |
+| ubicacion | String |
+| evaluacion | EvaluacionFrio |
+| observacion | String |
 | fecha | DateTime |
-| responsable | String |
-| evaluacion | String |
+
+Operaciones:
+
+- `frio()` — ServicioInventario.Frio
+
+Asociaciones:
+
+- ControlFrio 0..* — 0..1 Entrega
+- ControlFrio 0..* — 0..1 Lote
 
 ## Lote
+
+Entidad Lote de SGCPapi (Dominio/Entidades/Lote.cs).
 
 | Atributo | Tipo |
 |---|---|
@@ -309,122 +564,240 @@ Operaciones: seleccionarDerivado, validarInsumos, registrarConsumos, registrarRe
 | codigo | String |
 | fechaProduccion | DateTime |
 | vencimiento | DateTime |
-| estadoCalidad | EstadoCalidad |
-| procedencia | String |
 | unidad | String |
+| procedencia | String |
+| referenciaExterna | String |
+| estado | EstadoLote |
 
-Operaciones: consultarProducto, evaluarAptitud.
+Operaciones:
 
-## ConsumoInsumo
+- `loteApto()` — ServicioInventario.LoteApto
+- `loteExterno()` — ServicioInventario.LoteExterno
+- `bloquearLote()` — ServicioInventario.BloquearLote
+- `rechazarLote()` — ServicioInventario.RechazarLote
+
+Asociaciones:
+
+- Lote 0..* — 1 Producto
+- Lote 1 — 0..* Existencia
+- Lote 0..1 — 0..* ControlFrio
+- Lote 1 — 0..* Pesaje
+- Lote 1 — 0..1 ResultadoProduccion («identifica»)
+- Lote 1 — 0..* EntradaInventario
+- Lote 0..1 — 0..* Incidencia
+- Lote 0..* — 0..1 OrdenProduccion
+
+## InsumoProduccion
+
+Entidad InsumoProduccion de SGCPapi (Dominio/Entidades/InsumoProduccion.cs).
 
 | Atributo | Tipo |
 |---|---|
 | id | UUID |
+| referenciaUnica | UUID |
 | cantidad | Decimal |
 | unidad | String |
 | fecha | DateTime |
 
-## AcuerdoCredito
+Operaciones:
+
+- `consumir()` — ServicioProduccion.Consumir
+
+Asociaciones:
+
+- InsumoProduccion 0..* — 1 OrdenProduccion
+- InsumoProduccion 0..* — 1 Existencia
+
+## CondicionPago
+
+Entidad CondicionPago de SGCPapi (Dominio/Entidades/CondicionPago.cs).
 
 | Atributo | Tipo |
 |---|---|
 | id | UUID |
+| modalidad | FormaPago |
 | importeAutorizado | Decimal |
 | fechaAcuerdo | DateTime |
-| vencimiento | DateTime |
-| estado | EstadoCredito |
+| vencimiento | DateTime [0..1] |
+| activa | Boolean |
+
+Operaciones:
+
+- `condicion()` — ServicioFinanzas.Condicion
+
+Asociaciones:
+
+- CondicionPago 0..* — 1 Pedido
+- CondicionPago 1 — 0..* SeguimientoCobro
 
 ## SeguimientoCobro
 
+Entidad SeguimientoCobro de SGCPapi (Dominio/Entidades/SeguimientoCobro.cs): seguimiento de cobros de Finanzas.
+
 | Atributo | Tipo |
 |---|---|
 | id | UUID |
-| fechaGestion | DateTime? |
+| fechaGestion | DateTime [0..1] |
 | resultado | String |
 | proximaFecha | DateTime |
 | estado | EstadoSeguimiento |
 
+Operaciones:
+
+- `crearSeguimiento(condicionId, proximaFecha)` — ServicioFinanzas.CrearSeguimiento
+- `registrarGestion(resultado, proximaFecha)` — ServicioFinanzas.RegistrarGestion
+- `cerrarSeguimiento()` — ServicioFinanzas.CerrarSeguimiento
+
+Asociaciones:
+
+- SeguimientoCobro 0..* — 1 CondicionPago
+
 ## ComprobanteFiscal
+
+Entidad ComprobanteFiscal de SGCPapi (Dominio/Entidades/ComprobanteFiscal.cs).
 
 | Atributo | Tipo |
 |---|---|
 | id | UUID |
 | referenciaUnica | String |
-| numeroFiscal | String? |
-| fecha | DateTime? |
-| estado | EstadoEmision |
+| estado | String |
+| numeroFiscal | String |
 | respuestaProveedor | String |
+| fecha | DateTime |
 
-## Ubicacion
+Operaciones:
 
-| Atributo | Tipo |
-|---|---|
-| id | UUID |
-| nombre | String |
-| tipo | String |
+- `registrar()` — ServicioFiscal.Registrar
+
+Asociaciones:
+
+- ComprobanteFiscal 0..* — 1 Pedido
 
 ## Existencia
 
+Entidad Existencia de SGCPapi (Dominio/Entidades/Existencia.cs).
+
 | Atributo | Tipo |
 |---|---|
 | id | UUID |
+| ubicacion | String |
 | cantidadFisica | Decimal |
-| unidad | String |
 
-Operaciones: cantidadReservada, disponible.
+Operaciones:
+
+- `disponible()` — ServicioInventario.Disponible
+
+Asociaciones:
+
+- Existencia 1 — 0..* InsumoProduccion
+- Existencia 0..* — 1 Lote
+- Existencia 1 — 0..* MovimientoStock
+- Existencia 1 — 0..* Reserva
+- Existencia 1 — 0..* EntradaInventario
+- Existencia 0..* — 1 Producto
 
 ## MovimientoStock
 
+Entidad MovimientoStock de SGCPapi (Dominio/Entidades/MovimientoStock.cs).
+
 | Atributo | Tipo |
 |---|---|
 | id | UUID |
-| referenciaUnica | String |
-| tipo | TipoMovimiento |
+| tipo | String |
 | cantidad | Decimal |
 | fecha | DateTime |
 | motivo | String |
 
+Operaciones:
+
+- `movimiento()` — ServicioInventario.Movimiento
+
+Asociaciones:
+
+- MovimientoStock 0..* — 1 Existencia
+
 ## Reserva
+
+Entidad Reserva de SGCPapi (Dominio/Entidades/Reserva.cs).
 
 | Atributo | Tipo |
 |---|---|
 | id | UUID |
-| referenciaUnica | String |
 | cantidad | Decimal |
 | estado | EstadoReserva |
 | fecha | DateTime |
+| motivoLiberacion | String |
+
+Operaciones:
+
+- `reservar()` — ServicioInventario.Reservar
+- `liberar()` — ServicioInventario.Liberar
+
+Asociaciones:
+
+- Reserva 0..* — 1 Existencia
+- Reserva 0..* — 1 DetallePedido
 
 ## Entrega
 
+Entidad Entrega de SGCPapi (Dominio/Entidades/Entrega.cs).
+
 | Atributo | Tipo |
 |---|---|
 | id | UUID |
-| version | Integer |
 | modalidad | ModalidadEntrega |
 | estado | EstadoEntrega |
+| version | Integer |
 | fechaPrevista | DateTime |
-| fechaReal | DateTime? |
-| fechaConfirmacion | DateTime? |
-| receptor | String? |
-| observacionRecepcion | String? |
-| ordenEnRuta | Integer? |
+| fechaReal | DateTime [0..1] |
+| fechaConfirmacion | DateTime [0..1] |
+| receptor | String |
+| observacionRecepcion | String |
+| ordenEnRuta | Integer |
 
-Operaciones: registrarRecepcion.
+Operaciones:
+
+- `preparar()` — ServicioEntregas.Preparar
+- `despachar()` — ServicioEntregas.Despachar
+- `reasignar()` — ServicioEntregas.Reasignar
+- `obtener()` — ServicioEntregas.Obtener
+
+Asociaciones:
+
+- Entrega 0..* — 1 Pedido
+- Entrega 0..* — 0..1 Ruta («agrupa»)
+- Entrega 0..1 — 0..* ControlFrio
+- Entrega 1 — 0..* Recepcion («confirma»)
+- Entrega 0..* — 1 Usuario («responsable»)
 
 ## Ruta
 
+Entidad Ruta de SGCPapi (Dominio/Entidades/Ruta.cs).
+
 | Atributo | Tipo |
 |---|---|
 | id | UUID |
+| codigo | String |
 | fecha | DateTime |
 | zona | String |
 | estado | EstadoRuta |
-| codigo | String |
-| salidaPrevista | DateTime? |
-| salidaReal | DateTime? |
-| retornoReal | DateTime? |
+| salidaReal | DateTime [0..1] |
+| retornoReal | DateTime [0..1] |
+
+Operaciones:
+
+- `crearRuta()` — ServicioEntregas.CrearRuta
+- `finalizarRuta()` — ServicioEntregas.FinalizarRuta
+
+Asociaciones:
+
+- Ruta 0..1 — 0..* Entrega («agrupa»)
+- Ruta 0..* — 1 Transporte («asignado»)
+- Ruta 0..* — 1 Usuario («responsable»)
 
 ## PrevisionProducto
+
+Entidad PrevisionProducto de SGCPapi (Dominio/Entidades/PrevisionProducto.cs).
 
 | Atributo | Tipo |
 |---|---|
@@ -432,16 +805,29 @@ Operaciones: registrarRecepcion.
 | cantidadEstimada | Decimal |
 | unidad | String |
 
-## EvidenciaEntrega
+Asociaciones:
+
+- PrevisionProducto 1..* — 1 OrdenProduccion
+- PrevisionProducto 0..* — 1 Producto
+
+## EvidenciaRecepcion
+
+Entidad EvidenciaRecepcion de SGCPapi (Dominio/Entidades/EvidenciaRecepcion.cs).
 
 | Atributo | Tipo |
 |---|---|
 | id | UUID |
 | tipo | String |
-| ubicacionArchivo | String |
-| fecha | DateTime |
+| contenido | Bytes |
+| sha256 | String |
+
+Asociaciones:
+
+- EvidenciaRecepcion 0..* — 1 Recepcion
 
 ## ClasificacionProducto
+
+Entidad ClasificacionProducto de SGCPapi (Dominio/Entidades/ClasificacionProducto.cs).
 
 | Atributo | Tipo |
 |---|---|
@@ -452,23 +838,39 @@ Operaciones: registrarRecepcion.
 | descripcion | String |
 | activo | Boolean |
 
-Operaciones: crear, editar, desactivar.
+Operaciones:
+
+- `clasificacion()` — ServicioCatalogo.Clasificacion
+- `estadoClasificacion()` — ServicioCatalogo.EstadoClasificacion
+
+Asociaciones:
+
+- ClasificacionProducto 1 — 0..* Producto («clasifica»)
 
 ## ResultadoProduccion
+
+Entidad ResultadoProduccion de SGCPapi (Dominio/Entidades/ResultadoProduccion.cs).
 
 | Atributo | Tipo |
 |---|---|
 | id | UUID |
-| referenciaUnica | String |
-| cantidadReal | Decimal? |
-| unidad | String |
-| fechaRegistro | DateTime |
+| cantidadReal | Decimal [0..1] |
 | estado | EstadoResultado |
-| observacion | String |
+| fechaRegistro | DateTime |
 
-Operaciones: seleccionarProducto, confirmarPesaje, bloquear.
+Operaciones:
+
+- `crear()` — FabricaResultado.Crear
+
+Asociaciones:
+
+- ResultadoProduccion 0..* — 1 OrdenProduccion («obtiene»)
+- ResultadoProduccion 0..1 — 1 Lote («identifica»)
+- ResultadoProduccion 0..* — 1 Producto
 
 ## Transporte
+
+Entidad Transporte de SGCPapi (Dominio/Entidades/Transporte.cs).
 
 | Atributo | Tipo |
 |---|---|
@@ -480,13 +882,20 @@ Operaciones: seleccionarProducto, confirmarPesaje, bloquear.
 | placa | String |
 | descripcionVehiculo | String |
 | conservacion | String |
-| capacidadReferencia | Decimal? |
-| unidadCapacidad | String? |
 | activo | Boolean |
 
-Operaciones: crear, editar, desactivar.
+Operaciones:
+
+- `transporte()` — ServicioEntregas.Transporte
+- `estadoTransporte()` — ServicioEntregas.EstadoTransporte
+
+Asociaciones:
+
+- Transporte 1 — 0..* Ruta («asignado»)
 
 ## RecuperacionAcceso
+
+Entidad RecuperacionAcceso de SGCPapi (Dominio/Entidades/RecuperacionAcceso.cs).
 
 | Atributo | Tipo |
 |---|---|
@@ -494,80 +903,64 @@ Operaciones: crear, editar, desactivar.
 | tokenHash | String |
 | solicitadoEn | DateTime |
 | expiraEn | DateTime |
-| utilizadoEn | DateTime? |
+| utilizadoEn | DateTime [0..1] |
 | invalidado | Boolean |
 
-Operaciones: validar, consumir.
+Operaciones:
 
-## Relaciones
+- `recuperar()` — ServicioAutenticacion.Recuperar
+- `restablecer()` — ServicioAutenticacion.Restablecer
 
-| Origen | Destino | Multiplicidad origen / destino | Relación |
-|---|---|---|---|
-| Rol | Permiso | 0..* / 1..* | Asociación · autoriza |
-| Usuario | Rol | 0..* / 1..* | Asociación · asignado |
-| Usuario | Sesion | 1 / 0..* | Composición |
-| Usuario | RegistroAuditoria | 1 / 0..* | Asociación · registra |
-| Usuario | OperacionPendiente | 1 / 0..* | Asociación · origina |
-| Cliente | Usuario | 0..1 / 0..* | Asociación · cuentaPortal |
-| Cliente | Cotizacion | 1 / 0..* | Asociación |
-| Cotizacion | DetalleCotizacion | 1 / 0..* | Composición |
-| Cotizacion | Cotizacion | 0..1 / 0..1 | Asociación · versionAnterior |
-| Cotizacion | Pedido | 1 / 0..1 | Asociación · origina |
-| Cliente | Pedido | 1 / 0..* | Asociación |
-| Pedido | DetallePedido | 1 / 1..* | Composición |
-| Producto | DetalleCotizacion | 1 / 0..* | Asociación |
-| Producto | DetallePedido | 1 / 0..* | Asociación |
-| Producto | PrecioProducto | 1 / 0..* | Composición |
-| Pedido | CargoPedido | 1 / 0..* | Composición |
-| Pedido | Incidencia | 1 / 0..* | Asociación |
-| Pedido | Pago | 1 / 0..* | Asociación |
-| Pago | AplicacionPago | 1 / 0..* | Composición |
-| CargoPedido | AplicacionPago | 1 / 0..* | Asociación |
-| Pedido | AcuerdoCredito | 1 / 0..* | Asociación |
-| AcuerdoCredito | SeguimientoCobro | 1 / 0..* | Composición |
-| Pedido | ComprobanteFiscal | 1 / 0..* | Asociación |
-| DetallePedido | OrdenProduccion | 0..* / 0..* | Asociación · demandaPrevista |
-| FaeneoDesposte | Animal | 0..1 / 1..* | Asociación · procesa |
-| Animal | ControlSanitario | 1 / 0..* | Composición |
-| OrdenProduccion | Pesaje | 0..1 / 0..* | Asociación |
-| FabricacionDerivado | ConsumoInsumo | 1 / 0..* | Composición |
-| Lote | ConsumoInsumo | 1 / 0..* | Asociación |
-| Producto | Lote | 1 / 0..* | Asociación |
-| Lote | Existencia | 1 / 0..* | Asociación |
-| Ubicacion | Existencia | 1 / 0..* | Asociación |
-| Existencia | MovimientoStock | 1 / 0..* | Asociación |
-| Existencia | Reserva | 1 / 0..* | Asociación |
-| DetallePedido | Reserva | 1 / 0..* | Asociación |
-| Pedido | Entrega | 1 / 0..* | Asociación |
-| Ruta | Entrega | 0..1 / 0..* | Agregación · agrupa |
-| Entrega | EvidenciaEntrega | 1 / 0..* | Composición |
-| Entrega | Pesaje | 0..1 / 0..* | Asociación |
-| Entrega | ControlFrio | 0..1 / 0..* | Asociación |
-| Lote | ControlFrio | 0..1 / 0..* | Asociación |
-| Ubicacion | ControlFrio | 0..1 / 0..* | Asociación |
-| Entrega | OperacionPendiente | 1 / 0..* | Asociación · recepcionPendiente |
-| Usuario | Entrega | 0..1 / 0..* | Asociación · responsable |
-| Animal | Pesaje | 0..1 / 0..* | Asociación |
-| Lote | Pesaje | 0..1 / 0..* | Asociación |
-| OrdenProduccion | PrevisionProducto | 1 / 1..* | Composición |
-| Producto | PrevisionProducto | 1 / 0..* | Asociación |
-| ConsumoInsumo | MovimientoStock | 0..1 / 1 | Asociación · descuenta |
-| ClasificacionProducto | Producto | 1 / 0..* | Asociación · clasifica |
-| OrdenProduccion | ResultadoProduccion | 1 / 0..* | Composición · obtiene |
-| ResultadoProduccion | Lote | 0..1 / 1 | Asociación · identifica |
-| ResultadoProduccion | Pesaje | 0..1 / 0..* | Asociación · confirma |
-| Usuario | ResultadoProduccion | 1 / 0..* | Asociación · registra |
-| Usuario | OrdenProduccion | 1 / 0..* | Asociación · responsable |
-| Usuario | Pesaje | 1 / 0..* | Asociación · captura |
-| Transporte | Ruta | 1 / 0..* | Asociación · asignado |
-| Usuario | Ruta | 1 / 0..* | Asociación · responsable |
-| Usuario | RecuperacionAcceso | 1 / 0..* | Composición |
-| FaeneoDesposte | OrdenProduccion | — | Herencia |
-| FabricacionDerivado | OrdenProduccion | — | Herencia |
+Asociaciones:
 
-Composición expresa propiedad exclusiva; no obliga a borrar historia comercial. Agregación de Ruta sobre Entrega permite reasignar una entrega. Las eliminaciones físicas deben respetar referencias y trazabilidad.
+- RecuperacionAcceso 0..* — 1 Usuario
 
-Restricciones: código de producto y referencia de resultado únicos; lote asociado a un solo producto; unidad compatible; un resultado confirmado exige pesaje válido. Producto inactivo conserva operaciones. Transporte inactivo conserva rutas. Precio/costo acordados no se recalculan al cambiar vigencias.
+## EntradaInventario
+
+Entidad EntradaInventario de SGCPapi (Dominio/Entidades/EntradaInventario.cs).
+
+| Atributo | Tipo |
+|---|---|
+| id | UUID |
+| fecha | DateTime |
+| cantidad | Decimal |
+| anulada | Boolean |
+| anuladaEn | DateTime [0..1] |
+| motivoAnulacion | String |
+
+Operaciones:
+
+- `entrada()` — ServicioInventario.Entrada
+- `anularEntrada()` — ServicioInventario.AnularEntrada
+
+Asociaciones:
+
+- EntradaInventario 0..* — 1 Existencia
+- EntradaInventario 0..* — 1 Lote
+- EntradaInventario 0..* — 1 Pesaje
+- EntradaInventario 0..* — 1 Producto
+
+## Sena
+
+Entidad Sena de SGCPapi (Dominio/Entidades/Sena.cs).
+
+| Atributo | Tipo |
+|---|---|
+| id | UUID |
+| acuerdoResolucion | String |
+| resueltaEn | DateTime [0..1] |
+
+Operaciones:
+
+- `sena()` — ServicioFinanzas.Sena
+- `aplicarSena()` — ServicioFinanzas.AplicarSena
+- `resolverSena()` — ServicioFinanzas.ResolverSena
+
+Asociaciones:
+
+- Sena 0..1 — 0..* AplicacionPago
+- Sena 0..* — 1 Pago
+- Sena 0..* — 1 Pedido
 
 ## Enumeraciones
 
@@ -578,30 +971,20 @@ Restricciones: código de producto y referencia de resultado únicos; lote asoci
 - EstadoComercial: CONFIRMADO, PENDIENTE_ACUERDO, CANCELADO, CERRADO.
 - EstadoPreparacion: PENDIENTE, PROGRAMADA, EN_PREPARACION, PREPARADO, BLOQUEADO.
 - EstadoDetalle: PENDIENTE, RESERVADO, EN_PREPARACION, PREPARADO, CANCELADO.
-- ResultadoSanitario: APTO, RECHAZADO.
-- EstadoAnimal: RECIBIDO, APTO, RECHAZADO, FAENADO.
-- EstadoProduccion: PROGRAMADA, PENDIENTE, EN_CURSO, COMPLETADA, BLOQUEADA, CANCELADA.
-- EstadoIncidencia: ABIERTA, EN_ACUERDO, RESUELTA.
-- ConceptoCargo: PRODUCTO, SERVICIO.
+- ResultadoSanitario: APROBADO, RECHAZADO.
+- EstadoAnimal: PENDIENTE, APTO, BLOQUEADO, FAENADO.
 - TipoProducto: CARNE_FRESCA, DERIVADO, INSUMO.
-- TipoPesaje: ANIMAL, CORTE, DERIVADO, DESPACHO, RECEPCION.
-- OrigenPesaje: REGISTRO_MANUAL_AUTORIZADO.
-- ResultadoCalidad: PENDIENTE, APROBADO, RECHAZADO.
-- TipoPago: SENA, COBRO, ABONO.
-- EstadoPago: REGISTRADO, ANULADO_CON_TRAZA.
-- EstadoCalidad: PENDIENTE, APTO, BLOQUEADO.
-- EstadoCredito: VIGENTE, VENCIDO, SALDADO, CANCELADO.
+- TipoPago: PAGO, SENA.
 - EstadoSeguimiento: PENDIENTE, REALIZADO, CERRADO.
-- EstadoEmision: PENDIENTE, EMITIDO, RECHAZADO, ANULADO.
-- TipoMovimiento: ENTRADA, SALIDA, CONSUMO, AJUSTE.
-- EstadoReserva: ACTIVA, CONFIRMADA, CONSUMIDA, LIBERADA.
-- ModalidadEntrega: RETIRO, REPARTO_PROPIO, TRANSPORTE_EXTERNO.
-- EstadoEntrega: PENDIENTE, PREPARADA, EN_TRASLADO, OBSERVADA, ENTREGADA, CANCELADA.
-- EstadoRuta: PLANIFICADA, EN_CURSO, FINALIZADA.
-- EstadoSincronizacion: PENDIENTE, ENVIANDO, CONFIRMADA, CONFLICTO, DESCARTADA.
+- EstadoReserva: ACTIVA, LIBERADA, CONSUMIDA.
+- ModalidadEntrega: RETIRO_LOCAL, DOMICILIO.
+- EstadoEntrega: PREPARADA, DESPACHADA, ENTREGADA, OBSERVADA, CANCELADA.
+- EstadoRuta: PLANIFICADA, EN_REPARTO, FINALIZADA.
 - EstadoResultado: PENDIENTE_PESAJE, CONFIRMADO, BLOQUEADO.
 - TipoTransporte: PROPIO, EXTERNO.
-
-## Implementación del Sprint 1
-
-API ASP.NET Core 10, EF Core y MySQL 8; web MVC online; Android Kotlin con acceso y base técnica. `codigo` es único por cotización/pedido. Cada nueva versión conserva su antecesora y tiene código propio. `motivoRespuesta` conserva el rechazo; `motivoCancelacion` conserva la cancelación. Las claves foráneas materializan las asociaciones del modelo. Los detalles del pedido conservan el precio aceptado y el costo vigente al confirmar. No se crea existencia al parametrizar productos.
+- EstadoLote: APTO, BLOQUEADO.
+- EstadoOrdenProduccion: PLANIFICADA, EN_PROCESO, CONFIRMADA, BLOQUEADA, ANULADA.
+- EstadoRecepcion: CONFIRMADA, CONFLICTO, DESCARTADA.
+- EvaluacionFrio: APTO, OBSERVADO, RECHAZADO.
+- TipoCargo: PRODUCTO, SERVICIO.
+- TipoOrdenProduccion: FAENEO, FABRICACION.

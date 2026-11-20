@@ -98,7 +98,7 @@ def environment(p, skip_key):
     return sh, ln, tx
 
 def main():
-    data = json.load(open(os.path.join(here, "gen_32.json")))
+    data = json.load(open(os.path.join(here, os.environ.get("GEN", "gen_40.json"))))
     ov = {}; exec(open(os.path.join(here, "ov.py")).read(), ov)
     # posiciones: celdas * nuevo paso
     G.CW, G.CH = SX, SY
@@ -114,13 +114,16 @@ def main():
     reflex = (rpos, [((0.25, 0), (0, 0.5)), ((0.75, 0), (1, 0.5))], (0, -1))
     card = {**ov.get("CARD", {}), **{k: tuple(v) for k, v in extra.get("CARD", {}).items()}}
     p = build_general(cells, relpos, None, reflex, card, shift)
-    p.title = "DER SGCC · Vista general completa · 41 entidades, 59 relaciones y sus atributos"
+    p.title = "DER SGCC · Vista general completa · %d entidades, %d relaciones y sus atributos" % (len(G.ENTS), len(G.RELS) + 1)
     AT = attrs_by_entity()
     assert set(AT) == set(p.ents), set(p.ents) ^ set(AT)
     order = sorted(p.ents, key=lambda k: -len(AT[k]))
     choice = {}
     forced = {k: [tuple(x) for x in v] for k, v in extra.get("SIDES", {}).items()}
-    for rnd in range(3):
+    rapido = os.environ.get("RAPIDO") and os.path.exists(os.path.join(here, "attr_choice.json"))
+    if rapido:  # reutiliza la elección anterior: solo para probar ajustes de rombos
+        forced = {**{k: [tuple(x) for x in v] for k, v in json.load(open(os.path.join(here, "attr_choice.json"))).items()}, **forced}
+    for rnd in range(1 if rapido else 3):
         for key in order:
             p.attrs = [a for a in p.attrs if a["ent"] != key]
             env = environment(p, key)

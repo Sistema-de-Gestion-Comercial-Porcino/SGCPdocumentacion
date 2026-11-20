@@ -1568,7 +1568,7 @@
 											"top": 1497,
 											"width": 391,
 											"height": 16,
-											"text": "Administrar Ubicaciones Activas",
+											"text": "Registrar Control Frio",
 											"wordWrap": true
 										},
 										{
@@ -3333,7 +3333,7 @@
 											"top": 1687,
 											"width": 391,
 											"height": 32,
-											"text": "Registrar Entrada Unica\nDatos: producto Id, lote Id, ubicacion, cantidad, unidad",
+											"text": "Registrar Entrada\nDatos: pesaje Id, ubicacion",
 											"wordWrap": true
 										},
 										{
@@ -11031,7 +11031,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhh4SzfTNumdE="
 							},
-							"name": "Administrar Ubicaciones Activas"
+							"name": "Registrar Control Frio"
 						},
 						{
 							"_type": "UMLAction",
@@ -11120,7 +11120,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhh4S0HTPJK3A="
 							},
-							"name": "Registrar Entrada Unica\nDatos: producto Id, lote Id, ubicacion, cantidad, unidad"
+							"name": "Registrar Entrada\nDatos: pesaje Id, ubicacion"
 						},
 						{
 							"_type": "UMLAction",

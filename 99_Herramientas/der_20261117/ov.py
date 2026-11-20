@@ -1,6 +1,3 @@
-REL_POS = {
- "obtiene": (3130, 1860),
- "identifica": (3400, 1900),
- "ubica": (4545, 1355),
-}
-CARD = {"obtiene": (1, 0), "confirma": (0, 1)}
+# Ajustes manuales de rombos para la vista general (gen_40.json). Vacío hasta revisar el acomodo nuevo.
+REL_POS = {}
+CARD = {}

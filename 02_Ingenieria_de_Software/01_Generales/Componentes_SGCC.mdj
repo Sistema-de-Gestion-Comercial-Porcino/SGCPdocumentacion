@@ -492,7 +492,7 @@
 											"top": 307,
 											"width": 526,
 											"height": 15,
-											"text": "Web de gestión online",
+											"text": "SGCP.Web · gestión (ASP.NET Core MVC)",
 											"wordWrap": true
 										},
 										{
@@ -695,7 +695,7 @@
 											"top": 647,
 											"width": 526,
 											"height": 15,
-											"text": "Portal comprador online",
+											"text": "SGCP.Web · portal comprador",
 											"wordWrap": true
 										},
 										{
@@ -898,7 +898,7 @@
 											"top": 1017,
 											"width": 526,
 											"height": 15,
-											"text": "App Android · Kotlin",
+											"text": "SGCP Reparto · Android Kotlin",
 											"wordWrap": true
 										},
 										{
@@ -1101,7 +1101,7 @@
 											"top": 1397,
 											"width": 526,
 											"height": 15,
-											"text": "Persistencia local · Room y archivos",
+											"text": "Persistencia local · Room (SQLite)",
 											"wordWrap": true
 										},
 										{
@@ -1507,7 +1507,7 @@
 											"top": 307,
 											"width": 456,
 											"height": 15,
-											"text": "API comercial · HTTPS",
+											"text": "SGCP.Api · REST HTTPS + JWT",
 											"wordWrap": true
 										},
 										{
@@ -2928,7 +2928,7 @@
 											"top": 307,
 											"width": 516,
 											"height": 15,
-											"text": "Persistencia central",
+											"text": "SgcpContext · EF Core (MySQL o SQL Server)",
 											"wordWrap": true
 										},
 										{
@@ -3131,7 +3131,7 @@
 											"top": 737,
 											"width": 516,
 											"height": 15,
-											"text": "Archivos de evidencia",
+											"text": "Evidencias en la base (contenido + sha256)",
 											"wordWrap": true
 										},
 										{
@@ -3537,7 +3537,7 @@
 											"top": 1667,
 											"width": 516,
 											"height": 15,
-											"text": "Adaptador fiscal",
+											"text": "ProveedorFiscalAdapter",
 											"wordWrap": true
 										},
 										{
@@ -3946,7 +3946,7 @@
 											"top": 2462,
 											"width": 521,
 											"height": 15,
-											"text": "Servicio fiscal externo",
+											"text": "Servicio fiscal externo (pendiente de confirmar)",
 											"wordWrap": true
 										},
 										{
@@ -7031,7 +7031,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhh4OPkDFEjGs="
 							},
-							"name": "Web de gestión online"
+							"name": "SGCP.Web · gestión (ASP.NET Core MVC)"
 						},
 						{
 							"_type": "UMLComponent",
@@ -7039,7 +7039,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhh4OPkDFEjGs="
 							},
-							"name": "Portal comprador online"
+							"name": "SGCP.Web · portal comprador"
 						},
 						{
 							"_type": "UMLComponent",
@@ -7047,7 +7047,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhh4OPkDFEjGs="
 							},
-							"name": "App Android · Kotlin"
+							"name": "SGCP Reparto · Android Kotlin"
 						},
 						{
 							"_type": "UMLComponent",
@@ -7055,7 +7055,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhh4OPkDFEjGs="
 							},
-							"name": "Persistencia local · Room y archivos"
+							"name": "Persistencia local · Room (SQLite)"
 						},
 						{
 							"_type": "UMLComponent",
@@ -7081,7 +7081,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhh4OPkTFLFPo="
 							},
-							"name": "API comercial · HTTPS"
+							"name": "SGCP.Api · REST HTTPS + JWT"
 						},
 						{
 							"_type": "UMLComponent",
@@ -7155,7 +7155,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhh4OPljFStmw="
 							},
-							"name": "Persistencia central"
+							"name": "SgcpContext · EF Core (MySQL o SQL Server)"
 						},
 						{
 							"_type": "UMLComponent",
@@ -7163,7 +7163,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhh4OPljFStmw="
 							},
-							"name": "Archivos de evidencia"
+							"name": "Evidencias en la base (contenido + sha256)"
 						},
 						{
 							"_type": "UMLComponent",
@@ -7179,7 +7179,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhh4OPljFStmw="
 							},
-							"name": "Adaptador fiscal"
+							"name": "ProveedorFiscalAdapter"
 						}
 					]
 				},
@@ -7189,7 +7189,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGhh4OPkDFB5ew="
 					},
-					"name": "Servicio fiscal externo",
+					"name": "Servicio fiscal externo (pendiente de confirmar)",
 					"stereotype": "external"
 				},
 				{

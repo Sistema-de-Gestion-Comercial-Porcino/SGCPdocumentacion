@@ -1133,7 +1133,7 @@
 													"top": 710,
 													"width": 547.245,
 													"height": 15,
-													"text": "[Consultar usuarios; actor: Propietario / administración; permiso de administración]"
+													"text": "[Consultar usuarios; actor: Administrador; permiso usuarios.consultar]"
 												}
 											],
 											"lineColor": "#303744",
@@ -1172,7 +1172,7 @@
 													"top": 1180,
 													"width": 560.2199999999999,
 													"height": 15,
-													"text": "[Crear usuario; actor: Propietario / administración; login único; permisos autorizados]"
+													"text": "[Crear usuario; actor: Administrador; login único; permisos autorizados]"
 												}
 											],
 											"lineColor": "#303744",
@@ -1211,7 +1211,7 @@
 													"top": 1750,
 													"width": 582.99,
 													"height": 15,
-													"text": "[Editar usuario; actor: Propietario / administración; usuario existente; cambio autorizado]"
+													"text": "[Editar usuario; actor: Administrador; usuario existente; cambio autorizado]"
 												}
 											],
 											"lineColor": "#303744",
@@ -1250,7 +1250,7 @@
 													"top": 2320,
 													"width": 611.445,
 													"height": 15,
-													"text": "[Desactivar o habilitar; actor: Propietario / administración; se conserva administración activa]"
+													"text": "[Desactivar o habilitar; actor: Administrador; queda un Superadministrador activo]"
 												}
 											],
 											"lineColor": "#303744",
@@ -3886,7 +3886,7 @@
 					"showSequenceNumber": false
 				}
 			],
-			"documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Propietario / administración. Crear cuentas, asignar permisos y desactivar sin borrar historial. Una persona puede ejercer varias responsabilidades.",
+			"documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Superadministrador, Propietario, Administrador. Crear cuentas, asignar permisos y desactivar sin borrar historial. Una persona puede ejercer varias responsabilidades.",
 			"messages": [
 				{
 					"_type": "UMLMessage",
@@ -4304,7 +4304,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhjO/n0MNCyZ8="
 							},
-							"guard": "Consultar usuarios; actor: Propietario / administración; permiso de administración"
+							"guard": "Consultar usuarios; actor: Administrador; permiso usuarios.consultar"
 						},
 						{
 							"_type": "UMLInteractionOperand",
@@ -4312,7 +4312,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhjO/n0MNCyZ8="
 							},
-							"guard": "Crear usuario; actor: Propietario / administración; login único; permisos autorizados"
+							"guard": "Crear usuario; actor: Administrador; login único; permisos autorizados"
 						},
 						{
 							"_type": "UMLInteractionOperand",
@@ -4320,7 +4320,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhjO/n0MNCyZ8="
 							},
-							"guard": "Editar usuario; actor: Propietario / administración; usuario existente; cambio autorizado"
+							"guard": "Editar usuario; actor: Administrador; usuario existente; cambio autorizado"
 						},
 						{
 							"_type": "UMLInteractionOperand",
@@ -4328,7 +4328,7 @@
 							"_parent": {
 								"$ref": "AAAAAAGhjO/n0MNCyZ8="
 							},
-							"guard": "Desactivar o habilitar; actor: Propietario / administración; se conserva administración activa"
+							"guard": "Desactivar o habilitar; actor: Administrador; queda un Superadministrador activo"
 						},
 						{
 							"_type": "UMLInteractionOperand",

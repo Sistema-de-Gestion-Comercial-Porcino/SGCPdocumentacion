@@ -27,7 +27,7 @@ El índice completo de la entrega está en [LEEME.md](LEEME.md).
 | `00_Definicion/` | Reglas del sistema, catálogo de casos de uso, matriz de trazabilidad, guías de ejecución y verificación |
 | `01_Proyecto_de_Sistemas/` | BPM verticales |
 | `02_Ingenieria_de_Software/` | Modelos UML, diagramas y diccionario de clases |
-| `04_Mockups_Balsamiq/` | 67 pantallas editables de web y Android |
+| `04_Mockups_Balsamiq/` | 72 pantallas editables de web y Android |
 | `99_Herramientas/` | Utilidades de apoyo |
 
 Documentos de referencia para quien retome la implementación:
@@ -70,6 +70,10 @@ Más reciente arriba.
 
 | Versión | Fecha | Sprint | Cambio | Autor |
 |---|---|---|---|---|
+| v4.1.9 | 2026-11-20 | 4 | Documentación: se agregan la especificación de requerimientos ASA1 (Word y PDF), la lista de integrantes y el ZIP de entrega de SGCPapi de Web III | Dario Haziel Tambo Parra |
+| v4.1.8 | 2026-11-20 | 4 | Documentación: recorrido de pruebas de los sprints 1 a 4 en Word (APA), con las 213 comprobaciones ejecutadas el 20 de noviembre sobre `main` (API contra MySQL 8.4, web y Android), su cruce con los criterios del Backlog y lo que queda sin medir; generador en `99_Herramientas/pruebas_20261120/` | Dario Haziel Tambo Parra |
+| v4.1.7 | 2026-11-20 | 4 | Documentación: diagramas alineados con SGCPapi. Clases con los nombres de la API (CondicionPago, Cargo, InsumoProduccion, EvidenciaRecepcion, Recepcion; nuevas Sena y EntradaInventario; sin FaeneoDesposte, FabricacionDerivado ni Ubicacion) y operaciones tomadas de los servicios reales; SeguimientoCobro con sus operaciones de SGCPapi v4.3.0 y estado RESUELTA de Incidencia (v4.3.2). Estados, objetos, mensajes de secuencia/colaboración/actividad, componentes, despliegue y DER (40 entidades, 63 relaciones) rehechos con el modelo nuevo. Casos de extensión numerados CU13–CU15 con sus diagramas de secuencia, actividad, colaboración y objetos. Balsamiq con el menú real de la web y pantallas de Señas, Rutas, Conflictos de recepción, Auditoría, CU13 y CU14. PDF regenerados con `99_Herramientas/render_mdj` (84 diagramas, sin la exportación de StarUML) | Dario Haziel Tambo Parra |
+| v4.1.6 | 2026-11-19 | 4 | Documentación: casos de uso rehechos con un solo actor por rol (Superadministrador, Propietario, Administrador, Finanzas, Ventas, Comprador, Producción, Almacén, Responsable de entrega) y con las secciones del menú en cada caso; roles nuevos llevados a colaboración, secuencias, actividades, objetos, estados y BPMN propuesto; `tipoDocumento` en Cliente | Dario Haziel Tambo Parra |
 | v4.1.5 | 2026-11-19 | 4 | Corrección: el PDF de evidencias de `WebIII` (y el que va dentro del ZIP) lleva cada captura de Swagger a página completa en A4; se agrega su fuente `.docx` | Dario Haziel Tambo Parra |
 | v4.1.4 | 2026-11-19 | 4 | Documentación: carpeta `WebIII` con el ZIP de entrega de SGCPapi (sin `bin`, `obj` ni `.vs`), el PDF de evidencias y la guía de cumplimiento de la rúbrica | Dario Haziel Tambo Parra |
 | v4.1.3 | 2026-11-18 | 4 | Corrección: las guías vigentes (ejecución, Docker, método de verificación, entrega P1 y repartos) usan `dotnet ef ... --context SgcpContext`, necesario desde que SGCPapi tiene también el contexto de SQL Server | Dario Haziel Tambo Parra |

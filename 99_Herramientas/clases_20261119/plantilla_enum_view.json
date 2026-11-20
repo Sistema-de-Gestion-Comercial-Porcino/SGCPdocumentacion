@@ -1,0 +1,285 @@
+{
+ "_type": "UMLEnumerationView",
+ "_id": "AAAAAAGhacswWfNQnfU=",
+ "_parent": {
+  "$ref": "AAAAAAGhacswK/IRkaE="
+ },
+ "model": {
+  "$ref": "AAAAAAGhacswWPNMD7A="
+ },
+ "subViews": [
+  {
+   "_type": "UMLNameCompartmentView",
+   "_id": "AAAAAAGhacswWvNRrWg=",
+   "_parent": {
+    "$ref": "AAAAAAGhacswWfNQnfU="
+   },
+   "model": {
+    "$ref": "AAAAAAGhacswWPNMD7A="
+   },
+   "subViews": [
+    {
+     "_type": "LabelView",
+     "_id": "AAAAAAGhacswWvNSe+0=",
+     "_parent": {
+      "$ref": "AAAAAAGhacswWvNRrWg="
+     },
+     "lineColor": "#303030",
+     "fontColor": "#202020",
+     "font": "Arial;15;0",
+     "parentStyle": true,
+     "left": 105,
+     "top": 2375,
+     "width": 331,
+     "height": 15,
+     "text": "«enumeration»"
+    },
+    {
+     "_type": "LabelView",
+     "_id": "AAAAAAGhacswWvNTEYg=",
+     "_parent": {
+      "$ref": "AAAAAAGhacswWvNRrWg="
+     },
+     "lineColor": "#303030",
+     "fontColor": "#202020",
+     "font": "Arial;15;1",
+     "parentStyle": true,
+     "left": 105,
+     "top": 2392,
+     "width": 331,
+     "height": 15,
+     "text": "EstadoInscripcion",
+     "wordWrap": true
+    },
+    {
+     "_type": "LabelView",
+     "_id": "AAAAAAGhacswWvNUaLQ=",
+     "_parent": {
+      "$ref": "AAAAAAGhacswWvNRrWg="
+     },
+     "visible": false,
+     "lineColor": "#303030",
+     "fontColor": "#202020",
+     "font": "Arial;15;0",
+     "parentStyle": true,
+     "width": 201.795,
+     "height": 15,
+     "text": "(from 01 - Estructura del LMS)"
+    },
+    {
+     "_type": "LabelView",
+     "_id": "AAAAAAGhacswWvNV1BM=",
+     "_parent": {
+      "$ref": "AAAAAAGhacswWvNRrWg="
+     },
+     "visible": false,
+     "lineColor": "#303030",
+     "fontColor": "#202020",
+     "font": "Arial;15;0",
+     "parentStyle": true,
+     "horizontalAlignment": 1,
+     "wordWrap": true
+    }
+   ],
+   "lineColor": "#303030",
+   "fontColor": "#202020",
+   "font": "Arial;15;0",
+   "parentStyle": true,
+   "left": 100,
+   "top": 2370,
+   "width": 341,
+   "height": 42,
+   "stereotypeLabel": {
+    "$ref": "AAAAAAGhacswWvNSe+0="
+   },
+   "nameLabel": {
+    "$ref": "AAAAAAGhacswWvNTEYg="
+   },
+   "namespaceLabel": {
+    "$ref": "AAAAAAGhacswWvNUaLQ="
+   },
+   "propertyLabel": {
+    "$ref": "AAAAAAGhacswWvNV1BM="
+   }
+  },
+  {
+   "_type": "UMLAttributeCompartmentView",
+   "_id": "AAAAAAGhacswWvNW7ls=",
+   "_parent": {
+    "$ref": "AAAAAAGhacswWfNQnfU="
+   },
+   "model": {
+    "$ref": "AAAAAAGhacswWPNMD7A="
+   },
+   "visible": false,
+   "lineColor": "#303030",
+   "fontColor": "#202020",
+   "font": "Arial;15;0",
+   "parentStyle": true,
+   "width": 10,
+   "height": 10
+  },
+  {
+   "_type": "UMLOperationCompartmentView",
+   "_id": "AAAAAAGhacswWvNX4fs=",
+   "_parent": {
+    "$ref": "AAAAAAGhacswWfNQnfU="
+   },
+   "model": {
+    "$ref": "AAAAAAGhacswWPNMD7A="
+   },
+   "visible": false,
+   "lineColor": "#303030",
+   "fontColor": "#202020",
+   "font": "Arial;15;0",
+   "parentStyle": true,
+   "width": 10,
+   "height": 10
+  },
+  {
+   "_type": "UMLReceptionCompartmentView",
+   "_id": "AAAAAAGhacswWvNYtJk=",
+   "_parent": {
+    "$ref": "AAAAAAGhacswWfNQnfU="
+   },
+   "model": {
+    "$ref": "AAAAAAGhacswWPNMD7A="
+   },
+   "visible": false,
+   "lineColor": "#303030",
+   "fontColor": "#202020",
+   "font": "Arial;15;0",
+   "parentStyle": true,
+   "width": 10,
+   "height": 10
+  },
+  {
+   "_type": "UMLTemplateParameterCompartmentView",
+   "_id": "AAAAAAGhacswWvNZJPs=",
+   "_parent": {
+    "$ref": "AAAAAAGhacswWfNQnfU="
+   },
+   "model": {
+    "$ref": "AAAAAAGhacswWPNMD7A="
+   },
+   "visible": false,
+   "lineColor": "#303030",
+   "fontColor": "#202020",
+   "font": "Arial;15;0",
+   "parentStyle": true,
+   "width": 10,
+   "height": 10
+  },
+  {
+   "_type": "UMLEnumerationLiteralCompartmentView",
+   "_id": "AAAAAAGhacswWvNalZI=",
+   "_parent": {
+    "$ref": "AAAAAAGhacswWfNQnfU="
+   },
+   "model": {
+    "$ref": "AAAAAAGhacswWPNMD7A="
+   },
+   "subViews": [
+    {
+     "_type": "UMLEnumerationLiteralView",
+     "_id": "AAAAAAGhacs6mQsY1Vs=",
+     "_parent": {
+      "$ref": "AAAAAAGhacswWvNalZI="
+     },
+     "model": {
+      "$ref": "AAAAAAGhacswWfNNBX4="
+     },
+     "lineColor": "#303030",
+     "fontColor": "#202020",
+     "font": "Arial;15;0",
+     "parentStyle": true,
+     "left": 105,
+     "top": 2417,
+     "width": 331,
+     "height": 15,
+     "text": "PENDIENTE_REVISION",
+     "horizontalAlignment": 0
+    },
+    {
+     "_type": "UMLEnumerationLiteralView",
+     "_id": "AAAAAAGhacs6mgsb0Ko=",
+     "_parent": {
+      "$ref": "AAAAAAGhacswWvNalZI="
+     },
+     "model": {
+      "$ref": "AAAAAAGhacswWfNOdBk="
+     },
+     "lineColor": "#303030",
+     "fontColor": "#202020",
+     "font": "Arial;15;0",
+     "parentStyle": true,
+     "left": 105,
+     "top": 2434,
+     "width": 331,
+     "height": 15,
+     "text": "CONFIRMADA",
+     "horizontalAlignment": 0
+    },
+    {
+     "_type": "UMLEnumerationLiteralView",
+     "_id": "AAAAAAGhacs6mgsee0w=",
+     "_parent": {
+      "$ref": "AAAAAAGhacswWvNalZI="
+     },
+     "model": {
+      "$ref": "AAAAAAGhacswWfNPOGY="
+     },
+     "lineColor": "#303030",
+     "fontColor": "#202020",
+     "font": "Arial;15;0",
+     "parentStyle": true,
+     "left": 105,
+     "top": 2451,
+     "width": 331,
+     "height": 15,
+     "text": "RECHAZADA",
+     "horizontalAlignment": 0
+    }
+   ],
+   "lineColor": "#303030",
+   "fontColor": "#202020",
+   "font": "Arial;15;0",
+   "parentStyle": true,
+   "left": 100,
+   "top": 2412,
+   "width": 341,
+   "height": 59
+  }
+ ],
+ "lineColor": "#303030",
+ "fontColor": "#202020",
+ "font": "Arial;15;0",
+ "parentStyle": false,
+ "showShadow": false,
+ "containerChangeable": true,
+ "left": 100,
+ "top": 2370,
+ "width": 340,
+ "height": 155,
+ "nameCompartment": {
+  "$ref": "AAAAAAGhacswWvNRrWg="
+ },
+ "wordWrap": true,
+ "suppressAttributes": true,
+ "suppressOperations": true,
+ "attributeCompartment": {
+  "$ref": "AAAAAAGhacswWvNW7ls="
+ },
+ "operationCompartment": {
+  "$ref": "AAAAAAGhacswWvNX4fs="
+ },
+ "receptionCompartment": {
+  "$ref": "AAAAAAGhacswWvNYtJk="
+ },
+ "templateParameterCompartment": {
+  "$ref": "AAAAAAGhacswWvNZJPs="
+ },
+ "enumerationLiteralCompartment": {
+  "$ref": "AAAAAAGhacswWvNalZI="
+ }
+}

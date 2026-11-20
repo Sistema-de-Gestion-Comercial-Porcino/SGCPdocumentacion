@@ -6364,7 +6364,7 @@
 					"showSequenceNumber": false
 				}
 			],
-			"documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Producción, Almacén. La orden produce varios resultados identificados. Cada resultado se vincula a producto/clasificación y lote. Cantidades previstas no son stock. Almacén captura pesajes manualmente; no hay interfaz automática de balanza.",
+			"documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Superadministrador, Propietario, Administrador, Producción, Almacén. La orden produce varios resultados identificados. Cada resultado se vincula a producto/clasificación y lote. Cantidades previstas no son stock. Almacén captura pesajes manualmente; no hay interfaz automática de balanza.",
 			"messages": [
 				{
 					"_type": "UMLMessage",

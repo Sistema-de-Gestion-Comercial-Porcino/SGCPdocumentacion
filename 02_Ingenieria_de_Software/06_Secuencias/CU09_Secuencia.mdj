@@ -1404,7 +1404,7 @@
 										"$ref": "AAAAAAGhjO/78OFDEqw="
 									},
 									"edgePosition": 1,
-									"text": "administrarUbicacionesActivas()"
+									"text": "registrarControlFrio(lote,ubicacion,temperatura,evaluacion)"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -2006,7 +2006,7 @@
 										"$ref": "AAAAAAGhjO/79eFkKmA="
 									},
 									"edgePosition": 1,
-									"text": "registrarEntradaUnica(productoId,loteId,ubicacion,cantidad,unidad)"
+									"text": "registrarEntrada(pesajeId,ubicacion)"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -4526,7 +4526,7 @@
 					"showSequenceNumber": false
 				}
 			],
-			"documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Almacén. Disponible = físico apto menos reservas activas. Cada movimiento y reserva tiene referencia única. La confirmación de producción no es una entrada.",
+			"documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Superadministrador, Propietario, Administrador, Producción, Almacén. Disponible = físico apto menos reservas activas. Cada movimiento y reserva tiene referencia única. La confirmación de producción no es una entrada.",
 			"messages": [
 				{
 					"_type": "UMLMessage",
@@ -4591,7 +4591,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGhjO/76eD/JbE="
 					},
-					"name": "administrarUbicacionesActivas()",
+					"name": "registrarControlFrio(lote,ubicacion,temperatura,evaluacion)",
 					"source": {
 						"$ref": "AAAAAAGhjO/76uESYZc="
 					},
@@ -4663,7 +4663,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGhjO/76eD/JbE="
 					},
-					"name": "registrarEntradaUnica(productoId,loteId,ubicacion,cantidad,unidad)",
+					"name": "registrarEntrada(pesajeId,ubicacion)",
 					"source": {
 						"$ref": "AAAAAAGhjO/76uESYZc="
 					},

@@ -8214,12 +8214,12 @@
 							"top": 4710,
 							"width": 3900,
 							"height": 230,
-							"text": "Precondición: Conexión para crear cuenta, autenticar o renovar sesión.\nEl personal recibe una cuenta de administración. El comprador puede registrarse sin obtener permisos internos. Alta de cuenta no equivale a crear una sesión."
+							"text": "Precondición: Conexión para crear cuenta, autenticar o renovar sesión.\nEl personal recibe una cuenta con el rol de su puesto. El comprador puede registrarse sin obtener permisos internos. Alta de cuenta no equivale a crear una sesión."
 						}
 					]
 				}
 			],
-			"documentation": "Un diagrama con alternativas internas del caso general. Cada conector de letra es el mismo nodo lógico mostrado en dos lugares. Cada salida de rechazo indica una acción; un fin de rama termina la operación seleccionada, no el sistema. El personal recibe una cuenta de administración. El comprador puede registrarse sin obtener permisos internos. Alta de cuenta no equivale a crear una sesión.",
+			"documentation": "Un diagrama con alternativas internas del caso general. Cada conector de letra es el mismo nodo lógico mostrado en dos lugares. Cada salida de rechazo indica una acción; un fin de rama termina la operación seleccionada, no el sistema. El personal recibe una cuenta con el rol de su puesto. El comprador puede registrarse sin obtener permisos internos. Alta de cuenta no equivale a crear una sesión.",
 			"nodes": [
 				{
 					"_type": "UMLInitialNode",

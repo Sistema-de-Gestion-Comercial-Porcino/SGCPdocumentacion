@@ -113,7 +113,7 @@
 											"top": 100,
 											"width": 2400,
 											"height": 90,
-											"text": "Actores autorizados: Ventas / cobranza · Propietario / administración. Se ejecuta la rama de la operación seleccionada."
+											"text": "Actores autorizados: Superadministrador · Propietario · Finanzas · Ventas. Se ejecuta la rama de la operación seleccionada."
 										},
 										{
 											"_type": "UMLCommLifelineView",
@@ -2072,7 +2072,7 @@
 													"height": 14,
 													"alpha": 1.5707963267948966,
 													"distance": 10,
-													"text": "1.2.2.2 [operación 2] : guardarAcuerdoCredito(importe,vencimiento,responsable)",
+													"text": "1.2.2.2 [operación 2] : guardarCondicionPago(modalidad,importeAutorizado,vencimiento)",
 													"wordWrap": true
 												},
 												{
@@ -2800,7 +2800,7 @@
 													"height": 14,
 													"alpha": 1.5707963267948966,
 													"distance": 10,
-													"text": "1.2.5.1 [operación 5] : consultarEstadoEmisionConReferenciaUnica()",
+													"text": "1.2.5.1 [operación 5] : registrarComprobanteFiscal(pedidoId)",
 													"wordWrap": true
 												},
 												{
@@ -3478,7 +3478,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGhh4TwwF+EIkQ="
 									},
-									"name": "guardarAcuerdoCredito(importe,vencimiento,responsable)",
+									"name": "guardarCondicionPago(modalidad,importeAutorizado,vencimiento)",
 									"source": {
 										"$ref": "AAAAAAGhh4Tww1+cj+A="
 									},
@@ -3630,7 +3630,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGhh4TwwF+EIkQ="
 									},
-									"name": "consultarEstadoEmisionConReferenciaUnica()",
+									"name": "registrarComprobanteFiscal(pedidoId)",
 									"source": {
 										"$ref": "AAAAAAGhh4Tww1+cj+A="
 									},

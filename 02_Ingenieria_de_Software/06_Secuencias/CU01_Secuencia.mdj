@@ -3880,13 +3880,13 @@
 							"top": 3150,
 							"width": 2470,
 							"height": 600,
-							"text": "Precondición: Conexión para crear cuenta, autenticar o renovar sesión.\nEl personal recibe una cuenta de administración. El comprador puede registrarse sin obtener permisos internos. Alta de cuenta no equivale a crear una sesión.\nAlternativas: Crear cuenta de comprador: Informar duplicado o datos faltantes; no crear cuenta interna\nIniciar sesión: Registrar intento y denegar acceso; conservar capturas locales\nRecuperar acceso: No cambiar credenciales con token inválido o vencido\nCerrar sesión: Conservar recepción pendiente para posterior acceso autorizado"
+							"text": "Precondición: Conexión para crear cuenta, autenticar o renovar sesión.\nEl personal recibe una cuenta con el rol de su puesto. El comprador puede registrarse sin obtener permisos internos. Alta de cuenta no equivale a crear una sesión.\nAlternativas: Crear cuenta de comprador: Informar duplicado o datos faltantes; no crear cuenta interna\nIniciar sesión: Registrar intento y denegar acceso; conservar capturas locales\nRecuperar acceso: No cambiar credenciales con token inválido o vencido\nCerrar sesión: Conservar recepción pendiente para posterior acceso autorizado"
 						}
 					],
 					"showSequenceNumber": false
 				}
 			],
-			"documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Propietario / administración, Ventas / cobranza, Producción, Almacén, Responsable de entrega, Comprador. El personal recibe una cuenta de administración. El comprador puede registrarse sin obtener permisos internos. Alta de cuenta no equivale a crear una sesión.",
+			"documentation": "Las ramas alt son operaciones mutuamente excluyentes del caso general, nunca un CRUD ejecutado completo. Sus guardas incluyen condiciones; ante fallo no se persiste éxito. Roles autorizados: Superadministrador, Propietario, Administrador, Finanzas, Comprador, Ventas, Producción, Almacén, Responsable de entrega. El personal recibe una cuenta con el rol de su puesto. El comprador puede registrarse sin obtener permisos internos. Alta de cuenta no equivale a crear una sesión.",
 			"messages": [
 				{
 					"_type": "UMLMessage",

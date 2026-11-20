@@ -1,7 +1,7 @@
 {
-  "pantallas": 67,
-  "enlaces": 811,
-  "controles": 2092,
+  "pantallas": 72,
+  "enlaces": 1171,
+  "controles": 2857,
   "archivos": [
     {
       "clave": "w01",
@@ -183,12 +183,12 @@
     },
     {
       "clave": "w16",
-      "nombre": "Incidencia y resolución del anticipo",
+      "nombre": "Señas de PED-042",
       "canal": "web",
       "ancho": 1440,
       "alto": 920,
       "casos": [
-        "CU06"
+        "CU10"
       ]
     },
     {
@@ -683,6 +683,56 @@
       "alto": 920,
       "casos": [
         "CU09"
+      ]
+    },
+    {
+      "clave": "wrutas",
+      "nombre": "Rutas",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU11"
+      ]
+    },
+    {
+      "clave": "wconf",
+      "nombre": "Conflictos de recepción",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU11"
+      ]
+    },
+    {
+      "clave": "waudit",
+      "nombre": "Auditoría",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU15"
+      ]
+    },
+    {
+      "clave": "wsuper",
+      "nombre": "Cuenta de nivel superior",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU13"
+      ]
+    },
+    {
+      "clave": "wfinanzas",
+      "nombre": "Delegar rol de Finanzas",
+      "canal": "web",
+      "ancho": 1440,
+      "alto": 920,
+      "casos": [
+        "CU14"
       ]
     }
   ]
