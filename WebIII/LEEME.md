@@ -7,11 +7,12 @@ Entrega en Teams: vence el **20 de noviembre de 2026 a las 07:00**.
 | Archivo | Contenido |
 |---|---|
 | `SGCPapi_API_Integrador.zip` | Proyecto completo de la Web API (`SGCPapi`) con sus migraciones de SQL Server y de MySQL, el README de entrega y el PDF de evidencias en `docs/`. Se generó con `git archive`, así que no lleva `bin`, `obj` ni `.vs`. |
-| `Evidencias_API_Integrador.pdf` | La misma copia que va dentro del ZIP, por si la quieren revisar sin descomprimir. |
+| `Evidencias_API_Integrador.pdf` | La misma copia que va dentro del ZIP: A4, una prueba por página con la captura de Swagger a todo el ancho. |
+| `Evidencias_API_Integrador.docx` | Fuente editable del PDF. |
 
 En Teams basta con subir el ZIP. El PDF va adentro (`SGCPapi/docs/Evidencias_API_Integrador.pdf`).
 
-El ZIP sale de la rama `webiii/p1-entrega` de SGCPapi (commit `v4.1.3`), que parte de `main` con los PR #5 y #6 de Victor ya integrados. Compila sin advertencias (`dotnet build -c Release -warnaserror`).
+El ZIP sale de la rama `webiii/p1-entrega` de SGCPapi (commit `v4.1.4`), que parte de `main` con los PR #5 y #6 de Victor ya integrados. Compila sin advertencias (`dotnet build -c Release -warnaserror`).
 
 ## Cumplimiento de la rúbrica
 
