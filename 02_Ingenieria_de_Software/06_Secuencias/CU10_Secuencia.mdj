@@ -2126,7 +2126,7 @@
 										"$ref": "AAAAAAGhjO//seYN+V8="
 									},
 									"edgePosition": 1,
-									"text": "guardarAcuerdoCredito(importe,vencimiento,responsable)"
+									"text": "guardarCondicionPago(modalidad,importeAutorizado,vencimiento)"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -3812,7 +3812,7 @@
 										"$ref": "AAAAAAGhjO//vOZqQL0="
 									},
 									"edgePosition": 1,
-									"text": "consultarEstadoEmisionConReferenciaUnica()"
+									"text": "registrarComprobanteFiscal(pedidoId)"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -5076,7 +5076,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGhjO//o+WiXa8="
 					},
-					"name": "guardarAcuerdoCredito(importe,vencimiento,responsable)",
+					"name": "guardarCondicionPago(modalidad,importeAutorizado,vencimiento)",
 					"source": {
 						"$ref": "AAAAAAGhjO//pOW1N3w="
 					},
@@ -5278,7 +5278,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGhjO//o+WiXa8="
 					},
-					"name": "consultarEstadoEmisionConReferenciaUnica()",
+					"name": "registrarComprobanteFiscal(pedidoId)",
 					"source": {
 						"$ref": "AAAAAAGhjO//pOW1N3w="
 					},

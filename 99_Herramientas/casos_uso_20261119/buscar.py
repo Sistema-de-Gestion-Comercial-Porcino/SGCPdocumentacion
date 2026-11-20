@@ -6,7 +6,7 @@ def media(a): return sum(ys[c] for c in ASOCIACIONES[a]) / len(ASOCIACIONES[a])
 mejor = None
 der = ["CO", "VE", "PD", "AL", "EN"]
 izq = ["SA", "PR", "AD", "FI"]
-yd_opts = [[ys["CU01"] + i * (ys["XAU"] - ys["CU01"]) / 4 for i in range(5)]]
+yd_opts = [[ys["CU01"] + i * (ys["CU15"] - ys["CU01"]) / 4 for i in range(5)]]
 for od in itertools.permutations(der):
     for yd in yd_opts:
         for yfi in range(300, 2500, 100):

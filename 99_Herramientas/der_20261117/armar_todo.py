@@ -11,7 +11,8 @@ for p in g["pages"]:
     assert not gen_der.check(p), p.name
     gen_der.png_page(p, os.path.join(out, "DER_SGCC_%s.png" % p.name.replace(" ", "_")))
 import general_attrs
-p0 = general_attrs.main()          # usa attr_overrides.json: lados fijos, sin búsqueda (rápido)
+os.environ.setdefault("RAPIDO", "1")  # reutiliza attr_choice.json (la búsqueda completa: general_attrs.py sin RAPIDO)
+p0 = general_attrs.main()
 gen_der.png_page(p0, os.path.join(out, "DER_SGCC_0_Vista_general.png"), scale=1.0)
 gen_der.drawio_full([p0] + g["pages"], os.path.join(out, "DER_SGCC.drawio"))
 print("listo en", out)

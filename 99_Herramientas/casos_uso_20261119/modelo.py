@@ -24,11 +24,11 @@ GENERALIZACIONES = [("SA", "PR"), ("PR", "AD")]
 CASOS = [
     ("CU01", "CU01 · Gestionar acceso", "Iniciar sesión · Registro · Recuperar acceso", False,
      "Cuenta: iniciar sesión, registrarse como comprador, recuperar y restablecer la clave, cerrar sesión."),
-    ("XSA", "Administrar cuentas de nivel superior", "Usuarios › cuentas de Propietario y Superadministrador", True,
+    ("CU13", "CU13 · Administrar cuentas de nivel superior", "Usuarios › cuentas de Propietario y Superadministrador", True,
      "Solo el Superadministrador modifica cuentas de Propietario o de otro Superadministrador. No se puede desactivar al último Superadministrador activo."),
     ("CU02", "CU02 · Administrar usuarios", "Usuarios", False,
      "Usuarios: consultar, crear, editar, asignar roles de nivel inferior al propio, desactivar y habilitar. Nadie se autoeleva privilegios."),
-    ("XPR", "Delegar rol de Finanzas", "Usuarios › rol FINANZAS", True,
+    ("CU14", "CU14 · Delegar rol de Finanzas", "Usuarios › rol FINANZAS", True,
      "Solo el Propietario (o el Superadministrador) asigna o retira el rol FINANZAS. El Administrador no puede."),
     ("CU03", "CU03 · Gestionar clientes", "Clientes", False,
      "Clientes: alta con tipo y número de documento únicos, edición, baja con regla de historial y pedidos del cliente."),
@@ -39,7 +39,7 @@ CASOS = [
     ("CU05", "CU05 · Gestión de cotizaciones", "Cotizaciones", False,
      "Cotizaciones: Ventas prepara y presenta; el comprador acepta o rechaza las suyas."),
     ("CU06", "CU06 · Gestionar pedidos", "Pedidos", False,
-     "Pedidos: confirmar desde una cotización aceptada, cambios, incidencias y cancelación."),
+     "Pedidos: confirmar desde una cotización aceptada, condición de pago, señas y cancelación con motivo."),
     ("CU08", "CU08 · Gestionar producción", "Sanidad · Producción", False,
      "Producción e inventario: control sanitario, faeneo/desposte y fabricación de derivados."),
     ("CU09", "CU09 · Gestionar inventario", "Existencias · Pesajes y entradas · Control de frío", False,
@@ -50,16 +50,16 @@ CASOS = [
      "Transporte y entregas: preparar y asignar entregas, rutas, transportes; captura sin conexión en Android; revisión de conflictos de recepción."),
     ("CU12", "CU12 · Gestionar reportes", "Reportes · Mis reportes · Constancia de entrega", False,
      "Consultas: reportes en PDF/Excel según la matriz de cada rol; el comprador ve solo los suyos y descarga la constancia."),
-    ("XAU", "Consultar auditoría", "Auditoría", True,
+    ("CU15", "CU15 · Consultar auditoría", "Auditoría", True,
      "Consultas: registro de auditoría de solo lectura (permiso auditoria.consultar)."),
 ]
 
 # extensión -> caso base
-EXTENSIONES = [("XSA", "CU02"), ("XPR", "CU02"), ("XAU", "CU12")]
+EXTENSIONES = [("CU13", "CU02"), ("CU14", "CU02"), ("CU15", "CU12")]
 
 ASOCIACIONES = {
-    "SA": ["XSA"],
-    "PR": ["XPR", "CU04", "CU05", "CU06", "CU10", "XAU"],
+    "SA": ["CU13"],
+    "PR": ["CU14", "CU04", "CU05", "CU06", "CU10", "CU15"],
     "AD": ["CU01", "CU02", "CU03", "CU07", "CU08", "CU09", "CU11", "CU12"],
     "FI": ["CU01", "CU04", "CU10"],
     "VE": ["CU01", "CU03", "CU04", "CU05", "CU06", "CU07", "CU10", "CU11", "CU12"],

@@ -1404,7 +1404,7 @@
 										"$ref": "AAAAAAGhjO/78OFDEqw="
 									},
 									"edgePosition": 1,
-									"text": "administrarUbicacionesActivas()"
+									"text": "registrarControlFrio(lote,ubicacion,temperatura,evaluacion)"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -2006,7 +2006,7 @@
 										"$ref": "AAAAAAGhjO/79eFkKmA="
 									},
 									"edgePosition": 1,
-									"text": "registrarEntradaUnica(productoId,loteId,ubicacion,cantidad,unidad)"
+									"text": "registrarEntrada(pesajeId,ubicacion)"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -4591,7 +4591,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGhjO/76eD/JbE="
 					},
-					"name": "administrarUbicacionesActivas()",
+					"name": "registrarControlFrio(lote,ubicacion,temperatura,evaluacion)",
 					"source": {
 						"$ref": "AAAAAAGhjO/76uESYZc="
 					},
@@ -4663,7 +4663,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGhjO/76eD/JbE="
 					},
-					"name": "registrarEntradaUnica(productoId,loteId,ubicacion,cantidad,unidad)",
+					"name": "registrarEntrada(pesajeId,ubicacion)",
 					"source": {
 						"$ref": "AAAAAAGhjO/76uESYZc="
 					},

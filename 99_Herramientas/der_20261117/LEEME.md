@@ -12,8 +12,9 @@ Solo necesita Python 3 y Pillow. Las fuentes son DejaVu, en `/usr/share/fonts/tr
 |---|---|
 | `gen_der.py` | Motor: geometría Chen, verificador de choques, PNG con Pillow y `.drawio` multipágina con las mismas coordenadas |
 | `paginas.py` | Hojas 1 a 7: entidades, atributos (`*` clave, `#` discriminador, `~` derivado), posiciones y relaciones con multiplicidad UML |
-| `general.py` | Lista de las 41 entidades y 59 relaciones de la vista general, y búsqueda del acomodo en grilla por recocido simulado |
-| `gen_32.json`, `ov.py` | Acomodo elegido para la vista general y ajustes manuales de rombos |
+| `general.py` | Lista de las 40 entidades y 63 relaciones de la vista general (modelo alineado con SGCPapi, 19 nov 2026) y costo del acomodo en grilla |
+| `buscar_acomodo.py` | Búsqueda local voraz del acomodo a partir de un acomodo inicial por módulos (más rápida que el recocido) |
+| `gen_40.json`, `ov.py` | Acomodo elegido para la vista general y ajustes manuales de rombos |
 | `general_attrs.py`, `attr_overrides.json` | Vista general con atributos: lado de los atributos de cada entidad, ya fijado |
 | `init_manual.py` | Acomodo inicial por módulos con que se refinó la búsqueda |
 

@@ -1708,7 +1708,7 @@
 													"height": 14,
 													"alpha": 1.5707963267948966,
 													"distance": 10,
-													"text": "1.2.1.1 [operación 1] : administrarUbicacionesActivas()",
+													"text": "1.2.1.1 [operación 1] : registrarControlFrio(lote,ubicacion,temperatura,evaluacion)",
 													"wordWrap": true
 												},
 												{
@@ -1981,7 +1981,7 @@
 													"height": 14,
 													"alpha": 1.5707963267948966,
 													"distance": 10,
-													"text": "1.2.2.2 [operación 2] : registrarEntradaUnica(productoId,loteId,ubicacion,cantidad,unidad)",
+													"text": "1.2.2.2 [operación 2] : registrarEntrada(pesajeId,ubicacion)",
 													"wordWrap": true
 												},
 												{
@@ -3220,7 +3220,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGhh4TDKT315FI="
 									},
-									"name": "administrarUbicacionesActivas()",
+									"name": "registrarControlFrio(lote,ubicacion,temperatura,evaluacion)",
 									"source": {
 										"$ref": "AAAAAAGhh4TDKj4Nm2o="
 									},
@@ -3277,7 +3277,7 @@
 									"_parent": {
 										"$ref": "AAAAAAGhh4TDKT315FI="
 									},
-									"name": "registrarEntradaUnica(productoId,loteId,ubicacion,cantidad,unidad)",
+									"name": "registrarEntrada(pesajeId,ubicacion)",
 									"source": {
 										"$ref": "AAAAAAGhh4TDKj4Nm2o="
 									},

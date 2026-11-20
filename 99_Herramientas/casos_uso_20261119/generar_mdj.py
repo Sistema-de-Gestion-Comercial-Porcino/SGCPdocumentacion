@@ -66,6 +66,30 @@ sub_viejo = buscar(viejo, "UMLSubsystem")[0]["_id"]
 
 def ref(i): return {"$ref": i}
 
+
+import sys as _sys
+_sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "render_mdj"))
+from render import envolver as _envolver
+
+def geometria_nombre(vista, texto, x, y, w, h, actor=False):
+    """Ubica las etiquetas visibles: dentro de la elipse (centradas) o bajo la figura del actor."""
+    tam, est = (18, 1) if not actor else (18, 1)
+    nc = buscar(vista, "UMLNameCompartmentView")[0]
+    if actor:
+        ancho_t = w + 160; lineas = _envolver(texto, ancho_t - 10, tam, est)
+        alto = 22 * len(lineas)
+        lx, ly = x - 80, y + h + 6
+    else:
+        ancho_t = w * 0.78; lineas = _envolver(texto, ancho_t - 10, tam, est)
+        alto = 22 * len(lineas)
+        lx, ly = x + (w - ancho_t) / 2, y + (h - alto) / 2
+    nc.update(left=lx, top=ly, width=ancho_t, height=alto)
+    for lab in nc["subViews"]:
+        if lab.get("text") == texto:
+            lab.update(left=lx, top=ly, width=ancho_t, height=alto, wordWrap=True, font=f"Arial;{tam};{est}", horizontalAlignment=2)
+        elif lab.get("visible", True) is not False and lab.get("text"):
+            lab["visible"] = False
+
 def poner_nombre(vista, texto):
     for lab in buscar(vista, "UMLNameCompartmentView")[0]["subViews"]:
         if lab.get("text") is not None and not lab.get("visible", True) is False and "(from" not in str(lab.get("text")):
@@ -122,13 +146,14 @@ for k, n, secc, ext, doc in CASOS:
     old_model = buscar(viejo, "UMLUseCaseView")[0]["model"]["$ref"]
     v = clonar(T["UMLUseCaseView"], {diag_viejo: G, old_model: caso_id[k], sv_id: sv["_id"]} if (sv_id := T["UMLUseCaseSubjectView"]["_id"]) else {})
     x, y, w, h = pc[k]
-    color = "#fff4e0" if ext else "#eef3fb"
+    color = "#eef3fb"
     v.update(_parent=ref(G), model=ref(caso_id[k]), containerView=ref(sv["_id"]), left=x, top=y, width=w, height=h,
              fillColor=color, font="Arial;18;0")
     for s in buscar_todos(v):
         if s.get("_type") == "LabelView" or s.get("_type", "").endswith("CompartmentView"):
             s["fillColor"] = color; s["font"] = s["font"].replace(";23;", ";18;")
     poner_nombre(v, porid[caso_id[k]]["name"])
+    geometria_nombre(v, porid[caso_id[k]]["name"], x, y, w, h)
     diagrama["ownedViews"].append(v); sv["containedViews"].append(ref(v["_id"])); vista[k] = v
 
 old_actor = buscar(viejo, "UMLActorView")[0]["model"]["$ref"]
@@ -137,6 +162,7 @@ for k, n, _ in ACTORES:
     x, y, w, h = pa[k]
     v.update(_parent=ref(G), model=ref(actor_id[k]), left=x, top=y, width=w, height=h)
     poner_nombre(v, n)
+    geometria_nombre(v, n, x, y, w, h, actor=True)
     diagrama["ownedViews"].append(v); vista[k] = v
 
 def pts(lista): return ";".join(f"{round(a)}:{round(b)}" for a, b in lista)
