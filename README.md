@@ -70,6 +70,7 @@ Más reciente arriba.
 
 | Versión | Fecha | Sprint | Cambio | Autor |
 |---|---|---|---|---|
+| v4.1.4 | 2026-11-19 | 4 | Documentación: carpeta `WebIII` con el ZIP de entrega de SGCPapi (sin `bin`, `obj` ni `.vs`), el PDF de evidencias y la guía de cumplimiento de la rúbrica | Dario Haziel Tambo Parra |
 | v4.1.3 | 2026-11-18 | 4 | Corrección: las guías vigentes (ejecución, Docker, método de verificación, entrega P1 y repartos) usan `dotnet ef ... --context SgcpContext`, necesario desde que SGCPapi tiene también el contexto de SQL Server | Dario Haziel Tambo Parra |
 | v4.1.2 | 2026-11-18 | 4 | Documentación: reparto de la tarea «API Integrador» de Web III por integrante, con criterios de la rúbrica, ramas, versiones y plazo interno, en `Reparto_del_SGCP/WebIII_API_Integrador/` | Dario Haziel Tambo Parra |
 | v4.1.1 | 2026-11-17 | 4 | Documentación: diagrama entidad-relación en notación de Chen derivado del modelo de clases (41 entidades, 59 relaciones, 259 atributos): vista general y siete hojas por módulo en `.drawio` y PNG, con su generador en `99_Herramientas/der_20261117/` | Dario Haziel Tambo Parra |
