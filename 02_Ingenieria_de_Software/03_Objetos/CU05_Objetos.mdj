@@ -3635,7 +3635,229 @@
 							"top": 1700,
 							"width": 2400,
 							"height": 230,
-							"text": "Datos ilustrativos; instantánea parcial. Cotización presentada: no hay pedido todavía. Valores ilustrativos, no precios reales confirmados."
+							"text": "Datos ilustrativos; instantánea parcial. Cotización presentada: no hay pedido todavía. Valores ilustrativos, no precios reales confirmados. vigenteHasta es opcional mientras la cotización está en BORRADOR (solicitud del comprador) y se fija al presentarla. El comprador solicita y corrige con el permiso cotizaciones.solicitar."
+						},
+						{
+							"_type": "UMLObjectView",
+							"_id": "y9jh11YutEXbUYLu",
+							"_parent": {
+								"$ref": "AAAAAAGhh4Q79rxX2WA="
+							},
+							"model": {
+								"$ref": "QjhPvW70t4LRMHkP"
+							},
+							"subViews": [
+								{
+									"_type": "UMLNameCompartmentView",
+									"_id": "B+sBY0Ktj6LVFl1h",
+									"_parent": {
+										"$ref": "y9jh11YutEXbUYLu"
+									},
+									"model": {
+										"$ref": "QjhPvW70t4LRMHkP"
+									},
+									"subViews": [
+										{
+											"_type": "LabelView",
+											"_id": "/6caq8baMnESkOy4",
+											"_parent": {
+												"$ref": "B+sBY0Ktj6LVFl1h"
+											},
+											"visible": false,
+											"lineColor": "#303744",
+											"fontColor": "#202735",
+											"font": "Arial;17;0",
+											"parentStyle": true,
+											"height": 17
+										},
+										{
+											"_type": "LabelView",
+											"_id": "KEgihWheLafQ5AVx",
+											"_parent": {
+												"$ref": "B+sBY0Ktj6LVFl1h"
+											},
+											"lineColor": "#303744",
+											"fontColor": "#202735",
+											"font": "Arial;17;1",
+											"parentStyle": true,
+											"left": 1805,
+											"top": 1157,
+											"width": 561,
+											"height": 17,
+											"underline": true,
+											"text": "permisoSolicitar: Permiso",
+											"wordWrap": true
+										},
+										{
+											"_type": "LabelView",
+											"_id": "wfOcLy0diRWwtKTm",
+											"_parent": {
+												"$ref": "B+sBY0Ktj6LVFl1h"
+											},
+											"visible": false,
+											"lineColor": "#303744",
+											"fontColor": "#202735",
+											"font": "Arial;17;0",
+											"parentStyle": true,
+											"width": 178.53400000000002,
+											"height": 17,
+											"text": "(from CU05 — Objetos)"
+										},
+										{
+											"_type": "LabelView",
+											"_id": "6zxKxcp0fkvUCnuT",
+											"_parent": {
+												"$ref": "B+sBY0Ktj6LVFl1h"
+											},
+											"visible": false,
+											"lineColor": "#303744",
+											"fontColor": "#202735",
+											"font": "Arial;17;0",
+											"parentStyle": true,
+											"horizontalAlignment": 1,
+											"wordWrap": true
+										}
+									],
+									"lineColor": "#303744",
+									"fontColor": "#202735",
+									"font": "Arial;17;0",
+									"parentStyle": true,
+									"left": 1800,
+									"top": 1150,
+									"width": 571,
+									"height": 29,
+									"stereotypeLabel": {
+										"$ref": "/6caq8baMnESkOy4"
+									},
+									"nameLabel": {
+										"$ref": "KEgihWheLafQ5AVx"
+									},
+									"namespaceLabel": {
+										"$ref": "wfOcLy0diRWwtKTm"
+									},
+									"propertyLabel": {
+										"$ref": "6zxKxcp0fkvUCnuT"
+									}
+								},
+								{
+									"_type": "UMLSlotCompartmentView",
+									"_id": "C6mGpd7y2wMwMhk5",
+									"_parent": {
+										"$ref": "y9jh11YutEXbUYLu"
+									},
+									"model": {
+										"$ref": "QjhPvW70t4LRMHkP"
+									},
+									"subViews": [
+										{
+											"_type": "UMLSlotView",
+											"_id": "tfyS/b0hT4OSvXA6",
+											"_parent": {
+												"$ref": "C6mGpd7y2wMwMhk5"
+											},
+											"model": {
+												"$ref": "ia+zgHH/Ei2vfZPj"
+											},
+											"lineColor": "#303744",
+											"fontColor": "#202735",
+											"font": "Arial;17;0",
+											"parentStyle": true,
+											"left": 1805,
+											"top": 1184,
+											"width": 561,
+											"height": 17,
+											"text": "codigo: String = \"cotizaciones.solicitar\"",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLSlotView",
+											"_id": "sww99CIdZWK68cSN",
+											"_parent": {
+												"$ref": "C6mGpd7y2wMwMhk5"
+											},
+											"model": {
+												"$ref": "gbBj0jrdK8Jq1ud9"
+											},
+											"lineColor": "#303744",
+											"fontColor": "#202735",
+											"font": "Arial;17;0",
+											"parentStyle": true,
+											"left": 1805,
+											"top": 1203,
+											"width": 561,
+											"height": 17,
+											"text": "modulo: String = \"cotizaciones\"",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLSlotView",
+											"_id": "uhW3kBFLd5iqUR00",
+											"_parent": {
+												"$ref": "C6mGpd7y2wMwMhk5"
+											},
+											"model": {
+												"$ref": "tnZLydzye44ULOH6"
+											},
+											"lineColor": "#303744",
+											"fontColor": "#202735",
+											"font": "Arial;17;0",
+											"parentStyle": true,
+											"left": 1805,
+											"top": 1222,
+											"width": 561,
+											"height": 17,
+											"text": "accion: String = \"solicitar\"",
+											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLSlotView",
+											"_id": "ekovBPa0nmUkh9cz",
+											"_parent": {
+												"$ref": "C6mGpd7y2wMwMhk5"
+											},
+											"model": {
+												"$ref": "N2YZrjVIAO1uGb/S"
+											},
+											"lineColor": "#303744",
+											"fontColor": "#202735",
+											"font": "Arial;17;0",
+											"parentStyle": true,
+											"left": 1805,
+											"top": 1241,
+											"width": 561,
+											"height": 17,
+											"text": "descripcion: String = \"Comprador envía o corrige su solicitud\"",
+											"horizontalAlignment": 0
+										}
+									],
+									"lineColor": "#303744",
+									"fontColor": "#202735",
+									"font": "Arial;17;0",
+									"parentStyle": true,
+									"left": 1800,
+									"top": 1179,
+									"width": 571,
+									"height": 86
+								}
+							],
+							"lineColor": "#303744",
+							"fontColor": "#202735",
+							"font": "Arial;17;0",
+							"parentStyle": false,
+							"showShadow": false,
+							"containerChangeable": true,
+							"left": 1800,
+							"top": 1150,
+							"width": 570,
+							"height": 127,
+							"showVisibility": false,
+							"nameCompartment": {
+								"$ref": "AAAAAAGhh4Q8I78+J4k="
+							},
+							"wordWrap": true,
+							"slotCompartment": {
+								"$ref": "AAAAAAGhh4Q8I79DI1E="
+							}
 						}
 					]
 				},
@@ -4990,7 +5212,8 @@
 							},
 							"name": "vigenteHasta",
 							"visibility": "private",
-							"type": "DateTime"
+							"type": "DateTime",
+							"multiplicity": "0..1"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -10992,6 +11215,71 @@
 					"association": {
 						"$ref": "QZLefjnS0ZjXSG81"
 					}
+				},
+				{
+					"_type": "UMLObject",
+					"_id": "QjhPvW70t4LRMHkP",
+					"_parent": {
+						"$ref": "AAAAAAGhh4Q79rxWIf0="
+					},
+					"name": "permisoSolicitar",
+					"classifier": {
+						"$ref": "3bU9BGhF7GGZu/BG"
+					},
+					"slots": [
+						{
+							"_type": "UMLSlot",
+							"_id": "ia+zgHH/Ei2vfZPj",
+							"_parent": {
+								"$ref": "QjhPvW70t4LRMHkP"
+							},
+							"name": "codigo",
+							"value": "\"cotizaciones.solicitar\"",
+							"definingFeature": {
+								"$ref": "8hYTmg6Mmb1p72pQ"
+							},
+							"type": "String"
+						},
+						{
+							"_type": "UMLSlot",
+							"_id": "gbBj0jrdK8Jq1ud9",
+							"_parent": {
+								"$ref": "QjhPvW70t4LRMHkP"
+							},
+							"name": "modulo",
+							"value": "\"cotizaciones\"",
+							"definingFeature": {
+								"$ref": "FrjhmQwn2LFg3PLL"
+							},
+							"type": "String"
+						},
+						{
+							"_type": "UMLSlot",
+							"_id": "tnZLydzye44ULOH6",
+							"_parent": {
+								"$ref": "QjhPvW70t4LRMHkP"
+							},
+							"name": "accion",
+							"value": "\"solicitar\"",
+							"definingFeature": {
+								"$ref": "qL2HHGWm3FlAKC7N"
+							},
+							"type": "String"
+						},
+						{
+							"_type": "UMLSlot",
+							"_id": "N2YZrjVIAO1uGb/S",
+							"_parent": {
+								"$ref": "QjhPvW70t4LRMHkP"
+							},
+							"name": "descripcion",
+							"value": "\"Comprador envía o corrige su solicitud\"",
+							"definingFeature": {
+								"$ref": "+r96qMHDFRV1Wm6P"
+							},
+							"type": "String"
+						}
+					]
 				}
 			],
 			"documentation": "Cotización presentada: no hay pedido todavía. Valores ilustrativos, no precios reales confirmados."

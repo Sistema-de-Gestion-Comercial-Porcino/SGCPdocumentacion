@@ -3046,7 +3046,8 @@
               },
               "name": "vigenteHasta",
               "visibility": "private",
-              "type": "DateTime"
+              "type": "DateTime",
+              "multiplicity": "0..1"
             },
             {
               "_type": "UMLAttribute",
@@ -11652,7 +11653,8 @@
               },
               "name": "vigenteHasta",
               "visibility": "private",
-              "type": "DateTime"
+              "type": "DateTime",
+              "multiplicity": "0..1"
             },
             {
               "_type": "UMLAttribute",
@@ -20079,7 +20081,8 @@
               },
               "name": "vigenteHasta",
               "visibility": "private",
-              "type": "DateTime"
+              "type": "DateTime",
+              "multiplicity": "0..1"
             },
             {
               "_type": "UMLAttribute",
@@ -28690,7 +28693,8 @@
               },
               "name": "vigenteHasta",
               "visibility": "private",
-              "type": "DateTime"
+              "type": "DateTime",
+              "multiplicity": "0..1"
             },
             {
               "_type": "UMLAttribute",
@@ -37918,7 +37922,229 @@
               "top": 1700,
               "width": 2400,
               "height": 230,
-              "text": "Datos ilustrativos; instantánea parcial. Cotización presentada: no hay pedido todavía. Valores ilustrativos, no precios reales confirmados."
+              "text": "Datos ilustrativos; instantánea parcial. Cotización presentada: no hay pedido todavía. Valores ilustrativos, no precios reales confirmados. vigenteHasta es opcional mientras la cotización está en BORRADOR (solicitud del comprador) y se fija al presentarla. El comprador solicita y corrige con el permiso cotizaciones.solicitar."
+            },
+            {
+              "_type": "UMLObjectView",
+              "_id": "vynrBHOyn8B86rPv",
+              "_parent": {
+                "$ref": "ssUXHfNmazQ3aqi/ErED"
+              },
+              "model": {
+                "$ref": "aovOE+Ug44tdxndf"
+              },
+              "subViews": [
+                {
+                  "_type": "UMLNameCompartmentView",
+                  "_id": "wXkC775bc0V2uUIu",
+                  "_parent": {
+                    "$ref": "vynrBHOyn8B86rPv"
+                  },
+                  "model": {
+                    "$ref": "aovOE+Ug44tdxndf"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "LabelView",
+                      "_id": "DLAhlendS+xy4Lbn",
+                      "_parent": {
+                        "$ref": "wXkC775bc0V2uUIu"
+                      },
+                      "visible": false,
+                      "lineColor": "#303744",
+                      "fontColor": "#202735",
+                      "font": "Arial;17;0",
+                      "parentStyle": true,
+                      "height": 17
+                    },
+                    {
+                      "_type": "LabelView",
+                      "_id": "rPPBsme3q9O5XlFz",
+                      "_parent": {
+                        "$ref": "wXkC775bc0V2uUIu"
+                      },
+                      "lineColor": "#303744",
+                      "fontColor": "#202735",
+                      "font": "Arial;17;1",
+                      "parentStyle": true,
+                      "left": 1805,
+                      "top": 1157,
+                      "width": 561,
+                      "height": 17,
+                      "underline": true,
+                      "text": "permisoSolicitar: Permiso",
+                      "wordWrap": true
+                    },
+                    {
+                      "_type": "LabelView",
+                      "_id": "Gh27Wj394B0EDIr0",
+                      "_parent": {
+                        "$ref": "wXkC775bc0V2uUIu"
+                      },
+                      "visible": false,
+                      "lineColor": "#303744",
+                      "fontColor": "#202735",
+                      "font": "Arial;17;0",
+                      "parentStyle": true,
+                      "width": 178.53400000000002,
+                      "height": 17,
+                      "text": "(from CU05 — Objetos)"
+                    },
+                    {
+                      "_type": "LabelView",
+                      "_id": "keywv0Q+iM9I5ME1",
+                      "_parent": {
+                        "$ref": "wXkC775bc0V2uUIu"
+                      },
+                      "visible": false,
+                      "lineColor": "#303744",
+                      "fontColor": "#202735",
+                      "font": "Arial;17;0",
+                      "parentStyle": true,
+                      "horizontalAlignment": 1,
+                      "wordWrap": true
+                    }
+                  ],
+                  "lineColor": "#303744",
+                  "fontColor": "#202735",
+                  "font": "Arial;17;0",
+                  "parentStyle": true,
+                  "left": 1800,
+                  "top": 1150,
+                  "width": 571,
+                  "height": 29,
+                  "stereotypeLabel": {
+                    "$ref": "DLAhlendS+xy4Lbn"
+                  },
+                  "nameLabel": {
+                    "$ref": "rPPBsme3q9O5XlFz"
+                  },
+                  "namespaceLabel": {
+                    "$ref": "Gh27Wj394B0EDIr0"
+                  },
+                  "propertyLabel": {
+                    "$ref": "keywv0Q+iM9I5ME1"
+                  }
+                },
+                {
+                  "_type": "UMLSlotCompartmentView",
+                  "_id": "AvFHtrcqyS7yadUn",
+                  "_parent": {
+                    "$ref": "vynrBHOyn8B86rPv"
+                  },
+                  "model": {
+                    "$ref": "aovOE+Ug44tdxndf"
+                  },
+                  "subViews": [
+                    {
+                      "_type": "UMLSlotView",
+                      "_id": "OudKBEccAz50EcN0",
+                      "_parent": {
+                        "$ref": "AvFHtrcqyS7yadUn"
+                      },
+                      "model": {
+                        "$ref": "0JGbk26Freb9zBvn"
+                      },
+                      "lineColor": "#303744",
+                      "fontColor": "#202735",
+                      "font": "Arial;17;0",
+                      "parentStyle": true,
+                      "left": 1805,
+                      "top": 1184,
+                      "width": 561,
+                      "height": 17,
+                      "text": "codigo: String = \"cotizaciones.solicitar\"",
+                      "horizontalAlignment": 0
+                    },
+                    {
+                      "_type": "UMLSlotView",
+                      "_id": "mmMQMzc4kKswI7Ze",
+                      "_parent": {
+                        "$ref": "AvFHtrcqyS7yadUn"
+                      },
+                      "model": {
+                        "$ref": "cCKyg5dWGaQey1Gt"
+                      },
+                      "lineColor": "#303744",
+                      "fontColor": "#202735",
+                      "font": "Arial;17;0",
+                      "parentStyle": true,
+                      "left": 1805,
+                      "top": 1203,
+                      "width": 561,
+                      "height": 17,
+                      "text": "modulo: String = \"cotizaciones\"",
+                      "horizontalAlignment": 0
+                    },
+                    {
+                      "_type": "UMLSlotView",
+                      "_id": "W0I47KJSzvuddnQt",
+                      "_parent": {
+                        "$ref": "AvFHtrcqyS7yadUn"
+                      },
+                      "model": {
+                        "$ref": "iuntBvYu9UT/vS5y"
+                      },
+                      "lineColor": "#303744",
+                      "fontColor": "#202735",
+                      "font": "Arial;17;0",
+                      "parentStyle": true,
+                      "left": 1805,
+                      "top": 1222,
+                      "width": 561,
+                      "height": 17,
+                      "text": "accion: String = \"solicitar\"",
+                      "horizontalAlignment": 0
+                    },
+                    {
+                      "_type": "UMLSlotView",
+                      "_id": "uUr/Q99KwZ3OvM7b",
+                      "_parent": {
+                        "$ref": "AvFHtrcqyS7yadUn"
+                      },
+                      "model": {
+                        "$ref": "WoO72rVQ+5+DhME4"
+                      },
+                      "lineColor": "#303744",
+                      "fontColor": "#202735",
+                      "font": "Arial;17;0",
+                      "parentStyle": true,
+                      "left": 1805,
+                      "top": 1241,
+                      "width": 561,
+                      "height": 17,
+                      "text": "descripcion: String = \"Comprador envía o corrige su solicitud\"",
+                      "horizontalAlignment": 0
+                    }
+                  ],
+                  "lineColor": "#303744",
+                  "fontColor": "#202735",
+                  "font": "Arial;17;0",
+                  "parentStyle": true,
+                  "left": 1800,
+                  "top": 1179,
+                  "width": 571,
+                  "height": 86
+                }
+              ],
+              "lineColor": "#303744",
+              "fontColor": "#202735",
+              "font": "Arial;17;0",
+              "parentStyle": false,
+              "showShadow": false,
+              "containerChangeable": true,
+              "left": 1800,
+              "top": 1150,
+              "width": 570,
+              "height": 127,
+              "showVisibility": false,
+              "nameCompartment": {
+                "$ref": "qhNn1aR+iKmGCc7/4S4B"
+              },
+              "wordWrap": true,
+              "slotCompartment": {
+                "$ref": "nuOuA6LdqqKr+rSKvOMF"
+              }
             }
           ]
         },
@@ -39273,7 +39499,8 @@
               },
               "name": "vigenteHasta",
               "visibility": "private",
-              "type": "DateTime"
+              "type": "DateTime",
+              "multiplicity": "0..1"
             },
             {
               "_type": "UMLAttribute",
@@ -45275,6 +45502,71 @@
           "association": {
             "$ref": "E6LpqbWjzzMuJrkd7A1M"
           }
+        },
+        {
+          "_type": "UMLObject",
+          "_id": "aovOE+Ug44tdxndf",
+          "_parent": {
+            "$ref": "tdrPQb0rKr4mKoWD58VD"
+          },
+          "name": "permisoSolicitar",
+          "classifier": {
+            "$ref": "bHm7H4pPe2SJIy8nlOd1"
+          },
+          "slots": [
+            {
+              "_type": "UMLSlot",
+              "_id": "0JGbk26Freb9zBvn",
+              "_parent": {
+                "$ref": "aovOE+Ug44tdxndf"
+              },
+              "name": "codigo",
+              "value": "\"cotizaciones.solicitar\"",
+              "definingFeature": {
+                "$ref": "GLl8hb0UuNhoCnWuY+Nb"
+              },
+              "type": "String"
+            },
+            {
+              "_type": "UMLSlot",
+              "_id": "cCKyg5dWGaQey1Gt",
+              "_parent": {
+                "$ref": "aovOE+Ug44tdxndf"
+              },
+              "name": "modulo",
+              "value": "\"cotizaciones\"",
+              "definingFeature": {
+                "$ref": "PI7RD+z/0tDmpSfD4AMq"
+              },
+              "type": "String"
+            },
+            {
+              "_type": "UMLSlot",
+              "_id": "iuntBvYu9UT/vS5y",
+              "_parent": {
+                "$ref": "aovOE+Ug44tdxndf"
+              },
+              "name": "accion",
+              "value": "\"solicitar\"",
+              "definingFeature": {
+                "$ref": "T4+v0TU9uhFiAs/L0mpZ"
+              },
+              "type": "String"
+            },
+            {
+              "_type": "UMLSlot",
+              "_id": "WoO72rVQ+5+DhME4",
+              "_parent": {
+                "$ref": "aovOE+Ug44tdxndf"
+              },
+              "name": "descripcion",
+              "value": "\"Comprador envía o corrige su solicitud\"",
+              "definingFeature": {
+                "$ref": "IJuoKdSOo41eJI3MAcM/"
+              },
+              "type": "String"
+            }
+          ]
         }
       ],
       "documentation": "Cotización presentada: no hay pedido todavía. Valores ilustrativos, no precios reales confirmados."
@@ -49282,7 +49574,8 @@
               },
               "name": "vigenteHasta",
               "visibility": "private",
-              "type": "DateTime"
+              "type": "DateTime",
+              "multiplicity": "0..1"
             },
             {
               "_type": "UMLAttribute",
@@ -58401,7 +58694,8 @@
               },
               "name": "vigenteHasta",
               "visibility": "private",
-              "type": "DateTime"
+              "type": "DateTime",
+              "multiplicity": "0..1"
             },
             {
               "_type": "UMLAttribute",
@@ -73212,7 +73506,8 @@
               },
               "name": "vigenteHasta",
               "visibility": "private",
-              "type": "DateTime"
+              "type": "DateTime",
+              "multiplicity": "0..1"
             },
             {
               "_type": "UMLAttribute",
@@ -84331,7 +84626,8 @@
               },
               "name": "vigenteHasta",
               "visibility": "private",
-              "type": "DateTime"
+              "type": "DateTime",
+              "multiplicity": "0..1"
             },
             {
               "_type": "UMLAttribute",
@@ -94673,7 +94969,8 @@
               },
               "name": "vigenteHasta",
               "visibility": "private",
-              "type": "DateTime"
+              "type": "DateTime",
+              "multiplicity": "0..1"
             },
             {
               "_type": "UMLAttribute",
@@ -104590,7 +104887,8 @@
               },
               "name": "vigenteHasta",
               "visibility": "private",
-              "type": "DateTime"
+              "type": "DateTime",
+              "multiplicity": "0..1"
             },
             {
               "_type": "UMLAttribute",
@@ -114411,7 +114709,8 @@
               },
               "name": "vigenteHasta",
               "visibility": "private",
-              "type": "DateTime"
+              "type": "DateTime",
+              "multiplicity": "0..1"
             },
             {
               "_type": "UMLAttribute",
@@ -123423,7 +123722,8 @@
               },
               "name": "vigenteHasta",
               "visibility": "private",
-              "type": "DateTime"
+              "type": "DateTime",
+              "multiplicity": "0..1"
             },
             {
               "_type": "UMLAttribute",
@@ -132691,7 +132991,8 @@
               },
               "name": "vigenteHasta",
               "visibility": "private",
-              "type": "DateTime"
+              "type": "DateTime",
+              "multiplicity": "0..1"
             },
             {
               "_type": "UMLAttribute",
@@ -141860,7 +142161,8 @@
               },
               "name": "vigenteHasta",
               "visibility": "private",
-              "type": "DateTime"
+              "type": "DateTime",
+              "multiplicity": "0..1"
             },
             {
               "_type": "UMLAttribute",

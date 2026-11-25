@@ -1516,7 +1516,7 @@
 									"parentStyle": false,
 									"left": 1792,
 									"top": 871,
-									"width": 340.171,
+									"width": 340.5,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 18,
@@ -1524,7 +1524,7 @@
 										"$ref": "AAAAAAGhjO/vVM56RSI="
 									},
 									"edgePosition": 1,
-									"text": "guardarBorradorConCantidadesYUnidad(clienteId,detalles)"
+									"text": "POST cotizaciones/solicitudes (clienteId,detalles)"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -1634,9 +1634,9 @@
 									},
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 1892,
+									"left": 1819,
 									"top": 971,
-									"width": 140.114,
+									"width": 286.02,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 18,
@@ -1644,7 +1644,7 @@
 										"$ref": "AAAAAAGhjO/vVc6A6C4="
 									},
 									"edgePosition": 1,
-									"text": "enviarSolicitudAVentas()"
+									"text": "PUT cotizaciones/{id}/solicitud (detalles)"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -4367,7 +4367,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGhjO/vUc4woj4="
 					},
-					"name": "guardarBorradorConCantidadesYUnidad(clienteId,detalles)",
+					"name": "POST cotizaciones/solicitudes (clienteId,detalles)",
 					"source": {
 						"$ref": "AAAAAAGhjO/vUs5D4FE="
 					},
@@ -4381,7 +4381,7 @@
 					"_parent": {
 						"$ref": "AAAAAAGhjO/vUc4woj4="
 					},
-					"name": "enviarSolicitudAVentas()",
+					"name": "PUT cotizaciones/{id}/solicitud (detalles)",
 					"source": {
 						"$ref": "AAAAAAGhjO/vUs5D4FE="
 					},

@@ -14571,7 +14571,7 @@
                   "height": 14,
                   "alpha": 1.5707963267948966,
                   "distance": 10,
-                  "text": "1.2.1.2 [operación 1] : guardarBorradorConCantidadesYUnidad(clienteId,detalles)",
+                  "text": "1.2.1.2 [operación 1] : POST cotizaciones/solicitudes (clienteId,detalles)",
                   "wordWrap": true
                 },
                 {
@@ -14662,7 +14662,7 @@
                   "height": 14,
                   "alpha": 1.5707963267948966,
                   "distance": 10,
-                  "text": "1.2.1.3 [operación 1] : enviarSolicitudAVentas()",
+                  "text": "1.2.1.3 [operación 1] : PUT cotizaciones/{id}/solicitud (detalles)",
                   "wordWrap": true
                 },
                 {
@@ -15889,7 +15889,7 @@
                   "_parent": {
                     "$ref": "f7NeG8cqOOb50iiYaaXa"
                   },
-                  "name": "guardarBorradorConCantidadesYUnidad(clienteId,detalles)",
+                  "name": "POST cotizaciones/solicitudes (clienteId,detalles)",
                   "source": {
                     "$ref": "tEZXAxANj1a12b3HIXdn"
                   },
@@ -15908,7 +15908,7 @@
                   "_parent": {
                     "$ref": "f7NeG8cqOOb50iiYaaXa"
                   },
-                  "name": "enviarSolicitudAVentas()",
+                  "name": "PUT cotizaciones/{id}/solicitud (detalles)",
                   "source": {
                     "$ref": "tEZXAxANj1a12b3HIXdn"
                   },
