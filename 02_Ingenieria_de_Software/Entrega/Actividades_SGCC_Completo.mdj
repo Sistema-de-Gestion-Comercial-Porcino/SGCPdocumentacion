@@ -35657,7 +35657,7 @@
                       "top": 1687,
                       "width": 391,
                       "height": 32,
-                      "text": "Guardar Borrador Con Cantidades YUnidad\nDatos: cliente Id, detalles",
+                      "text": "POST cotizaciones/solicitudes\nDatos: cliente Id, detalles",
                       "wordWrap": true
                     },
                     {
@@ -35778,7 +35778,7 @@
                       "top": 1877,
                       "width": 391,
                       "height": 16,
-                      "text": "Enviar Solicitud AVentas",
+                      "text": "Corregir solicitud (opcional)\nPUT cotizaciones/{id}/solicitud",
                       "wordWrap": true
                     },
                     {
@@ -44530,7 +44530,7 @@
               "_parent": {
                 "$ref": "KbQEG7JJdUTtLWSrbPEK"
               },
-              "name": "Guardar Borrador Con Cantidades YUnidad\nDatos: cliente Id, detalles"
+              "name": "POST cotizaciones/solicitudes\nDatos: cliente Id, detalles"
             },
             {
               "_type": "UMLAction",
@@ -44538,7 +44538,7 @@
               "_parent": {
                 "$ref": "KbQEG7JJdUTtLWSrbPEK"
               },
-              "name": "Enviar Solicitud AVentas"
+              "name": "Corregir solicitud (opcional)\nPUT cotizaciones/{id}/solicitud"
             },
             {
               "_type": "UMLActivityFinalNode",

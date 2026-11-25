@@ -2798,7 +2798,7 @@
 											"top": 785,
 											"width": 460,
 											"height": 16,
-											"text": "-vigenteHasta: DateTime",
+											"text": "-vigenteHasta: DateTime[0..1]",
 											"horizontalAlignment": 0
 										},
 										{
@@ -41722,7 +41722,8 @@
 							},
 							"name": "vigenteHasta",
 							"visibility": "private",
-							"type": "DateTime"
+							"type": "DateTime",
+							"multiplicity": "0..1"
 						},
 						{
 							"_type": "UMLAttribute",

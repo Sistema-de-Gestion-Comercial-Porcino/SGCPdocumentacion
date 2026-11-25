@@ -4319,7 +4319,8 @@
 							},
 							"name": "vigenteHasta",
 							"visibility": "private",
-							"type": "DateTime"
+							"type": "DateTime",
+							"multiplicity": "0..1"
 						},
 						{
 							"_type": "UMLAttribute",
