@@ -7,8 +7,18 @@ def lista(items):
 
 CAB = ["N.º", "Perfil", "Qué hacer en la web", "Qué debe pasar", "✓"]
 ANCHOS = [0.5, 0.95, 2.4, 2.25, 0.4]
+# Los pasos se numeran solos y se citan por clave con {clave}: insertar un paso no descuadra la matriz ni las notas.
+NUM = {}
+def R(texto):
+    return re.sub(r"\{(\w+)\}", lambda m: str(NUM[m.group(1)]), texto)
 def pasos(titulo, filas, nota=None):
-    tabla(titulo, CAB, [f + ["☐"] for f in filas], ANCHOS, 9, nota)
+    filas_num = []
+    for clave, *resto in filas:
+        assert clave not in NUM, clave
+        NUM[clave] = len([k for k in NUM if k != "total_pasos"]) + 1
+        filas_num.append([str(NUM[clave])] + resto + ["☐"])
+    NUM["total_pasos"] = len([k for k in NUM if k != "total_pasos"])
+    tabla(f"Pasos {filas_num[0][0]} a {filas_num[-1][0]}: {titulo}", CAB, filas_num, ANCHOS, 9, R(nota) if nota else None)
 
 # ---------------------------------------------------------------- portada
 q = p(TITULO_DOC, False, True, centrado=True, interlineado=1.15)
@@ -75,90 +85,116 @@ tabla("Perfiles que intervienen en la prueba",
 h("3.2 Datos de partida", 2)
 p("Antes de empezar deben existir en el catálogo los productos **Costilla de cerdo** y **Lomo de cerdo**, clasificados como cortes, y "
   "**Jamón elaborado**, clasificado como derivado; el Lomo de cerdo necesita un costo y un precio vigentes (por ejemplo, costo Bs 28 y "
-  "precio Bs 35 por kg). Para la sección 4.6 hace falta además un pedido **confirmado** de 2 kg de lomo, que se arma con el flujo del "
-  "Sprint 1: Ventas registra la cotización, el comprador o Ventas la acepta y se confirma el pedido. Los códigos de esta guía (CERDO-001, "
+  "precio Bs 35 por kg). Para la sección 4.6 hace falta además el pedido **confirmado** de un cliente que compra 2 kg de lomo; se arma con el "
+  "flujo del Sprint 1: Ventas registra la cotización, el comprador o Ventas la acepta y se confirma el pedido. Los códigos de esta guía (CERDO-001, "
   "L-COS-001, etc.) son ejemplos; si ya existen en la base, se usa otro sufijo.")
 
 # ---------------------------------------------------------------- 4
 h("4. Recorrido de prueba paso a paso")
+p("Los pasos siguen el orden real de un día de trabajo en la chanchería. Cuando un resultado depende de una regla que no es evidente, "
+  "la nota de la tabla explica el porqué.")
 h("4.1 Catálogo de cortes y derivados (RF-04)", 2)
-pasos("Pasos 1 a 3: catálogo", [
-    ["1", "admin", "Menú **Productos**. Buscar «Costilla», «Lomo» y «Jamón».", "Aparecen Costilla de cerdo y Lomo de cerdo con clasificación de corte y Jamón elaborado como derivado, con código, presentación, unidad kg y estado activo."],
-    ["2", "almacen1", "Menú **Existencias**, filtrar por Costilla de cerdo.", "No hay existencias: crear un producto **no crea stock**."],
-    ["3", "admin", "Menú **Gestión de costos**: revisar el precio vigente del lomo.", "Lomo con costo de referencia y precio de venta vigentes."]])
+pasos("catálogo", [
+    ["cat", "admin", "Menú **Productos**. Buscar «Costilla», «Lomo» y «Jamón».", "Aparecen Costilla de cerdo y Lomo de cerdo con clasificación de corte y Jamón elaborado como derivado, con código, presentación, unidad kg y estado activo."],
+    ["sinstock", "almacen1", "Menú **Existencias**, filtrar por Costilla de cerdo.", "No hay existencias: crear un producto **no crea stock**."],
+    ["precio", "admin", "Menú **Gestión de costos**: revisar el precio vigente del lomo.", "Lomo con costo de referencia y precio de venta vigentes."]])
 
 h("4.2 Control sanitario e incidencias (RF-18)", 2)
-pasos("Pasos 4 a 11: sanidad, rechazo e incidencia", [
-    ["4", "produccion1", "**Sanidad → + Registrar animal**: identificación CERDO-001, peso de ingreso 95 kg, procedencia y proveedor. Guardar.", "El animal aparece en Sanidad en estado PENDIENTE."],
-    ["5", "produccion1", "Registrar otro animal: CERDO-002.", "Dos animales pendientes."],
-    ["6", "produccion1", "Abrir CERDO-001 → **Registrar control** → Resultado «Aprobado · apto para faeneo».", "CERDO-001 queda APTO; el control guarda fecha y responsable."],
-    ["7", "produccion1", "Abrir CERDO-002 → **Registrar control** → «Rechazado · no se faena», observación «Fiebre al ingreso».", "CERDO-002 queda **RECHAZADO** y la ficha muestra el motivo y la fecha."],
-    ["8", "produccion1", "**Producción → + Planificar orden**, tipo Faeneo, animal CERDO-002.", "**Se niega**: «No se puede faenar el animal …: fue rechazado en el control sanitario del … Motivo: Fiebre al ingreso»."],
-    ["9", "produccion1", "Menú **Incidencias** (filtro Pendientes).", "Aparece la incidencia «Animal CERDO-002» con el motivo, quién la registró y estado PENDIENTE. Desde la ficha del animal hay un enlace «Ver la incidencia»."],
-    ["10", "produccion1", "En la incidencia, **Resolver**; probar primero sin motivo y luego con «Animal devuelto al proveedor».", "Sin motivo se niega. Con motivo queda RESUELTA con la resolución y la fecha."],
-    ["11", "produccion1", "Volver a Sanidad → CERDO-002.", "Sigue **RECHAZADO**: resolver la incidencia registra la decisión, **no rehabilita** al animal."]],
-    "Los pasos 9 y 10 usan la pantalla Incidencias, agregada en el PR SGCPuiweb #9 (v5.1.0). En `almacen1` la misma pantalla se ve sin el botón Resolver.")
+pasos("sanidad, rechazo e incidencia", [
+    ["an1", "produccion1", "**Sanidad → + Registrar animal**: identificación CERDO-001, peso de ingreso 95 kg, procedencia y proveedor. Guardar.", "El animal aparece en Sanidad en estado PENDIENTE."],
+    ["an2", "produccion1", "Registrar otro animal: CERDO-002.", "Dos animales pendientes."],
+    ["apto", "produccion1", "Abrir CERDO-001 → **Registrar control** → Resultado «Aprobado · apto para faeneo».", "CERDO-001 queda APTO; el control guarda fecha y responsable."],
+    ["rech", "produccion1", "Abrir CERDO-002 → **Registrar control** → «Rechazado · no se faena», observación «Fiebre al ingreso».", "CERDO-002 queda **RECHAZADO** y la ficha muestra el motivo y la fecha."],
+    ["faeneo_no", "produccion1", "**Producción → + Planificar orden**, tipo Faeneo, animal CERDO-002.", "**Se niega**: «No se puede faenar el animal …: fue rechazado en el control sanitario del … Motivo: Fiebre al ingreso»."],
+    ["inc", "produccion1", "Menú **Incidencias** (filtro Pendientes).", "Aparece la incidencia «Animal CERDO-002» con el motivo, quién la registró y estado PENDIENTE. Desde la ficha del animal hay un enlace «Ver la incidencia»."],
+    ["resolver", "produccion1", "En la incidencia, **Resolver**; probar primero sin motivo y luego con «Animal devuelto al proveedor».", "Sin motivo se niega. Con motivo queda RESUELTA con la resolución y la fecha."],
+    ["sigue", "produccion1", "Volver a Sanidad → CERDO-002.", "Sigue **RECHAZADO**: resolver la incidencia registra la decisión, **no rehabilita** al animal."],
+    ["rehab", "produccion1", "En CERDO-002, **Registrar control** con resultado «Aprobado» y una fecha posterior.", "**Se niega**: «No se revierte un bloqueo ni un faeneo mediante otro control.» El rechazo es definitivo para ese animal."]],
+    "Incidencias es parte del PR SGCPuiweb #9 (v5.1.0); en `almacen1` se ve sin el botón Resolver. El paso {rehab} muestra una regla "
+    "deliberada de la API: un animal rechazado no vuelve a quedar apto con un control nuevo. Qué hacer si el animal devuelto se recupera "
+    "y vuelve a la chanchería es una decisión abierta (sección 6.2).")
 
 h("4.3 Orden de faeneo con dos lotes separados (RF-04)", 2)
-pasos("Pasos 12 a 17: faeneo, previsiones y resultados", [
-    ["12", "produccion1", "**+ Planificar orden**: tipo Faeneo, animal CERDO-001, inicio previsto ahora, fin previsto en 3 horas; previsiones Costilla de cerdo 8 kg y Lomo de cerdo 5 kg.", "Orden PLANIFICADA con sus dos previsiones."],
-    ["13", "almacen1", "**Existencias** → Costilla de cerdo.", "Sigue en 0: **una previsión no es stock**."],
-    ["14", "produccion1", "Abrir la orden → **Iniciar orden**.", "Orden EN_PROCESO."],
-    ["15", "produccion1", "**Registrar resultados**: Costilla de cerdo con lote L-COS-001 y Lomo de cerdo con lote L-LOM-001, cada uno con su vencimiento. **Confirmar orden**.", "La orden queda CONFIRMADA con **dos lotes separados**, uno por producto."],
-    ["16", "almacen1", "**Existencias**.", "Siguen en 0: **confirmar el resultado no suma stock** (los lotes nacen sin cantidad)."],
-    ["17", "almacen1", "**Pesajes y entradas → Registrar pesaje**: abrir la lista de lotes.", "L-COS-001 y L-LOM-001 aparecen pendientes de pesaje, cada uno con su unidad."]])
+pasos("faeneo, previsiones y resultados", [
+    ["plan", "produccion1", "**+ Planificar orden**: tipo Faeneo, animal CERDO-001, inicio previsto ahora, fin previsto en 3 horas; previsiones Costilla de cerdo 8 kg y Lomo de cerdo 5 kg.", "Orden PLANIFICADA con sus dos previsiones."],
+    ["prev0", "almacen1", "**Existencias** → Costilla de cerdo.", "Sigue en 0: **una previsión no es stock**."],
+    ["iniciar", "produccion1", "Abrir la orden → **Iniciar orden**.", "Orden EN_PROCESO."],
+    ["result", "produccion1", "**Registrar resultados**: Costilla de cerdo con lote L-COS-001 y Lomo de cerdo con lote L-LOM-001, cada uno con su vencimiento. **Confirmar orden**.", "La orden queda CONFIRMADA con **dos lotes separados**, uno por producto."],
+    ["conf0", "almacen1", "**Existencias**.", "Siguen en 0: **confirmar el resultado no suma stock** (los lotes nacen sin cantidad)."],
+    ["pend", "almacen1", "**Pesajes y entradas → Registrar pesaje**: abrir la lista de lotes.", "L-COS-001 y L-LOM-001 aparecen pendientes de pesaje, cada uno con su unidad."]])
 
 h("4.4 Pesaje y entrada física única (RF-04)", 2)
-pasos("Pasos 18 a 23: pesaje y entrada", [
-    ["18", "almacen1", "**Registrar pesaje** de L-COS-001: bruto 13, tara 0.5.", "El formulario calcula **neto 12,500 kg** y guarda el responsable. El aviso recuerda que pesar no da de alta la existencia."],
-    ["19", "almacen1", "**Existencias** → Costilla.", "Sigue en 0: **el pesaje no suma stock**."],
-    ["20", "almacen1", "**Confirmar entrada física** del pesaje de L-COS-001, ubicación «Cámara 1».", "Existencias de costilla pasa a **12,500 kg**: Física apta 12,5; Reservada 0; Disponible 12,5."],
-    ["21", "almacen1", "Intentar confirmar otra vez la entrada del mismo pesaje.", "**Se niega**: «Este lote ya tiene su entrada física… No se vuelve a sumar al stock.» Existencias sigue en 12,5."],
-    ["22", "almacen1", "Pesar L-LOM-001 (bruto 5.4, tara 0.4) y confirmar su entrada en «Cámara 1».", "Lomo con 5,000 kg disponibles, en lote distinto de la costilla: **cada corte con su pesaje propio**."],
-    ["23", "almacen1", "En Existencias, enlace **Movimientos** de la costilla.", "Un movimiento «Entrada física» +12,5 con responsable y fecha."]])
+pasos("pesaje y entrada", [
+    ["pesar", "almacen1", "**Registrar pesaje** de L-COS-001: bruto 13, tara 0.5.", "El formulario calcula **neto 12,500 kg** y guarda el responsable. El aviso recuerda que pesar no da de alta la existencia."],
+    ["pes0", "almacen1", "**Existencias** → Costilla.", "Sigue en 0: **el pesaje no suma stock**."],
+    ["entrada", "almacen1", "**Confirmar entrada física** del pesaje de L-COS-001, ubicación «Cámara 1».", "Existencias de costilla pasa a **12,500 kg**: Física apta 12,5; Reservada 0; Disponible 12,5."],
+    ["entrada2", "almacen1", "Intentar confirmar otra vez la entrada del mismo pesaje.", "**Se niega**: «Este lote ya tiene su entrada física… No se vuelve a sumar al stock.» Existencias sigue en 12,5."],
+    ["lomo", "almacen1", "Pesar L-LOM-001 (bruto 5.4, tara 0.4) y confirmar su entrada en «**Cámara 2**».", "Lomo con 5,000 kg disponibles, en otro lote y otra cámara: **cada corte con su pesaje propio**."],
+    ["mov1", "almacen1", "En Existencias, enlace **Movimientos** de la costilla.", "Un movimiento «Entrada física» +12,5 con responsable y fecha."]])
 
-h("4.5 Fabricación de un derivado y consumo sin duplicar (RF-04)", 2)
-pasos("Pasos 24 a 28: jamón elaborado", [
-    ["24", "produccion1", "**+ Planificar orden**: tipo Fabricación, previsión Jamón elaborado 3 kg. **Iniciar orden**.", "Segunda orden, EN_PROCESO: **otra orden fabrica jamón**."],
-    ["25", "produccion1", "**Registrar insumo consumido**: existencia de Costilla de cerdo (L-COS-001), cantidad 2.", "La costilla baja de 12,5 a **10,5** kg."],
-    ["26", "produccion1", "Volver atrás en el navegador y reenviar el mismo formulario (o hacer doble clic en Registrar consumo).", "La costilla **sigue en 10,5**, no en 8,5: el formulario lleva una referencia única y **una referencia repetida no duplica el consumo**."],
-    ["27", "produccion1", "**Registrar resultados**: Jamón elaborado, lote L-JAM-001. **Confirmar orden**.", "Lote de jamón creado sin cantidad; como en 4.3, no suma stock hasta pesarlo y darle entrada."],
-    ["28", "almacen1", "**Movimientos** de la costilla.", "Entrada +12,5 y «Consumo en producción» −2, cada uno con su responsable."]])
+h("4.5 Fabricación de un derivado para vender sin pedido (RF-04, RF-20)", 2)
+p("La chanchería fabrica jamón para tenerlo en stock y venderlo a quien lo pida; no hace falta un pedido previo. El derivado sigue el "
+  "mismo camino que un corte: se registra el insumo que sale de una existencia, se confirma el lote sin cantidad y **la cantidad real la "
+  "pesa almacén**. El sistema no suma los insumos ni supone un rendimiento: 2 kg de carne no dan necesariamente 2 kg de jamón. En la "
+  "práctica el jamón sale de la pierna; aquí se usa costilla solo porque es el corte que ya tiene stock en la prueba.")
+pasos("jamón elaborado", [
+    ["fab", "produccion1", "**+ Planificar orden**: tipo Fabricación, previsión Jamón elaborado 3 kg. **Iniciar orden**.", "Segunda orden, EN_PROCESO: **otra orden fabrica jamón**."],
+    ["consumo", "produccion1", "**Registrar insumo consumido**: existencia de Costilla de cerdo (L-COS-001), cantidad 2.", "La costilla baja de 12,5 a **10,5** kg."],
+    ["consumo2", "produccion1", "Volver atrás en el navegador y reenviar el mismo formulario (o hacer doble clic en Registrar consumo).", "La costilla **sigue en 10,5**, no en 8,5: el formulario lleva una referencia única y **una referencia repetida no duplica el consumo**."],
+    ["jam", "produccion1", "**Registrar resultados**: Jamón elaborado, lote L-JAM-001. **Confirmar orden**.", "Lote de jamón creado sin cantidad; igual que en el faeneo, todavía no suma stock."],
+    ["jampes", "almacen1", "**Registrar pesaje** de L-JAM-001: bruto 3.2, tara 0.2. **Confirmar entrada** en «Cámara 2».", "Jamón elaborado con **3,000 kg disponibles** para vender a cualquier cliente, sin pedido previo. La cantidad es la pesada, no la suma de insumos."],
+    ["mov2", "almacen1", "**Movimientos** de la costilla.", "Entrada +12,5 y «Consumo en producción» −2, cada uno con su responsable."],
+    ["sincargo", "ventas1", "Abrir cualquier pedido confirmado → «Cargos del pedido».", "No aparece ningún cargo de servicio por haber fabricado el jamón: **fabricar un derivado no genera un cargo de servicio**."]],
+    "El cargo por servicio de RF-20 (sección 4.8) solo existe cuando un cliente pide y recibe un servicio, por ejemplo que le faeneen "
+    "su propio animal o le hagan un corte especial. Lo que la chanchería fabrica para su propio stock no tiene a quién cobrarse como "
+    "servicio: su costo se refleja en el costo de referencia del producto (RF-02) y se recupera con el precio de venta.")
 
 h("4.6 Disponible y reservas para un pedido (RF-04, RNF-06)", 2)
-pasos("Pasos 29 a 35: reservar y liberar", [
-    ["29", "almacen1", "**Pedidos por preparar**.", "Aparece el pedido confirmado de 2 kg de lomo con «FALTA RESERVAR» y, por producto, confirmado, reservado y falta."],
-    ["30", "almacen1", "**Reservar** en el lomo. Revisar la lista de existencias.", "Solo se ofrecen existencias **físicas, aptas y con disponible** (L-LOM-001 · Cámara 1). El jamón u otra previsión no aparecen: **las previsiones no se reservan**."],
-    ["31", "almacen1", "Reservar 5 kg.", "**Se niega** con el mensaje de la API: «El producto o la cantidad no corresponden al pedido.» Nada cambia."],
-    ["32", "almacen1", "Reservar 2 kg desde L-LOM-001.", "El pedido pasa a «RESERVA COMPLETA». En Existencias el lomo muestra Reservada 2 y Disponible 3: **disponible = físico apto − reservas**."],
-    ["33", "almacen1", "En la reserva, **Liberar**; probar sin motivo y luego con «El cliente pidió otro lote».", "Sin motivo se niega. Con motivo, Disponible vuelve a 5 y la reserva queda LIBERADA con su motivo (no se borra)."],
-    ["34", "almacen1", "Reservar de nuevo 2 kg.", "Reserva completa otra vez."],
-    ["35", "admin", "**Entregas → Preparar** con ese pedido.", "La entrega se prepara. Sin la reserva completa la web lo niega con «Reserva toda la cantidad confirmada…». Es el enlace con el Sprint 3."]],
-    "La pantalla Pedidos por preparar es parte del PR SGCPuiweb #9 (v5.1.0). La API admite una sola reserva activa por producto del pedido y por lote: para sumar más del mismo lote, se libera y se reserva el total.")
+p("Esta sección no tiene relación con el jamón: es un cliente que compra 2 kg de **lomo** y tiene su pedido confirmado (sección 3.2). "
+  "Almacén aparta del stock lo que ese pedido necesita para que nadie más lo venda.")
+pasos("reservar y liberar", [
+    ["cola", "almacen1", "**Pedidos por preparar**.", "Aparece el pedido de 2 kg de lomo con «FALTA RESERVAR» y, por producto, confirmado, reservado y falta."],
+    ["opciones", "almacen1", "**Reservar** en el lomo. Revisar la lista de existencias.", "Solo se ofrecen existencias **físicas, aptas y con disponible** (L-LOM-001 · Cámara 2). Una previsión de producción no aparece: **las previsiones no se reservan**."],
+    ["exceso", "almacen1", "Reservar 5 kg.", "**Se niega** con el mensaje de la API: «El producto o la cantidad no corresponden al pedido.» Nada cambia."],
+    ["reserva", "almacen1", "Reservar 2 kg desde L-LOM-001.", "El pedido pasa a «RESERVA COMPLETA». En Existencias el lomo muestra Reservada 2 y Disponible 3: **disponible = físico apto − reservas**. La física sigue en 5: reservar no saca la carne de la cámara."],
+    ["liberar", "almacen1", "En la reserva, **Liberar**; probar sin motivo y luego con «El cliente pidió otro lote».", "Sin motivo se niega. Con motivo, Disponible vuelve a 5 y la reserva queda LIBERADA con su motivo (no se borra)."],
+    ["reserva2", "almacen1", "Reservar de nuevo 2 kg.", "Reserva completa otra vez."],
+    ["preparar", "admin", "**Entregas → Preparar** con ese pedido.", "La entrega se prepara. Sin la reserva completa la web lo niega con «Reserva toda la cantidad confirmada…». Es el enlace con el Sprint 3."]],
+    "La pantalla Pedidos por preparar es parte del PR SGCPuiweb #9 (v5.1.0). La API admite una sola reserva activa por producto del pedido "
+    "y por lote: para sumar más del mismo lote, se libera y se reserva el total.")
 
 h("4.7 Control de frío y bloqueo sin revertir consumos (RF-17)", 2)
-pasos("Pasos 36 a 41: frío", [
-    ["36", "almacen1", "**Control de frío → + Registrar control**: lote L-COS-001, temperatura 9 °C, ubicación Cámara 1, fecha de la lectura, evaluación «Rechazado», observación «Cámara sin frío durante la noche».", "Se guarda la lectura con **valor, unidad, fecha, lote, ubicación y responsable**. El aviso aclara que el sistema no mide la temperatura ni la evalúa: **la evaluación es humana**."],
-    ["37", "almacen1", "Registrar otra lectura de 2 °C sobre L-LOM-001 con evaluación «Apto».", "Se guarda y el lote sigue APTO: no hay umbrales ni acciones automáticas."],
-    ["38", "almacen1", "**Existencias**.", "L-COS-001 queda **BLOQUEADO** con disponible 0."],
-    ["39", "produccion1", "**Producción** → abrir la orden de fabricación del jamón → tabla de resultados.", "El lote L-JAM-001, que consumió costilla de ese lote, también figura **BLOQUEADO**."],
-    ["40", "almacen1", "**Movimientos** de la costilla.", "El «Consumo en producción» −2 **sigue registrado**: bloquear no revierte el consumo real."],
-    ["41", "produccion1", "**Incidencias** (filtro Todas).", "Aparecen las incidencias de los lotes L-COS-001 y L-JAM-001 con su motivo."]])
+p(R("**Qué pasó en la historia de la prueba.** La costilla entró a la Cámara 1 el día anterior (paso {entrada}); el lomo y el jamón están "
+  "en la Cámara 2. Durante la noche la Cámara 1 se quedó sin frío y nadie lo notó. A primera hora, producción sacó 2 kg de esa costilla "
+  "para el jamón (paso {consumo}). En la revisión de la mañana, almacén lee 9 °C en la Cámara 1, cuando la carne fresca refrigerada se "
+  "conserva entre 0 y 4 °C, y el registro de la cámara muestra que estuvo así desde la noche. El responsable decide que esa costilla ya "
+  "no es apta para vender. Como los 2 kg que fueron al jamón pasaron la misma noche en esa cámara, el jamón también queda en duda."))
+pasos("frío", [
+    ["frio", "almacen1", "**Control de frío → + Registrar control**: lote L-COS-001, temperatura 9 °C, ubicación Cámara 1, fecha y hora de la lectura, evaluación «Rechazado», observación «Revisión de la mañana: 9 °C; la cámara estuvo sin frío desde la noche anterior».", "Se guarda la lectura con **valor, unidad, fecha, lote, ubicación y responsable**. El aviso aclara que el sistema no mide la temperatura ni la evalúa: el lote se rechaza porque **una persona lo evaluó como Rechazado**."],
+    ["frio2", "almacen1", "Registrar una lectura de 2 °C en la Cámara 2 sobre L-LOM-001 con evaluación «Apto».", "Se guarda y el lomo sigue APTO y vendible: no hay umbrales ni acciones automáticas, y la falla fue solo de la Cámara 1."],
+    ["bloq", "almacen1", "**Existencias**.", "L-COS-001 queda **BLOQUEADO** con disponible 0: los 10,5 kg siguen contados como físicos, pero ya no se pueden vender ni reservar."],
+    ["bloqjam", "almacen1", "Existencias del Jamón elaborado.", "L-JAM-001 también queda **BLOQUEADO** con disponible 0, porque se hizo con costilla de ese lote."],
+    ["consumo_sigue", "almacen1", "**Movimientos** de la costilla.", "El «Consumo en producción» −2 **sigue registrado**: esos 2 kg salieron de la cámara y se usaron; bloquear no los devuelve."],
+    ["inclotes", "produccion1", "**Incidencias** (filtro Todas).", "Aparecen las incidencias de L-COS-001 (con la observación del frío) y de L-JAM-001 («Insumo rechazado: L-COS-001»)."]],
+    "La API bloquea todo derivado que consumió del lote rechazado **sin comparar fechas**: no sabe si el problema empezó antes o después "
+    "del consumo, así que retiene el derivado por precaución. En esta historia es correcto porque la costilla pasó la noche en la cámara "
+    "antes de usarse. Si la falla hubiera sido posterior al consumo, el jamón quedaría bloqueado igual y hoy no hay forma de "
+    "desbloquearlo (sección 6.2).")
 
 h("4.8 Cargos de producto y de servicio (RF-20)", 2)
-pasos("Pasos 42 a 44: cargos separados", [
-    ["42", "ventas1", "**Pedidos** → abrir el pedido confirmado → sección «Cargos del pedido».", "El cargo por producto aparece solo; en «Cargo por servicio» se lee que el pedido no tiene servicios acordados y prestados: **no se crea un cargo de servicio no prestado**."],
-    ["43", "ventas1", "**+ Registrar servicio prestado**: concepto «Corte a pedido», importe Bs 30, cómo se acordó («acordado por WhatsApp con el cliente») y fecha en que se prestó.", "El servicio aparece en su propia tabla, separado del producto, con el acuerdo y la fecha."],
-    ["44", "ventas1", "Revisar el total del pedido.", "Producto y servicio figuran por separado; fabricar el jamón (4.5) no generó ningún cargo de servicio."]])
+pasos("cargos separados", [
+    ["cargos", "ventas1", "**Pedidos** → abrir el pedido de lomo → sección «Cargos del pedido».", "El cargo por producto aparece solo; en «Cargo por servicio» se lee que el pedido no tiene servicios acordados y prestados: **no se crea un cargo de servicio no prestado**."],
+    ["servicio", "ventas1", "El cliente pidió que le corten el lomo en bifes y se acordó cobrarlo: **+ Registrar servicio prestado** con concepto «Corte a pedido», importe Bs 30, cómo se acordó («acordado por WhatsApp con el cliente») y fecha en que se prestó.", "El servicio aparece en su propia tabla, separado del producto, con el acuerdo y la fecha."],
+    ["total", "ventas1", "Revisar el total del pedido.", "Producto y servicio figuran por separado y suman al saldo de **ese cliente**."]])
 
 h("4.9 Permisos, auditoría y respaldo (RNF-03, RNF-06)", 2)
-pasos("Pasos 45 a 50: seguridad y trazabilidad", [
-    ["45", "produccion1", "Escribir en la barra de direcciones `/Almacen/Pesajes` y `/Frio`.", "Redirige a «Sin permiso»: Producción no pesa ni registra frío."],
-    ["46", "almacen1", "Abrir `/Produccion/Nueva` y `/Sanidad`.", "Redirige a «Sin permiso»: Almacén no planifica órdenes ni registra animales."],
-    ["47", "ventas1", "Abrir `/Almacen/Pedidos`.", "Redirige a «Sin permiso»; en el detalle del pedido no ve el botón «Revisar reservas»."],
-    ["48", "admin", "Menú **Auditoría**.", "Cada acción del recorrido figura con fecha, usuario, acción y módulo, entre ellas el bloqueo de lotes como `BLOQUEAR_SIN_REVERTIR_CONSUMO`, las reservas y la resolución de la incidencia."],
-    ["49", "admin", "Revisar una reserva liberada y una incidencia resuelta.", "Ninguna se borró: conservan su motivo, su autor y su fecha. Las anulaciones mantienen historial."],
-    ["50", "—", "Respaldo y restauración de la base central.", "Se demuestra con el procedimiento de respaldo y restauración de la tarea V-3 (pendiente al 25 de noviembre)."]])
+pasos("seguridad y trazabilidad", [
+    ["perm1", "produccion1", "Escribir en la barra de direcciones `/Almacen/Pesajes` y `/Frio`.", "Redirige a «Sin permiso»: Producción no pesa ni registra frío."],
+    ["perm2", "almacen1", "Abrir `/Produccion/Nueva` y `/Sanidad`.", "Redirige a «Sin permiso»: Almacén no planifica órdenes ni registra animales."],
+    ["perm3", "ventas1", "Abrir `/Almacen/Pedidos`.", "Redirige a «Sin permiso»; en el detalle del pedido no ve el botón «Revisar reservas»."],
+    ["audit", "admin", "Menú **Auditoría**.", "Cada acción del recorrido figura con fecha, usuario, acción y módulo, entre ellas el bloqueo de lotes como `BLOQUEAR_SIN_REVERTIR_CONSUMO`, las reservas y la resolución de la incidencia."],
+    ["hist", "admin", "Revisar una reserva liberada y una incidencia resuelta.", "Ninguna se borró: conservan su motivo, su autor y su fecha. Las anulaciones mantienen historial."],
+    ["respaldo", "—", "Respaldo y restauración de la base central.", "Se demuestra con el procedimiento de respaldo y restauración de la tarea V-3 (pendiente al 25 de noviembre)."]])
 
 # ---------------------------------------------------------------- 5
 h("5. Matriz de cumplimiento")
@@ -166,55 +202,72 @@ p("La matriz cruza cada parte del parámetro de aceptación con los pasos que lo
   "marcados, el criterio se da por cumplido.")
 tabla("Criterio de aceptación y pasos que lo demuestran",
       ["Req.", "Criterio", "Pasos"],
-      [["RF-04", "Costilla y lomo como cortes; jamón elaborado como derivado", "1"],
-       ["RF-04", "Crear producto no crea stock", "2"],
-       ["RF-04", "Una orden obtiene costilla y lomo en lotes separados con pesajes propios", "12, 15, 18, 22"],
-       ["RF-04", "Otra orden fabrica jamón", "24, 27"],
-       ["RF-04", "Confirmar resultado no suma stock", "13, 16, 19"],
-       ["RF-04", "La recepción física única sí suma stock", "20, 21"],
-       ["RF-04", "Una referencia repetida no duplica entrada ni consumo", "21, 26"],
-       ["RF-04", "Disponible = físico apto − reservas; las previsiones no se reservan", "30, 32, 33"],
-       ["RF-18", "El animal rechazado no inicia faeneo", "7, 8"],
-       ["RF-18", "No produce lote apto y queda incidencia trazable", "9, 10, 11"],
-       ["RF-17", "Lectura con valor, unidad, fecha, contexto y responsable", "36"],
-       ["RF-17", "Evaluación humana; sin acciones automáticas", "36, 37"],
-       ["RF-20", "Producto y servicio por separado; sin servicio no prestado", "42, 43, 44"],
-       ["RNF-03", "Permisos por perfil y datos confidenciales", "45, 46, 47"],
-       ["RNF-03", "Restauración central verificable", "50"],
-       ["RNF-06", "Autor y fecha en cada operación; anulaciones con historial", "23, 28, 33, 48, 49"]],
+      [[a, b, R(c)] for a, b, c in [
+       ["RF-04", "Costilla y lomo como cortes; jamón elaborado como derivado", "{cat}"],
+       ["RF-04", "Crear producto no crea stock", "{sinstock}"],
+       ["RF-04", "Una orden obtiene costilla y lomo en lotes separados con pesajes propios", "{plan}, {result}, {pesar}, {lomo}"],
+       ["RF-04", "Otra orden fabrica jamón; su cantidad es la pesada", "{fab}, {jam}, {jampes}"],
+       ["RF-04", "Confirmar resultado no suma stock", "{prev0}, {conf0}, {pes0}"],
+       ["RF-04", "La recepción física única sí suma stock", "{entrada}, {entrada2}"],
+       ["RF-04", "Una referencia repetida no duplica entrada ni consumo", "{entrada2}, {consumo2}"],
+       ["RF-04", "Consumos reales se descuentan aunque el lote se rechace", "{consumo}, {consumo_sigue}"],
+       ["RF-04", "Disponible = físico apto − reservas; las previsiones no se reservan", "{opciones}, {reserva}, {liberar}"],
+       ["RF-18", "El animal rechazado no inicia faeneo ni se rehabilita con otro control", "{rech}, {faeneo_no}, {rehab}"],
+       ["RF-18", "No produce lote apto y queda incidencia trazable", "{inc}, {resolver}, {sigue}"],
+       ["RF-17", "Lectura con valor, unidad, fecha, contexto y responsable", "{frio}"],
+       ["RF-17", "Evaluación humana; sin acciones automáticas", "{frio}, {frio2}"],
+       ["RF-20", "Producto y servicio por separado; sin servicio no prestado", "{sincargo}, {cargos}, {servicio}, {total}"],
+       ["RNF-03", "Permisos por perfil y datos confidenciales", "{perm1}, {perm2}, {perm3}"],
+       ["RNF-03", "Restauración central verificable", "{respaldo}"],
+       ["RNF-06", "Autor y fecha en cada operación; anulaciones con historial", "{mov1}, {mov2}, {liberar}, {audit}, {hist}"]]],
       [0.8, 4.4, 1.3], 9.5)
 
 # ---------------------------------------------------------------- 6
-h("6. Estado al 25 de noviembre y pendientes")
+h("6. Estado al 25 de noviembre, pendientes y decisiones abiertas")
+h("6.1 Tareas que completan el Sprint 2", 2)
 p("Toda la regla de negocio del Sprint 2 está en la API y se probó desde la web el 25 de noviembre. Lo que faltaba eran pantallas: las "
-  "de reservas, incidencias y movimientos se agregaron en el PR SGCPuiweb #9, que debe estar fusionado antes de ensayar. Quedan tres "
-  "tareas de compañeros que completan criterios secundarios del sprint; mientras no estén, los pasos afectados se explican en vez de "
-  "mostrarse.")
+  "de reservas, incidencias y movimientos se agregaron en el PR SGCPuiweb #9, que debe estar fusionado antes de ensayar. Quedan tareas "
+  "de compañeros que completan criterios secundarios; mientras no estén, los pasos afectados se explican en vez de mostrarse.")
 tabla("Tareas que completan el Sprint 2",
       ["Tarea", "Responsable", "Qué agrega", "Pasos afectados"],
-      [["PR SGCPuiweb #9 (D-1, D-2, D-3)", "Dario", "Pedidos por preparar, Incidencias y Movimientos", "9–11, 23, 28–35, 41"],
-       ["S-1", "Sebastián", "Control de frío asociado a una entrega y visible para el perfil ENTREGA", "36 (variante de entrega)"],
-       ["S-2", "Sebastián", "Rechazar un lote sin pasar por frío y recibir un lote comprado a terceros", "Complementa 38–39"],
-       ["S-3", "Sebastián", "Anular un cargo de servicio mal registrado", "Complementa 43"],
-       ["V-3", "Victor", "Procedimiento de respaldo y restauración verificable", "50"]],
+      [["PR SGCPuiweb #9 (D-1, D-2, D-3)", "Dario", "Pedidos por preparar, Incidencias y Movimientos", R("{inc}–{sigue}, {mov1}, {mov2}, {cola}–{preparar}, {inclotes}")],
+       ["S-1", "Sebastián", "Control de frío asociado a una entrega y visible para el perfil ENTREGA", R("{frio} (variante de entrega)")],
+       ["S-2", "Sebastián", "Rechazar un lote sin pasar por frío y recibir un lote comprado a terceros", R("Complementa {bloq}–{bloqjam}")],
+       ["S-3", "Sebastián", "Anular un cargo de servicio mal registrado", R("Complementa {servicio}")],
+       ["V-3", "Victor", "Procedimiento de respaldo y restauración verificable", R("{respaldo}")]],
       [1.7, 0.95, 2.75, 1.1], 9.5)
+h("6.2 Decisiones abiertas detectadas al revisar la guía", 2)
+p("Al recorrer la guía con casos reales del negocio aparecieron tres situaciones que la API resuelve de forma conservadora y que "
+  "conviene confirmar con el propietario de la chanchería antes de cambiar nada. No impiden demostrar el Sprint 2.")
+tabla("Situaciones que la API todavía no contempla",
+      ["Situación", "Qué hace hoy la API", "Opción a confirmar"],
+      [["Un animal rechazado se devuelve al proveedor, se recupera y vuelve a la chanchería.",
+        "Lo rechaza para siempre («No se revierte un bloqueo…») y la identificación es única, así que tampoco se puede registrar de nuevo con el mismo arete.",
+        "Tratarlo como un **reingreso**: nuevo ingreso del mismo animal con su propio control sanitario, conservando el rechazo anterior en el historial."],
+       ["La falla de frío ocurrió después de que una parte del lote se usó en un derivado.",
+        "Bloquea el derivado igual, porque no compara fechas, y resolver la incidencia no lo desbloquea.",
+        "Permitir que un responsable autorizado **libere el derivado con motivo** cuando se verifique que el insumo salió antes de la falla."],
+       ["El lote rechazado sigue físicamente en la cámara y se va a desechar.",
+        "Queda con disponible 0, pero su cantidad física sigue contada en Existencias.",
+        "Registrar una **baja por merma** con motivo y responsable, como movimiento de stock."]],
+      [1.9, 2.3, 2.3], 9)
 
 # ---------------------------------------------------------------- 7
 h("7. Guion corto para la demostración")
-p("Para la presentación no hace falta ejecutar los 50 pasos. Este recorrido de doce pasos muestra cada criterio una vez, con dos ventanas "
-  "abiertas (Producción y Almacén) y la sesión de administrador para el cierre.")
+p(R("Para la presentación no hace falta ejecutar los {total_pasos} pasos. Este recorrido de doce pasos muestra cada criterio una vez, con dos "
+  "ventanas abiertas (Producción y Almacén) y la sesión de administrador para el cierre."))
 for i, t in enumerate([
     "Sanidad: registrar CERDO-001 (aprobado) y CERDO-002 (rechazado, «Fiebre al ingreso»).",
     "Planificar faeneo con CERDO-002: el sistema lo niega con el motivo.",
     "Incidencias: mostrar la incidencia abierta y resolverla; el animal sigue rechazado.",
     "Planificar faeneo con CERDO-001 con previsiones de costilla 8 kg y lomo 5 kg; mostrar que Existencias sigue en 0.",
     "Registrar resultados con L-COS-001 y L-LOM-001 y confirmar: dos lotes separados, stock todavía en 0.",
-    "Almacén: pesar L-COS-001 (bruto 13, tara 0,5 → neto 12,5); el stock sigue en 0.",
-    "Confirmar la entrada: stock 12,5. Repetir la entrada: se niega.",
-    "Fabricación de jamón: consumir 2 kg de costilla; reenviar el consumo no lo duplica (10,5).",
-    "Pedidos por preparar: reservar 2 kg de lomo; Disponible baja; liberar con motivo y volver a reservar.",
-    "Control de frío Rechazado sobre L-COS-001: el lote y el jamón quedan bloqueados y el consumo sigue en Movimientos.",
-    "Pedido: registrar el servicio «Corte a pedido» aparte del producto.",
+    "Almacén: pesar L-COS-001 (bruto 13, tara 0,5 → neto 12,5); el stock sigue en 0. Confirmar la entrada en Cámara 1: stock 12,5. Repetir la entrada: se niega.",
+    "Lomo pesado y con entrada en Cámara 2.",
+    "Fabricación de jamón: consumir 2 kg de costilla (reenviar no duplica); pesar el jamón (3 kg) y darle entrada: queda a la venta sin pedido.",
+    "Pedidos por preparar: reservar 2 kg de lomo para el pedido de un cliente; Disponible baja; liberar con motivo y volver a reservar.",
+    "Control de frío: la Cámara 1 estuvo sin frío durante la noche; lectura de 9 °C evaluada como Rechazado. La costilla y el jamón hecho con ella quedan bloqueados; el lomo de la Cámara 2 sigue apto; el consumo sigue en Movimientos.",
+    "Pedido de lomo: registrar el servicio «Corte a pedido» aparte del producto.",
     "Auditoría: cada acción con usuario, fecha y módulo."], 1):
     q = p(f"{i}. {t}", False); q.paragraph_format.left_indent = Inches(0.5); q.paragraph_format.first_line_indent = Inches(-0.25)
 

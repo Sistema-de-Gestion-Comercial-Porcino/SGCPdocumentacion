@@ -91,9 +91,9 @@ def tabla(titulo, cab, filas, anchos, tam=10, nota=None):
                 if parte.startswith("`"): rr.font.name = "Courier New"; rr.font.size = Pt(tam - 1)
     if nota:
         q = p("", False); q.paragraph_format.line_spacing = 2; q.add_run("Nota. ").italic = True
-        for parte in re.split(r"(`[^`]+`)", nota):
+        for parte in re.split(r"(\*\*[^*]+\*\*|`[^`]+`)", nota):
             if not parte: continue
-            rr = q.add_run(parte.strip("`"))
+            rr = q.add_run(parte[2:-2] if parte.startswith("**") else parte.strip("`")); rr.bold = parte.startswith("**")
             if parte.startswith("`"): rr.font.name = "Courier New"; rr.font.size = Pt(10.5)
     else:
         doc.add_paragraph().paragraph_format.line_spacing = 1
