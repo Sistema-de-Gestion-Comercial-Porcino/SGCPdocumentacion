@@ -29,7 +29,7 @@ q = p("", False, centrado=True, interlineado=1); q.paragraph_format.space_after 
 for txt, neg in [("Integrantes:", True), ("Dario Haziel Tambo Parra", False), ("Angel Sebastian Eguez Mur", False), ("Sofia Cuellar Roca", False),
                  ("Victor Manuel Manrique Arancivia", False), ("", False), ("Materia:", True), ("Ingeniería de Software", False), ("", False),
                  ("Docente:", True), ("Rolando Lara Sánchez", False), ("", False), ("Universidad del Valle · Bolivia", False), ("", False),
-                 ("Fecha:", True), ("25 de noviembre de 2026", False)]:
+                 ("Fecha:", True), ("26 de noviembre de 2026", False)]:
     p(txt, False, neg, centrado=True, interlineado=1.15)
 salto()
 
@@ -86,7 +86,8 @@ h("3.2 Datos de partida", 2)
 p("Antes de empezar deben existir en el catálogo los productos **Costilla de cerdo** y **Lomo de cerdo**, clasificados como cortes, y "
   "**Jamón elaborado**, clasificado como derivado; el Lomo de cerdo necesita un costo y un precio vigentes (por ejemplo, costo Bs 28 y "
   "precio Bs 35 por kg). Para la sección 4.6 hace falta además el pedido **confirmado** de un cliente que compra 2 kg de lomo; se arma con el "
-  "flujo del Sprint 1: Ventas registra la cotización, el comprador o Ventas la acepta y se confirma el pedido. Los códigos de esta guía (CERDO-001, "
+  "flujo del Sprint 1: Ventas registra la cotización, el comprador o Ventas la acepta y se confirma el pedido. En la base de prueba los tres "
+  "productos ya existen; el precio del lomo, el cliente y su pedido se registran antes de empezar. Los códigos de esta guía (CERDO-001, "
   "L-COS-001, etc.) son ejemplos; si ya existen en la base, se usa otro sufijo.")
 
 # ---------------------------------------------------------------- 4
@@ -101,15 +102,15 @@ pasos("catálogo", [
 
 h("4.2 Control sanitario e incidencias (RF-18)", 2)
 pasos("sanidad, rechazo e incidencia", [
-    ["an1", "produccion1", "**Sanidad → + Registrar animal**: identificación CERDO-001, peso de ingreso 95 kg, procedencia y proveedor. Guardar.", "El animal aparece en Sanidad en estado PENDIENTE."],
+    ["an1", "produccion1", "**Sanidad → + Registrar animal**: identificación CERDO-001, peso de ingreso 95 kg, procedencia y proveedor. Guardar.", "El animal aparece en Sanidad con estado «Pendiente de control»."],
     ["an2", "produccion1", "Registrar otro animal: CERDO-002.", "Dos animales pendientes."],
     ["apto", "produccion1", "Abrir CERDO-001 → **Registrar control** → Resultado «Aprobado · apto para faeneo».", "CERDO-001 queda APTO; el control guarda fecha y responsable."],
-    ["rech", "produccion1", "Abrir CERDO-002 → **Registrar control** → «Rechazado · no se faena», observación «Fiebre al ingreso».", "CERDO-002 queda **RECHAZADO** y la ficha muestra el motivo y la fecha."],
+    ["rech", "produccion1", "Abrir CERDO-002 → **Registrar control** → «Rechazado · no se faena», observación «Fiebre al ingreso».", "CERDO-002 queda «**Rechazado · bloqueado**» y la ficha muestra el motivo y la fecha."],
     ["faeneo_no", "produccion1", "**Producción → + Planificar orden**, tipo Faeneo, animal CERDO-002.", "**Se niega**: «No se puede faenar el animal …: fue rechazado en el control sanitario del … Motivo: Fiebre al ingreso»."],
     ["inc", "produccion1", "Menú **Incidencias** (filtro Pendientes).", "Aparece la incidencia «Animal CERDO-002» con el motivo, quién la registró y estado PENDIENTE. Desde la ficha del animal hay un enlace «Ver la incidencia»."],
     ["resolver", "produccion1", "En la incidencia, **Resolver**; probar primero sin motivo y luego con «Animal devuelto al proveedor».", "Sin motivo se niega. Con motivo queda RESUELTA con la resolución y la fecha."],
     ["sigue", "produccion1", "Volver a Sanidad → CERDO-002.", "Sigue **RECHAZADO**: resolver la incidencia registra la decisión, **no rehabilita** al animal."],
-    ["rehab", "produccion1", "En CERDO-002, **Registrar control** con resultado «Aprobado» y una fecha posterior.", "**Se niega**: «No se revierte un bloqueo ni un faeneo mediante otro control.» El rechazo es definitivo para ese animal."]],
+    ["rehab", "produccion1", "En CERDO-002, **Registrar control** con resultado «Aprobado» y la fecha y hora actuales (posteriores al rechazo; el sistema no acepta fechas futuras).", "**Se niega**: «No se revierte un bloqueo ni un faeneo mediante otro control.» El rechazo es definitivo para ese animal."]],
     "Incidencias es parte del PR SGCPuiweb #9 (v5.1.0); en `almacen1` se ve sin el botón Resolver. El paso {rehab} muestra una regla "
     "deliberada de la API: un animal rechazado no vuelve a quedar apto con un control nuevo. Qué hacer si el animal devuelto se recupera "
     "y vuelve a la chanchería es una decisión abierta (sección 6.2).")
@@ -170,7 +171,7 @@ p(R("**Qué pasó en la historia de la prueba.** La costilla entró a la Cámara
   "conserva entre 0 y 4 °C, y el registro de la cámara muestra que estuvo así desde la noche. El responsable decide que esa costilla ya "
   "no es apta para vender. Como los 2 kg que fueron al jamón pasaron la misma noche en esa cámara, el jamón también queda en duda."))
 pasos("frío", [
-    ["frio", "almacen1", "**Control de frío → + Registrar control**: lote L-COS-001, temperatura 9 °C, ubicación Cámara 1, fecha y hora de la lectura, evaluación «Rechazado», observación «Revisión de la mañana: 9 °C; la cámara estuvo sin frío desde la noche anterior».", "Se guarda la lectura con **valor, unidad, fecha, lote, ubicación y responsable**. El aviso aclara que el sistema no mide la temperatura ni la evalúa: el lote se rechaza porque **una persona lo evaluó como Rechazado**."],
+    ["frio", "almacen1", "**Control de frío → + Registrar control**: sobre un **Lote** (no una entrega), lote L-COS-001, temperatura 9 °C, ubicación Cámara 1, fecha y hora de la lectura, evaluación «Rechazado», observación «Revisión de la mañana: 9 °C; la cámara estuvo sin frío desde la noche anterior».", "Se guarda la lectura con **valor, unidad, fecha, lote, ubicación y responsable**. El aviso aclara que el sistema no mide la temperatura ni la evalúa: el lote se rechaza porque **una persona lo evaluó como Rechazado**."],
     ["frio2", "almacen1", "Registrar una lectura de 2 °C en la Cámara 2 sobre L-LOM-001 con evaluación «Apto».", "Se guarda y el lomo sigue APTO y vendible: no hay umbrales ni acciones automáticas, y la falla fue solo de la Cámara 1."],
     ["bloq", "almacen1", "**Existencias**.", "L-COS-001 queda **BLOQUEADO** con disponible 0: los 10,5 kg siguen contados como físicos, pero ya no se pueden vender ni reservar."],
     ["bloqjam", "almacen1", "Existencias del Jamón elaborado.", "L-JAM-001 también queda **BLOQUEADO** con disponible 0, porque se hizo con costilla de ese lote."],
@@ -190,11 +191,11 @@ pasos("cargos separados", [
 h("4.9 Permisos, auditoría y respaldo (RNF-03, RNF-06)", 2)
 pasos("seguridad y trazabilidad", [
     ["perm1", "produccion1", "Escribir en la barra de direcciones `/Almacen/Pesajes` y `/Frio`.", "Redirige a «Sin permiso»: Producción no pesa ni registra frío."],
-    ["perm2", "almacen1", "Abrir `/Produccion/Nueva` y `/Sanidad`.", "Redirige a «Sin permiso»: Almacén no planifica órdenes ni registra animales."],
+    ["perm2", "almacen1", "Abrir `/Produccion/Nueva` y `/Sanidad/Formulario`; luego el menú **Sanidad**.", "Las dos direcciones redirigen a «Sin permiso»: Almacén no planifica órdenes ni registra animales. En Sanidad solo consulta: no ve «+ Registrar animal» ni «Registrar control»."],
     ["perm3", "ventas1", "Abrir `/Almacen/Pedidos`.", "Redirige a «Sin permiso»; en el detalle del pedido no ve el botón «Revisar reservas»."],
-    ["audit", "admin", "Menú **Auditoría**.", "Cada acción del recorrido figura con fecha, usuario, acción y módulo, entre ellas el bloqueo de lotes como `BLOQUEAR_SIN_REVERTIR_CONSUMO`, las reservas y la resolución de la incidencia."],
+    ["audit", "admin", "Menú **Auditoría**.", "Cada acción del recorrido figura con fecha, usuario, acción y módulo, entre ellas el bloqueo de lotes como «BLOQUEAR SIN REVERTIR CONSUMO» (módulo Lote), los controles de frío, las reservas y la resolución de la incidencia. La pantalla muestra 20 por página, lo más reciente primero."],
     ["hist", "admin", "Revisar una reserva liberada y una incidencia resuelta.", "Ninguna se borró: conservan su motivo, su autor y su fecha. Las anulaciones mantienen historial."],
-    ["respaldo", "—", "Respaldo y restauración de la base central.", "Se demuestra con el procedimiento de respaldo y restauración de la tarea V-3 (pendiente al 25 de noviembre)."]])
+    ["respaldo", "Servidor", "En la terminal del servidor (SGCPapi, tarea V-3): `scripts/respaldo.sh sgcp <carpeta>` y luego `scripts/restaurar.sh <archivo>.sql sgcp_restaurada`. Comparar los conteos de Pedidos y Lotes en las dos bases.", "El respaldo deja .sql, .meta y .sha256; la restauración crea una base **nueva** con los mismos conteos. Se niega a restaurar sobre la base original, sobre una base existente o con un archivo alterado (`tests/respaldo/verificar.sh` lo comprueba)."]])
 
 # ---------------------------------------------------------------- 5
 h("5. Matriz de cumplimiento")
@@ -223,12 +224,12 @@ tabla("Criterio de aceptación y pasos que lo demuestran",
       [0.8, 4.4, 1.3], 9.5)
 
 # ---------------------------------------------------------------- 6
-h("6. Estado al 25 de noviembre, pendientes y decisiones abiertas")
+h("6. Estado al 26 de noviembre y decisiones abiertas")
 h("6.1 Tareas que completan el Sprint 2", 2)
-p("Toda la regla de negocio del Sprint 2 está en la API y se probó desde la web el 25 de noviembre. Lo que faltaba eran pantallas: las "
-  "de reservas, incidencias y movimientos se agregaron en el PR SGCPuiweb #9, que debe estar fusionado antes de ensayar. Quedan tareas "
-  "de compañeros que completan criterios secundarios; mientras no estén, los pasos afectados se explican en vez de mostrarse.")
-tabla("Tareas que completan el Sprint 2",
+p(R("Todas las tareas que completan el Sprint 2 están fusionadas. El 26 de noviembre se ejecutaron los {total_pasos} pasos de punta a punta "
+  "sobre una base vacía (solo con el catálogo de ejemplo y las cuentas de prueba): cada paso se hizo en la web, con sus formularios, y "
+  "su resultado se comprobó también contra la API. Los {total_pasos} se cumplieron. El respaldo de V-3 se probó con una copia real de la base y su restauración en una base nueva."))
+tabla("Tareas que completan el Sprint 2 (todas fusionadas)",
       ["Tarea", "Responsable", "Qué agrega", "Pasos afectados"],
       [["PR SGCPuiweb #9 (D-1, D-2, D-3)", "Dario", "Pedidos por preparar, Incidencias y Movimientos", R("{inc}–{sigue}, {mov1}, {mov2}, {cola}–{preparar}, {inclotes}")],
        ["S-1", "Sebastián", "Control de frío asociado a una entrega y visible para el perfil ENTREGA", R("{frio} (variante de entrega)")],
