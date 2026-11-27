@@ -22790,6 +22790,325 @@
 							"headQualifiersCompartment": {
 								"$ref": "wP1oy56rkzPN5DA="
 							}
+						},
+						{
+							"_type": "UMLAssociationView",
+							"_id": "XR3iWvZbqG0sqdU=",
+							"_parent": {
+								"$ref": "Ha3zdSfYYBIiXgk="
+							},
+							"model": {
+								"$ref": "bu9C8Ric4d484IY="
+							},
+							"subViews": [
+								{
+									"_type": "EdgeLabelView",
+									"_id": "H40GPGLn3uNi9lo=",
+									"_parent": {
+										"$ref": "XR3iWvZbqG0sqdU="
+									},
+									"model": {
+										"$ref": "bu9C8Ric4d484IY="
+									},
+									"visible": false,
+									"lineColor": "#000000",
+									"fillColor": "#ffffff",
+									"fontColor": "#000000",
+									"font": "Arial;13;0",
+									"parentStyle": false,
+									"left": 786,
+									"top": 1657,
+									"height": 13,
+									"alpha": 1.5707963267948966,
+									"distance": 18,
+									"hostEdge": {
+										"$ref": "XR3iWvZbqG0sqdU="
+									},
+									"edgePosition": 1
+								},
+								{
+									"_type": "EdgeLabelView",
+									"_id": "Z3Cre+5HEgwC8tI=",
+									"_parent": {
+										"$ref": "XR3iWvZbqG0sqdU="
+									},
+									"model": {
+										"$ref": "bu9C8Ric4d484IY="
+									},
+									"visible": false,
+									"lineColor": "#000000",
+									"fillColor": "#ffffff",
+									"fontColor": "#000000",
+									"font": "Arial;13;0",
+									"parentStyle": false,
+									"left": 798,
+									"top": 1657,
+									"height": 13,
+									"alpha": 1.5707963267948966,
+									"distance": 30,
+									"hostEdge": {
+										"$ref": "XR3iWvZbqG0sqdU="
+									},
+									"edgePosition": 1
+								},
+								{
+									"_type": "EdgeLabelView",
+									"_id": "y5SdtcskhfrgP6A=",
+									"_parent": {
+										"$ref": "XR3iWvZbqG0sqdU="
+									},
+									"model": {
+										"$ref": "bu9C8Ric4d484IY="
+									},
+									"visible": false,
+									"lineColor": "#000000",
+									"fillColor": "#ffffff",
+									"fontColor": "#000000",
+									"font": "Arial;13;0",
+									"parentStyle": false,
+									"left": 753,
+									"top": 1658,
+									"height": 13,
+									"alpha": -1.5707963267948966,
+									"distance": 15,
+									"hostEdge": {
+										"$ref": "XR3iWvZbqG0sqdU="
+									},
+									"edgePosition": 1
+								},
+								{
+									"_type": "EdgeLabelView",
+									"_id": "I4K+3T4WCPXu8OQ=",
+									"_parent": {
+										"$ref": "XR3iWvZbqG0sqdU="
+									},
+									"model": {
+										"$ref": "CTsyqS9hsi6AKlM="
+									},
+									"visible": false,
+									"lineColor": "#000000",
+									"fillColor": "#ffffff",
+									"fontColor": "#000000",
+									"font": "Arial;13;0",
+									"parentStyle": false,
+									"left": 489,
+									"top": 1640,
+									"height": 13,
+									"alpha": 0.5235987755982988,
+									"distance": 30,
+									"hostEdge": {
+										"$ref": "XR3iWvZbqG0sqdU="
+									},
+									"edgePosition": 2
+								},
+								{
+									"_type": "EdgeLabelView",
+									"_id": "XYDjAujHCrARe9k=",
+									"_parent": {
+										"$ref": "XR3iWvZbqG0sqdU="
+									},
+									"model": {
+										"$ref": "CTsyqS9hsi6AKlM="
+									},
+									"visible": false,
+									"lineColor": "#000000",
+									"fillColor": "#ffffff",
+									"fontColor": "#000000",
+									"font": "Arial;13;0",
+									"parentStyle": false,
+									"left": 493,
+									"top": 1627,
+									"height": 13,
+									"alpha": 0.7853981633974483,
+									"distance": 40,
+									"hostEdge": {
+										"$ref": "XR3iWvZbqG0sqdU="
+									},
+									"edgePosition": 2
+								},
+								{
+									"_type": "EdgeLabelView",
+									"_id": "FHuUJZIgLM2/n1E=",
+									"_parent": {
+										"$ref": "XR3iWvZbqG0sqdU="
+									},
+									"model": {
+										"$ref": "CTsyqS9hsi6AKlM="
+									},
+									"visible": false,
+									"lineColor": "#000000",
+									"fillColor": "#ffffff",
+									"fontColor": "#000000",
+									"font": "Arial;13;0",
+									"parentStyle": false,
+									"left": 479,
+									"top": 1666,
+									"height": 13,
+									"alpha": -0.5235987755982988,
+									"distance": 25,
+									"hostEdge": {
+										"$ref": "XR3iWvZbqG0sqdU="
+									},
+									"edgePosition": 2
+								},
+								{
+									"_type": "EdgeLabelView",
+									"_id": "OLOojLXwglLnf/Y=",
+									"_parent": {
+										"$ref": "XR3iWvZbqG0sqdU="
+									},
+									"model": {
+										"$ref": "q2hY/AJy1pMTq6k="
+									},
+									"visible": false,
+									"lineColor": "#000000",
+									"fillColor": "#ffffff",
+									"fontColor": "#000000",
+									"font": "Arial;13;0",
+									"parentStyle": false,
+									"left": 1123,
+									"top": 1790,
+									"height": 13,
+									"alpha": -0.5235987755982988,
+									"distance": 30,
+									"hostEdge": {
+										"$ref": "XR3iWvZbqG0sqdU="
+									}
+								},
+								{
+									"_type": "EdgeLabelView",
+									"_id": "HL/hwOFirzyhjkc=",
+									"_parent": {
+										"$ref": "XR3iWvZbqG0sqdU="
+									},
+									"model": {
+										"$ref": "q2hY/AJy1pMTq6k="
+									},
+									"visible": false,
+									"lineColor": "#000000",
+									"fillColor": "#ffffff",
+									"fontColor": "#000000",
+									"font": "Arial;13;0",
+									"parentStyle": false,
+									"left": 1121,
+									"top": 1777,
+									"height": 13,
+									"alpha": -0.7853981633974483,
+									"distance": 40,
+									"hostEdge": {
+										"$ref": "XR3iWvZbqG0sqdU="
+									}
+								},
+								{
+									"_type": "EdgeLabelView",
+									"_id": "D2eqOiWU3MW/iyU=",
+									"_parent": {
+										"$ref": "XR3iWvZbqG0sqdU="
+									},
+									"model": {
+										"$ref": "q2hY/AJy1pMTq6k="
+									},
+									"visible": false,
+									"lineColor": "#000000",
+									"fillColor": "#ffffff",
+									"fontColor": "#000000",
+									"font": "Arial;13;0",
+									"parentStyle": false,
+									"left": 1127,
+									"top": 1818,
+									"height": 13,
+									"alpha": 0.5235987755982988,
+									"distance": 25,
+									"hostEdge": {
+										"$ref": "XR3iWvZbqG0sqdU="
+									}
+								},
+								{
+									"_type": "UMLQualifierCompartmentView",
+									"_id": "PB+67Qzb1diQrow=",
+									"_parent": {
+										"$ref": "XR3iWvZbqG0sqdU="
+									},
+									"model": {
+										"$ref": "CTsyqS9hsi6AKlM="
+									},
+									"visible": false,
+									"lineColor": "#303744",
+									"fillColor": "#ffffff",
+									"fontColor": "#202735",
+									"font": "Arial;13;0",
+									"parentStyle": true,
+									"width": 10,
+									"height": 10
+								},
+								{
+									"_type": "UMLQualifierCompartmentView",
+									"_id": "95OsKLap2sAhc4g=",
+									"_parent": {
+										"$ref": "XR3iWvZbqG0sqdU="
+									},
+									"model": {
+										"$ref": "q2hY/AJy1pMTq6k="
+									},
+									"visible": false,
+									"lineColor": "#303744",
+									"fillColor": "#ffffff",
+									"fontColor": "#202735",
+									"font": "Arial;13;0",
+									"parentStyle": true,
+									"width": 10,
+									"height": 10
+								}
+							],
+							"lineColor": "#303744",
+							"fillColor": "#ffffff",
+							"fontColor": "#202735",
+							"font": "Arial;13;0",
+							"parentStyle": false,
+							"showShadow": false,
+							"head": {
+								"$ref": "JyU/1WXnDguZ14w="
+							},
+							"tail": {
+								"$ref": "ntKaq12q4fSX8RQ="
+							},
+							"lineStyle": 1,
+							"points": "461:1646;790:1646;790:1662;1149:1662",
+							"showProperty": false,
+							"nameLabel": {
+								"$ref": "H40GPGLn3uNi9lo="
+							},
+							"stereotypeLabel": {
+								"$ref": "Z3Cre+5HEgwC8tI="
+							},
+							"propertyLabel": {
+								"$ref": "y5SdtcskhfrgP6A="
+							},
+							"showEndOrder": "hide",
+							"tailRoleNameLabel": {
+								"$ref": "I4K+3T4WCPXu8OQ="
+							},
+							"tailPropertyLabel": {
+								"$ref": "XYDjAujHCrARe9k="
+							},
+							"tailMultiplicityLabel": {
+								"$ref": "FHuUJZIgLM2/n1E="
+							},
+							"headRoleNameLabel": {
+								"$ref": "OLOojLXwglLnf/Y="
+							},
+							"headPropertyLabel": {
+								"$ref": "HL/hwOFirzyhjkc="
+							},
+							"headMultiplicityLabel": {
+								"$ref": "D2eqOiWU3MW/iyU="
+							},
+							"tailQualifiersCompartment": {
+								"$ref": "PB+67Qzb1diQrow="
+							},
+							"headQualifiersCompartment": {
+								"$ref": "95OsKLap2sAhc4g="
+							}
 						}
 					]
 				},
@@ -23021,7 +23340,7 @@
 						"$ref": "56Rcy9u9G3FV/bo="
 					},
 					"name": "CU06 · Gestionar pedidos (Pedidos)",
-					"documentation": "Actores directos: Propietario, Ventas, Comprador, Finanzas. Secciones: Pedidos. Pedidos: confirmar desde una cotización aceptada, condición de pago, señas y cancelación con motivo."
+					"documentation": "Actores directos: Propietario, Administrador, Ventas, Comprador, Finanzas. Secciones: Pedidos. Pedidos: confirmar desde una cotización aceptada, condición de pago, señas y cancelación con motivo. Administrador consulta los pedidos confirmados para preparar sus entregas."
 				},
 				{
 					"_type": "UMLUseCase",
@@ -23030,7 +23349,7 @@
 						"$ref": "56Rcy9u9G3FV/bo="
 					},
 					"name": "CU08 · Gestionar producción (Sanidad · Producción · Incidencias)",
-					"documentation": "Actores directos: Administrador, Producción, Almacén. Secciones: Sanidad · Producción · Incidencias. Producción e inventario: control sanitario, faeneo/desposte y fabricación de derivados."
+					"documentation": "Actores directos: Administrador, Producción, Almacén. Secciones: Sanidad · Producción · Incidencias. Producción e inventario: control sanitario, faeneo/desposte y fabricación de derivados. Un rechazo sanitario es definitivo: el animal no admite otro control y conserva una sola incidencia; rechazar un animal apto exige el motivo («Pasó de apto a rechazado»). El consumo de una fabricación es irreversible: la orden que ya consumió no se anula."
 				},
 				{
 					"_type": "UMLUseCase",
@@ -23039,7 +23358,7 @@
 						"$ref": "56Rcy9u9G3FV/bo="
 					},
 					"name": "CU09 · Gestionar inventario (Existencias · Pesajes y entradas · Pedidos por preparar · Control de frío)",
-					"documentation": "Actores directos: Administrador, Producción, Almacén, Responsable de entrega. Secciones: Existencias · Pesajes y entradas · Pedidos por preparar · Control de frío. Producción e inventario: existencias, pesajes y entradas a almacén, control de frío."
+					"documentation": "Actores directos: Administrador, Producción, Almacén, Responsable de entrega. Secciones: Existencias · Pesajes y entradas · Pedidos por preparar · Control de frío. Producción e inventario: existencias, pesajes y entradas a almacén, control de frío. El control de frío se registra sobre un lote, una entrega o una cámara completa; rechazar una cámara exige la hora de inicio de la falla y deja en revisión solo los lotes y derivados expuestos desde esa hora. Existencias muestra el origen de cada lote y quién lo ingresó a qué cámara y cuándo."
 				},
 				{
 					"_type": "UMLUseCase",
@@ -23057,7 +23376,7 @@
 						"$ref": "56Rcy9u9G3FV/bo="
 					},
 					"name": "CU11 · Gestionar transporte y entregas (Entregas · Rutas · Transportes · Conflictos de recepción)",
-					"documentation": "Actores directos: Administrador, Ventas, Comprador, Responsable de entrega. Secciones: Entregas · Rutas · Transportes · Conflictos de recepción. Transporte y entregas: preparar y asignar entregas, rutas, transportes; captura sin conexión en Android; revisión de conflictos de recepción."
+					"documentation": "Actores directos: Administrador, Ventas, Comprador, Responsable de entrega. Secciones: Entregas · Rutas · Transportes · Conflictos de recepción. Transporte y entregas: preparar y asignar entregas, rutas, transportes; captura sin conexión en Android; revisión de conflictos de recepción. A domicilio responde un repartidor (Responsable de entrega); en retiro en el local, Ventas o un repartidor que esté en el local. Ventas prepara, despacha y registra la recepción solo de sus retiros en el local."
 				},
 				{
 					"_type": "UMLUseCase",
@@ -24493,6 +24812,33 @@
 						},
 						"reference": {
 							"$ref": "FvEmGc4h8ZyVuZg="
+						}
+					}
+				},
+				{
+					"_type": "UMLAssociation",
+					"_id": "bu9C8Ric4d484IY=",
+					"_parent": {
+						"$ref": "56Rcy9u9G3FV/bo="
+					},
+					"end1": {
+						"_type": "UMLAssociationEnd",
+						"_id": "CTsyqS9hsi6AKlM=",
+						"_parent": {
+							"$ref": "bu9C8Ric4d484IY="
+						},
+						"reference": {
+							"$ref": "77tgDx28g1isG3o="
+						}
+					},
+					"end2": {
+						"_type": "UMLAssociationEnd",
+						"_id": "q2hY/AJy1pMTq6k=",
+						"_parent": {
+							"$ref": "bu9C8Ric4d484IY="
+						},
+						"reference": {
+							"$ref": "ggGpeONY51Z1W4M="
 						}
 					}
 				}
